@@ -5,11 +5,16 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using IS_technopark.Models;
+using Oracle.ManagedDataAccess.Client;
 
 namespace IS_technopark.Account
 {
     public partial class Login : Page
     {
+        OracleConnection ORACLE = new OracleConnection(constr);
+        static string constr = "User Id=Technopark; Password=DIP1937;Data Source=127.0.0.1:1521/xe";
+        OracleDataAdapter oraAdap = new OracleDataAdapter();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
