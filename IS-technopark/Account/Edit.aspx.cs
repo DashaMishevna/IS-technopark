@@ -15,34 +15,44 @@ namespace IS_technopark.Account
         static string constr = "User Id=Technopark; Password=DIP1937;Data Source=127.0.0.1:1521/xe";
         OracleDataAdapter oraAdap = new OracleDataAdapter();
         //AutoCompleteStringCollection source = new AutoCompleteStringCollection();
-        List<string> textBox = new List<string>();
+        List<string> textBox_f = new List<string>();
+        List<string> textBox_k = new List<string>();
         DataTable fio_l = new DataTable();
-
-        protected void Page_Load(object sender, EventArgs e)
-        { 
-            Label3.Visible = false;
-        }
 
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             ORACLE.Open();
             oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "Select FIO from EMPLOYEES";
+            oraAdap.SelectCommand.CommandText = "Select L_name || ' ' || F_NAME as FIO from EMPLOYEES";
             oraAdap.SelectCommand.Connection = ORACLE;
             OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
             while (oraReader.Read())
             {
                 object[] values = new object[oraReader.FieldCount];
                 oraReader.GetValues(values);
-                textBox.Add(values[0].ToString());
+                textBox_f.Add(values[0].ToString());
+            }
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "Select KEY from EMPLOYEES";
+            oraAdap.SelectCommand.Connection = ORACLE;
+            OracleDataReader oraReader_1 = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader_1.Read())
+            {
+                object[] values = new object[oraReader_1.FieldCount];
+                oraReader_1.GetValues(values);
+                textBox_k.Add(values[0].ToString());
             }
 
             bool flag = false;
-            for (int i = 0; i < textBox.Count; i++)
+            for (int i = 0; i < textBox_k.Count; i++)
             {
-              if (textBox[i] == TextBox1.Text) flag = true;
+                if (textBox_f[i] == TextBox1.Text & textBox_k[i] == TextBox2.Text) flag = true;
             }
+            //for (int i = 0; i < textBox_f.Count; i++)
+            //{
+            //  if (textBox_f[i] == TextBox1.Text) flag = true;
+            //}
 
             int query = (from users in oraAdap.SelectCommand.CommandText
                          where users.ToString()==(TextBox1.Text)
