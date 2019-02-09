@@ -49,10 +49,6 @@ namespace IS_technopark.Account
             {
                 if (textBox_f[i] == TextBox1.Text & textBox_k[i] == TextBox2.Text) flag = true;
             }
-            //for (int i = 0; i < textBox_f.Count; i++)
-            //{
-            //  if (textBox_f[i] == TextBox1.Text) flag = true;
-            //}
 
             int query = (from users in oraAdap.SelectCommand.CommandText
                          where users.ToString()==(TextBox1.Text)
