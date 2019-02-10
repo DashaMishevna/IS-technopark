@@ -17,7 +17,9 @@ namespace IS_technopark.Account
         //AutoCompleteStringCollection source = new AutoCompleteStringCollection();
         List<string> textBox_f = new List<string>();
         List<string> textBox_k = new List<string>();
+        List<string> textBox_auto = new List<string>();
         DataTable fio_l = new DataTable();
+        TextBox textBox = new TextBox();
 
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -44,11 +46,15 @@ namespace IS_technopark.Account
                 textBox_k.Add(values[0].ToString());
             }
 
+           
+
             bool flag = false;
             for (int i = 0; i < textBox_k.Count; i++)
             {
                 if (textBox_f[i] == TextBox1.Text & textBox_k[i] == TextBox2.Text) flag = true;
             }
+
+            Class_FIO.Teachr_fio = TextBox1.Text.Trim();
 
             int query = (from users in oraAdap.SelectCommand.CommandText
                          where users.ToString()==(TextBox1.Text)
@@ -80,6 +86,8 @@ namespace IS_technopark.Account
                 Label3.Visible = true;
                 Label3.Text = "Нет совпадений!";
             }
+
+
         }
              
                 //        ORACLE.Close();
