@@ -20,38 +20,42 @@ namespace IS_technopark
         //static string constr = "User Id=Technopark; Password=DIP1937;Data Source=127.0.0.1:1521/xe";
         //OracleDataAdapter oraAdap = new OracleDataAdapter();
         OracleConnection oraConnection = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;");
-        string sqlconnection = "Data Source=127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;";
+        //string sqlconnection = "Data Source=(DESCRIPTION =(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST = 127.0.0.1)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = xe)));User ID=TECHNOPARK;Password=DIP1937;";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            oraConnection.Open();
+            //oraConnection.Open();
 
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = e.RowIndex;
-
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            using (SqlConnection sqlcon = new SqlConnection(sqlconnection))
+            using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
             {
-                    sqlcon.Open();
-                    string query = "UPDATE TECHNOPARK.LEARNER SET FIO=@FIO, CLASS=@CLASS, BIRTHDAY=@BIRTHDAY, SCHOOL=@SCHOOL, PHONE=@PHONE, SHIFT=@SHIFT, E_MAIL=@E_MAIL, INTERESTS=@INTERESTS, COMMENTS=@COMMENTS WHERE ID_LEARNER=@ID_LEARNER";
-                    SqlCommand sqlcmd = new SqlCommand(query, sqlcon);
-                    sqlcmd.Parameters.AddWithValue("@FIO", (GridView1.Rows[e.RowIndex].FindControl("FIO")));
-                    sqlcmd.Parameters.AddWithValue("@CLASS", (GridView1.Rows[e.RowIndex].FindControl("CLASS")));
-                    sqlcmd.Parameters.AddWithValue("@BIRTHDAY", (GridView1.Rows[e.RowIndex].FindControl("BIRTHDAY")));
-                    sqlcmd.Parameters.AddWithValue("@SCHOOL", (GridView1.Rows[e.RowIndex].FindControl("SCHOOL")));
-                    sqlcmd.Parameters.AddWithValue("@PHONE", (GridView1.Rows[e.RowIndex].FindControl("PHONE")));
-                    sqlcmd.Parameters.AddWithValue("@SHIFT", (GridView1.Rows[e.RowIndex].FindControl("SHIFT")));
-                    sqlcmd.Parameters.AddWithValue("@E_MAIL", (GridView1.Rows[e.RowIndex].FindControl("E_MAIL")));
-                    sqlcmd.Parameters.AddWithValue("@INTERESTS", (GridView1.Rows[e.RowIndex].FindControl("INTERESTS")));
-                    sqlcmd.Parameters.AddWithValue("@COMMENTS", (GridView1.Rows[e.RowIndex].FindControl("COMMENTS")));
-                    sqlcmd.ExecuteNonQuery();
-                    GridView1.EditIndex = -1;
+                //oraclelcon.Open();
+                GridViewRow row = GridView1.Rows[e.RowIndex];
+                string query = "UPDATE TECHNOPARK.LEARNER SET FIO=@FIO, CLASS=@CLASS, BIRTHDAY=@BIRTHDAY, SCHOOL=@SCHOOL, PHONE=@PHONE, SHIFT=@SHIFT, E_MAIL=@E_MAIL, INTERESTS=@INTERESTS, COMMENTS=@COMMENTS WHERE ID_LEARNER=@ID_LEARNER";
+                OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
+                oraclelcon.Open();
+                //oraclecmd.CommandText = "UPDATE TECHNOPARK.LEARNER SET FIO=@FIO; SHIFT=@SHIFT";
+                oraclecmd.Connection.Open();
+                //oraclecmd.Parameters.Add("@FIO");
+                //sqlcmd.Parameters.Add("@FIO", (GridView1.Rows[e.RowIndex].FindControl("FIO")));
+                //    sqlcmd.Parameters.Add("@CLASS", (GridView1.Rows[e.RowIndex].FindControl("CLASS")));
+                //    sqlcmd.Parameters.Add("@BIRTHDAY", (GridView1.Rows[e.RowIndex].FindControl("BIRTHDAY")));
+                //    sqlcmd.Parameters.Add("@SCHOOL", (GridView1.Rows[e.RowIndex].FindControl("SCHOOL")));
+                //    sqlcmd.Parameters.Add("@PHONE", (GridView1.Rows[e.RowIndex].FindControl("PHONE")));
+                //    sqlcmd.Parameters.Add("@SHIFT", (GridView1.Rows[e.RowIndex].FindControl("SHIFT")));
+                //    sqlcmd.Parameters.Add("@E_MAIL", (GridView1.Rows[e.RowIndex].FindControl("E_MAIL")));
+                //    sqlcmd.Parameters.Add("@INTERESTS", (GridView1.Rows[e.RowIndex].FindControl("INTERESTS")));
+                //    sqlcmd.Parameters.Add("@COMMENTS", (GridView1.Rows[e.RowIndex].FindControl("COMMENTS")));
+                oraclecmd.ExecuteNonQuery();
+                GridView1.EditIndex = -1;
 
 
             }
