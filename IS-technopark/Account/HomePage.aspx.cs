@@ -92,43 +92,17 @@ namespace IS_technopark
                    
                 }
             }
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            List<string> textBox_k = new List<string>();
             using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
             {
-
-                //GridViewRow row = GridView1.Rows[e.RowIndex];
-                //string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS) VALUES (:FIO, :BIRTHDAY, :SCHOOL, :PHONE, :SHIFT, :E_MAIL, :INTERESTS, :COMMENTS)";
-                //OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
-                //oraclelcon.Open();
-                //oraclecmd.Connection.Open();
-                   
                 ORACLE.Open();
-                //oraAdap.SelectCommand = new OracleCommand();
-                //oraAdap.SelectCommand.CommandText = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS)  VALUES('"+TextBoxFirst.Text + "', '"+TextBox1.Text+"', '"+Convert.ToDateTime(TextBox2.Text)+"', '"+TextBoxFirst.Text+"', '"+TextBox1.Text+"', '"+ TextBoxFirst.Text + "', '"+ TextBoxFirst.Text + "', '"+ TextBoxFirst.Text + "')";
                 string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS)  VALUES('" + TextBoxFirst.Text + "', '" + TextBox1.Text + "', '" + DateTime.Parse(TextBox2.Text).ToShortDateString()  + "', '" + TextBox1.Text + "', '" + TextBox1.Text + "', '" + TextBox1.Text + "', '" + TextBoxFirst.Text + "', '" + TextBoxFirst.Text + "', '" + TextBoxFirst.Text + "')";
                 oraAdap.InsertCommand = new OracleCommand(query, ORACLE);
                 oraAdap.InsertCommand.ExecuteNonQuery();
-                //oraAdap.SelectCommand.Connection = ORACLE;
-                //OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
-
-                //oraAdap.SelectCommand = new OracleCommand();
-                //oraAdap.SelectCommand.CommandText = "Select * from LEARNER";
-                //oraAdap.SelectCommand.Connection = ORACLE;
-                //OracleDataReader oraReader_1 = oraAdap.SelectCommand.ExecuteReader();
-                //while (oraReader_1.Read())
-                //{
-                //    object[] values = new object[oraReader_1.FieldCount];
-                //    oraReader_1.GetValues(values);
-                //    textBox_k.Add(values[0].ToString());
-                //    TextBox1.Text = values[1].ToString();             
-                //}
-               
-
+                GridView1.DataBind();
             //oraclecmd.Parameters.Add("FIO", TextBox1.Text);
             //oraclecmd.Parameters.Add("CLASS", TextBox1.Text);
             //oraclecmd.Parameters.Add("BIRTHDAY", Convert.ToDateTime(TextBox2.Text));
@@ -142,7 +116,40 @@ namespace IS_technopark
             //oraclecmd.ExecuteNonQuery();
             //GridView1.EditIndex = -1;
 
+            }
         }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                {
+
+                    //GridViewRow row = GridView1.Rows[e.RowIndex];
+                    string query = "DELETE FROM TECHNOPARK.LEARNER WHERE ID_LEARNER = :ID_LEARNER";
+                    OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
+                    oraclelcon.Open();
+                    oraclecmd.Connection.Open();
+                    //oraclecmd.Parameters.Add("FIO", TextBox1.Text);
+                    //oraclecmd.Parameters.Add("CLASS", TextBox1.Text);
+                    //oraclecmd.Parameters.Add("BIRTHDAY", Convert.ToDateTime(TextBox2.Text));
+                    //oraclecmd.Parameters.Add("SCHOOL", TextBoxFirst.Text);
+                    //oraclecmd.Parameters.Add("PHONE", "PHONE");
+                    //oraclecmd.Parameters.Add("SHIFT", TextBox1.Text);
+                    //oraclecmd.Parameters.Add("E_MAIL", "E_MAIL");
+                    //oraclecmd.Parameters.Add("INTERESTS", "INTERESTS");
+                    //oraclecmd.Parameters.Add("COMMENTS", "COMMENTS");
+                    oraclecmd.Parameters.Add("ID_LEARNER", "ID_LEARNER");
+                    oraclecmd.ExecuteNonQuery();
+                    //GridView1.EditIndex = -1;
+
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         //protected void Button1_Click(object sender, EventArgs e)

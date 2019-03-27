@@ -223,6 +223,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Account\HomePage.aspx" />
+    <Content Include="img\delete.png" />
     <Content Include="img\Home.png" />
     <Content Include="img\paper.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
