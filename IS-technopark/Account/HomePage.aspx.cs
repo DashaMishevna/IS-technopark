@@ -39,7 +39,6 @@ namespace IS_technopark
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-
             using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
             {
                 //oraclelcon.Open();
@@ -59,7 +58,7 @@ namespace IS_technopark
                 oraclecmd.Parameters.Add("INTERESTS", e.NewValues["INTERESTS"]);
                 oraclecmd.Parameters.Add("COMMENTS", e.NewValues["COMMENTS"]);
                 oraclecmd.Parameters.Add("ID_LEARNER", e.NewValues["ID_LEARNER"]);
-                
+
                 oraclecmd.ExecuteNonQuery();
                 GridView1.EditIndex = -1;
             }
@@ -67,31 +66,31 @@ namespace IS_technopark
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-        //    if (e.CommandName.Equals("Add"))
-        //    {
-        //        using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
-        //        {
+            if (e.CommandName.Equals("Add"))
+            {
+                using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                {
 
-        //            //GridViewRow row = GridView1.Rows[e.RowIndex];
-        //            string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS) VALUES (:FIO, :BIRTHDAY, :SCHOOL, :PHONE, :SHIFT, :E_MAIL, :INTERESTS, :COMMENTS)";
-        //            OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
-        //            oraclelcon.Open();
-        //            oraclecmd.Connection.Open();
-        //            oraclecmd.Parameters.Add("FIO", TextBox1.Text);
-        //            oraclecmd.Parameters.Add("CLASS", TextBox1.Text);
-        //            oraclecmd.Parameters.Add("BIRTHDAY", Convert.ToDateTime(TextBox2.Text));
-        //            oraclecmd.Parameters.Add("SCHOOL", TextBoxFirst.Text);
-        //            oraclecmd.Parameters.Add("PHONE", "PHONE");
-        //            oraclecmd.Parameters.Add("SHIFT", TextBox1.Text);
-        //            oraclecmd.Parameters.Add("E_MAIL", "E_MAIL");
-        //            oraclecmd.Parameters.Add("INTERESTS","INTERESTS");
-        //            oraclecmd.Parameters.Add("COMMENTS", "COMMENTS");
-        //            //oraclecmd.Parameters.Add("ID_LEARNER", "ID_LEARNER");
-        //            oraclecmd.ExecuteNonQuery();
-        //            GridView1.EditIndex = -1;
-                   
-        //        }
-        //    }
+                    //GridViewRow row = GridView1.Rows[e.RowIndex];
+                    string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS) VALUES (:FIO, :BIRTHDAY, :SCHOOL, :PHONE, :SHIFT, :E_MAIL, :INTERESTS, :COMMENTS)";
+                    OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
+                    oraclelcon.Open();
+                    oraclecmd.Connection.Open();
+                    oraclecmd.Parameters.Add("FIO", TextBox1.Text);
+                    oraclecmd.Parameters.Add("CLASS", TextBox1.Text);
+                    oraclecmd.Parameters.Add("BIRTHDAY", Convert.ToDateTime(TextBox2.Text));
+                    oraclecmd.Parameters.Add("SCHOOL", TextBoxFirst.Text);
+                    oraclecmd.Parameters.Add("PHONE", "PHONE");
+                    oraclecmd.Parameters.Add("SHIFT", TextBox1.Text);
+                    oraclecmd.Parameters.Add("E_MAIL", "E_MAIL");
+                    oraclecmd.Parameters.Add("INTERESTS", "INTERESTS");
+                    oraclecmd.Parameters.Add("COMMENTS", "COMMENTS");
+                    //oraclecmd.Parameters.Add("ID_LEARNER", "ID_LEARNER");
+                    oraclecmd.ExecuteNonQuery();
+                    GridView1.EditIndex = -1;
+
+                }
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -121,8 +120,8 @@ namespace IS_technopark
             }
             catch
             {
-                Label1.Visible = true;
-                Label1.Text = "Проверьте введенные данные!";
+               // Label1.Visible = true;
+                //Label1.Text = "Проверьте введенные данные!";
             }
         }
 
