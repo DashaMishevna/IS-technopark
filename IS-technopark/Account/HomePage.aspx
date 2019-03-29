@@ -7,7 +7,7 @@
     </asp:SqlDataSource>
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" CellSpacing="3" HorizontalAlign="Center">
         <Columns>
-            <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="False" />
+            <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" />
             <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO"/>
             <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" />
             <asp:BoundField DataField="BIRTHDAY" HeaderText="BIRTHDAY" SortExpression="BIRTHDAY" DataFormatString="{0:dd/MM/yyyy}"/>
