@@ -196,6 +196,7 @@
     <Content Include="Account\Edit.aspx" />
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Learner.aspx" />
+    <Content Include="Account\Learners.aspx" />
     <Content Include="Account\Lockout.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
@@ -226,6 +227,7 @@
     <Content Include="img\delete.png" />
     <Content Include="img\Home.png" />
     <Content Include="img\paper.png" />
+    <Content Include="img\plus.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -311,6 +313,13 @@
     </Compile>
     <Compile Include="Account\Learner.aspx.designer.cs">
       <DependentUpon>Learner.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Learners.aspx.cs">
+      <DependentUpon>Learners.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Learners.aspx.designer.cs">
+      <DependentUpon>Learners.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Lockout.aspx.cs">
       <DependentUpon>Lockout.aspx</DependentUpon>

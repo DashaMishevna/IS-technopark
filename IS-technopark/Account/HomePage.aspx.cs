@@ -16,9 +16,6 @@ namespace IS_technopark
 {
     public partial class HomePage : Page
     {
-        //OracleConnection ORACLE = new OracleConnection(constr);
-        //static string constr = "User Id=Technopark; Password=DIP1937;Data Source=127.0.0.1:1521/xe";
-        //OracleDataAdapter oraAdap = new OracleDataAdapter();
         OracleConnection ORACLE = new OracleConnection(constr);
         static string constr = "User Id=Technopark; Password=DIP1937;Data Source=127.0.0.1:1521/xe";
         OracleDataAdapter oraAdap = new OracleDataAdapter();
@@ -27,68 +24,53 @@ namespace IS_technopark
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
             //oraConnection.Open();
-
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
-            GridView1.EditIndex = e.RowIndex;
+            GridView1.EditIndex = -1;
+            GridView1.DataBind();
+
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+            try
             {
-                GridViewRow row = GridView1.Rows[e.RowIndex];
-                string query = "UPDATE TECHNOPARK.LEARNER SET FIO=:FIO, CLASS=:CLASS, BIRTHDAY=:BIRTHDAY, SCHOOL=:SCHOOL, PHONE=:PHONE, SHIFT=:SHIFT, E_MAIL=:E_MAIL, INTERESTS=:INTERESTS, COMMENTS=:COMMENTS WHERE ID_LEARNER=:ID_LEARNER";
-                OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
-                oraclelcon.Open();
-                oraclecmd.Connection.Open();
-                oraclecmd.Parameters.Add("FIO", e.NewValues["FIO"]);
-                oraclecmd.Parameters.Add("CLASS", e.NewValues["CLASS"]);
-                oraclecmd.Parameters.Add("BIRTHDAY", Convert.ToDateTime(e.NewValues["BIRTHDAY"]));
-                oraclecmd.Parameters.Add("SCHOOL", e.NewValues["SCHOOL"]);
-                oraclecmd.Parameters.Add("PHONE", e.NewValues["PHONE"]);
-                oraclecmd.Parameters.Add("SHIFT", e.NewValues["SHIFT"]);
-                oraclecmd.Parameters.Add("E_MAIL", e.NewValues["E_MAIL"]);
-                oraclecmd.Parameters.Add("INTERESTS", e.NewValues["INTERESTS"]);
-                oraclecmd.Parameters.Add("COMMENTS", e.NewValues["COMMENTS"]);
-                oraclecmd.Parameters.Add("ID_LEARNER", GridView1.DataKeys[e.RowIndex].Value);
+                using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                {
+                    GridViewRow row = GridView1.Rows[e.RowIndex];
+                    string query = "UPDATE TECHNOPARK.LEARNER SET FIO=:FIO, CLASS=:CLASS, BIRTHDAY=:BIRTHDAY, SCHOOL=:SCHOOL, PHONE=:PHONE, SHIFT=:SHIFT, E_MAIL=:E_MAIL, INTERESTS=:INTERESTS, COMMENTS=:COMMENTS WHERE ID_LEARNER=:ID_LEARNER";
+                    OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
+                    oraclelcon.Open();
+                    oraclecmd.Connection.Open();
+                    oraclecmd.Parameters.Add("FIO", e.NewValues["FIO"]);
+                    oraclecmd.Parameters.Add("CLASS", e.NewValues["CLASS"]);
+                    oraclecmd.Parameters.Add("BIRTHDAY", Convert.ToDateTime(e.NewValues["BIRTHDAY"]));
+                    oraclecmd.Parameters.Add("SCHOOL", e.NewValues["SCHOOL"]);
+                    oraclecmd.Parameters.Add("PHONE", e.NewValues["PHONE"]);
+                    oraclecmd.Parameters.Add("SHIFT", e.NewValues["SHIFT"]);
+                    oraclecmd.Parameters.Add("E_MAIL", e.NewValues["E_MAIL"]);
+                    oraclecmd.Parameters.Add("INTERESTS", e.NewValues["INTERESTS"]);
+                    oraclecmd.Parameters.Add("COMMENTS", e.NewValues["COMMENTS"]);
+                    oraclecmd.Parameters.Add("ID_LEARNER", GridView1.DataKeys[e.RowIndex].Value);
 
-                oraclecmd.ExecuteNonQuery();
-                GridView1.EditIndex = -1;
+                    oraclecmd.ExecuteNonQuery();
+                    GridView1.EditIndex = -1;
+                }
             }
+            catch
+            {
+                Label1.Visible = true;
+                Label1.Text = "Проверьте введенные данные!";
+            }
+
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            //if (e.CommandName.Equals("Add"))
-            //{
-            //    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
-            //    {
-
-            //        //GridViewRow row = GridView1.Rows[e.RowIndex];
-            //        string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS) VALUES (:FIO, :BIRTHDAY, :SCHOOL, :PHONE, :SHIFT, :E_MAIL, :INTERESTS, :COMMENTS)";
-            //        OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
-            //        oraclelcon.Open();
-            //        oraclecmd.Connection.Open();
-            //        oraclecmd.Parameters.Add("FIO", TextBox1.Text);
-            //        oraclecmd.Parameters.Add("CLASS", TextBox1.Text);
-            //        oraclecmd.Parameters.Add("BIRTHDAY", Convert.ToDateTime(TextBox2.Text));
-            //        oraclecmd.Parameters.Add("SCHOOL", TextBoxFirst.Text);
-            //        oraclecmd.Parameters.Add("PHONE", "PHONE");
-            //        oraclecmd.Parameters.Add("SHIFT", TextBox1.Text);
-            //        oraclecmd.Parameters.Add("E_MAIL", "E_MAIL");
-            //        oraclecmd.Parameters.Add("INTERESTS", "INTERESTS");
-            //        oraclecmd.Parameters.Add("COMMENTS", "COMMENTS");
-            //        oraclecmd.Parameters.Add("ID_LEARNER", "ID_LEARNER");
-            //        oraclecmd.ExecuteNonQuery();
-            //        GridView1.EditIndex = -1;
-
-            //    }
-            //}
+           
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -102,24 +84,14 @@ namespace IS_technopark
                     oraAdap.InsertCommand = new OracleCommand(query, ORACLE);
                     oraAdap.InsertCommand.ExecuteNonQuery();
                     GridView1.DataBind();
-                    //oraclecmd.Parameters.Add("FIO", TextBox1.Text);
-                    //oraclecmd.Parameters.Add("CLASS", TextBox1.Text);
-                    //oraclecmd.Parameters.Add("BIRTHDAY", Convert.ToDateTime(TextBox2.Text));
-                    //oraclecmd.Parameters.Add("SCHOOL", TextBoxFirst.Text);
-                    //oraclecmd.Parameters.Add("PHONE", TextBox1.Text);
-                    //oraclecmd.Parameters.Add("SHIFT", TextBox1.Text);
-                    //oraclecmd.Parameters.Add("E_MAIL", TextBox1.Text);
-                    //oraclecmd.Parameters.Add("INTERESTS", TextBox1.Text);
-                    //oraclecmd.Parameters.Add("COMMENTS", TextBox1.Text);
-                    //oraclecmd.Parameters.Add("ID_LEARNER", "ID_LEARNER");
                     //oraclecmd.ExecuteNonQuery();
                     //GridView1.EditIndex = -1;
                 }
             }
             catch
             {
-               // Label1.Visible = true;
-                //Label1.Text = "Проверьте введенные данные!";
+               Label1.Visible = true;
+               Label1.Text = "Проверьте введенные данные!";
             }
         }
 
@@ -147,20 +119,11 @@ namespace IS_technopark
             }
         }
 
-        //protected void Button1_Click(object sender, EventArgs e)
-        //{
-        //    ORACLE.Open();
-        //    oraAdap.SelectCommand = new OracleCommand();
-        //    oraAdap.SelectCommand.CommandText = "Select KEY from EMPLOYEES ";
-        //    oraAdap.SelectCommand.Connection = ORACLE;
-        //    OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
-        //    while (oraReader1.Read())
-        //    {
-        //        object[] values = new object[oraReader1.FieldCount];
-        //        oraReader1.GetValues(values);
-        //        ListBox1.Items.Add(values[0].ToString());
-        //    }
-        //}
+        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            GridView1.EditIndex = e.NewEditIndex;
+            GridView1.DataBind();
+        }
 
     }
 }
