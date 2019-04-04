@@ -66,6 +66,7 @@
     <br>
     <br>
      <asp:TextBox ID="TextBox8" runat="server" Width="225px" Height="30px"  CssClass="btn btn-default"></asp:TextBox>
+        <asp:Label ID="Label15" runat="server" Text="Label"></asp:Label>
     <asp:TextBox ID="TextBox9" runat="server" Width="225px" Height="30px"  CssClass="btn btn-default"></asp:TextBox>
     
     </div>
