@@ -49,7 +49,7 @@
     <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
     <asp:TextBox ID="TextBox1" Text='<%# Eval("Num")%>' runat="server" Width="225px" Height="30px"  CssClass="btn btn-default"/>
     <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
-    <asp:TextBox ID="TextBox2" Text='<%# Eval("Date")%>' runat="server" Width="225px" Height="30px"  CssClass="btn btn-default" />
+    <asp:TextBox ID="TextBox2"  runat="server" Width="225px" Height="30px" CssClass="btn btn-default" OnTextChanged="TextBox2_TextChanged" AutoPostBack="True" ReadOnly="True" />
     <br>
     <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
     <asp:TextBox ID="TextBox3" runat="server" Width="225px" Height="30px"  CssClass="btn btn-default"></asp:TextBox>

@@ -25,6 +25,7 @@ namespace IS_technopark
         protected void Page_Load(object sender, EventArgs e)
         {
             //oraConnection.Open();
+            TextBox2.Text = DateTime.Today.ToShortDateString();
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -125,5 +126,9 @@ namespace IS_technopark
             GridView1.DataBind();
         }
 
+        protected void TextBox2_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
