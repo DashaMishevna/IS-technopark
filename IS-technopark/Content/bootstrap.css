@@ -6816,3 +6816,27 @@ td.visible-print {
     display: none !important;
   }
 }
+
+.form-row {
+	overflow: hidden;
+    width: 900px;
+    font-size:20px;
+    font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+    float:left;
+}
+
+.form-label{
+    margin-top: 4px;
+	float:left;
+    width:200px;
+    height:30px;
+    margin-left:0px;
+    margin-right:20PX;
+    font-size:20px;
+}
+
+.form-label label{
+	float:right;
+}
+
+

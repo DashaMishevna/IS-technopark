@@ -16,7 +16,7 @@ namespace IS_technopark.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            f(!IsPostBack)
+            if(!IsPostBack)
             {
                 GetDropList();
                 DropDownList2.Items.Insert(0, new ListItem("-Выберете проект-"));
@@ -69,3 +69,4 @@ namespace IS_technopark.Account
         }
     }
 }
+
