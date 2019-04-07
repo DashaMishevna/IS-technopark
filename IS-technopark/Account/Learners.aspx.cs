@@ -14,6 +14,8 @@ namespace IS_technopark.Account
         OracleDataAdapter oraAdap = new OracleDataAdapter();
         OracleConnection oraConnection = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;");
         DataSet ds = new DataSet();
+        string id_lab = "";
+        string id_project = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,57 +24,70 @@ namespace IS_technopark.Account
                 GetDropList();
                 DropDownList2.Items.Insert(0, new ListItem("-Выберете проект-"));
             }
-
-            //if (!Page.IsPostBack)
-            //{
-            //    for (int i = 3; i <= 5; i++)
-            //    {
-            //        ListBox1.Items.Add("Option " + i.ToString());
-            //    }
-            //}
+            ID();
         }
+        public void ID()
+        {
+            oraConnection.Open();
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "Select id_Laboratories from DIR_LABORATORIES where LABORATORY = '" + DropDownList1.SelectedValue.ToString() + "'";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader.Read())
+            {
+                object[] values = new object[oraReader.FieldCount];
+                oraReader.GetValues(values);
+                id_lab = values[0].ToString();
+            }
 
-        
-
+            oraAdap.SelectCommand.CommandText = "Select ID_DIR_PROJECTS from DIR_PROJECTS where TITLE = '" + DropDownList2.SelectedValue.ToString() + "'";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader_1 = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader_1.Read())
+            {
+                object[] values = new object[oraReader_1.FieldCount];
+                oraReader_1.GetValues(values);
+                id_project = values[0].ToString();
+            }
+            oraConnection.Close();
+            //Response.Write("- " + id_lab + "<br/>" + id_project);
+        }
         protected void Button1_Click(object sender, EventArgs e)
         {
-           // string interests_v = "";
-           //// Response.Write("<b>Выбранные элементы в Listbox1:</b><br/>");
-           // foreach (ListItem li in ListBox1.Items)
-           // {
-           //     if (li.Selected)
-           //     {
-           //         interests_v +=  li.Value + " ";
-           //     }
-           // }
-           // //Response.Write("- " + msg + "<br/>");
+            string interests_v = "";
+            // Response.Write("<b>Выбранные элементы в Listbox1:</b><br/>");
+            foreach (ListItem li in ListBox1.Items)
+            {
+                if (li.Selected)
+                {
+                    interests_v += li.Value + " ";
+                }
+            }
+            //Response.Write("- " + msg + "<br/>");
 
-           // try
-           // {
-           //     using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
-           //     {
-           //         oraConnection.Open();
-           //         string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS)  VALUES('" + TextBoxFirst.Text + "', '" + DropDownList4.Text + "', '" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "', '" + TextBox3.Text + "', '" + TextBox5.Text + "', '" + DropDownList5.Text + "', '" + TextBoxFirst.Text + "', '" + interests_v + "', '" + TextBoxFirst.Text + "')";
-           //         oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
-           //         oraAdap.InsertCommand.ExecuteNonQuery();
-           //         oraConnection.Close();
-           //         Label1.Visible = true;
-           //         Label1.ForeColor = System.Drawing.Color.Green;
-           //         Label1.Text = "Данные успешно добавлены!";
-           //     }
-           // }
-           // catch
-           // {
-           //     Label1.Visible = true;
-           //     Label1.Text = "Проверьте введенные данные!";
-           // }
+            try
+            {
+                using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                {
+                    oraConnection.Open();
+                    string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, BIRTHDAY, CLASS, SCHOOL, SHIFT, PHONE, E_MAIL, INTERESTS, COMMENTS) VALUES('" + TextBoxFirst.Text + "', '" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "' , '" + DropDownList4.Text + "','" + TextBox3.Text + "', '" + DropDownList5.Text + "', '" + TextBox5.Text + "', '" + TextBox6.Text + "', '" + interests_v + "', '" + TextBox16.Text + "')";
+                    string query_queue = "INSERT INTO TECHNOPARK.QUEUE (DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, STATUS) VALUES('" + TextBox7.Text + "', '" + id_lab + "' , '" + id_project + "','" + DropDownList3.Text + "')";
+                    string query_parent = "INSERT INTO TECHNOPARK.PARENT (FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION) VALUES('" + TextBox8.Text + "', '" + TextBox11.Text + "' , '" + TextBox12.Text + "','" + TextBox13.Text + "', '" + TextBox14.Text + "', '" + TextBox15.Text + "')";
+                    oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
+                    oraAdap.InsertCommand.ExecuteNonQuery();
+                    oraConnection.Close();
+                    Label1.Visible = true;
+                    Label1.ForeColor = System.Drawing.Color.Green;
+                    Label1.Text = "Данные успешно добавлены!";
+                }
+            }
+            catch
+            {
+                Label1.Visible = true;
+                Label1.Text = "Проверьте введенные данные!";
+            }
         }
 
-        protected void TextBox10_TextChanged(object sender, EventArgs e)
-        {
-            
-            
-        }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -87,6 +102,7 @@ namespace IS_technopark.Account
                 DropDownList2.DataBind();
                 DropDownList2.Items.Insert(0, new ListItem("-Выберете проект-"));
                 DropDownList2.SelectedIndex = 0;
+                oraConnection.Close();
             }
         }
 
@@ -104,6 +120,7 @@ namespace IS_technopark.Account
                 DropDownList1.Items.Insert(0, new ListItem("-Выберете направление-"));
                 DropDownList1.SelectedIndex = 0;
             }
+            oraConnection.Close();
         }
     }
 }

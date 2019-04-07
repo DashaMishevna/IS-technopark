@@ -8,14 +8,14 @@
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True"  DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" CellSpacing="3" HorizontalAlign="Center">
         <Columns>
             <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" />
-            <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO"/>
+            <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO"/>
+            <asp:BoundField DataField="BIRTHDAY" HeaderText="День рождения" SortExpression="BIRTHDAY" DataFormatString="{0:dd/MM/yyyy}"/>
             <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" ControlStyle-Width="60px"  ><ControlStyle Width="60px"></ControlStyle>
             </asp:BoundField>
-            <asp:BoundField DataField="BIRTHDAY" HeaderText="День рождения" SortExpression="BIRTHDAY" DataFormatString="{0:dd/MM/yyyy}"/>
-            <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL"/>
-            <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />
+            <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL"/>     
             <asp:BoundField DataField="SHIFT" HeaderText="Смена" SortExpression="SHIFT" ControlStyle-Width="60px" > <ControlStyle Width="60px"></ControlStyle>
             </asp:BoundField>
+             <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />
             <asp:BoundField DataField="E_MAIL" HeaderText="E_MAIL" SortExpression="E_MAIL" />
             <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS" />
             <asp:BoundField DataField="COMMENTS" HeaderText="Комментарии" SortExpression="COMMENTS"/>
@@ -41,8 +41,8 @@
         <RowStyle BackColor="White" ForeColor="#333333"/>
         <SelectedRowStyle Wrap="True" />
     </asp:GridView>
-
-    <br>
+    <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
+    <%--<br>
     <br>
     <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
     <asp:TextBox ID="TextBoxFirst" Text='<%# Eval("TextBoxFirst")%>' runat="server" Width="225px" Height="30px"  CssClass="btn btn-default"/>
@@ -73,7 +73,7 @@
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Добавить" Width="225px" Height="40px" CssClass="btn btn-default" Font-Size="10pt" BackColor="#CEE5F3" />
         <br/>
         <br/>
-        <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-    </div>
+        
+    </div>--%>
 
 </asp:Content>

@@ -25,7 +25,7 @@ namespace IS_technopark
         protected void Page_Load(object sender, EventArgs e)
         {
             //oraConnection.Open();
-            TextBox2.Text = DateTime.Today.ToShortDateString();
+           
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -76,24 +76,24 @@ namespace IS_technopark
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
-                {
-                    ORACLE.Open();
-                    string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS)  VALUES('" + TextBoxFirst.Text + "', '" + TextBox1.Text + "', '" + DateTime.Parse(TextBox2.Text).ToShortDateString() + "', '" + TextBox1.Text + "', '" + TextBox1.Text + "', '" + TextBox1.Text + "', '" + TextBoxFirst.Text + "', '" + TextBoxFirst.Text + "', '" + TextBoxFirst.Text + "')";
-                    oraAdap.InsertCommand = new OracleCommand(query, ORACLE);
-                    oraAdap.InsertCommand.ExecuteNonQuery();
-                    GridView1.DataBind();
-                    //oraclecmd.ExecuteNonQuery();
-                    //GridView1.EditIndex = -1;
-                }
-            }
-            catch
-            {
-               Label1.Visible = true;
-               Label1.Text = "Проверьте введенные данные!";
-            }
+            //try
+            //{
+            //    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+            //    {
+            //        ORACLE.Open();
+            //        string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS)  VALUES('" + TextBoxFirst.Text + "', '" + TextBox1.Text + "', '" + DateTime.Parse(TextBox2.Text).ToShortDateString() + "', '" + TextBox1.Text + "', '" + TextBox1.Text + "', '" + TextBox1.Text + "', '" + TextBoxFirst.Text + "', '" + TextBoxFirst.Text + "', '" + TextBoxFirst.Text + "')";
+            //        oraAdap.InsertCommand = new OracleCommand(query, ORACLE);
+            //        oraAdap.InsertCommand.ExecuteNonQuery();
+            //        GridView1.DataBind();
+            //        //oraclecmd.ExecuteNonQuery();
+            //        //GridView1.EditIndex = -1;
+            //    }
+            //}
+            //catch
+            //{
+            //   Label1.Visible = true;
+            //   Label1.Text = "Проверьте введенные данные!";
+            //}
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
