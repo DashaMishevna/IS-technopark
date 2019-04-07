@@ -9,16 +9,16 @@
         <Columns>
             <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" />
             <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO"/>
-            <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" ControlStyle-Width="60px"  ><ControlStyle Width="60px"></ControlStyle>
+            <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" ControlStyle-Width="60px"  ><ControlStyle Width="60px"></ControlStyle>
             </asp:BoundField>
-            <asp:BoundField DataField="BIRTHDAY" HeaderText="BIRTHDAY" SortExpression="BIRTHDAY" DataFormatString="{0:dd/MM/yyyy}"/>
-            <asp:BoundField DataField="SCHOOL" HeaderText="SCHOOL" SortExpression="SCHOOL"/>
-            <asp:BoundField DataField="PHONE" HeaderText="PHONE" SortExpression="PHONE" />
-            <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" ControlStyle-Width="60px" > <ControlStyle Width="60px"></ControlStyle>
+            <asp:BoundField DataField="BIRTHDAY" HeaderText="День рождения" SortExpression="BIRTHDAY" DataFormatString="{0:dd/MM/yyyy}"/>
+            <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL"/>
+            <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />
+            <asp:BoundField DataField="SHIFT" HeaderText="Смена" SortExpression="SHIFT" ControlStyle-Width="60px" > <ControlStyle Width="60px"></ControlStyle>
             </asp:BoundField>
             <asp:BoundField DataField="E_MAIL" HeaderText="E_MAIL" SortExpression="E_MAIL" />
-            <asp:BoundField DataField="INTERESTS" HeaderText="INTERESTS" SortExpression="INTERESTS" />
-            <asp:BoundField DataField="COMMENTS" HeaderText="COMMENTS" SortExpression="COMMENTS"/>
+            <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS" />
+            <asp:BoundField DataField="COMMENTS" HeaderText="Комментарии" SortExpression="COMMENTS"/>
 
             <asp:TemplateField ItemStyle-Width="50px">
                 <ItemTemplate>

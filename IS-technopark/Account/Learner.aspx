@@ -34,9 +34,6 @@
                 <EditItemTemplate>
                     <asp:ImageButton ImageUrl="~/img/home.png" runat="server" CommandName="Update" ToolTip="Update"/>
                 </EditItemTemplate>
-                <FooterTemplate>
-                    <asp:ImageButton ImageUrl="~/img/plus.png" runat="server" CommandName="Add" ToolTip="Add"/>
-                </FooterTemplate>
             </asp:TemplateField>
         </Columns>
         <FooterStyle BackColor="#A5D1F3" />
