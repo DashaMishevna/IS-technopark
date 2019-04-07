@@ -9,7 +9,7 @@
     <br>
     <h2 style="text-align:center">ЗАПИСЬ НА ПРОЕКТ</h2>
     <br>
-    <div style="margin-left:50px">
+    <div style="margin-left:100px">
         <h4 style="text-align:left; font-weight:600 ">Данные о ребенке</h4>
         <div class='form-label'>
             <asp:Label ID="Label2" runat="server" Text="ФИО"></asp:Label>
@@ -98,16 +98,16 @@
         </div>
         <br>
         <br>
-        <%--<div class='form-label'>
+        <div class='form-label'>
             <asp:Label ID="Label19" runat="server" Text="Интересы"></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource2" DataTextField="LABORATORY" DataValueField="LABORATORY" SelectionMode="Multiple" CssClass="btn btn-default" Width="225px" Height="30px" Font-Size="10pt" Rows="2"></asp:ListBox>
+            <asp:ListBox ID="ListBox1" runat="server" DataSourceID="SqlDataSource2" DataTextField="LABORATORY" DataValueField="LABORATORY" SelectionMode="Multiple" CssClass="btn btn-default" Width="225px" Height="60px" style="text-align:left" Font-Size="11pt">
+            </asp:ListBox>
         </div>
         <br>
-        <br>--%>
-
-
+        <br>
+        <br>
         <h4 style="text-align:left; font-weight:600">Данные о родителях</h4>
         <div class='form-label'>
             <asp:Label ID="Label13" runat="server" Text="ФИО"></asp:Label>
@@ -155,6 +155,7 @@
         <br/>
         <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
     </div>
+
 
 
 </asp:Content>
