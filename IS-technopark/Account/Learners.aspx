@@ -9,7 +9,7 @@
     <div style="margin-left:100px">
         <h4 style="text-align:left; font-weight:600 ">Данные о ребенке</h4>
         <div class='form-label'>
-            <asp:Label ID="Label2" runat="server" Text="ФИО"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="ФИО *"></asp:Label>
         </div>
         <div class='form-row'>
             <asp:TextBox ID="TextBoxFirst" runat="server" Width="500px" Height="30px"  CssClass="btn btn-default" style="margin-right:20px; text-align:left"/> 
@@ -19,21 +19,21 @@
         <br>
         <br>
         <div class='form-label'>
-            <asp:Label ID="Label3" runat="server" Text="Направление" ></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text="Направление *" ></asp:Label>
         </div>
         <div class='form-row'>
             <asp:DropDownList ID="DropDownList1" runat="server"  CssClass="btn btn-default" AutoPostBack="True" DataTextField="LABORATORY" DataValueField="LABORATORY" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" style="margin-right:20px; height:30px; Width:225px"></asp:DropDownList>
-            <asp:Label ID="Label4" runat="server" Text="Проект" style="margin-right:5px"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Text="Проект *" style="margin-right:5px"></asp:Label>
             <asp:DropDownList ID="DropDownList2" runat="server"  CssClass="btn btn-default" AutoPostBack="True"  Height="30px" ></asp:DropDownList>
         </div>
         <br>
         <br>
         <div class='form-label'>
-            <asp:Label ID="Label5" runat="server" Text="Школа"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="Школа *"></asp:Label>
         </div>
         <div class='form-row'>
             <asp:TextBox ID="TextBox3" runat="server" Width="225px" Height="30px"  CssClass="btn btn-default" style="margin-right:20px; text-align:left"></asp:TextBox>
-            <asp:Label ID="Label6" runat="server" Text="Класс" style="margin-right:5px"></asp:Label>
+            <asp:Label ID="Label6" runat="server" Text="Класс *" style="margin-right:5px"></asp:Label>
             <asp:DropDownList ID="DropDownList4" runat="server" CssClass="btn btn-default" style="margin-right:20px"> 
             <asp:ListItem Value="5"></asp:ListItem>
             <asp:ListItem Value="6"></asp:ListItem>
@@ -43,7 +43,7 @@
             <asp:ListItem Value="10"></asp:ListItem>
             <asp:ListItem Value="11"></asp:ListItem>
         </asp:DropDownList>
-            <asp:Label ID="Label7" runat="server" Text="Смена" style="margin-right:5px"></asp:Label>
+            <asp:Label ID="Label7" runat="server" Text="Смена *" style="margin-right:5px"></asp:Label>
             <asp:DropDownList ID="DropDownList5" runat="server"  CssClass="btn btn-default" >
             <asp:ListItem Value="1"></asp:ListItem>
             <asp:ListItem Value="2"></asp:ListItem>
@@ -52,10 +52,10 @@
         <br>
         <br>
         <div class='form-label'>
-             <asp:Label ID="Label8" runat="server" Text="Дата рождения"></asp:Label>
+             <asp:Label ID="Label8" runat="server" Text="Дата рождения *"></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:TextBox ID="TextBox4" runat="server" Width="225px" Height="30px" TextMode="Date" CssClass="btn btn-default"></asp:TextBox>
+            <asp:TextBox ID="TextBox4" runat="server" Width="225px" Height="30px" TextMode="Date" CssClass="btn btn-default" Style="text-align:left"></asp:TextBox>
         </div>
         <br>
         <br>
@@ -76,11 +76,11 @@
         <br>
         <br>
         <div class='form-label'>
-            <asp:Label ID="Label11" runat="server" Text="Дата записи"></asp:Label>
+            <asp:Label ID="Label11" runat="server" Text="Дата записи *"></asp:Label>
         </div>
         <div class='form-row'>
             <asp:TextBox ID="TextBox7" runat="server" Width="225px" Height="30px" TextMode="Date"  CssClass="btn btn-default" style="margin-right:20px; text-align:left"></asp:TextBox>
-            <asp:Label ID="Label12" runat="server" Text="Статус" style="margin-right:5px"></asp:Label>
+            <asp:Label ID="Label12" runat="server" Text="Статус *" style="margin-right:5px"></asp:Label>
             <asp:DropDownList ID="DropDownList3" runat="server" CssClass="btn btn-default" Width="345px">
             <asp:ListItem Value="Записан на проект"></asp:ListItem>
             <asp:ListItem Value="Выполняет проект"></asp:ListItem>
@@ -109,7 +109,7 @@
         <br>
         <h4 style="text-align:left; font-weight:600">Данные о родителях</h4>
         <div class='form-label'>
-            <asp:Label ID="Label13" runat="server" Text="ФИО"></asp:Label>
+            <asp:Label ID="Label13" runat="server" Text="ФИО *"></asp:Label>
         </div>
         <div class='form-row'>
             <asp:TextBox ID="TextBox8" runat="server" Width="500px" Height="30px"  CssClass="btn btn-default" style="margin-right:20px; text-align:left"/> 
@@ -119,7 +119,7 @@
         <br>
         <br>
         <div class='form-label'>
-            <asp:Label ID="Label14" runat="server" Text="Телефон"></asp:Label>
+            <asp:Label ID="Label14" runat="server" Text="Телефон *"></asp:Label>
         </div>
         <div class='form-row'>
             <asp:TextBox ID="TextBox11" runat="server" Width="225px" Height="30px" CssClass="btn btn-default" style="margin-right:20px; text-align:left"></asp:TextBox>
@@ -137,7 +137,7 @@
         <br>
         <br>
         <div class='form-label'>
-            <asp:Label ID="Label17" runat="server" Text="Место работы" ></asp:Label>
+            <asp:Label ID="Label17" runat="server" Text="Место работы *" ></asp:Label>
         </div>
         <div class='form-row'>
             <asp:TextBox ID="TextBox14" runat="server" Width="500px" Height="30px"  CssClass="btn btn-default" style="margin-right:20px; text-align:left"></asp:TextBox>
