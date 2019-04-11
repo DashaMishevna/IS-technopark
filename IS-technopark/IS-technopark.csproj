@@ -195,6 +195,7 @@
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Edit.aspx" />
     <Content Include="Account\Forgot.aspx" />
+    <Content Include="Account\List.aspx" />
     <Content Include="Account\Learner.aspx" />
     <Content Include="Account\Learners.aspx" />
     <Content Include="Account\Lockout.aspx" />
@@ -306,6 +307,13 @@
     </Compile>
     <Compile Include="Account\Forgot.aspx.designer.cs">
       <DependentUpon>Forgot.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\List.aspx.cs">
+      <DependentUpon>List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\List.aspx.designer.cs">
+      <DependentUpon>List.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Learner.aspx.cs">
       <DependentUpon>Learner.aspx</DependentUpon>
