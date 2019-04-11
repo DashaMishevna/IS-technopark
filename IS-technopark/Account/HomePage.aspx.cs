@@ -20,23 +20,37 @@ namespace IS_technopark
         static string constr = "User Id=Technopark; Password=DIP1937;Data Source=127.0.0.1:1521/xe";
         OracleDataAdapter oraAdap = new OracleDataAdapter();
         OracleConnection oraConnection = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;");
+        DataTable table = new DataTable();
         //string sqlconnection = "Data Source=(DESCRIPTION =(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST = 127.0.0.1)(PORT = 1521)))(CONNECT_DATA =(SERVICE_NAME = xe)));User ID=TECHNOPARK;Password=DIP1937;";
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //oraConnection.Open();
-           
+
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
             GridView1.DataBind();
+            if (this.IsPostBack)
+            {
+                string command = Technopark.SelectCommand;
+                Technopark.SelectCommand = "SELECT * FROM TECHNOPARK.LEARNER WHERE (FIO LIKE '%" + TextBox1.Text + "%') and ID_LEARNER!=0";
+                Technopark.DataBind();
+                GridView1.DataBind();
+            }
 
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            if (this.IsPostBack)
+            {
+                string command = Technopark.SelectCommand;
+                Technopark.SelectCommand = "SELECT * FROM TECHNOPARK.LEARNER WHERE (FIO LIKE '%" + TextBox1.Text + "%') and ID_LEARNER!=0";
+                Technopark.DataBind();
+                GridView1.DataBind();
+            }
             try
             {
                 using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
@@ -71,29 +85,27 @@ namespace IS_technopark
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           
+            if (this.IsPostBack)
+            {
+                string command = Technopark.SelectCommand;
+                Technopark.SelectCommand = "SELECT * FROM TECHNOPARK.LEARNER WHERE (FIO LIKE '%" + TextBox1.Text + "%') and ID_LEARNER!=0";
+                Technopark.DataBind();
+                GridView1.DataBind();
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
-            //    {
-            //        ORACLE.Open();
-            //        string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, CLASS, BIRTHDAY, SCHOOL, PHONE, SHIFT, E_MAIL, INTERESTS, COMMENTS)  VALUES('" + TextBoxFirst.Text + "', '" + TextBox1.Text + "', '" + DateTime.Parse(TextBox2.Text).ToShortDateString() + "', '" + TextBox1.Text + "', '" + TextBox1.Text + "', '" + TextBox1.Text + "', '" + TextBoxFirst.Text + "', '" + TextBoxFirst.Text + "', '" + TextBoxFirst.Text + "')";
-            //        oraAdap.InsertCommand = new OracleCommand(query, ORACLE);
-            //        oraAdap.InsertCommand.ExecuteNonQuery();
-            //        GridView1.DataBind();
-            //        //oraclecmd.ExecuteNonQuery();
-            //        //GridView1.EditIndex = -1;
-            //    }
-            //}
-            //catch
-            //{
-            //   Label1.Visible = true;
-            //   Label1.Text = "Проверьте введенные данные!";
-            //}
+
+            oraConnection.Open();
+            if (this.IsPostBack)
+            {
+                string command = Technopark.SelectCommand;
+                Technopark.SelectCommand = "SELECT * FROM TECHNOPARK.LEARNER WHERE (FIO LIKE '%" + TextBox1.Text + "%') and ID_LEARNER!=0";
+                Technopark.DataBind();
+                GridView1.DataBind();
+            }
+            oraConnection.Close();
         }
 
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -108,9 +120,7 @@ namespace IS_technopark
                     OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
                     oraclelcon.Open();
                     oraclecmd.Connection.Open();
-                    //oraclecmd.Parameters.Add("ID_LEARNER", "ID_LEARNER");
                     oraclecmd.ExecuteNonQuery();
-                    //GridView1.EditIndex = -1;
 
                 }
             }
@@ -122,13 +132,16 @@ namespace IS_technopark
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
+            if (this.IsPostBack)
+            {
+                string command = Technopark.SelectCommand;
+                Technopark.SelectCommand = "SELECT * FROM TECHNOPARK.LEARNER WHERE (FIO LIKE '%" + TextBox1.Text + "%') and ID_LEARNER!=0";
+                Technopark.DataBind();
+                GridView1.DataBind();
+            }
             GridView1.EditIndex = e.NewEditIndex;
             GridView1.DataBind();
         }
 
-        protected void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
     }
 }
