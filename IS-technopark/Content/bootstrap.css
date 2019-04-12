@@ -6829,24 +6829,11 @@ td.visible-print {
     width:250px;
     height:30px;
     font-size:17px;
-    margin-left:10px;
+    margin-left:-100px;
     margin-right:0px;
 }
 
-.form-row-groups {
-    width: 900px;
-    font-size:17px;
-    float:left;
-}
 
-.form-label-groups {
-    margin-top: 4px;
-	float:left;
-    width:250px;
-    height:30px;
-    font-size:17px;
-    margin-left:10px;
-    margin-right:0px;
-}
+
 
 
