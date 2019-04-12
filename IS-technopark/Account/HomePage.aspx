@@ -3,7 +3,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br/>
     <h2 style="text-align:center">ИНФОРМАЦИЯ О ПРОЕКТАНТАХ</h2>
-<div style="float:left; margin-bottom:20px; text-align:left; margin-left:-100px"">
+<div style="float:left; margin-bottom:20px; text-align:left; margin-left:-100px">
     <asp:Label ID="Label2" runat="server" Text="Поиск проектанта по ФИО"></asp:Label>
     <br/>
     <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:17px"></asp:TextBox> 

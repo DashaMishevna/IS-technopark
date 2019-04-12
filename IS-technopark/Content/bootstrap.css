@@ -6823,7 +6823,7 @@ td.visible-print {
     float:left;
 }
 
-.form-label{
+.form-label {
     margin-top: 4px;
 	float:left;
     width:250px;
@@ -6832,15 +6832,16 @@ td.visible-print {
     margin-left:10px;
     margin-right:0px;
 }
-.form-row-groups{
-    width: 700px;
+
+.form-row-groups {
     font-size:17px;
-    float:left;
+    float:right;
 }
-.form-label-groups{
+
+.form-label-groups {
     margin-top: 4px;
 	float:left;
-    width:250px;
+    width:200px;
     height:30px;
     font-size:17px;
     margin-right:10px;
