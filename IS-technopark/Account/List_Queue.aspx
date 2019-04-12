@@ -7,7 +7,7 @@
     <asp:Label ID="Label2" runat="server" Text="Поиск проектанта по проекту"></asp:Label>
     <br/>
     <%--<asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:17px"></asp:TextBox>--%> 
-    <asp:DropDownList ID="DropDownList1" runat="server"  CssClass="btn btn-default" AutoPostBack="True"  Height="30px" DataSourceID="SqlDataSource2" DataTextField="LABORATORY" DataValueField="LABORATORY" ></asp:DropDownList>
+    <asp:DropDownList ID="DropDownList1" runat="server"  CssClass="btn btn-default" AutoPostBack="True"  Height="30px"  ></asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
     <asp:Button ID="Button1" runat="server" Text="Выбрать"  CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button1_Click" />
     <br/>

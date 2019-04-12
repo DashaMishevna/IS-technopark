@@ -52,8 +52,8 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" >
                         <li><a runat="server" href="~/">Домашняя</a></li>
+                        <li><a runat="server" href="~/Account/Learners">Проектанты</a></li>
                         <li><a runat="server" href="~/Account/HomePage">Информация</a></li> 
-                        <li><a runat="server" href="~/Account/Learner">Проектанты</a></li>
                         <li><a runat="server" href="~/Account/List_Queue">Лист очередности</a></li>
                         <li><a runat="server" href="~/Account/Menu">Меню</a></li>
                        <%-- <li><a runat="server" href="~/Contact">Связаться</a></li>--%>
