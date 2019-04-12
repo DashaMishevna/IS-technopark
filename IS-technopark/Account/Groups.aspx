@@ -1,11 +1,12 @@
-﻿<%@ Page Language="C#"  MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Groups.aspx.cs" Inherits="IS_technopark.Account.Groups" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Groups.aspx.cs" Inherits="IS_technopark.Account.Groups" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT FIO FROM TECHNOPARK.EMPLOYEES WHERE (POSITION = 2)"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;FIO&quot;, &quot;CLASS&quot;, &quot;SHIFT&quot;, &quot;SCHOOL&quot;, &quot;INTERESTS&quot; FROM &quot;LEARNER&quot;"></asp:SqlDataSource>
     <br>
     <h2 style="text-align:center"> ГРУППЫ </h2>
-    <div style="float:right; text-align:left; margin-right:-100px; margin-bottom:50px">
+<%--    <div style="float:right; text-align:left; margin-right:-100px; margin-bottom:50px">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
             <Columns>
                 <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
@@ -15,8 +16,7 @@
                 <asp:BoundField DataField="INTERESTS" HeaderText="INTERESTS" SortExpression="INTERESTS" />
             </Columns>
         </asp:GridView>
-    </div>
-    <div style="float:left; margin-bottom:50px; margin-left:-80px">
+    </div>--%>
        <%-- <h4 style="text-align:left; font-weight:600 ">Данные о группе</h4>
         <br>--%>
         <div class="form-label-groups">
@@ -60,15 +60,14 @@
         <br>
         <br>
         <div class='form-label-groups'>
-            <asp:Label ID="Label7" runat="server" Text="Время проведения"></asp:Label>
+            <asp:Label ID="Label7" runat="server" Text="Время занятий"></asp:Label>
         </div>
         <div class='form-row-groups'>
             <asp:TextBox ID="TextBox3" runat="server" CssClass="btn btn-default" style="text-align:left"></asp:TextBox>
         </div>
     <br>
     <br>
-    </div>
-    <br>
+
    <%-- <div class="form-group" style="text-align:center; margin-bottom:-100px">
         <asp:Button ID="Button1" runat="server" Text="Добавить" Width="225px" Height="40px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3"  />
         <br/>

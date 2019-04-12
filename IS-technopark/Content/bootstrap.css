@@ -6834,17 +6834,19 @@ td.visible-print {
 }
 
 .form-row-groups {
+    width: 900px;
     font-size:17px;
-    float:right;
+    float:left;
 }
 
 .form-label-groups {
     margin-top: 4px;
 	float:left;
-    width:200px;
+    width:250px;
     height:30px;
     font-size:17px;
-    margin-right:10px;
+    margin-left:10px;
+    margin-right:0px;
 }
 
 
