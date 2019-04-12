@@ -54,7 +54,7 @@
                         <li><a runat="server" href="~/">Домашняя</a></li>
                         <li><a runat="server" href="~/Account/HomePage">Информация</a></li> 
                         <li><a runat="server" href="~/Account/Learner">Проектанты</a></li>
-                        <li><a runat="server" href="~/Account/List">Лист очередности</a></li>
+                        <li><a runat="server" href="~/Account/List_Queue">Лист очередности</a></li>
                         <li><a runat="server" href="~/Account/Menu">Меню</a></li>
                        <%-- <li><a runat="server" href="~/Contact">Связаться</a></li>--%>
                     </ul>

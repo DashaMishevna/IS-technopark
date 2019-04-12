@@ -29,14 +29,14 @@
             <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS" />
             <asp:BoundField DataField="COMMENTS" HeaderText="Комментарии" SortExpression="COMMENTS"/>
 
-            <asp:TemplateField ItemStyle-Width="50px">
+            <asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center">
                 <ItemTemplate>
-                    <asp:ImageButton ImageUrl="~/img/pen.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px"/>
-                    <asp:ImageButton ImageUrl="~/img/delete.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" OnClientClick="return confirm('Are you certain you want to delete this product?');"/>
+                    <asp:ImageButton ImageUrl="~/img/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px"/>
+                    <asp:ImageButton ImageUrl="~/img/delet.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" OnClientClick="return confirm('Are you certain you want to delete this product?');"/>
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <div style="width:50px"><asp:ImageButton ImageUrl="~/img/home.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px"/>
-                    <asp:ImageButton ImageUrl="~/img/plus.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px"/></div>
+                    <div style="width:50px"><asp:ImageButton ImageUrl="~/img/floppy-disk.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px"/>
+                    <asp:ImageButton ImageUrl="~/img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px"/></div>
                 </EditItemTemplate>
                 <%--<FooterTemplate>
                     <asp:ImageButton ImageUrl="~/img/plus.png" runat="server" CommandName="Add" ToolTip="Add" Width="20px" Height="20px"/>
@@ -45,10 +45,12 @@
         <ItemStyle Width="60px"></ItemStyle>
             </asp:TemplateField>
         </Columns>
-        <EditRowStyle BackColor="#A5D1F3"/>
-        <HeaderStyle BackColor="#A5D1F3" Font-Bold="True" ForeColor="White" />
+        <EditRowStyle BackColor="#A5D1F3" HorizontalAlign="Left"/>
+        <HeaderStyle BackColor="#A5D1F3" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
         <RowStyle BackColor="White" ForeColor="#333333"/>
         <SelectedRowStyle Wrap="True" />
+        <SortedAscendingHeaderStyle ForeColor="Black" />
+        <SortedDescendingCellStyle ForeColor="Black" />
 </asp:GridView>
 <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
 </div>

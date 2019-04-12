@@ -195,9 +195,9 @@
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Edit.aspx" />
     <Content Include="Account\Forgot.aspx" />
-    <Content Include="Account\List.aspx" />
     <Content Include="Account\Learner.aspx" />
     <Content Include="Account\Learners.aspx" />
+    <Content Include="Account\List_Queue.aspx" />
     <Content Include="Account\Lockout.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Manage.aspx" />
@@ -225,10 +225,12 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Account\HomePage.aspx" />
-    <Content Include="img\delete.png" />
+    <Content Include="img\cancel.png" />
+    <Content Include="img\Delet.png" />
+    <Content Include="img\edit.png" />
+    <Content Include="img\floppy-disk.png" />
     <Content Include="img\Home.png" />
     <Content Include="img\paper.png" />
-    <Content Include="img\plus.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -308,13 +310,6 @@
     <Compile Include="Account\Forgot.aspx.designer.cs">
       <DependentUpon>Forgot.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Account\List.aspx.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\List.aspx.designer.cs">
-      <DependentUpon>List.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Account\Learner.aspx.cs">
       <DependentUpon>Learner.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -328,6 +323,13 @@
     </Compile>
     <Compile Include="Account\Learners.aspx.designer.cs">
       <DependentUpon>Learners.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\List_Queue.aspx.cs">
+      <DependentUpon>List_Queue.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\List_Queue.aspx.designer.cs">
+      <DependentUpon>List_Queue.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Lockout.aspx.cs">
       <DependentUpon>Lockout.aspx</DependentUpon>
