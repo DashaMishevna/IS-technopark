@@ -24,10 +24,22 @@ namespace IS_technopark.Account
                 GetDropList();
                 DropDownList3.Items.Insert(0, new ListItem("-Выберете проект-"));
             }
-            if (!IsPostBack || DropDownList2.SelectedValue.ToString() == "0")
+            if (DropDownList2.SelectedIndex == 0)
             {
+                // Response.Write("<b>Выбранные элементы в Listbox1:</b><br/>");
                 string command = SqlDataSource2.SelectCommand;
                 SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN  TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES ";
+
+            }
+
+            if (CheckBox1.Checked)
+            {
+                Response.Write("<b>Выбранные элементы в Listbox1:</b><br/>");
+                string command = SqlDataSource2.SelectCommand;
+                SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_PROJECTS.TITLE, TECHNOPARK.QUEUE.STATUS FROM TECHNOPARK.LEARNER INNER JOIN  TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES WHERE TECHNOPARK.LEARNER.INTERESTS LIKE '%" + DropDownList2.Text + "%'";
+                SqlDataSource2.DataBind();
+                CheckBox1.DataBind();
+                GridView1.DataBind();
             }
 
         }
@@ -49,6 +61,7 @@ namespace IS_technopark.Account
             oraConnection.Close();
         }
 
+
         protected void DropDownList2_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (DropDownList2.SelectedValue.ToString() != "0")
@@ -62,24 +75,24 @@ namespace IS_technopark.Account
                 DropDownList3.DataBind();
                 DropDownList3.Items.Insert(0, new ListItem("-Выберете проект-"));
                 DropDownList3.SelectedIndex = 0;
-                 string command = SqlDataSource2.SelectCommand;
-                 SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN  TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES WHERE TECHNOPARK.DIR_LABORATORIES.LABORATORY = '" + DropDownList2.Text + "'";
-                 SqlDataSource2.DataBind();
-                 GridView1.DataBind();
+                string command = SqlDataSource2.SelectCommand;
+                SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN  TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES WHERE TECHNOPARK.DIR_LABORATORIES.LABORATORY = '" + DropDownList2.Text + "'";
+                SqlDataSource2.DataBind();
+                GridView1.DataBind();
 
                 oraConnection.Close();
             }
         }
 
-        protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e)
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
-                oraConnection.Open();
-                string command = SqlDataSource2.SelectCommand;
-                SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN  TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES WHERE TECHNOPARK.LEARNER.INTERESTS LIKE '%" + DropDownList4.Text + "%'";
-                SqlDataSource2.DataBind();
-                GridView1.DataBind();
 
-                oraConnection.Close();
         }
+
+        //protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+
+
+        //}
     }
 }

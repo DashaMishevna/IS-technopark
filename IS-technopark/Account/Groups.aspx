@@ -7,18 +7,25 @@
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand = "SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
     <br>
     <h2 style="text-align:center"> ГРУППЫ </h2>
-    <div style="float:right; text-align:left; margin-right:-150px; font-size:12px">
+    <div style="float:right; text-align:left; margin-right:-150px; font-size:13px">
         <br>
         <br>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" style="font-size:13px; height:30px;" AllowPaging="True">
             <Columns>
-                <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" HeaderStyle-Width="205px" />
-                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА РЕГИСТРАЦИИ" SortExpression="DATE_REGISTRATION" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="120px"/>
-                <asp:BoundField DataField="CLASS" HeaderText="КЛАСС" SortExpression="CLASS" HeaderStyle-Width="60"/>
-                <asp:BoundField DataField="SHIFT" HeaderText="СМЕНА" SortExpression="SHIFT" HeaderStyle-Width="60"/>
+                <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" HeaderStyle-Width="205px" ><HeaderStyle Width="205px" HorizontalAlign="Center"></HeaderStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА РЕГИСТРАЦИИ" SortExpression="DATE_REGISTRATION" DataFormatString="{0:dd/MM/yyyy}" HeaderStyle-Width="120px"><HeaderStyle Width="120px"></HeaderStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="CLASS" HeaderText="КЛАСС" SortExpression="CLASS" HeaderStyle-Width="60"><HeaderStyle Width="60px"></HeaderStyle>
+                </asp:BoundField>
+                <asp:BoundField DataField="SHIFT" HeaderText="СМЕНА" SortExpression="SHIFT" HeaderStyle-Width="60"><HeaderStyle Width="60px"></HeaderStyle>
+                </asp:BoundField>
                 <asp:BoundField DataField="SCHOOL" HeaderText="SCHOOL" SortExpression="SCHOOL" />
-                <asp:BoundField DataField="TITLE" HeaderText="TITLE" SortExpression="TITLE" HeaderStyle-Width="235px"/>
+                <asp:BoundField DataField="TITLE" HeaderText="TITLE" SortExpression="TITLE" HeaderStyle-Width="235px"><HeaderStyle Width="235px"></HeaderStyle>
+                </asp:BoundField>
             </Columns>
+            <HeaderStyle HorizontalAlign="Center" />
+            <RowStyle Height="30px" />
         </asp:GridView>
     </div>
 
@@ -29,7 +36,7 @@
             <asp:Label ID="Label2" runat="server" Text="ФИО Преподавателя*"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
-            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="btn btn-default" DataTextField="FIO" DataValueField="FIO"> </asp:DropDownList>
+            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="btn btn-default" DataTextField="FIO" DataValueField="FIO" AutoPostBack="True" Width="200px"> </asp:DropDownList>
         </div>
         <br>
         <br>
@@ -37,7 +44,7 @@
             <asp:Label ID="Label3" runat="server" Text="Направление *"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
-            <asp:DropDownList ID="DropDownList2" runat="server"  CssClass="btn btn-default" AutoPostBack="True" DataTextField="LABORATORY" DataValueField="LABORATORY" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged"  Height="30px" Width="225px"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList2" runat="server" style="max-width:200px" CssClass="btn btn-default" AutoPostBack="True" DataTextField="LABORATORY" DataValueField="LABORATORY" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged"  Height="30px" Width="225px"></asp:DropDownList>
         </div>
         <br>
         <br>
@@ -45,7 +52,7 @@
             <asp:Label ID="Label4" runat="server" Text="Проект *"></asp:Label>
         </div>
         <div class='form-row'style="width:300px;" >
-            <asp:DropDownList ID="DropDownList3" runat="server" CssClass="btn btn-default" AutoPostBack="True"  Height="30px"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList3" runat="server" style="max-width:200px" CssClass="btn btn-default" AutoPostBack="True"  Width="200px"  Height="30px"></asp:DropDownList>
         </div>
         <br>
         <br>
@@ -74,10 +81,11 @@
         <br>
         <br>
         <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
-            <asp:Label ID="Label8" runat="server" Text="Интересы"></asp:Label>
+            <asp:Label ID="Label8" runat="server" Text="Дополнительный поиск детй по интересам"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
-            <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource3" CssClass="btn btn-default" DataTextField="LABORATORY" DataValueField="LABORATORY" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged"> </asp:DropDownList>
+            <asp:CheckBox ID="CheckBox1" runat="server"  Width="20px" Height="20px"  TextAlign="Left"   Text=" " AutoPostBack="True" Font-Strikeout="False" BackColor="#FFFF99" />
+            <%--<asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource3" CssClass="btn btn-default" DataTextField="LABORATORY" DataValueField="LABORATORY" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged"> </asp:DropDownList>--%>
         </div>
         <br>
         <br>
