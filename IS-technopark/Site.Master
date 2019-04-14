@@ -55,8 +55,8 @@
                         <li><a runat="server" href="~/Account/Learners">Проектанты</a></li>
                         <li><a runat="server" href="~/Account/HomePage">Информация</a></li> 
                         <li><a runat="server" href="~/Account/List_Queue">Лист очередности</a></li>
-                        <li><a runat="server" href="~/Account/Groups">Группы</a></li>
-                        <li><a runat="server" href="~/Account/Menu">Меню</a></li>
+                        <li><a runat="server" href="~/Account/Groups">Создание Группы</a></li>
+                        <li><a runat="server" href="~/Account/View_Group">Группы</a></li>
                        <%-- <li><a runat="server" href="~/Contact">Связаться</a></li>--%>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">

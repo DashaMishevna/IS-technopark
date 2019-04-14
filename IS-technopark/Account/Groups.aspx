@@ -15,20 +15,17 @@
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:CheckBox ID="CheckBox2" runat="server" />
-                    </ItemTemplate>
-                    <ItemStyle HorizontalAlign="Center" Width="35px" />
+                    <ItemTemplate> <asp:CheckBox ID="SelectLearner" runat="server" /></ItemTemplate> <ItemStyle HorizontalAlign="Center" Width="35px" />
                 </asp:TemplateField>
-                <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" HeaderStyle-Width="205px" Visible="false" > <HeaderStyle Width="205px"></HeaderStyle>
+                <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" HeaderStyle-Width="205px" InsertVisible="False" Visible="false" ReadOnly="True"> <HeaderStyle Width="205px"></HeaderStyle>
                  </asp:BoundField>
                 <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" > <HeaderStyle Width="110" HorizontalAlign="Right"></HeaderStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА РЕГИСТРАЦИИ" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:dd/MM/yyyy}"> <HeaderStyle Width="45px"></HeaderStyle>
+                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА РЕГИСТРАЦИИ" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:dd/MM/yyyy}"> <HeaderStyle Width="45px"></HeaderStyle><ItemStyle HorizontalAlign="Center"></ItemStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" ItemStyle-HorizontalAlign="Center"> <HeaderStyle Width="50px"></HeaderStyle>
+                <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" ItemStyle-HorizontalAlign="Center"> <HeaderStyle Width="50px"></HeaderStyle><ItemStyle HorizontalAlign="Center"></ItemStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" ItemStyle-HorizontalAlign="Center"> <HeaderStyle Width="50px"></HeaderStyle>
+                <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" ItemStyle-HorizontalAlign="Center"> <HeaderStyle Width="50px"></HeaderStyle> <ItemStyle HorizontalAlign="Center"></ItemStyle>
                  </asp:BoundField>
                 <asp:BoundField DataField="SCHOOL" HeaderText="SCHOOL" SortExpression="SCHOOL" HeaderStyle-Width="120px"> <HeaderStyle Width="120px"></HeaderStyle>
                  </asp:BoundField>
@@ -58,7 +55,7 @@
         <h4 style="text-align:left; font-weight:600 ">Данные о группе</h4>
         <br>
         <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
-            <asp:Label ID="Label2" runat="server" Text="ФИО Преподавателя*"></asp:Label>
+            <asp:Label ID="Label2" runat="server" Text="ФИО Преподавателя *"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
             <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="btn btn-default" DataTextField="FIO" DataValueField="FIO" AutoPostBack="True" Width="200px"> </asp:DropDownList>
@@ -105,7 +102,7 @@
         </div>
         <br>
         <br>
-        <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
+        <div style="margin-top: 4px; float:left; width:190px; height:30px; font-size:16px; margin-right:10px">
             <asp:Label ID="Label8" runat="server" Text="Дополнительный поиск по интересам"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
@@ -117,7 +114,7 @@
  </div>
 
     <div class="form-group" style=" text-align:center; margin-top:500px">
-        <asp:Button ID="Button1" runat="server" Text="Добавить" Width="225px" Height="40px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3"  />
+        <asp:Button ID="Button1" runat="server" Text="Добавить" Width="225px" Height="40px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button1_Click" OnClientClick="i=2"  />
         <br/>
         <br/>
         <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
