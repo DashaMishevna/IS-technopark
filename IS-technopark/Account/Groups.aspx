@@ -7,11 +7,11 @@
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand = "SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
     <br>
     <h2 style="text-align:center"> ГРУППЫ </h2>
-    <div style="float:right; text-align:left; margin-right:-150px; font-size:13px">
+    <div style="float:right; text-align:left; margin-right:-160px; font-size:13px">
         <br>
         <h4 style="text-align:left; font-weight:600 ">Выберите обучающихся</h4>
         <br>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" style="font-size:13px; height:30px;" AllowPaging="True" DataKeyNames="ID_LEARNER" CellPadding="4" ForeColor="#333333" GridLines="None"  >
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" style="font-size:13px; max-width:950px; height:30px;" AllowPaging="True" DataKeyNames="ID_LEARNER" CellPadding="4" ForeColor="#333333" GridLines="None"  >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:TemplateField>
@@ -24,11 +24,11 @@
                  </asp:BoundField>
                 <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" > <HeaderStyle Width="110" HorizontalAlign="Right"></HeaderStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА РЕГИСТРАЦИИ" SortExpression="DATE_REGISTRATION" HeaderStyle-Width="60" DataFormatString="{0:dd/MM/yyyy}"> <HeaderStyle Width="45px"></HeaderStyle>
+                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА РЕГИСТРАЦИИ" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:dd/MM/yyyy}"> <HeaderStyle Width="45px"></HeaderStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" HeaderStyle-Width="60px"> <HeaderStyle Width="50px"></HeaderStyle>
+                <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" ItemStyle-HorizontalAlign="Center"> <HeaderStyle Width="50px"></HeaderStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" HeaderStyle-Width="60px" > <HeaderStyle Width="50px"></HeaderStyle>
+                <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" ItemStyle-HorizontalAlign="Center"> <HeaderStyle Width="50px"></HeaderStyle>
                  </asp:BoundField>
                 <asp:BoundField DataField="SCHOOL" HeaderText="SCHOOL" SortExpression="SCHOOL" HeaderStyle-Width="120px"> <HeaderStyle Width="120px"></HeaderStyle>
                  </asp:BoundField>
@@ -37,21 +37,24 @@
                 <asp:BoundField DataField="TITLE" HeaderText="TITLE" SortExpression="TITLE" HeaderStyle-Width="225"> <HeaderStyle Width="225px"></HeaderStyle>
                 </asp:BoundField>
             </Columns>
-            <EditRowStyle BackColor="#2461BF" />
-            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <EditRowStyle BackColor="#52C0FC" />
+            <FooterStyle BackColor="#3399FF" Font-Bold="True" ForeColor="White" />
             <HeaderStyle HorizontalAlign="Center" BackColor="#A5D1F3" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle Height="30px" BackColor="#CEE5F3" />
+            <PagerStyle BackColor="#A5D1F3" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle Height="30px" BackColor="#C8E3F9" />
             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
             <SortedAscendingCellStyle BackColor="#F5F7FB" />
             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>
-            
+        <br/>
+        <br/>
+        <asp:Label ID="Label9" runat="server" Text="" ForeColor="Gray"></asp:Label>
     </div>
 
     <div style="float:left; margin-left:-170px;"> 
+        <br>
         <h4 style="text-align:left; font-weight:600 ">Данные о группе</h4>
         <br>
         <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
