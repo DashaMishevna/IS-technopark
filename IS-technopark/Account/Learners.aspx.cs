@@ -16,7 +16,8 @@ namespace IS_technopark.Account
         DataSet ds = new DataSet();
         string id_lab = "";
         string id_project = "";
-
+        string max_id_learner = "";
+        int error = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             if(!IsPostBack)
@@ -49,6 +50,17 @@ namespace IS_technopark.Account
                 oraReader_1.GetValues(values);
                 id_project = values[0].ToString();
             }
+
+            oraAdap.SelectCommand.CommandText = "select max(id_learner) from LEARNER";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader_2 = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader_2.Read())
+            {
+                object[] values = new object[oraReader_2.FieldCount];
+                oraReader_2.GetValues(values);
+                max_id_learner = values[0].ToString();
+            }
+
             oraConnection.Close();
             //Response.Write("- " + id_lab + "<br/>" + id_project);
         }
@@ -64,30 +76,39 @@ namespace IS_technopark.Account
                 }
             }
             //Response.Write("- " + msg + "<br/>");
-           try
-           {
+            try
+            {
                 using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
                 {
                     oraConnection.Open();
                     string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, BIRTHDAY, CLASS, SCHOOL, SHIFT, PHONE, E_MAIL, INTERESTS, COMMENTS) VALUES('" + TextBoxFirst.Text + "', '" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "' , '" + DropDownList4.Text + "','" + TextBox3.Text + "', '" + DropDownList5.Text + "', '" + TextBox5.Text + "', '" + TextBox6.Text + "', '" + interests_v + "', '" + TextBox16.Text + "')";
-                   // string query_queue = "INSERT INTO TECHNOPARK.QUEUE (DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, STATUS) VALUES('" + TextBox7.Text + "', '" + id_lab + "' , '" + id_project + "','" + DropDownList3.Text + "')";
-                   // string query_parent = "INSERT INTO TECHNOPARK.PARENT (FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION) VALUES('" + TextBox8.Text + "', '" + TextBox11.Text + "' , '" + TextBox12.Text + "','" + TextBox13.Text + "', '" + TextBox14.Text + "', '" + TextBox15.Text + "')";
+                    // string query_queue = "INSERT INTO TECHNOPARK.QUEUE (DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, STATUS) VALUES('" + TextBox7.Text + "', '" + id_lab + "' , '" + id_project + "','" + DropDownList3.Text + "')";
+                    // string query_parent = "INSERT INTO TECHNOPARK.PARENT (FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION) VALUES('" + TextBox8.Text + "', '" + TextBox11.Text + "' , '" + TextBox12.Text + "','" + TextBox13.Text + "', '" + TextBox14.Text + "', '" + TextBox15.Text + "')";
                     oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
-                   // oraAdap.InsertCommand = new OracleCommand(query_parent, oraConnection);
+                    // oraAdap.InsertCommand = new OracleCommand(query_parent, oraConnection);
                     //oraAdap.InsertCommand = new OracleCommand(query_queue, oraConnection);
                     oraAdap.InsertCommand.ExecuteNonQuery();
                     oraConnection.Close();
-                    Label1.Visible = true;
-                    Label1.ForeColor = System.Drawing.Color.Green;
-                    Label1.Text = "Данные успешно добавлены!";
+                    //Label1.Visible = true;
+                    //Label1.ForeColor = System.Drawing.Color.Green;
+                    //Label1.Text = "Данные успешно добавлены!";
                 }
-
+            }
+            catch
+            {
+                error += 1;
+                Label1.Visible = true;
+                Label1.Text = "Проверьте введенные данные!";
+            }
+            if (error == 0)
+            {
+                ID();
                 using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
                 {
                     oraConnection.Open();
                     //string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, BIRTHDAY, CLASS, SCHOOL, SHIFT, PHONE, E_MAIL, INTERESTS, COMMENTS) VALUES('" + TextBoxFirst.Text + "', '" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "' , '" + DropDownList4.Text + "','" + TextBox3.Text + "', '" + DropDownList5.Text + "', '" + TextBox5.Text + "', '" + TextBox6.Text + "', '" + interests_v + "', '" + TextBox16.Text + "')";
                     // string query_queue = "INSERT INTO TECHNOPARK.QUEUE (DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, STATUS) VALUES('" + TextBox7.Text + "', '" + id_lab + "' , '" + id_project + "','" + DropDownList3.Text + "')";
-                    string query_parent = "INSERT INTO TECHNOPARK.PARENT (FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION) VALUES('" + TextBox8.Text + "', '" + TextBox11.Text + "' , '" + TextBox12.Text + "','" + TextBox13.Text + "', '" + TextBox14.Text + "', '" + TextBox15.Text + "')";
+                    string query_parent = "INSERT INTO TECHNOPARK.PARENT (ID_Learner_p, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION) VALUES('" + max_id_learner + "','" + TextBox8.Text + "', '" + TextBox11.Text + "' , '" + TextBox12.Text + "','" + TextBox13.Text + "', '" + TextBox14.Text + "', '" + TextBox15.Text + "')";
                     //oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
                     oraAdap.InsertCommand = new OracleCommand(query_parent, oraConnection);
                     oraAdap.InsertCommand.ExecuteNonQuery();
@@ -101,8 +122,8 @@ namespace IS_technopark.Account
                 {
                     oraConnection.Open();
                     //string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, BIRTHDAY, CLASS, SCHOOL, SHIFT, PHONE, E_MAIL, INTERESTS, COMMENTS) VALUES('" + TextBoxFirst.Text + "', '" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "' , '" + DropDownList4.Text + "','" + TextBox3.Text + "', '" + DropDownList5.Text + "', '" + TextBox5.Text + "', '" + TextBox6.Text + "', '" + interests_v + "', '" + TextBox16.Text + "')";
-                    string query_queue = "INSERT INTO TECHNOPARK.QUEUE (DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, STATUS) VALUES('" + DateTime.Parse(TextBox7.Text).ToShortDateString() + "', '" + id_lab + "' , '" + id_project + "','" + DropDownList3.Text + "')";
-                   // string query_parent = "INSERT INTO TECHNOPARK.PARENT (FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION) VALUES('" + TextBox8.Text + "', '" + TextBox11.Text + "' , '" + TextBox12.Text + "','" + TextBox13.Text + "', '" + TextBox14.Text + "', '" + TextBox15.Text + "')";
+                    string query_queue = "INSERT INTO TECHNOPARK.QUEUE (ID_Learner_Q, DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, ID_STATUS_L) VALUES('" + max_id_learner + "','" + DateTime.Parse(TextBox7.Text).ToShortDateString() + "', '" + id_lab + "' , '" + id_project + "', 1)";
+                    // string query_parent = "INSERT INTO TECHNOPARK.PARENT (FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION) VALUES('" + TextBox8.Text + "', '" + TextBox11.Text + "' , '" + TextBox12.Text + "','" + TextBox13.Text + "', '" + TextBox14.Text + "', '" + TextBox15.Text + "')";
                     //oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
                     oraAdap.InsertCommand = new OracleCommand(query_queue, oraConnection);
                     oraAdap.InsertCommand.ExecuteNonQuery();
@@ -112,11 +133,13 @@ namespace IS_technopark.Account
                     Label1.Text = "Данные успешно добавлены!";
                 }
             }
-            catch
+            else
             {
+
                 Label1.Visible = true;
                 Label1.Text = "Проверьте введенные данные!";
             }
+            
         }
 
 
