@@ -16,6 +16,7 @@ namespace IS_technopark.Account
         DataTable table = new DataTable();
         string id_s_g = "";
         string id_s_l = "";
+        string id_G = "";
         List<string> id_status = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -99,7 +100,7 @@ namespace IS_technopark.Account
         }
         public void GetId_S_G()
         {
-            oraConnection.Open();
+            //oraConnection.Open();
             oraAdap.SelectCommand = new OracleCommand();
             oraAdap.SelectCommand.CommandText = "Select ID_DIR_STATUS_GROUP from DIR_STATUS_GROUP where STATUS_G = '" + DropDownList2.SelectedValue.ToString() + "'";
             oraAdap.SelectCommand.Connection = oraConnection;
@@ -110,7 +111,7 @@ namespace IS_technopark.Account
                 oraReader.GetValues(values);
                 id_s_g = values[0].ToString();
             }
-            oraConnection.Close();
+            //oraConnection.Close();
         }
 
         public void GetId_S_L()
@@ -129,20 +130,44 @@ namespace IS_technopark.Account
             //oraConnection.Close();
         }
 
+        public void GetId_G()
+        {
+            //oraConnection.Open();
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "SELECT ID_GROUPT from GROUPS WHERE TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader.Read())
+            {
+                object[] values = new object[oraReader.FieldCount];
+                oraReader.GetValues(values);
+                id_G = values[0].ToString();
+            }
+            //oraConnection.Close();
+        }
+
+        public void SelectQLearner()
+        {
+            SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.ID_QUEUE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.QUEUE.TITLE_G = TECHNOPARK.GROUPS.TITLE INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0 and ID_QUEUE!=0";
+            SqlDataSource2.DataBind();
+            GridView2.DataBind();
+            Label3.Text = "Проектанты по выбранной группе";
+        }
+
+        public void SelectGroupt()
+        {
+            SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0";
+            SqlDataSource1.DataBind();
+            GridView1.DataBind();
+            SelectQLearner();
+        }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
             if (TextBox1.Text != "")
             {
-                string command = SqlDataSource1.SelectCommand;
-                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE  TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0";
-                SqlDataSource1.DataBind();
-                GridView1.DataBind();
-
-                SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.ID_QUEUE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.QUEUE.TITLE_G = TECHNOPARK.GROUPS.TITLE INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0 and ID_QUEUE!=0";
-                SqlDataSource2.DataBind();
-                GridView2.DataBind();
-                Label3.Text = "Проектанты по выбранной группе";
+                //string command = SqlDataSource1.SelectCommand;
+                SelectGroupt();
             }
             else
             {
@@ -157,7 +182,29 @@ namespace IS_technopark.Account
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            oraConnection.Open();
             GetId_S_G();
+            GetId_G();
+            int i;
+            try
+                {
+                    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                    {
+                        string query_update_g = "Update GROUPS SET D_START='"+ DateTime.Parse(TextBox2.Text).ToShortDateString() + "', D_END='" + DateTime.Parse(TextBox3.Text).ToShortDateString() + "', D_CONFERENCE='" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "', TIME_CLASS='" + TextBox5.Text + "', PROJECT_THEME='" + TextBox6.Text + "' WHERE ID_GROUPT = '" + id_G + "' ";
+                        oraAdap.UpdateCommand = new OracleCommand(query_update_g, oraConnection);
+                        oraAdap.UpdateCommand.ExecuteNonQuery();
+                        SelectGroupt();
+                    }
+                    Label12.Visible = true;
+                    Label12.ForeColor = System.Drawing.Color.Green;
+                    Label12.Text = "Данные группы успешно обновлены!";
+                }
+                catch
+                {
+                    Label12.Visible = true;
+                    Label12.Text = "Проверьте введенные данные!";
+                }
+            oraConnection.Close();
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -174,16 +221,16 @@ namespace IS_technopark.Account
                         string query_update_q = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = '" + id_s_l + "' WHERE ID_QUEUE = '" + id_status[s] + "' ";
                         oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
                         oraAdap.UpdateCommand.ExecuteNonQuery();
+                        SelectQLearner();
                     }
-                    Label1.Visible = true;
-                    Label1.ForeColor = System.Drawing.Color.Green;
-                    Label1.Text = "Данные проектанов успешно обновлены!";
-                    GridView2.DataBind();
+                    Label13.Visible = true;
+                    Label13.ForeColor = System.Drawing.Color.Green;
+                    Label13.Text = "Данные проектанов успешно обновлены!";
                 }
                 catch
                 {
-                    Label1.Visible = true;
-                    Label1.Text = "Проверьте введенные данные!";
+                    Label13.Visible = true;
+                    Label13.Text = "Проверьте введенные данные!";
                 }
                 s += 1;
             }
