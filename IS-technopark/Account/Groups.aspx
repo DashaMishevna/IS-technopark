@@ -18,31 +18,24 @@
             <Columns>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:CheckBox ID="SelectLearner" runat="server" />
+                        <asp:CheckBox ID="SelectLearner" Width="30px"  runat="server" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible='false' HeaderStyle-Width="205px"> 
-<HeaderStyle Width="205px"></HeaderStyle>
+                <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible='false' HeaderStyle-Width="205px"> <HeaderStyle Width="205px"></HeaderStyle>
                  </asp:BoundField>
                 <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" > 
                  </asp:BoundField>
-                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="DATE_REGISTRATION" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center"> 
-<ItemStyle HorizontalAlign="Center"></ItemStyle>
+                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="DATE_REGISTRATION" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:dd/MM/yyyy}"> <ItemStyle HorizontalAlign="Center"></ItemStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" ItemStyle-HorizontalAlign="Center"> 
-<ItemStyle HorizontalAlign="Center"></ItemStyle>
+                <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" ItemStyle-HorizontalAlign="Center"> <ItemStyle HorizontalAlign="Center"></ItemStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" ItemStyle-HorizontalAlign="Center"> 
-<ItemStyle HorizontalAlign="Center"></ItemStyle>
+                <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" ItemStyle-HorizontalAlign="Center"> <ItemStyle HorizontalAlign="Center"></ItemStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="SCHOOL" HeaderText="SCHOOL" SortExpression="SCHOOL" HeaderStyle-Width="120px"> 
-<HeaderStyle Width="120px"></HeaderStyle>
+                <asp:BoundField DataField="SCHOOL" HeaderText="SCHOOL" SortExpression="SCHOOL" HeaderStyle-Width="120px"> <HeaderStyle Width="120px"></HeaderStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="LABORATORY" HeaderText="LABORATORY" SortExpression="LABORATORY" HeaderStyle-Width="105" >
-<HeaderStyle Width="105px"></HeaderStyle>
+                <asp:BoundField DataField="LABORATORY" HeaderText="LABORATORY" SortExpression="LABORATORY" HeaderStyle-Width="105" ><HeaderStyle Width="105px"></HeaderStyle>
                  </asp:BoundField>
-                <asp:BoundField DataField="TITLE" HeaderText="TITLE" SortExpression="TITLE" HeaderStyle-Width="225"> 
-<HeaderStyle Width="225px"></HeaderStyle>
+                <asp:BoundField DataField="TITLE" HeaderText="TITLE" SortExpression="TITLE" HeaderStyle-Width="225"> <HeaderStyle Width="225px"></HeaderStyle>
                 </asp:BoundField>
             </Columns>
             <EditRowStyle BackColor="#52C0FC" />
