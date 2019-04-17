@@ -59,7 +59,7 @@ namespace IS_technopark.Account
             if (this.IsPostBack)
             {
                 string command = SqlDataSource1.SelectCommand;
-                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0";
+                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0 order by TECHNOPARK.GROUPS.TITLE";
                 SqlDataSource1.DataBind();
                 GridView1.DataBind();                
             }
@@ -190,7 +190,8 @@ namespace IS_technopark.Account
                 {
                     using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
                     {
-                        string query_update_g = "Update GROUPS SET D_START='"+ DateTime.Parse(TextBox2.Text).ToShortDateString() + "', D_END='" + DateTime.Parse(TextBox3.Text).ToShortDateString() + "', D_CONFERENCE='" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "', TIME_CLASS='" + TextBox5.Text + "', PROJECT_THEME='" + TextBox6.Text + "' WHERE ID_GROUPT = '" + id_G + "' ";
+                        //string query_update_g = "Update GROUPS SET D_START='"+ DateTime.Parse(TextBox2.Text).ToShortDateString() + "', D_END='" + DateTime.Parse(TextBox3.Text).ToShortDateString() + "', D_CONFERENCE='" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "', TIME_CLASS='" + TextBox5.Text + "', PROJECT_THEME='" + TextBox6.Text + "' WHERE ID_GROUPT = '" + id_G + "' ";
+                        string query_update_g = "Update GROUPS SET STATUS = '"+ id_s_g +"'  WHERE ID_GROUPT = '" + id_G + "'";
                         oraAdap.UpdateCommand = new OracleCommand(query_update_g, oraConnection);
                         oraAdap.UpdateCommand.ExecuteNonQuery();
                         SelectGroupt();

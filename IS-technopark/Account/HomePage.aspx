@@ -53,5 +53,7 @@
         <SortedDescendingCellStyle ForeColor="Black" />
 </asp:GridView>
 <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+<asp:GridView ID="GridView2" runat="server"></asp:GridView>
 </div>
 </asp:Content>
