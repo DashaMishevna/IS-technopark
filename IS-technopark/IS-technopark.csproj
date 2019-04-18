@@ -89,6 +89,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -193,6 +194,7 @@
     <Content Include="About.aspx" />
     <Content Include="Account\AddPhoneNumber.aspx" />
     <Content Include="Account\Confirm.aspx" />
+    <Content Include="Account\Diagramm.aspx" />
     <Content Include="Account\Edit.aspx" />
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Groups.aspx" />
@@ -297,6 +299,13 @@
     </Compile>
     <Compile Include="Account\Confirm.aspx.designer.cs">
       <DependentUpon>Confirm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Diagramm.aspx.cs">
+      <DependentUpon>Diagramm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Diagramm.aspx.designer.cs">
+      <DependentUpon>Diagramm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
