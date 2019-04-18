@@ -80,7 +80,7 @@
         </div>
         <div class='form-row'>
             <asp:TextBox ID="TextBox7" runat="server" Width="225px" Height="30px" TextMode="Date"  CssClass="btn btn-default" style="margin-right:20px; text-align:left"></asp:TextBox>
-            <asp:Label ID="Label12" runat="server" Text="Статус *" style="margin-right:5px"></asp:Label>
+            <%--<asp:Label ID="Label12" runat="server" Text="Статус *" style="margin-right:5px"></asp:Label>
             <asp:DropDownList ID="DropDownList3" runat="server" CssClass="btn btn-default" Width="345px">
             <asp:ListItem Value="Записан на проект"></asp:ListItem>
             <asp:ListItem Value="Выполняет проект"></asp:ListItem>
@@ -91,7 +91,7 @@
             <asp:ListItem Value="Отказался окончательно"></asp:ListItem>
             <asp:ListItem Value="Нет связи с ребенком"></asp:ListItem>
             <asp:ListItem Value="Повторная запись"></asp:ListItem>
-        </asp:DropDownList>
+        </asp:DropDownList>--%>
         </div>
         <br>
         <br>

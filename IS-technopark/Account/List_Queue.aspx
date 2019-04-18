@@ -60,8 +60,6 @@
     </asp:GridView>
     <br/>
     <br/>
-    <br/>
-    <br/>
     <asp:Label ID="Label4" runat="server" Text="Записать на проект" style="width:200px; height:30px; font-size:16px;" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br/>
     <div class='form-label'>

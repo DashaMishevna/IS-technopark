@@ -16,6 +16,11 @@
     </asp:SqlDataSource>
     <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" CellSpacing="3" AllowSorting="True" HorizontalAlign="Center">
         <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckBox1" runat="server" />
+                </ItemTemplate>
+            </asp:TemplateField>
             <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" />
             <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO"/>
             <asp:BoundField DataField="BIRTHDAY" HeaderText="День рождения" SortExpression="BIRTHDAY" DataFormatString="{0:dd/MM/yyyy}"/>
@@ -52,8 +57,25 @@
         <SortedAscendingHeaderStyle ForeColor="Black" />
         <SortedDescendingCellStyle ForeColor="Black" />
 </asp:GridView>
+<br>
+<br>
+<asp:Button ID="Button2" runat="server" Text="Вывести информацию о ролителях" CssClass="btn btn-default" Font-Size="11pt" Height="25" BackColor="#CEE5F3" OnClick="Button2_Click" />
+<br>
 <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
-<asp:GridView ID="GridView2" runat="server"></asp:GridView>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE (PARENT.ID_LEARNER_P = 0)"></asp:SqlDataSource>
+<br>
+<asp:Label ID="Label3" runat="server" Text="" ForeColor="Gray"></asp:Label>
+<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1">
+    <Columns>
+        <asp:BoundField DataField="ID_PARENT" HeaderText="ID_PARENT" ReadOnly="True" SortExpression="ID_PARENT"  Visible="false"/>
+        <asp:BoundField DataField="ID_LEARNER_P" HeaderText="ID_LEARNER_P" SortExpression="ID_LEARNER_P" Visible="false" />
+        <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
+        <asp:BoundField DataField="PHONE" HeaderText="PHONE" SortExpression="PHONE" />
+        <asp:BoundField DataField="PHONE_WORK" HeaderText="PHONE_WORK" SortExpression="PHONE_WORK" />
+        <asp:BoundField DataField="E_MAIL" HeaderText="E_MAIL" SortExpression="E_MAIL" />
+        <asp:BoundField DataField="PLACE_WORK" HeaderText="PLACE_WORK" SortExpression="PLACE_WORK" />
+        <asp:BoundField DataField="POSITION" HeaderText="POSITION" SortExpression="POSITION" />
+    </Columns>
+    </asp:GridView>
 </div>
 </asp:Content>
