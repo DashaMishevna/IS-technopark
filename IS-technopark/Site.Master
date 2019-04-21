@@ -13,7 +13,72 @@
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:bundlereference runat="server" path="~/Content/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" /> 
+
+     <style>
+        .mynav_navbar {
+            overflow: hidden;
+            background-color: transparent;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+ 
+        .mynav_navbar a {
+                float: left;
+                font-size: 14px;
+                color: #999999;
+                text-align: center;
+                padding: 17px 16px;
+                text-decoration: none;
+            }
+ 
+        .mynav_dropdown {
+            float: left;
+            overflow: hidden;
+        }
+ 
+        .mynav_dropdown .mynav_dropbtn {
+                font-size: 14px;
+                border: none;
+                outline: none;
+                color: #999999;
+                padding: 17px 16px;
+                background-color: inherit;
+                font-family: inherit;
+                margin: 0;
+            }
+ 
+        .mynav_navbar a:hover, .mynav_dropdown:hover .mynav_dropbtn {
+                color: #dddddd;
+                background-color: transparent;
+            }
+ 
+        .mynav_dropdown-content {
+            display: none;
+            position: absolute;
+            color: #999999;
+            background-color: #222222;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+ 
+        .mynav_dropdown-content a {
+                float: none;
+                color: #999999;
+                padding: 13px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: center;
+            }
+ 
+        .mynav_dropdown-content a:hover {
+                    color: #dddddd;
+                }
+ 
+        .mynav_dropdown:hover .mynav_dropdown-content {
+            display: block;
+        }
+    </style>
 
 </head>
 <body>
@@ -55,11 +120,34 @@
                         <li><a runat="server" href="~/Account/Learners">Проектанты</a></li>
                         <li><a runat="server" href="~/Account/HomePage">Информация</a></li> 
                         <li><a runat="server" href="~/Account/List_Queue">Лист очередности</a></li>
-                        <li><a runat="server" href="~/Account/Groups">Создание Группы</a></li>
-                        <li><a runat="server" href="~/Account/View_Group">Группы</a></li>
+                        <%--<li><a runat="server" href="~/Account/Groups">Создание Группы</a></li>
+                        <li><a runat="server" href="~/Account/View_Group">Группы</a></li>--%>
                        <%-- <li><a runat="server" href="~/Account/Diagramm">Диаграммы</a></li>--%>
                         <li><a runat="server" href="~/Account/SendEMail">E-mail</a></li>
                        <%-- <li><a runat="server" href="~/Contact">Связаться</a></li>--%>
+
+                        <div class="mynav_navbar">
+                            <div class="mynav_dropdown">
+                                <button class="mynav_dropbtn">
+                                        Группы ▼
+                                <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="mynav_dropdown-content">
+                                <a runat="server" href="~/Account/Groups">Создание Группы</a>
+                                <a runat="server" href="~/Account/View_Group">Группы</a>
+                                </div>
+                            </div>
+                            <div class="mynav_dropdown">
+                                <button class="mynav_dropbtn">
+                                        Статистика ▼
+                                <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="mynav_dropdown-content">
+                                <a runat="server" href="~/Account/Diagramm">Диаграммы</a>
+                                <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
+                                </div>
+                            </div>
+                        </div>
                     </ul>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
