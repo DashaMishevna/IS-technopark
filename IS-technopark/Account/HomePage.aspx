@@ -59,7 +59,7 @@
 </asp:GridView>
 <br>
 <br>
-<asp:Button ID="Button2" runat="server" Text="Вывести информацию о ролителях" CssClass="btn btn-default" Font-Size="11pt" Height="25" BackColor="#CEE5F3" OnClick="Button2_Click" />
+<asp:Button ID="Button2" runat="server" Text="Вывести информацию о родителях" CssClass="btn btn-default" Font-Size="11pt" Height="25" BackColor="#CEE5F3" OnClick="Button2_Click" />
 <br>
 <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE (PARENT.ID_LEARNER_P = 0)"></asp:SqlDataSource>

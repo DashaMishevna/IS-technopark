@@ -233,6 +233,7 @@
     <Content Include="img\cancel.png" />
     <Content Include="img\Delet.png" />
     <Content Include="img\edit.png" />
+    <Content Include="img\email.png" />
     <Content Include="img\floppy-disk.png" />
     <Content Include="img\Home.png" />
     <Content Include="img\paper.png" />

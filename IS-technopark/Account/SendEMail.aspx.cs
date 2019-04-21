@@ -7,37 +7,40 @@ using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Net;
 using System.IO;
+using Oracle.ManagedDataAccess.Client;
+using System.Data;
 
 namespace IS_technopark.Account
 {
     public partial class SendEMail : System.Web.UI.Page
     {
+        OracleDataAdapter oraAdap = new OracleDataAdapter();
+        OracleConnection oraConnection = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;");
+        DataTable table = new DataTable();
+        DataSet ds = new DataSet();
         List<string> e_mail_to = new List<string>();
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                GetDropList();
+            }
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
+
+            string from = "schooltechn.yourname@gmail.com";
+            string to = txtTo.Text.Trim();
+            string subject = txtSubject.Text.Trim();
+            string message = txtMessage.Text.Trim();
             try
             {
-                e_mail_to.Add("Dasytka--0912@mail.ru");
-                e_mail_to.Add("seer.92@mail.ru");
-                string from = txtFrom.Text.Trim();
-                string to = txtTo.Text.Trim();
-                string subject = txtSubject.Text.Trim();
-                string message = txtMessage.Text.Trim();
-
-                //SmtpClient objSmtpClient = new SmtpClient();
-                //objSmtpClient.Host = "localhost";
-                //objSmtpClient.Port = 465;
-                //objSmtpClient.Send(from, to, subject, message);
-
-                //lblStatus.Text = "<b style='color:green'>Email has been sent successfully!!!</b>";
-                int s = 0;
-                foreach (string i in e_mail_to)
+                //e_mail_to.Add("Dasytka--0912@mail.ru");
+                //e_mail_to.Add("Dasytka--0912@mail.ru");
+                if (DropDownList1.SelectedValue.ToString() == "-Выберете направление-" && to!="")
                 {
                     using (SmtpClient smtp = new SmtpClient())
                     {
@@ -47,14 +50,107 @@ namespace IS_technopark.Account
                         smtp.UseDefaultCredentials = true;
                         smtp.Credentials = NetCred;
                         smtp.Port = 587;
-                        smtp.Send(from, e_mail_to[s], subject, message);
-                        lblStatus.Text = "<b style='color:green'>Email has been sent successfully!!!</b>";
+                        smtp.Send(from, to, subject, message);
+                        lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
                     }
-                    s += 1;
                 }
+                EmailLaboratory();
+                if (e_mail_to.Count != 0)
+                {
+
+                    int s = 0;
+                    foreach (string i in e_mail_to)
+                    {
+                        using (SmtpClient smtp = new SmtpClient())
+                        {
+                            smtp.Host = "smtp.gmail.com";
+                            smtp.EnableSsl = true;
+                            NetworkCredential NetCred = new NetworkCredential("schooltechn.yourname@gmail.com", "SchoolTechn1");
+                            smtp.UseDefaultCredentials = true;
+                            smtp.Credentials = NetCred;
+                            smtp.Port = 587;
+                            smtp.Send(from, e_mail_to[s], subject, message);
+                            lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
+                            //smtp.Dispose();
+                        }
+                        s += 1;
+                    }
+                } 
                 
             }
             catch (SmtpException ex) { lblStatus.Text = "<b style='color:red'>" + ex.Message + "</b>"; }
+            
+            //txtMessage.Text = "";
+            //txtSubject.Text = "";
+            //txtTo.Text = "";
+            //to = "";
+
+        
+        }
+
+        private void GetDropList()
+        {
+            oraConnection.Open();
+            string s1 = "Select Laboratory from DIR_LABORATORIES";
+            OracleDataAdapter oraAdap = new OracleDataAdapter(s1, oraConnection);
+            oraAdap.Fill(ds);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                DropDownList1.DataSource = ds;
+                DropDownList1.DataTextField = "Laboratory";
+                DropDownList1.DataBind();
+                DropDownList1.Items.Insert(0, new ListItem("-Выберете направление-"));
+                DropDownList1.SelectedIndex = 0;
+            }
+            oraConnection.Close();
+        }
+
+        private void EmailLaboratory()
+        {
+            if (DropDownList1.SelectedValue.ToString() != "0")
+            {
+                oraConnection.Open();
+                oraAdap.SelectCommand = new OracleCommand();
+                oraAdap.SelectCommand.CommandText = "select Parent.e_mail, LEARNER.E_MAIL from parent, queue, DIR_LABORATORIES, LEARNER where parent.ID_LEARNER_P=LEARNER.ID_LEARNER and parent.ID_LEARNER_P=queue.ID_LEARNER_Q  AND DIR_LABORATORIES.ID_LABORATORIES = queue.ID_LABORATORIES and (parent.E_MAIL is not null or Learner.E_MAIL is not null) and DIR_LABORATORIES.LABORATORY = '" + DropDownList1.SelectedValue.ToString() + "'";
+                oraAdap.SelectCommand.Connection = oraConnection;
+                OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+                while (oraReader.Read())
+                {
+                    object[] values = new object[oraReader.FieldCount];
+                    oraReader.GetValues(values);
+                    e_mail_to.Add(values[0].ToString());
+                }
+
+                int s = 0;
+                foreach (string i in e_mail_to)
+                {
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "select Parent.e_mail, LEARNER.E_MAIL from parent, queue, DIR_LABORATORIES, LEARNER where parent.ID_LEARNER_P=LEARNER.ID_LEARNER and parent.ID_LEARNER_P=queue.ID_LEARNER_Q  AND DIR_LABORATORIES.ID_LABORATORIES = queue.ID_LABORATORIES and (parent.E_MAIL is not null or Learner.E_MAIL is not null) and DIR_LABORATORIES.LABORATORY = '" + DropDownList1.SelectedValue.ToString() + "'";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader1.Read())
+                    {
+                        object[] values = new object[oraReader1.FieldCount];
+                        oraReader1.GetValues(values);
+                        if (e_mail_to[s] != values[1].ToString())
+                        {
+                            e_mail_to.Add(values[1].ToString());
+                        }
+                    }
+                }
+                s += 1;
+                //txtTo.Text = e_mail_to.ToString();
+                oraConnection.Close();
+            }
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            EmailLaboratory();
+            if (DropDownList1.SelectedValue.ToString() != "0")
+            {
+                Label7.Text = "Количество почтовых ящиков: " + e_mail_to.Count;
+            }
         }
     }
 }
