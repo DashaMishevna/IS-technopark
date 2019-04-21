@@ -8,47 +8,57 @@
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.LEARNER.ID_LEARNER, TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE (TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER = 1) AND (TECHNOPARK.DIR_LABORATORIES.LABORATORY = 'Физика')">
     </asp:SqlDataSource>
     <br>
-    <h2 style="text-align:center"> ГРУППЫ </h2>
+    <h2 style="text-align:center"> СОЗДАНИЕ ГРУППЫ </h2>
     <div style="float:right; text-align:left; margin-right:-160px; font-size:13px">
         <br>
         <h4 style="text-align:left; font-weight:600 ">Выберите обучающихся</h4>
         <br>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_LEARNER, ID_QUEUE" DataSourceID="SqlDataSource2" style="font-size:13px; max-width:950px; height:30px;" AllowPaging="True" CellPadding="4" ForeColor="#333333" GridLines="None" >
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_LEARNER,ID_QUEUE" DataSourceID="SqlDataSource2" style="font-size:13px; max-width:950px; height:30px;" AllowPaging="True" CellPadding="4" ForeColor="#333333" GridLines="None" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                <asp:TemplateField> 
                 <ItemTemplate> 
                 <asp:CheckBox ID="SelectLearner" Width="30px" runat="server" /> 
                 </ItemTemplate> 
+                   <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField> 
                 <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible='false' HeaderStyle-Width="205px"> <HeaderStyle Width="205px"></HeaderStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" > 
+                <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" > 
                 </asp:BoundField> 
-                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="DATE_REGISTRATION" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:dd/MM/yyyy}"> <ItemStyle HorizontalAlign="Center"></ItemStyle> 
+                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА ЗАПИСИ" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:dd/MM/yyyy}"> <ItemStyle HorizontalAlign="Center"></ItemStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" ItemStyle-HorizontalAlign="Center"> <ItemStyle HorizontalAlign="Center"></ItemStyle> 
+                <asp:BoundField DataField="CLASS" HeaderText="КЛАСС" SortExpression="CLASS" ItemStyle-HorizontalAlign="Center"> <ItemStyle HorizontalAlign="Center"></ItemStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" ItemStyle-HorizontalAlign="Center"> <ItemStyle HorizontalAlign="Center"></ItemStyle> 
+                <asp:BoundField DataField="SHIFT" HeaderText="СМЕНА" SortExpression="SHIFT" ItemStyle-HorizontalAlign="Center"> <ItemStyle HorizontalAlign="Center"></ItemStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="SCHOOL" HeaderText="SCHOOL" SortExpression="SCHOOL" HeaderStyle-Width="120px"> <HeaderStyle Width="120px"></HeaderStyle> 
+                <asp:BoundField DataField="SCHOOL" HeaderText="ШКОЛА" SortExpression="SCHOOL" HeaderStyle-Width="120px"> <HeaderStyle Width="120px"></HeaderStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="LABORATORY" HeaderText="LABORATORY" SortExpression="LABORATORY" HeaderStyle-Width="105" ><HeaderStyle Width="105px"></HeaderStyle> 
+                <asp:BoundField DataField="LABORATORY" HeaderText="НАПРАВЛЕНИЕ" SortExpression="LABORATORY" HeaderStyle-Width="105" ><HeaderStyle Width="105px"></HeaderStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="TITLE" HeaderText="TITLE" SortExpression="TITLE" HeaderStyle-Width="225"> <HeaderStyle Width="225px"></HeaderStyle> 
+                <asp:BoundField DataField="TITLE" HeaderText="ПРОЕКТ" SortExpression="TITLE" HeaderStyle-Width="225"> <HeaderStyle Width="225px"></HeaderStyle> 
                 </asp:BoundField> 
                 <asp:BoundField DataField="ID_QUEUE" HeaderText="ID_QUEUE" SortExpression="ID_QUEUE" Visible='false'/>
             </Columns>
-            <EditRowStyle BackColor="#52C0FC" />
+            <EditRowStyle BackColor="#FFD0D7" />
             <FooterStyle BackColor="#3399FF" Font-Bold="True" ForeColor="White" />
             <HeaderStyle HorizontalAlign="Center" BackColor="#A5D1F3" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="#A5D1F3" ForeColor="White" HorizontalAlign="Center" />
-            <RowStyle Height="30px" BackColor="#C8E3F9" />
+            <RowStyle Height="30px" BackColor="#C9E9FC" />
             <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
             <SortedAscendingCellStyle BackColor="#F5F7FB" />
             <SortedAscendingHeaderStyle BackColor="#6D95E1" />
             <SortedDescendingCellStyle BackColor="#E9EBEF" />
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
+
+
+           <%-- <PagerStyle BackColor="#B5E0FF" ForeColor="Black" HorizontalAlign="Center" />
+            <RowStyle Height="30px"/>
+            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#808080" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#383838" />--%>
         </asp:GridView>
         <br/>
         <br/>

@@ -29,15 +29,15 @@
             </asp:BoundField>
             <asp:BoundField DataField="ID_QUEUE" HeaderText="ID_QUEUE" SortExpression="ID_QUEUE" Visible="false" >
             </asp:BoundField>
-            <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
-            <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="DATE_REGISTRATION" SortExpression="DATE_REGISTRATION" />
-            <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" />
-            <asp:BoundField DataField="SHIFT" HeaderText="SHIFT" SortExpression="SHIFT" />
+            <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" />
+            <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА РЕГИСТРАЦИИ" SortExpression="DATE_REGISTRATION" />
+            <asp:BoundField DataField="CLASS" HeaderText="КЛАСС" SortExpression="CLASS" />
+            <asp:BoundField DataField="SHIFT" HeaderText="СМЕНА" SortExpression="SHIFT" />
             <asp:BoundField DataField="TITLE" HeaderText="TITLE" SortExpression="TITLE" />
             <asp:BoundField DataField="LABORATORY" HeaderText="LABORATORY" SortExpression="LABORATORY" HeaderStyle-Width="150px"><HeaderStyle Width="150px"></HeaderStyle></asp:BoundField>
-            <asp:BoundField DataField="STATUS_L" HeaderText="STATUS_L" SortExpression="STATUS_L" />
+            <asp:BoundField DataField="STATUS_L" HeaderText="СТАТУС" SortExpression="STATUS_L" />
             <asp:BoundField DataField="D_T_RECORD" HeaderText="D_T_RECORD" SortExpression="D_T_RECORD" />
-            <asp:BoundField DataField="INTERESTS" HeaderText="INTERESTS" SortExpression="INTERESTS" />
+            <asp:BoundField DataField="INTERESTS" HeaderText="ИНТЕРЕСЫ" SortExpression="INTERESTS" />
 
             <%--<asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"> 
             <ItemTemplate> 
