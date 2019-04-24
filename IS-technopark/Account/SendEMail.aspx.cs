@@ -19,6 +19,7 @@ namespace IS_technopark.Account
         DataTable table = new DataTable();
         DataSet ds = new DataSet();
         List<string> e_mail_to = new List<string>();
+        int LabekMessag = 0;
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -32,69 +33,15 @@ namespace IS_technopark.Account
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
+            if ((sender as Button) == null)
+                return;
             if (txtTo.Text != "")
             {
                 sendonemail();
                 txtTo.Text = String.Empty;
             }
-            
-            //string from = "schooltechn.yourname@gmail.com";
-            //string to = txtTo.Text.Trim();
-            //string subject = txtSubject.Text.Trim();
-            //string message = txtMessage.Text.Trim();
-            //try
-            //{
-            //    //e_mail_to.Add("Dasytka--0912@mail.ru");
-            //    //e_mail_to.Add("Dasytka--0912@mail.ru");
-            //    if (DropDownList1.SelectedValue.ToString() == "-Выберете направление-" && to!="")
-            //    {
-            //        using (SmtpClient smtp = new SmtpClient())
-            //        {
-            //            smtp.Host = "smtp.gmail.com";
-            //            smtp.EnableSsl = true;
-            //            NetworkCredential NetCred = new NetworkCredential("schooltechn.yourname@gmail.com", "SchoolTechn1");
-            //            smtp.UseDefaultCredentials = true;
-            //            smtp.Credentials = NetCred;
-            //            smtp.Port = 587;
-            //            smtp.Send(from, to, subject, message);
-            //            lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
-            //            smtp.Dispose();
-            //            txtTo.Text = "";
-            //        }
-            //        txtTo.Text = "";
-            //    }
-            //    txtTo.Text = "";
-            //    EmailLaboratory();
-            //    if (e_mail_to.Count != 0)
-            //    {
+            Response.Redirect("SendEMail.aspx"); //Перенаправлять или чистить
 
-            //        int s = 0;
-            //        foreach (string i in e_mail_to)
-            //        {
-            //            using (SmtpClient smtp = new SmtpClient())
-            //            {
-            //                smtp.Host = "smtp.gmail.com";
-            //                smtp.EnableSsl = true;
-            //                NetworkCredential NetCred = new NetworkCredential("schooltechn.yourname@gmail.com", "SchoolTechn1");
-            //                smtp.UseDefaultCredentials = true;
-            //                smtp.Credentials = NetCred;
-            //                smtp.Port = 587;
-            //                smtp.Send(from, e_mail_to[s], subject, message);
-            //                lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
-            //                //smtp.Dispose();
-            //            }
-            //            s += 1;
-            //        }
-            //    } 
-                
-            //}
-            //catch (SmtpException ex) { lblStatus.Text = "<b style='color:red'>" + ex.Message + "</b>"; }
-            
-            //txtMessage.Text = "";
-            //txtSubject.Text = "";
-            //txtTo.Text = "";
-            //to = "";
-        
         }
 
         private void sendonemail()
@@ -121,6 +68,7 @@ namespace IS_technopark.Account
                     }
                 }
                 EmailLaboratory();
+                LabekMessag = 1;
             }
             catch (SmtpException ex) { lblStatus.Text = "<b style='color:red'>" + ex.Message + "</b>"; }
             txtMessage.Text = "";

@@ -144,6 +144,7 @@
                                 </button>
                                 <div class="mynav_dropdown-content">
                                 <a runat="server" href="~/Account/Diagramm">Диаграммы</a>
+                                <a runat="server" href="~/Account/Reports">Отчет</a>
                                 <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                                 </div>
                             </div>
