@@ -14,26 +14,30 @@
 <div style="float:left; margin-top:10px; margin-left:-100px">
 <asp:SqlDataSource ID="Technopark" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM &quot;LEARNER&quot;" UpdateCommand="UPDATE TECHNOPARK.LEARNER SET FIO = 'qwe' WHERE 1=0" DeleteCommand="DELETE FROM TECHNOPARK.LEARNER WHERE ID_LEARNER = :ID_LEARNER" >
     </asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" CellSpacing="3" AllowSorting="True" HorizontalAlign="Center">
+    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" AllowSorting="True" HorizontalAlign="Center" BackColor="White" BorderColor="#999999" BorderWidth="0px" ForeColor="Black" GridLines="Vertical" CellSpacing="3">
+        <AlternatingRowStyle BackColor="#d2ecf9" />
         <Columns>
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:CheckBox ID="CheckBox1" runat="server" />
                 </ItemTemplate>
+                <HeaderStyle HorizontalAlign="Center" Width="34px" />
+                <ItemStyle HorizontalAlign="Center" />
             </asp:TemplateField>
             <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" />
             <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO"/>
-            <asp:BoundField DataField="BIRTHDAY" HeaderText="День рождения" SortExpression="BIRTHDAY" DataFormatString="{0:dd/MM/yyyy}"/>
-            <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" ControlStyle-Width="60px"  ><ControlStyle Width="60px"></ControlStyle>
+            <asp:BoundField DataField="BIRTHDAY" HeaderText="День рождения" SortExpression="BIRTHDAY" DataFormatString="{0:dd/MM/yyyy}"><ItemStyle HorizontalAlign="Center" /><HeaderStyle Width="145px" Height="20px"></HeaderStyle> 
             </asp:BoundField>
-            <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL"/>     
-            <asp:BoundField DataField="SHIFT" HeaderText="Смена" SortExpression="SHIFT" ControlStyle-Width="60px" > <ControlStyle Width="60px"></ControlStyle>
+            <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" ControlStyle-Width="60px" ><ControlStyle Width="60px"></ControlStyle>
+            <ItemStyle HorizontalAlign="Center" /> </asp:BoundField>
+            <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL"/>
+            <asp:BoundField DataField="SHIFT" HeaderText="Смена" SortExpression="SHIFT" ControlStyle-Width="60px"> <ControlStyle Width="60px"></ControlStyle>
+            <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
              <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />
             <asp:BoundField DataField="E_MAIL" HeaderText="E_MAIL" SortExpression="E_MAIL" />
             <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS" />
             <asp:BoundField DataField="COMMENTS" HeaderText="Комментарии" SortExpression="COMMENTS"/>
-
             <asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center">
                 <ItemTemplate>
                     <asp:ImageButton ImageUrl="~/img/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px"/>
@@ -43,39 +47,44 @@
                     <div style="width:50px"><asp:ImageButton ImageUrl="~/img/floppy-disk.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px"/>
                     <asp:ImageButton ImageUrl="~/img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px"/></div>
                 </EditItemTemplate>
-                <%--<FooterTemplate>
-                    <asp:ImageButton ImageUrl="~/img/plus.png" runat="server" CommandName="Add" ToolTip="Add" Width="20px" Height="20px"/>
-                </FooterTemplate>--%>
 
         <ItemStyle Width="60px"></ItemStyle>
             </asp:TemplateField>
         </Columns>
-        <EditRowStyle BackColor="#A5D1F3" HorizontalAlign="Left"/>
-        <HeaderStyle BackColor="#A5D1F3" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
-        <RowStyle BackColor="White" ForeColor="#333333"/>
-        <SelectedRowStyle Wrap="True" />
-        <SortedAscendingHeaderStyle ForeColor="Black" />
-        <SortedDescendingCellStyle ForeColor="Black" />
+        <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle ForeColor="Black" BackColor="#808080" />
+        <SortedDescendingCellStyle ForeColor="Black" BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
 </asp:GridView>
 <br>
 <br>
-<asp:Button ID="Button2" runat="server" Text="Вывести информацию о родителях" CssClass="btn btn-default" Font-Size="11pt" Height="25" BackColor="#CEE5F3" OnClick="Button2_Click" />
+<asp:Button ID="Button2" runat="server" Text="Вывести информацию о родителях" CssClass="btn btn-default" Font-Size="11pt" Height="30" BackColor="#CEE5F3" OnClick="Button2_Click"  style="align-items:center"/>
 <br>
 <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE (PARENT.ID_LEARNER_P = 0)"></asp:SqlDataSource>
 <br>
 <asp:Label ID="Label3" runat="server" Text="" ForeColor="Gray"></asp:Label>
-<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1">
+<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" BorderStyle="None" Height="25px">
     <Columns>
         <asp:BoundField DataField="ID_PARENT" HeaderText="ID_PARENT" ReadOnly="True" SortExpression="ID_PARENT"  Visible="false"/>
         <asp:BoundField DataField="ID_LEARNER_P" HeaderText="ID_LEARNER_P" SortExpression="ID_LEARNER_P" Visible="false" />
-        <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
-        <asp:BoundField DataField="PHONE" HeaderText="PHONE" SortExpression="PHONE" />
-        <asp:BoundField DataField="PHONE_WORK" HeaderText="PHONE_WORK" SortExpression="PHONE_WORK" />
+        <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" />
+        <asp:BoundField DataField="PHONE" HeaderText="ТЕЛЕФОН" SortExpression="PHONE" />
+        <asp:BoundField DataField="PHONE_WORK" HeaderText="РАБОЧИЙ ТЕЛЕФОН" SortExpression="PHONE_WORK" />
         <asp:BoundField DataField="E_MAIL" HeaderText="E_MAIL" SortExpression="E_MAIL" />
-        <asp:BoundField DataField="PLACE_WORK" HeaderText="PLACE_WORK" SortExpression="PLACE_WORK" />
-        <asp:BoundField DataField="POSITION" HeaderText="POSITION" SortExpression="POSITION" />
+        <asp:BoundField DataField="PLACE_WORK" HeaderText="МЕСТО РАБОТЫ" SortExpression="PLACE_WORK" />
+        <asp:BoundField DataField="POSITION" HeaderText="ДОЛЖНОСТЬ" SortExpression="POSITION" />
     </Columns>
+    <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
+    <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
+    <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+    <RowStyle Height="35px" HorizontalAlign="Left" />
+    <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" />
     </asp:GridView>
 </div>
 </asp:Content>

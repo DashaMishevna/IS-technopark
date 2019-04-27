@@ -146,7 +146,8 @@ namespace IS_technopark
                 SqlDataSource1.SelectCommand = "SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE PARENT.ID_LEARNER_P = 0 and ID_PARENT!=0 and ID_LEARNER_P!=0";
                 SqlDataSource1.DataBind();
                 GridView2.DataBind();
-                Label3.Visible=false;
+                Label3.Text = "";
+                //Label3.Visible=false;
             }
             oraConnection.Close();
         }

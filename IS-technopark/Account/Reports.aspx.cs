@@ -46,13 +46,8 @@ namespace IS_technopark.Account
             //DataSet lab = new DataSet();
             //oraAdap.Fill(lab);
 
-            reportForming("2015", lab);
-
-           
-
-           
+            reportForming("2015", lab);  
         }
-
 
         public struct labs
         {
@@ -61,9 +56,20 @@ namespace IS_technopark.Account
             public string cab { get; set; }
         }
 
+        public static List<labs> SelectList()
+        {
+            List<labs> Listlabs = new List<labs>();
+            labs lab1 = new labs();
+            lab1.id = "one";
+            lab1.name = "two";
+            lab1.cab = "three";
+            Listlabs.Add(lab1);
+            return Listlabs;
 
 
-        public void reportForming(string chislo1, List<labs> dataset)
+        }
+
+    public void reportForming(string chislo1, List<labs> dataset)
         {
             ReportViewer1.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Local;
             LocalReport localReport = ReportViewer1.LocalReport;

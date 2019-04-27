@@ -8,10 +8,12 @@
     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" OnInit="ReportViewer1_Init" >
         <LocalReport ReportPath="Account\Report1.rdlc">
             <DataSources>
-                <rsweb:ReportDataSource DataSourceId="SqlDataSource1" Name="DataSet1" />
+                <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
             </DataSources>
         </LocalReport>
     </rsweb:ReportViewer>
+
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectList" TypeName="IS_technopark.Account.Reports"></asp:ObjectDataSource>
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
 
