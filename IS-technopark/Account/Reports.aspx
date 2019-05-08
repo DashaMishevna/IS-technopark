@@ -8,7 +8,7 @@
     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" OnInit="ReportViewer1_Init" >
         <LocalReport ReportPath="Account\Report1.rdlc">
             <DataSources>
-                <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet1" />
+                <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet2" />
             </DataSources>
         </LocalReport>
     </rsweb:ReportViewer>

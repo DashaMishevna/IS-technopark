@@ -19,8 +19,52 @@ namespace IS_technopark.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                DataTable dt2 = new DataTable();
+                dt2 = labssss(dt2);
+                ReportViewer1.LocalReport.DataSources.Clear();
+                ReportDataSource rdts = new ReportDataSource("DataSet2", dt2);
+                ReportViewer1.LocalReport.DataSources.Add(rdts);
+                ReportViewer1.LocalReport.Refresh();
+            }
         }
+
+        //public DataTable labs(DataTable dt)
+        //{
+        //    oraConnection.Open();
+        //    oraAdap.SelectCommand = new OracleCommand();
+        //    oraAdap.SelectCommand.CommandText = "Select FIO, CLASS, SCHOOL from LEARNER";
+        //    oraAdap.Fill(dt);
+        //    return dt;
+        //}
+
+        public DataTable labssss(DataTable dt)
+        {
+            oraConnection.Open();
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "Select FIO, CLASS, SCHOOL from LEARNER";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+            oraAdap.Fill(dt);
+            //List<labs> lab = new List<labs>();
+            //while (oraReader.Read())
+            //{
+            //    labs lab1 = new labs();
+            //    object[] values = new object[oraReader.FieldCount];
+            //    //oraReader.GetValues(values);
+            //    //id_lab = values[0].ToString();
+            //    lab1.id = "kek1";
+            //    lab1.name = "kek";
+            //    lab1.cab = "kek2";
+
+            //    lab.Add(lab1);
+
+            //}
+            return dt;
+        }
+
+
 
         protected void Button1_Click(object sender, EventArgs e)
         {
