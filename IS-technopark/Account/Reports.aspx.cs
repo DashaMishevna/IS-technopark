@@ -17,6 +17,9 @@ namespace IS_technopark.Account
         DataSet ds = new DataSet();
         string id_lab = "";
         List<string> id_learner = new List<string>();
+        List<string> d_conf = new List<string>();
+        List<string> inf_learner = new List<string>();
+        DataTable dt_button = new DataTable();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,6 +31,7 @@ namespace IS_technopark.Account
                 ReportDataSource rdts = new ReportDataSource("DataSet2", dt2);
                 ReportViewer1.LocalReport.DataSources.Add(rdts);
                 ReportViewer1.LocalReport.Refresh();
+                Response.Write(dt2 + "<b>ДАННЫЕ</b><br/>");
             }
 
             int a = 0;
@@ -38,16 +42,26 @@ namespace IS_technopark.Account
                 if (cb != null && cb.Checked)
                 {
                     oraAdap.SelectCommand = new OracleCommand();
-                    oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_QUEUE = '" + GridView1.DataKeys[a].Values[0] + "'";
+                    oraAdap.SelectCommand.CommandText = "Select ID_LEARNER FROM TECHNOPARK.LEARNER where TECHNOPARK.LEARNER.ID_LEARNER = '" + GridView1.DataKeys[a].Values[0] + "'";
                     oraAdap.SelectCommand.Connection = oraConnection;
                     OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
                     while (oraReader.Read())
                     {
                         object[] values = new object[oraReader.FieldCount];
                         oraReader.GetValues(values);
-                        id_status.Add(values[0].ToString());
+                        id_learner.Add(values[0].ToString());
                     }
 
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "Select D_CONFERENCE FROM TECHNOPARK.GROUPS where TECHNOPARK.GROUPS.TITLE = '" + GridView1.Columns[1].ToString() + "'";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader1.Read())
+                    {
+                        object[] values = new object[oraReader1.FieldCount];
+                        oraReader1.GetValues(values);
+                        d_conf.Add(values[0].ToString());
+                    }
                 }
                 a += 1;
                 // Response.Write(cb + "<b>tut</b><br/>");
@@ -58,47 +72,53 @@ namespace IS_technopark.Account
 
         public DataTable labssss(DataTable dt)
         {
-            oraConnection.Open();
-            oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "Select FIO, CLASS, SCHOOL from LEARNER";
-            oraAdap.SelectCommand.Connection = oraConnection;
-            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
-            oraAdap.Fill(dt);
-            return dt;
+        //    int s = 0;
+        //    foreach (string i in id_learner)
+        //    { 
+
+        //        oraConnection.Open();
+        //        oraAdap.SelectCommand = new OracleCommand();
+        //        oraAdap.SelectCommand.CommandText = "Select FIO, CLASS, SCHOOL from LEARNER WHERE ID_LEARNER= '" + id_learner[s] + "'";
+        //        oraAdap.SelectCommand.Connection = oraConnection;
+        //        OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+        //        oraAdap.Fill(dt);
+        //        Response.Write(dt + "<b>tut</b><br/>");
+        //        s += 1;
+        //    }
+            return dt_button;
         }
 
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            oraConnection.Open();
-            oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "Select * from DIR_LABORATORIES where id_Laboratories = 1";
-            oraAdap.SelectCommand.Connection = oraConnection;
-            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
-            List<labs> lab = new List<labs>();
-            while (oraReader.Read())
-            {
-                labs lab1 = new labs();
-                //object[] values = new object[oraReader.FieldCount];
-                //oraReader.GetValues(values);
-                //id_lab = values[0].ToString();
-                lab1.id = "kek1";
-                lab1.name = "kek";
-                lab1.cab = "kek2";
 
-                lab.Add(lab1);
+    ////oraConnection.Open();
+    ////oraAdap.SelectCommand = new OracleCommand();
+    ////oraAdap.SelectCommand.CommandText = "Select * from DIR_LABORATORIES where id_Laboratories = 1";
+    ////oraAdap.SelectCommand.Connection = oraConnection;
+    ////OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+    ////List<labs> lab = new List<labs>();
+    ////while (oraReader.Read())
+    ////{
+    ////    labs lab1 = new labs();
+    ////    //object[] values = new object[oraReader.FieldCount];
+    ////    //oraReader.GetValues(values);
+    ////    //id_lab = values[0].ToString();
+    ////    lab1.id = "kek1";
+    ////    lab1.name = "kek";
+    ////    lab1.cab = "kek2";
 
-            }
-            //DataSet lab = new DataSet();
-            //oraAdap.Fill(lab);
+    ////    lab.Add(lab1);
 
-            reportForming("2015", lab);
+    ////}
+    //////DataSet lab = new DataSet();
+    //////oraAdap.Fill(lab);
 
+    ////reportForming("2015", lab);
 
 
-        }
 
-        public struct labs
+
+
+    public struct labs
         {
             public string id { get; set; }
             public string name { get; set; }
@@ -149,7 +169,7 @@ namespace IS_technopark.Account
             SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0";
             SqlDataSource1.DataBind();
             GridView1.DataBind();
-            SelectQLearner();
+            //SelectQLearner();
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -168,6 +188,32 @@ namespace IS_technopark.Account
                 SqlDataSource2.DataBind();
                 GridView1.DataBind();
             }
+        }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            oraConnection.Open();
+            int s = 0;
+            foreach (string i in id_learner)
+            {
+
+                oraAdap.SelectCommand = new OracleCommand();
+                oraAdap.SelectCommand.CommandText = "Select FIO, CLASS, SCHOOL from LEARNER WHERE ID_LEARNER= '" + id_learner[s] + "'";
+                oraAdap.SelectCommand.Connection = oraConnection;
+                OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+                oraAdap.Fill(dt_button);
+                s += 1;
+            }
+            //Response.Write(dt_button.Rows + "<b>tut</b><br/>");
+            oraConnection.Close();
+
+            DataTable dt2 = new DataTable();
+            dt2 = labssss(dt2);
+            ReportViewer1.LocalReport.DataSources.Clear();
+            ReportDataSource rdts = new ReportDataSource("DataSet2", dt2);
+            ReportViewer1.LocalReport.DataSources.Add(rdts);
+            ReportViewer1.LocalReport.Refresh();
+            Response.Write(dt2 + "<b>ДАННЫЕ_2</b><br/>");
         }
     }
 }
