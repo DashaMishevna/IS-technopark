@@ -7,7 +7,7 @@
           <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" ParameterPrefix=":" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="Oracle.ManagedDataAccess.Client" />
         </Connections>
         <Tables>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LEARNERTableAdapter" GeneratorDataComponentClassName="LEARNERTableAdapter" Name="LEARNER" UserDataComponentName="LEARNERTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataSet_LEARNERTableAdapter" GeneratorDataComponentClassName="DataSet_LEARNERTableAdapter" Name="DataSet_LEARNER" UserDataComponentName="DataSet_LEARNERTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="TECHNOPARK.LEARNER" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
@@ -33,7 +33,7 @@
   <xs:element name="DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSet" msprop:Generator_UserDSName="DataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="LEARNER" msprop:Generator_TableClassName="LEARNERDataTable" msprop:Generator_TableVarName="tableLEARNER" msprop:Generator_TablePropName="LEARNER" msprop:Generator_RowDeletingName="LEARNERRowDeleting" msprop:Generator_RowChangingName="LEARNERRowChanging" msprop:Generator_RowEvHandlerName="LEARNERRowChangeEventHandler" msprop:Generator_RowDeletedName="LEARNERRowDeleted" msprop:Generator_UserTableName="LEARNER" msprop:Generator_RowChangedName="LEARNERRowChanged" msprop:Generator_RowEvArgName="LEARNERRowChangeEvent" msprop:Generator_RowClassName="LEARNERRow">
+        <xs:element name="DataSet_LEARNER" msprop:Generator_TableClassName="DataSet_LEARNERDataTable" msprop:Generator_TableVarName="tableDataSet_LEARNER" msprop:Generator_RowChangedName="DataSet_LEARNERRowChanged" msprop:Generator_TablePropName="DataSet_LEARNER" msprop:Generator_RowDeletingName="DataSet_LEARNERRowDeleting" msprop:Generator_RowChangingName="DataSet_LEARNERRowChanging" msprop:Generator_RowEvHandlerName="DataSet_LEARNERRowChangeEventHandler" msprop:Generator_RowDeletedName="DataSet_LEARNERRowDeleted" msprop:Generator_RowClassName="DataSet_LEARNERRow" msprop:Generator_UserTableName="DataSet_LEARNER" msprop:Generator_RowEvArgName="DataSet_LEARNERRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="FIO" msprop:Generator_ColumnVarNameInTable="columnFIO" msprop:Generator_ColumnPropNameInRow="FIO" msprop:Generator_ColumnPropNameInTable="FIOColumn" msprop:Generator_UserColumnName="FIO">

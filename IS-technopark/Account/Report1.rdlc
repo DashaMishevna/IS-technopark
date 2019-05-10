@@ -265,7 +265,6 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
-                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -399,6 +398,13 @@
       </ConnectionProperties>
       <rd:DataSourceID>de026998-1f8d-422f-9068-bdaa76e85464</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="IS_technopark">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>ac714f1f-22a0-4e3b-bc59-af0fe8ad6d2a</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet2">
@@ -421,12 +427,10 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DataSet</rd:DataSetName>
-        <rd:SchemaPath>D:\Диплом\Программа\IS-technopark\IS-technopark\DataSet.xsd</rd:SchemaPath>
-        <rd:TableName>LEARNER</rd:TableName>
-        <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
-        <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>LEARNERTableAdapter</rd:TableAdapterName>
+        <rd:DataSetName>IS_technopark</rd:DataSetName>
+        <rd:TableName>DataSet_LEARNERDataTable</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>Clone</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceType>IS_technopark.DataSet+DataSet_LEARNERDataTable, IS-technopark, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

@@ -24,7 +24,7 @@ namespace IS_technopark {
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class DataSet : global::System.Data.DataSet {
         
-        private LEARNERDataTable tableLEARNER;
+        private DataSet_LEARNERDataTable tableDataSet_LEARNER;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -54,8 +54,8 @@ namespace IS_technopark {
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["LEARNER"] != null)) {
-                    base.Tables.Add(new LEARNERDataTable(ds.Tables["LEARNER"]));
+                if ((ds.Tables["DataSet_LEARNER"] != null)) {
+                    base.Tables.Add(new DataSet_LEARNERDataTable(ds.Tables["DataSet_LEARNER"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace IS_technopark {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public LEARNERDataTable LEARNER {
+        public DataSet_LEARNERDataTable DataSet_LEARNER {
             get {
-                return this.tableLEARNER;
+                return this.tableDataSet_LEARNER;
             }
         }
         
@@ -152,8 +152,8 @@ namespace IS_technopark {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["LEARNER"] != null)) {
-                    base.Tables.Add(new LEARNERDataTable(ds.Tables["LEARNER"]));
+                if ((ds.Tables["DataSet_LEARNER"] != null)) {
+                    base.Tables.Add(new DataSet_LEARNERDataTable(ds.Tables["DataSet_LEARNER"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace IS_technopark {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableLEARNER = ((LEARNERDataTable)(base.Tables["LEARNER"]));
+            this.tableDataSet_LEARNER = ((DataSet_LEARNERDataTable)(base.Tables["DataSet_LEARNER"]));
             if ((initTable == true)) {
-                if ((this.tableLEARNER != null)) {
-                    this.tableLEARNER.InitVars();
+                if ((this.tableDataSet_LEARNER != null)) {
+                    this.tableDataSet_LEARNER.InitVars();
                 }
             }
         }
@@ -204,13 +204,13 @@ namespace IS_technopark {
             this.Namespace = "http://tempuri.org/DataSet.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableLEARNER = new LEARNERDataTable();
-            base.Tables.Add(this.tableLEARNER);
+            this.tableDataSet_LEARNER = new DataSet_LEARNERDataTable();
+            base.Tables.Add(this.tableDataSet_LEARNER);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeLEARNER() {
+        private bool ShouldSerializeDataSet_LEARNER() {
             return false;
         }
         
@@ -270,14 +270,14 @@ namespace IS_technopark {
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void LEARNERRowChangeEventHandler(object sender, LEARNERRowChangeEvent e);
+        public delegate void DataSet_LEARNERRowChangeEventHandler(object sender, DataSet_LEARNERRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class LEARNERDataTable : global::System.Data.TypedTableBase<LEARNERRow> {
+        public partial class DataSet_LEARNERDataTable : global::System.Data.TypedTableBase<DataSet_LEARNERRow> {
             
             private global::System.Data.DataColumn columnFIO;
             
@@ -287,8 +287,8 @@ namespace IS_technopark {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LEARNERDataTable() {
-                this.TableName = "LEARNER";
+            public DataSet_LEARNERDataTable() {
+                this.TableName = "DataSet_LEARNER";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -296,7 +296,7 @@ namespace IS_technopark {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal LEARNERDataTable(global::System.Data.DataTable table) {
+            internal DataSet_LEARNERDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -313,7 +313,7 @@ namespace IS_technopark {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected LEARNERDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected DataSet_LEARNERDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
@@ -353,47 +353,47 @@ namespace IS_technopark {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LEARNERRow this[int index] {
+            public DataSet_LEARNERRow this[int index] {
                 get {
-                    return ((LEARNERRow)(this.Rows[index]));
+                    return ((DataSet_LEARNERRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event LEARNERRowChangeEventHandler LEARNERRowChanging;
+            public event DataSet_LEARNERRowChangeEventHandler DataSet_LEARNERRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event LEARNERRowChangeEventHandler LEARNERRowChanged;
+            public event DataSet_LEARNERRowChangeEventHandler DataSet_LEARNERRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event LEARNERRowChangeEventHandler LEARNERRowDeleting;
+            public event DataSet_LEARNERRowChangeEventHandler DataSet_LEARNERRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event LEARNERRowChangeEventHandler LEARNERRowDeleted;
+            public event DataSet_LEARNERRowChangeEventHandler DataSet_LEARNERRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddLEARNERRow(LEARNERRow row) {
+            public void AddDataSet_LEARNERRow(DataSet_LEARNERRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LEARNERRow AddLEARNERRow(string FIO, decimal CLASS, string SCHOOL) {
-                LEARNERRow rowLEARNERRow = ((LEARNERRow)(this.NewRow()));
+            public DataSet_LEARNERRow AddDataSet_LEARNERRow(string FIO, decimal CLASS, string SCHOOL) {
+                DataSet_LEARNERRow rowDataSet_LEARNERRow = ((DataSet_LEARNERRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         FIO,
                         CLASS,
                         SCHOOL};
-                rowLEARNERRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowLEARNERRow);
-                return rowLEARNERRow;
+                rowDataSet_LEARNERRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowDataSet_LEARNERRow);
+                return rowDataSet_LEARNERRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                LEARNERDataTable cln = ((LEARNERDataTable)(base.Clone()));
+                DataSet_LEARNERDataTable cln = ((DataSet_LEARNERDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -401,7 +401,7 @@ namespace IS_technopark {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new LEARNERDataTable();
+                return new DataSet_LEARNERDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -430,28 +430,28 @@ namespace IS_technopark {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LEARNERRow NewLEARNERRow() {
-                return ((LEARNERRow)(this.NewRow()));
+            public DataSet_LEARNERRow NewDataSet_LEARNERRow() {
+                return ((DataSet_LEARNERRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new LEARNERRow(builder);
+                return new DataSet_LEARNERRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(LEARNERRow);
+                return typeof(DataSet_LEARNERRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.LEARNERRowChanged != null)) {
-                    this.LEARNERRowChanged(this, new LEARNERRowChangeEvent(((LEARNERRow)(e.Row)), e.Action));
+                if ((this.DataSet_LEARNERRowChanged != null)) {
+                    this.DataSet_LEARNERRowChanged(this, new DataSet_LEARNERRowChangeEvent(((DataSet_LEARNERRow)(e.Row)), e.Action));
                 }
             }
             
@@ -459,8 +459,8 @@ namespace IS_technopark {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.LEARNERRowChanging != null)) {
-                    this.LEARNERRowChanging(this, new LEARNERRowChangeEvent(((LEARNERRow)(e.Row)), e.Action));
+                if ((this.DataSet_LEARNERRowChanging != null)) {
+                    this.DataSet_LEARNERRowChanging(this, new DataSet_LEARNERRowChangeEvent(((DataSet_LEARNERRow)(e.Row)), e.Action));
                 }
             }
             
@@ -468,8 +468,8 @@ namespace IS_technopark {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.LEARNERRowDeleted != null)) {
-                    this.LEARNERRowDeleted(this, new LEARNERRowChangeEvent(((LEARNERRow)(e.Row)), e.Action));
+                if ((this.DataSet_LEARNERRowDeleted != null)) {
+                    this.DataSet_LEARNERRowDeleted(this, new DataSet_LEARNERRowChangeEvent(((DataSet_LEARNERRow)(e.Row)), e.Action));
                 }
             }
             
@@ -477,14 +477,14 @@ namespace IS_technopark {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.LEARNERRowDeleting != null)) {
-                    this.LEARNERRowDeleting(this, new LEARNERRowChangeEvent(((LEARNERRow)(e.Row)), e.Action));
+                if ((this.DataSet_LEARNERRowDeleting != null)) {
+                    this.DataSet_LEARNERRowDeleting(this, new DataSet_LEARNERRowChangeEvent(((DataSet_LEARNERRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveLEARNERRow(LEARNERRow row) {
+            public void RemoveDataSet_LEARNERRow(DataSet_LEARNERRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -511,7 +511,7 @@ namespace IS_technopark {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "LEARNERDataTable";
+                attribute2.FixedValue = "DataSet_LEARNERDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -555,25 +555,25 @@ namespace IS_technopark {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class LEARNERRow : global::System.Data.DataRow {
+        public partial class DataSet_LEARNERRow : global::System.Data.DataRow {
             
-            private LEARNERDataTable tableLEARNER;
+            private DataSet_LEARNERDataTable tableDataSet_LEARNER;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal LEARNERRow(global::System.Data.DataRowBuilder rb) : 
+            internal DataSet_LEARNERRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableLEARNER = ((LEARNERDataTable)(this.Table));
+                this.tableDataSet_LEARNER = ((DataSet_LEARNERDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string FIO {
                 get {
-                    return ((string)(this[this.tableLEARNER.FIOColumn]));
+                    return ((string)(this[this.tableDataSet_LEARNER.FIOColumn]));
                 }
                 set {
-                    this[this.tableLEARNER.FIOColumn] = value;
+                    this[this.tableDataSet_LEARNER.FIOColumn] = value;
                 }
             }
             
@@ -581,10 +581,10 @@ namespace IS_technopark {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public decimal CLASS {
                 get {
-                    return ((decimal)(this[this.tableLEARNER.CLASSColumn]));
+                    return ((decimal)(this[this.tableDataSet_LEARNER.CLASSColumn]));
                 }
                 set {
-                    this[this.tableLEARNER.CLASSColumn] = value;
+                    this[this.tableDataSet_LEARNER.CLASSColumn] = value;
                 }
             }
             
@@ -592,10 +592,10 @@ namespace IS_technopark {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string SCHOOL {
                 get {
-                    return ((string)(this[this.tableLEARNER.SCHOOLColumn]));
+                    return ((string)(this[this.tableDataSet_LEARNER.SCHOOLColumn]));
                 }
                 set {
-                    this[this.tableLEARNER.SCHOOLColumn] = value;
+                    this[this.tableDataSet_LEARNER.SCHOOLColumn] = value;
                 }
             }
         }
@@ -604,22 +604,22 @@ namespace IS_technopark {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class LEARNERRowChangeEvent : global::System.EventArgs {
+        public class DataSet_LEARNERRowChangeEvent : global::System.EventArgs {
             
-            private LEARNERRow eventRow;
+            private DataSet_LEARNERRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LEARNERRowChangeEvent(LEARNERRow row, global::System.Data.DataRowAction action) {
+            public DataSet_LEARNERRowChangeEvent(DataSet_LEARNERRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public LEARNERRow Row {
+            public DataSet_LEARNERRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -647,7 +647,7 @@ namespace IS_technopark.DataSetTableAdapters {
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class LEARNERTableAdapter : global::System.ComponentModel.Component {
+    public partial class DataSet_LEARNERTableAdapter : global::System.ComponentModel.Component {
         
         private global::Oracle.ManagedDataAccess.Client.OracleDataAdapter _adapter;
         
@@ -661,7 +661,7 @@ namespace IS_technopark.DataSetTableAdapters {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public LEARNERTableAdapter() {
+        public DataSet_LEARNERTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -758,7 +758,7 @@ namespace IS_technopark.DataSetTableAdapters {
             this._adapter = new global::Oracle.ManagedDataAccess.Client.OracleDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "LEARNER";
+            tableMapping.DataSetTable = "DataSet_LEARNER";
             tableMapping.ColumnMappings.Add("FIO", "FIO");
             tableMapping.ColumnMappings.Add("CLASS", "CLASS");
             tableMapping.ColumnMappings.Add("SCHOOL", "SCHOOL");
@@ -786,7 +786,7 @@ namespace IS_technopark.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet.LEARNERDataTable dataTable) {
+        public virtual int Fill(DataSet.DataSet_LEARNERDataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -799,9 +799,9 @@ namespace IS_technopark.DataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet.LEARNERDataTable GetData() {
+        public virtual DataSet.DataSet_LEARNERDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            DataSet.LEARNERDataTable dataTable = new DataSet.LEARNERDataTable();
+            DataSet.DataSet_LEARNERDataTable dataTable = new DataSet.DataSet_LEARNERDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
         }
