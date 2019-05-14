@@ -4,44 +4,51 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br>
-    <h2 style="text-align:center">ОСВОБОЖДЕНИЕ</h2>
+    <h2 style="text-align:center">jОТЧЕТ - ОСВОБОЖДЕНИЕ</h2>
     <br>
     <br>
     <h4 style="text-align:left; font-weight:600 ">Поиск группы по шифру</h4>
     <asp:Label ID="Label1" runat="server" Text="Введите шифр" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:10px;"></asp:TextBox>
-    <asp:Button ID="Button2" runat="server" Text="Выбрать"  CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" OnClick="Button2_Click" />
+    <asp:Button ID="Button2" runat="server" Text="Выбрать" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" OnClick="Button2_Click" />
     <br>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.EMPLOYEES.FIO AS EXPR1, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.LEARNER.ID_LEARNER FROM TECHNOPARK.EMPLOYEES INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.EMPLOYEES.ID_EMPLOYEES = TECHNOPARK.GROUPS.ID_EMPLOYEES INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.GROUPS.TITLE = TECHNOPARK.QUEUE.TITLE_G INNER JOIN TECHNOPARK.LEARNER ON TECHNOPARK.QUEUE.ID_LEARNER_Q = TECHNOPARK.LEARNER.ID_LEARNER"></asp:SqlDataSource>
     <br>
     <asp:Label ID="Label2" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER">
-        <Columns>
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER" CellPadding="5" CellSpacing="3" GridLines="Vertical">
+        <AlternatingRowStyle BackColor="#d2ecf9" />
+        <Columns>   
             <asp:TemplateField>
                 <ItemTemplate>
                     <asp:CheckBox ID="CheckBox1" runat="server" />
                 </ItemTemplate>
+                <ItemStyle HorizontalAlign="Center" Width="30px" />
             </asp:TemplateField>
-            <asp:BoundField DataField="TITLE" HeaderText="TITLE" SortExpression="TITLE" />
-            <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
-            <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" />
-            <asp:BoundField DataField="SCHOOL" HeaderText="SCHOOL" SortExpression="SCHOOL" />
-            <asp:BoundField DataField="PROJECT_THEME" HeaderText="PROJECT_THEME" SortExpression="PROJECT_THEME" />
-            <asp:BoundField DataField="EXPR1" HeaderText="EXPR1" SortExpression="EXPR1" />
-            <asp:BoundField DataField="D_CONFERENCE" HeaderText="D_CONFERENCE" SortExpression="D_CONFERENCE" />
+            <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" />
+            <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" />
+            <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" />
+            <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL" />
+            <asp:BoundField DataField="PROJECT_THEME" HeaderText="Тема проека" SortExpression="PROJECT_THEME" />
+            <asp:BoundField DataField="EXPR1" HeaderText="Преподаватель" SortExpression="EXPR1" />
+            <asp:BoundField DataField="D_CONFERENCE" HeaderText="Дата конференции" SortExpression="D_CONFERENCE" />
             <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" />
         </Columns>
+        <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
+        <FooterStyle BackColor="#CCCCCC" />
+        <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
+        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" />
     </asp:GridView>
     <asp:Label ID="Label3" runat="server" Text="" ForeColor="Red"></asp:Label>
     <br>
 
-    <asp:Button ID="Button1" runat="server"  Text="Button" OnClick="Button1_Click1" />
+    <asp:Button ID="Button1" runat="server"  Text="Вывести" OnClick="Button1_Click1" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center"  />
 
     <br />
     <br>
-    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" OnInit="ReportViewer1_Init" >
-        <LocalReport ReportPath="Account\Report1.rdlc">
+    <rsweb:ReportViewer ID="ReportViewer1" runat="server"  Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="" OnInit="ReportViewer1_Init" Height="500px" BorderStyle="None" >
+        <LocalReport ReportPath="Account\Exemption.rdlc">
             <DataSources>
                 <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet2" />
             </DataSources>
