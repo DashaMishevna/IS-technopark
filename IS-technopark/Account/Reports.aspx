@@ -14,7 +14,7 @@
     <br>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.EMPLOYEES.FIO AS EXPR1, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.LEARNER.ID_LEARNER FROM TECHNOPARK.EMPLOYEES INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.EMPLOYEES.ID_EMPLOYEES = TECHNOPARK.GROUPS.ID_EMPLOYEES INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.GROUPS.TITLE = TECHNOPARK.QUEUE.TITLE_G INNER JOIN TECHNOPARK.LEARNER ON TECHNOPARK.QUEUE.ID_LEARNER_Q = TECHNOPARK.LEARNER.ID_LEARNER"></asp:SqlDataSource>
     <br>
-    <asp:Label ID="Label5" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER">
         <Columns>
@@ -33,7 +33,12 @@
             <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" />
         </Columns>
     </asp:GridView>
+    <asp:Label ID="Label3" runat="server" Text="" ForeColor="Red"></asp:Label>
     <br>
+
+    <asp:Button ID="Button1" runat="server"  Text="Button" OnClick="Button1_Click1" />
+
+    <br />
     <br>
     <rsweb:ReportViewer ID="ReportViewer1" runat="server" Font-Names="Verdana" Font-Size="8pt" WaitMessageFont-Names="Verdana" WaitMessageFont-Size="14pt" Width="100%" OnInit="ReportViewer1_Init" >
         <LocalReport ReportPath="Account\Report1.rdlc">
@@ -46,7 +51,5 @@
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="SelectList" TypeName="IS_technopark.Account.Reports"></asp:ObjectDataSource>
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
-
-<asp:Button ID="Button1" runat="server"  Text="Button" OnClick="Button1_Click1" />
 
 </asp:Content>

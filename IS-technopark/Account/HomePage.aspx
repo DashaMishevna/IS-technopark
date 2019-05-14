@@ -69,22 +69,28 @@
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE (PARENT.ID_LEARNER_P = 0)"></asp:SqlDataSource>
 <br>
 <asp:Label ID="Label3" runat="server" Text="" ForeColor="Gray"></asp:Label>
-<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" BorderStyle="None" Height="25px">
+<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" Height="25px" CellPadding="4" Width="1240px" ForeColor="#333333" GridLines="None">
+    <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="ID_PARENT" HeaderText="ID_PARENT" ReadOnly="True" SortExpression="ID_PARENT"  Visible="false"/>
         <asp:BoundField DataField="ID_LEARNER_P" HeaderText="ID_LEARNER_P" SortExpression="ID_LEARNER_P" Visible="false" />
         <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" />
-        <asp:BoundField DataField="PHONE" HeaderText="ТЕЛЕФОН" SortExpression="PHONE" />
-        <asp:BoundField DataField="PHONE_WORK" HeaderText="РАБОЧИЙ ТЕЛЕФОН" SortExpression="PHONE_WORK" />
-        <asp:BoundField DataField="E_MAIL" HeaderText="E_MAIL" SortExpression="E_MAIL" />
-        <asp:BoundField DataField="PLACE_WORK" HeaderText="МЕСТО РАБОТЫ" SortExpression="PLACE_WORK" />
-        <asp:BoundField DataField="POSITION" HeaderText="ДОЛЖНОСТЬ" SortExpression="POSITION" />
+        <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />
+        <asp:BoundField DataField="PHONE_WORK" HeaderText="Рабочий телефон" SortExpression="PHONE_WORK" />
+        <asp:BoundField DataField="E_MAIL" HeaderText="E_mail" SortExpression="E_MAIL" />
+        <asp:BoundField DataField="PLACE_WORK" HeaderText="Место работы" SortExpression="PLACE_WORK" />
+        <asp:BoundField DataField="POSITION" HeaderText="Должность" SortExpression="POSITION" />
     </Columns>
-    <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
-    <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
-    <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-    <RowStyle Height="35px" HorizontalAlign="Left" />
-    <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" />
+        <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#8ED18E" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#DDF7DD" ForeColor="#333333" />  <%--ТУТ менять цвет с первой строки--%>
+        <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" />
+        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+        <SortedAscendingHeaderStyle ForeColor="Black" BackColor="#808080" />
+        <SortedDescendingCellStyle ForeColor="Black" BackColor="#CAC9C9" />
+        <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
 </div>
 </asp:Content>

@@ -19,10 +19,15 @@ namespace IS_technopark.Account
         List<string> id_learner = new List<string>();
         List<string> d_conf = new List<string>();
         List<string> inf_learner = new List<string>();
+        List<string> school_list = new List<string>();
         DataTable dt_button = new DataTable();
+        int cont_repeat = 0;
+
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Label3.Text = " ";
             if (!IsPostBack)
             {
                 DataTable dt2 = new DataTable();
@@ -31,7 +36,6 @@ namespace IS_technopark.Account
                 ReportDataSource rdts = new ReportDataSource("DataSet2", dt2);
                 ReportViewer1.LocalReport.DataSources.Add(rdts);
                 ReportViewer1.LocalReport.Refresh();
-                Response.Write(dt2 + "<b>ДАННЫЕ</b><br/>");
             }
 
             int a = 0;
@@ -67,6 +71,8 @@ namespace IS_technopark.Account
                 // Response.Write(cb + "<b>tut</b><br/>");
                 oraConnection.Close();
             }
+
+           
 
         }
 
@@ -134,8 +140,6 @@ namespace IS_technopark.Account
             lab1.cab = "three";
             Listlabs.Add(lab1);
             return Listlabs;
-
-
         }
 
         public void reportForming(string chislo1, List<labs> dataset)
@@ -190,21 +194,63 @@ namespace IS_technopark.Account
             }
         }
 
-        protected void Button1_Click1(object sender, EventArgs e)
+        public void School()
         {
-            oraConnection.Open();
             int s = 0;
             foreach (string i in id_learner)
             {
-
                 oraAdap.SelectCommand = new OracleCommand();
                 oraAdap.SelectCommand.CommandText = "Select FIO, CLASS, SCHOOL from LEARNER WHERE ID_LEARNER= '" + id_learner[s] + "'";
                 oraAdap.SelectCommand.Connection = oraConnection;
                 OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
-                oraAdap.Fill(dt_button);
+                while (oraReader.Read())
+                {
+                    object[] values = new object[oraReader.FieldCount];
+                    oraReader.GetValues(values);
+                    school_list.Add(values[2].ToString());
+                }
                 s += 1;
             }
+            for (int i = 0; i < school_list.Count; i++)
+            {
+                for (int j = 0; j < school_list.Count; j++)
+                {
+                    //Response.Write(school_list[i] + "<b>tut</b><br/>" + school_list[j]);
+                    if (school_list[i] != school_list[j])
+                    {
+                        cont_repeat += 1;
+                        //Response.Write("<b>РАзное</b><br/>");
+                    }
+                }
+            }
+                //oraConnection.Close();
+            }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            oraConnection.Open();
+            int s = 0;
+            School();
+            if (cont_repeat == 0)
+            {
+                foreach (string i in id_learner)
+                {
+
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "Select FIO, CLASS, SCHOOL from LEARNER WHERE ID_LEARNER= '" + id_learner[s] + "'";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+                    oraAdap.Fill(dt_button);
+                    s += 1;
+
+                }
+            }
+            else
+            {
+                Label3.Text = "Выберите обучающихся одной школы!";
+            }
             //Response.Write(dt_button.Rows + "<b>tut</b><br/>");
+            
             oraConnection.Close();
 
             DataTable dt2 = new DataTable();
@@ -213,7 +259,9 @@ namespace IS_technopark.Account
             ReportDataSource rdts = new ReportDataSource("DataSet2", dt2);
             ReportViewer1.LocalReport.DataSources.Add(rdts);
             ReportViewer1.LocalReport.Refresh();
-            Response.Write(dt2 + "<b>ДАННЫЕ_2</b><br/>");
+            //Response.Write(dt2 + "<b>ДАННЫЕ_2</b><br/>");
+
+            
         }
     }
 }

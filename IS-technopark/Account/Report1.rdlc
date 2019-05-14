@@ -75,6 +75,10 @@
                 <Value>=Parameters!chislo.Value</Value>
                 <Style />
               </TextRun>
+              <TextRun>
+                <Value>=Fields!SCHOOL.Value</Value>
+                <Style />
+              </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
