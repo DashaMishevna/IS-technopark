@@ -163,10 +163,14 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value>=Fields!SCHOOL.Value</Value>
+                <Value>=First(Fields!SCHOOL.Value, "DataSet2")</Value>
                 <Style>
+                  <FontStyle>Normal</FontStyle>
                   <FontFamily>Times New Roman</FontFamily>
                   <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
                 </Style>
               </TextRun>
             </TextRuns>
@@ -175,9 +179,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox2</rd:DefaultName>
         <Top>0.69003cm</Top>
-        <Left>9.05086cm</Left>
+        <Left>9.51654cm</Left>
         <Height>2.42033cm</Height>
-        <Width>7.194cm</Width>
+        <Width>6.72833cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -196,15 +200,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Освобождение </Value>
-                <Style />
-              </TextRun>
-              <TextRun>
-                <Value>=Parameters!chislo.Value</Value>
-                <Style />
-              </TextRun>
-              <TextRun>
-                <Value>=Fields!SCHOOL.Value</Value>
+                <Value />
                 <Style />
               </TextRun>
             </TextRuns>
@@ -252,7 +248,53 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>               00.00.2019 г. в школьном технопарке состоится традиционная научная конференция обучающихся. В ходе мероприятия пройдет защита и обсуждение детских проектов, выполненных на базе технопарка. Мы рады сообщить вам, что среди успешных авторов проектов есть следующие обучающиеся. Прошу Вас освободить их от учебных занятий 00.00.2019 г.  Адрес: г. Город, ул. Улица, Школьный технопарк.</Value>
+                <Value xml:space="preserve">        </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!DCONF.Value</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <Format>D</Format>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> в школьном технопарке состоится традиционная научная конференция обучающихся. В ходе мероприятия пройдет защита и обсуждение детских проектов, выполненных на базе технопарка. Мы рады сообщить вам, что среди успешных авторов проектов есть следующие обучающиеся. Прошу Вас освободить их от учебных занятий </Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value>=Parameters!DCONF.Value</Value>
+                <Style>
+                  <FontStyle>Normal</FontStyle>
+                  <FontFamily>Times New Roman</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <Format>D</Format>
+                  <TextDecoration>None</TextDecoration>
+                  <Color>#000000</Color>
+                </Style>
+              </TextRun>
+              <TextRun>
+                <Value> Адрес: г. Город, ул. Улица, Школьный технопарк.</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Times New Roman</FontFamily>
@@ -340,8 +382,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
-        <Top>22.71482cm</Top>
-        <Left>7.9502cm</Left>
+        <Top>14.12115cm</Top>
+        <Left>7.95021cm</Left>
         <Height>1.0795cm</Height>
         <Width>8.29466cm</Width>
         <ZIndex>3</ZIndex>
@@ -396,6 +438,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -431,6 +474,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -456,6 +500,7 @@
                               <Value>=Fields!FIO.Value</Value>
                               <Style>
                                 <FontFamily>Times New Roman</FontFamily>
+                                <FontSize>11pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -470,6 +515,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -490,6 +536,7 @@
                               <Value>=Fields!CLASS.Value</Value>
                               <Style>
                                 <FontFamily>Times New Roman</FontFamily>
+                                <FontSize>11pt</FontSize>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -504,6 +551,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <VerticalAlign>Middle</VerticalAlign>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -536,7 +584,7 @@
         <Top>10.15602cm</Top>
         <Left>0.27851cm</Left>
         <Height>2.76634cm</Height>
-        <Width>15.96635cm</Width>
+        <Width>15.96636cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -545,7 +593,7 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>9.36784in</Height>
+    <Height>9.48451in</Height>
     <Style />
   </Body>
   <Width>6.5in</Width>
@@ -589,6 +637,13 @@
       </ConnectionProperties>
       <rd:DataSourceID>ac714f1f-22a0-4e3b-bc59-af0fe8ad6d2a</rd:DataSourceID>
     </DataSource>
+    <DataSource Name="DataSet1">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>5027fe4e-3dae-44a5-ba03-913784f4c9a0</rd:DataSourceID>
+    </DataSource>
   </DataSources>
   <DataSets>
     <DataSet Name="DataSet2">
@@ -623,6 +678,11 @@
       <DataType>String</DataType>
       <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="DCONF">
+      <DataType>DateTime</DataType>
+      <Nullable>true</Nullable>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>

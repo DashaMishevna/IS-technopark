@@ -57,7 +57,7 @@ namespace IS_technopark.Account
                     }
 
                     oraAdap.SelectCommand = new OracleCommand();
-                    oraAdap.SelectCommand.CommandText = "Select D_CONFERENCE FROM TECHNOPARK.GROUPS where TECHNOPARK.GROUPS.TITLE = '" + GridView1.Columns[1].ToString() + "'";
+                    oraAdap.SelectCommand.CommandText = "Select D_CONFERENCE FROM TECHNOPARK.GROUPS where TECHNOPARK.GROUPS.TITLE = '" + GridView1.DataKeys[a].Values[1] + "'";
                     oraAdap.SelectCommand.Connection = oraConnection;
                     OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
                     while (oraReader1.Read())
@@ -65,10 +65,12 @@ namespace IS_technopark.Account
                         object[] values = new object[oraReader1.FieldCount];
                         oraReader1.GetValues(values);
                         d_conf.Add(values[0].ToString());
+                        
                     }
                 }
                 a += 1;
-                // Response.Write(cb + "<b>tut</b><br/>");
+                // Response.Write(cb + "<b>tut</b><br
+                
                 oraConnection.Close();
             }
 
@@ -259,7 +261,17 @@ namespace IS_technopark.Account
             ReportViewer1.LocalReport.Refresh();
             //Response.Write(dt2 + "<b>ДАННЫЕ_2</b><br/>");
 
-            
+
+            LocalReport localReport = ReportViewer1.LocalReport;
+            localReport.ReportPath = "Account/Exemption.rdlc";
+
+            ReportParameter reportParam = new ReportParameter();
+            reportParam.Name = "DCONF";
+            reportParam.Values.Add(DateTime.Parse(d_conf[0].ToString()).ToShortDateString());
+            //reportParam.Add(new ReportParameter("DCONF", d_conf[0].ToString()));
+            localReport.SetParameters(new ReportParameter[] { reportParam });
+
+
         }
     }
 }

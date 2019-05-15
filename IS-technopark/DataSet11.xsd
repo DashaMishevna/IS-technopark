@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet11.xsd" xmlns:mstns="http://tempuri.org/DataSet11.xsd" xmlns="http://tempuri.org/DataSet11.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Web.config)" ParameterPrefix=":" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.ConnectionString.ConnectionString" Provider="Oracle.ManagedDataAccess.Client" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GROUPSTableAdapter" GeneratorDataComponentClassName="GROUPSTableAdapter" Name="GROUPS" UserDataComponentName="GROUPSTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="TECHNOPARK.GROUPS" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT D_CONFERENCE FROM TECHNOPARK.GROUPS</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="D_CONFERENCE" DataSetColumn="D_CONFERENCE" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LEARNERTableAdapter" GeneratorDataComponentClassName="LEARNERTableAdapter" Name="LEARNER" UserDataComponentName="LEARNERTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Web.config)" DbObjectName="TECHNOPARK.LEARNER" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT FIO, CLASS, SCHOOL FROM TECHNOPARK.LEARNER</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="FIO" DataSetColumn="FIO" />
+              <Mapping SourceColumn="CLASS" DataSetColumn="CLASS" />
+              <Mapping SourceColumn="SCHOOL" DataSetColumn="SCHOOL" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GROUPS" msprop:Generator_TableClassName="GROUPSDataTable" msprop:Generator_TableVarName="tableGROUPS" msprop:Generator_TablePropName="GROUPS" msprop:Generator_RowDeletingName="GROUPSRowDeleting" msprop:Generator_RowChangingName="GROUPSRowChanging" msprop:Generator_RowEvHandlerName="GROUPSRowChangeEventHandler" msprop:Generator_RowDeletedName="GROUPSRowDeleted" msprop:Generator_UserTableName="GROUPS" msprop:Generator_RowChangedName="GROUPSRowChanged" msprop:Generator_RowEvArgName="GROUPSRowChangeEvent" msprop:Generator_RowClassName="GROUPSRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="D_CONFERENCE" msprop:Generator_ColumnVarNameInTable="columnD_CONFERENCE" msprop:Generator_ColumnPropNameInRow="D_CONFERENCE" msprop:Generator_ColumnPropNameInTable="D_CONFERENCEColumn" msprop:Generator_UserColumnName="D_CONFERENCE" type="xs:dateTime" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LEARNER" msprop:Generator_TableClassName="LEARNERDataTable" msprop:Generator_TableVarName="tableLEARNER" msprop:Generator_TablePropName="LEARNER" msprop:Generator_RowDeletingName="LEARNERRowDeleting" msprop:Generator_RowChangingName="LEARNERRowChanging" msprop:Generator_RowEvHandlerName="LEARNERRowChangeEventHandler" msprop:Generator_RowDeletedName="LEARNERRowDeleted" msprop:Generator_UserTableName="LEARNER" msprop:Generator_RowChangedName="LEARNERRowChanged" msprop:Generator_RowEvArgName="LEARNERRowChangeEvent" msprop:Generator_RowClassName="LEARNERRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FIO" msprop:Generator_ColumnVarNameInTable="columnFIO" msprop:Generator_ColumnPropNameInRow="FIO" msprop:Generator_ColumnPropNameInTable="FIOColumn" msprop:Generator_UserColumnName="FIO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CLASS" msprop:Generator_ColumnVarNameInTable="columnCLASS" msprop:Generator_ColumnPropNameInRow="CLASS" msprop:Generator_ColumnPropNameInTable="CLASSColumn" msprop:Generator_UserColumnName="CLASS" type="xs:decimal" />
+              <xs:element name="SCHOOL" msprop:Generator_ColumnVarNameInTable="columnSCHOOL" msprop:Generator_ColumnPropNameInRow="SCHOOL" msprop:Generator_ColumnPropNameInTable="SCHOOLColumn" msprop:Generator_UserColumnName="SCHOOL">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

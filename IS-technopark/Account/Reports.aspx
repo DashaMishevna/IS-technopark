@@ -4,7 +4,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br>
-    <h2 style="text-align:center">jОТЧЕТ - ОСВОБОЖДЕНИЕ</h2>
+    <h2 style="text-align:center">ОТЧЕТ - ОСВОБОЖДЕНИЕ</h2>
     <br>
     <br>
     <h4 style="text-align:left; font-weight:600 ">Поиск группы по шифру</h4>
@@ -16,7 +16,7 @@
     <br>
     <asp:Label ID="Label2" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER" CellPadding="5" CellSpacing="3" GridLines="Vertical">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER,TITLE" CellPadding="5" CellSpacing="3" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px">
         <AlternatingRowStyle BackColor="#d2ecf9" />
         <Columns>   
             <asp:TemplateField>
@@ -31,7 +31,7 @@
             <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL" />
             <asp:BoundField DataField="PROJECT_THEME" HeaderText="Тема проека" SortExpression="PROJECT_THEME" />
             <asp:BoundField DataField="EXPR1" HeaderText="Преподаватель" SortExpression="EXPR1" />
-            <asp:BoundField DataField="D_CONFERENCE" HeaderText="Дата конференции" SortExpression="D_CONFERENCE" />
+            <asp:BoundField DataField="D_CONFERENCE" HeaderText="Дата конференции" SortExpression="D_CONFERENCE" DataFormatString="{0:dd/MM/yyyy}" />
             <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" />
         </Columns>
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
