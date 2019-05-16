@@ -9,7 +9,7 @@
     </asp:SqlDataSource>
     <br>
     <h2 style="text-align:center"> СОЗДАНИЕ ГРУППЫ </h2>
-    <div style="float:right; text-align:left; margin-right:-160px; font-size:13px">
+    <div style="float:right; text-align:left; margin-right:-140px; font-size:13px">
         <br>
         <h4 style="text-align:left; font-weight:600 ">Выберите обучающихся</h4>
         <br>
@@ -65,7 +65,7 @@
         <asp:Label ID="Label9" runat="server" Text="" ForeColor="Gray"></asp:Label>
     </div>
 
-    <div style="float:left; margin-left:-170px;"> 
+    <div style="float:left; margin-left:-150px;"> 
         <br>
         <h4 style="text-align:left; font-weight:600 ">Данные о группе</h4>
         <br>
@@ -126,15 +126,11 @@
         </div>
         <br>
         <br>
- </div>
-
+     </div>
     <div class="form-group" style=" text-align:center; margin-top:500px">
         <asp:Button ID="Button1" runat="server" Text="Добавить" Width="225px" Height="40px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button1_Click" OnClientClick="i=2"  />
         <br/>
         <br/>
         <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-       
     </div>
-
-
  </asp:Content>

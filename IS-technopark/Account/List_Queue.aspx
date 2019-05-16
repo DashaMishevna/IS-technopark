@@ -8,12 +8,15 @@
     
     <div style="float:left; margin-top:10px; margin-left:-100px">
     
-    <asp:Label ID="Label2" runat="server" Text="Поиск проектанта по проекту" style="width:200px; height:30px; font-size:16px; margin-bottom:15px" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text="Вывод информации по названию проекта" style="width:200px; height:30px; font-size:15px; margin-bottom:15px" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label6" runat="server" Text="Вывод информации по ФИО проектанта" style= "height:30px; font-size:15px; margin-bottom:15px; margin-left:70px;" Font-Italic="False" Font-Bold="True"></asp:Label>   
     <br/>
     <%--<asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:17px"></asp:TextBox>--%> 
-    <asp:DropDownList ID="DropDownList1" runat="server"  CssClass="btn btn-default" Height="30px"></asp:DropDownList>
+    <asp:DropDownList ID="DropDownList1" runat="server"  CssClass="btn btn-default" Height="35px"></asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
     <asp:Button ID="Button1" runat="server" Text="Выбрать" Height="35px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button1_Click" />
+    <asp:TextBox ID="TextBox1" runat="server" Height="35px" CssClass="btn btn-default" Font-Size="11pt" style="margin-left:75px; text-align:left" ></asp:TextBox>
+    <asp:Button ID="Button3" runat="server" Text="Выбрать" Height="35px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button3_Click"  />
     <br/>
     <br/>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT LEARNER.ID_LEARNER, QUEUE.ID_QUEUE,  TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.DIR_PROJECTS.TITLE, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.D_T_RECORD, TECHNOPARK.LEARNER.INTERESTS FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER order by TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.FIO">
@@ -34,24 +37,25 @@
             <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" > 
             <HeaderStyle Width="150px" />
             </asp:BoundField>
-            <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="ДАТА РЕГИСТРАЦИИ" SortExpression="DATE_REGISTRATION" DataFormatString="{0:dd/MM/yyyy}">
+            <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="Дата записи" SortExpression="DATE_REGISTRATION" DataFormatString="{0:dd/MM/yyyy}">
+            <HeaderStyle Width="130px" />
             <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
-            <asp:BoundField DataField="CLASS" HeaderText="КЛАСС" SortExpression="CLASS" >
+            <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" >
             <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
-            <asp:BoundField DataField="SHIFT" HeaderText="СМЕНА" SortExpression="SHIFT" >
+            <asp:BoundField DataField="SHIFT" HeaderText="Смена" SortExpression="SHIFT" >
             <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
-            <asp:BoundField DataField="TITLE" HeaderText="ПРОЕКТ" SortExpression="TITLE" >
+            <asp:BoundField DataField="TITLE" HeaderText="Проект" SortExpression="TITLE" >
             <HeaderStyle Width="350px" />
             </asp:BoundField>
-            <asp:BoundField DataField="LABORATORY" HeaderText="НАПРАВЛЕНИЕ" SortExpression="LABORATORY" HeaderStyle-Width="150px"><HeaderStyle Width="150px"></HeaderStyle></asp:BoundField>
-            <asp:BoundField DataField="STATUS_L" HeaderText="СТАТУС" SortExpression="STATUS_L" >
+            <asp:BoundField DataField="LABORATORY" HeaderText="Направление" SortExpression="LABORATORY" HeaderStyle-Width="150px"><HeaderStyle Width="150px"></HeaderStyle></asp:BoundField>
+            <asp:BoundField DataField="STATUS_L" HeaderText="Статус" SortExpression="STATUS_L" >
             <HeaderStyle Width="150px" />
             </asp:BoundField>
             <asp:BoundField DataField="D_T_RECORD" HeaderText="D_T_RECORD" SortExpression="D_T_RECORD" />
-            <asp:BoundField DataField="INTERESTS" HeaderText="ИНТЕРЕСЫ" SortExpression="INTERESTS" />
+            <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS" />
 
             <%--<asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"> 
             <ItemTemplate> 
@@ -77,7 +81,7 @@
     </asp:GridView>
     <br/>
     <br/>
-    <asp:Label ID="Label4" runat="server" Text="Записать на проект" style="width:200px; height:30px; font-size:16px;" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label4" runat="server" Text="Новая запись на проект" style="width:200px; height:30px; font-size:16px;" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br/>
     <div class='form-label'>
     <asp:Label ID="Label1" runat="server" Text="Направление" style="width:200px; height:30px; font-size:16px; margin-right:10px; margin-left:100px"></asp:Label>

@@ -66,7 +66,7 @@
             <asp:Label ID="Label6" runat="server" Text="Выберете направление"></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-default" AutoPostBack="true" style="margin-right:15px;" Height="30px" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"  ></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-default" AutoPostBack="true" style="margin-right:15px;" Height="30px" Width="280" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged"  ></asp:DropDownList>
             <asp:Label ID="Label7" runat="server" style="font-size:13px;" Text=""></asp:Label>
         </div>
         <br>
