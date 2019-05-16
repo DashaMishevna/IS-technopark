@@ -181,7 +181,7 @@
         <Top>0.69003cm</Top>
         <Left>9.51654cm</Left>
         <Height>2.42033cm</Height>
-        <Width>6.72833cm</Width>
+        <Width>7.02466cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -314,9 +314,9 @@
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
         <Top>5.82556cm</Top>
-        <Left>0.27851cm</Left>
+        <Left>0.27852cm</Left>
         <Height>3.9392cm</Height>
-        <Width>15.96635cm</Width>
+        <Width>16.26268cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -383,7 +383,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox10</rd:DefaultName>
         <Top>14.12115cm</Top>
-        <Left>7.95021cm</Left>
+        <Left>8.24654cm</Left>
         <Height>1.0795cm</Height>
         <Width>8.29466cm</Width>
         <ZIndex>3</ZIndex>
@@ -401,10 +401,10 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>7.98318cm</Width>
+              <Width>8.13135cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>7.98318cm</Width>
+              <Width>8.13135cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -584,7 +584,7 @@
         <Top>10.41855cm</Top>
         <Left>0.27851cm</Left>
         <Height>2.29378cm</Height>
-        <Width>15.96636cm</Width>
+        <Width>16.26269cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -593,18 +593,18 @@
         </Style>
       </Tablix>
     </ReportItems>
-    <Height>9.5in</Height>
+    <Height>6.075in</Height>
     <Style>
       <Border>
         <Style>None</Style>
       </Border>
     </Style>
   </Body>
-  <Width>6.5in</Width>
+  <Width>6.71667in</Width>
   <Page>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
-    <LeftMargin>3cm</LeftMargin>
+    <LeftMargin>2cm</LeftMargin>
     <RightMargin>1.5cm</RightMargin>
     <TopMargin>2cm</TopMargin>
     <BottomMargin>2cm</BottomMargin>

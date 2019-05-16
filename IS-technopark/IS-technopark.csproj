@@ -212,6 +212,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\Reports.aspx" />
+    <Content Include="Account\Report_Writing.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\SendEMail.aspx" />
@@ -455,6 +456,13 @@
     </Compile>
     <Compile Include="Account\Reports.aspx.designer.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Report_Writing.aspx.cs">
+      <DependentUpon>Report_Writing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Report_Writing.aspx.designer.cs">
+      <DependentUpon>Report_Writing.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
