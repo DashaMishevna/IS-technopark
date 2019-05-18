@@ -31,6 +31,15 @@ namespace IS_technopark.Account {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource4;
         
         /// <summary>
+        /// SqlDataSource5 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource5;
+        
+        /// <summary>
         /// Label2 элемент управления.
         /// </summary>
         /// <remarks>
@@ -47,6 +56,24 @@ namespace IS_technopark.Account {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label Label6;
+        
+        /// <summary>
+        /// Label14 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label14;
+        
+        /// <summary>
+        /// Button5 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button5;
         
         /// <summary>
         /// DropDownList1 элемент управления.
@@ -92,6 +119,24 @@ namespace IS_technopark.Account {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button3;
+        
+        /// <summary>
+        /// DropDownList4 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList4;
+        
+        /// <summary>
+        /// Button4 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button4;
         
         /// <summary>
         /// SqlDataSource1 элемент управления.

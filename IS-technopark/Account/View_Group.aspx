@@ -18,23 +18,23 @@
     <br>
     <asp:Label ID="Label5" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
    
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT" DataSourceID="SqlDataSource1"  style="font-size:12px" CellPadding="3" ForeColor="Black" GridLines="Vertical" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" BorderColor="#999999" BorderWidth="1px" AllowPaging="True" BackColor="White" BorderStyle="Solid" >
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT" DataSourceID="SqlDataSource1"  style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3" >
         <AlternatingRowStyle BackColor="#C4E6FF" />
         <Columns>
-            <asp:BoundField DataField="TITLE" HeaderText="ШИФР" SortExpression="TITLE" />
-            <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" > <HeaderStyle Width="205px"></HeaderStyle> </asp:BoundField>
-            <asp:BoundField DataField="EXPR1" HeaderText="ПРОЕКТ" SortExpression="EXPR1" />
-            <asp:BoundField DataField="D_START" HeaderText="НАЧАЛО ЗАНЯТИЙ" SortExpression="D_START" DataFormatString="{0:dd/MM/yyyy}">
+            <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" />
+            <asp:BoundField DataField="FIO" HeaderText="ФИО преподавателя" SortExpression="FIO" > <HeaderStyle Width="205px"></HeaderStyle> </asp:BoundField>
+            <asp:BoundField DataField="EXPR1" HeaderText="Проект" SortExpression="EXPR1" />
+            <asp:BoundField DataField="D_START" HeaderText="Начало занятий" SortExpression="D_START" DataFormatString="{0:dd/MM/yyyy}">
             <ItemStyle HorizontalAlign="Center" Width="50px" />
             </asp:BoundField>
-            <asp:BoundField DataField="D_END" HeaderText="ПОСЛЕДНЕЕ ЗАНЯТИЕ" SortExpression="D_END"  DataFormatString="{0:dd/MM/yyyy}"> <HeaderStyle Width="120px"></HeaderStyle> 
+            <asp:BoundField DataField="D_END" HeaderText="Последнее занятие" SortExpression="D_END"  DataFormatString="{0:dd/MM/yyyy}"> <HeaderStyle Width="120px"></HeaderStyle> 
             </asp:BoundField>
-            <asp:BoundField DataField="D_CONFERENCE" HeaderText="КОНФЕРЕНЦИЯ" SortExpression="D_CONFERENCE" DataFormatString="{0:dd/MM/yyyy}">
+            <asp:BoundField DataField="D_CONFERENCE" HeaderText="Дата конференции" SortExpression="D_CONFERENCE" DataFormatString="{0:dd/MM/yyyy}">
             <ItemStyle HorizontalAlign="Center" Width="50px" />
             </asp:BoundField>
-            <asp:BoundField DataField="TIME_CLASS" HeaderText="ВРЕМЯ ЗАНЯТИЙ" SortExpression="TIME_CLASS" />
-            <asp:BoundField DataField="PROJECT_THEME" HeaderText="ТЕМА ПРОЕКТА" SortExpression="PROJECT_THEME" />
-            <asp:BoundField DataField="STATUS_G" HeaderText="СТАТУС ГРУППЫ" SortExpression="STATUS_G" />
+            <asp:BoundField DataField="TIME_CLASS" HeaderText="Время занятий" SortExpression="TIME_CLASS" />
+            <asp:BoundField DataField="PROJECT_THEME" HeaderText="Тема проекта" SortExpression="PROJECT_THEME" />
+            <asp:BoundField DataField="STATUS_G" HeaderText="Статус группы" SortExpression="STATUS_G" />
             <asp:BoundField DataField="ID_GROUPT" HeaderText="ID_GROUPT" SortExpression="ID_GROUPT" Visible="false"/>
         <asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center"> 
         <ItemTemplate> 
@@ -68,17 +68,18 @@
     <br />
     <br />
     <asp:Label ID="Label4" runat="server" Text="Данные проектантов" style="width:200px; height:30px; font-size:16px;  margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False"  DataKeyNames="ID_QUEUE" DataSourceID="SqlDataSource2" CellPadding="4"  ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" >
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False"  DataKeyNames="ID_QUEUE" DataSourceID="SqlDataSource2" CellPadding="5"  ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:TemplateField>
                     <ItemTemplate>
                         <asp:CheckBox ID="CheckBox1" Width="25px"  runat="server" />
                     </ItemTemplate>
+                    <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
-            <asp:BoundField DataField="FIO" HeaderText="FIO" SortExpression="FIO" />
-            <asp:BoundField DataField="CLASS" HeaderText="CLASS" SortExpression="CLASS" />
-            <asp:BoundField DataField="STATUS_L" HeaderText="STATUS_L" SortExpression="STATUS_L" />
+            <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" />
+            <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" />
+            <asp:BoundField DataField="STATUS_L" HeaderText="Статус" SortExpression="STATUS_L" />
             <asp:BoundField DataField="ID_QUEUE" HeaderText="ID_QUEUE" SortExpression="ID_QUEUE" Visible="false"/>
         </Columns>
         <FooterStyle BackColor="#CCCC99" />

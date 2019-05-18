@@ -15,6 +15,7 @@ namespace IS_technopark.Account
         OracleConnection oraConnection = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;");
         DataTable table = new DataTable();
         DataSet ds = new DataSet();
+        DataSet dss = new DataSet();
         List<string> id_learner = new List<string>();
         List<string> Select_id_learner = new List<string>();
         string id_lab = "";
@@ -44,10 +45,8 @@ namespace IS_technopark.Account
                         oraReader.GetValues(values);
                         id_learner.Add(values[1].ToString());
                     }
-
                 }
                 a += 1;
-                // Response.Write(cb + "<b>tut</b><br/>");
                 oraConnection.Close();
             }
             GetId();
@@ -73,9 +72,6 @@ namespace IS_technopark.Account
 
         }
 
-        private void InsertLearnerQ()
-        {
-        }
 
 
         public void GetId()
@@ -120,9 +116,7 @@ namespace IS_technopark.Account
 
             if (DropDownList1.SelectedValue.ToString() == "-Выберете направление-")
             {
-                SqlDataSource1.SelectCommand = "SELECT LEARNER.ID_LEARNER, QUEUE.ID_QUEUE,  TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.DIR_PROJECTS.TITLE, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.D_T_RECORD, TECHNOPARK.LEARNER.INTERESTS FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER order by TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.FIO";
-                SqlDataSource1.DataBind();
-                GridView1.DataBind();
+                PrintAllLearners();
             } 
             oraConnection.Close();
         }
@@ -146,6 +140,16 @@ namespace IS_technopark.Account
                 DropDownList2.DataBind();
                 DropDownList2.Items.Insert(0, new ListItem("-Выберете направление-"));
                 DropDownList2.SelectedIndex = 0;
+            }
+            string s2 = "Select STATUS_L from DIR_STATUS_LEARNER";
+            OracleDataAdapter oraAdap2 = new OracleDataAdapter(s2, oraConnection);
+            oraAdap2.Fill(dss);
+            if (dss.Tables[0].Rows.Count > 0)
+            {
+                DropDownList4.DataSource = dss;
+                DropDownList4.DataBind();
+                DropDownList4.Items.Insert(0, new ListItem("-Выберете статус-"));
+                DropDownList4.SelectedIndex = 0;
             }
             oraConnection.Close();
         }
@@ -207,10 +211,18 @@ namespace IS_technopark.Account
                 catch
                 {
                     Label13.Text = "Проверьте введенные данные!";
+                    Label13.ForeColor = System.Drawing.Color.Red;
                 }
 
             }
             
+        }
+
+        public void PrintAllLearners()
+        {
+            SqlDataSource1.SelectCommand = "SELECT LEARNER.ID_LEARNER, QUEUE.ID_QUEUE,  TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.DIR_PROJECTS.TITLE, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.D_T_RECORD, TECHNOPARK.LEARNER.INTERESTS FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER order by TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.FIO";
+            SqlDataSource1.DataBind();
+            GridView1.DataBind();
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -223,13 +235,29 @@ namespace IS_technopark.Account
                 SqlDataSource1.DataBind();
                 GridView1.DataBind();
             }
+            oraConnection.Close();
+        }
 
-            //if (DropDownList1.SelectedValue.ToString() == "-Выберете направление-")
-            //{
-            //    SqlDataSource1.SelectCommand = "SELECT LEARNER.ID_LEARNER, QUEUE.ID_QUEUE,  TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.DIR_PROJECTS.TITLE, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.D_T_RECORD, TECHNOPARK.LEARNER.INTERESTS FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER order by TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.FIO";
-            //    SqlDataSource1.DataBind();
-            //    GridView1.DataBind();
-            //}
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            oraConnection.Open();
+
+            string command = SqlDataSource1.SelectCommand;
+            SqlDataSource1.SelectCommand = "SELECT LEARNER.ID_LEARNER, QUEUE.ID_QUEUE,  TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.DIR_PROJECTS.TITLE, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.D_T_RECORD, TECHNOPARK.LEARNER.INTERESTS FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER  WHERE TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L = '" + DropDownList4.Text + "' order by TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.FIO";
+            SqlDataSource1.DataBind();
+            GridView1.DataBind();
+
+            if (DropDownList4.SelectedValue.ToString() == "-Выберете статус-")
+            {
+                PrintAllLearners();
+            }
+            oraConnection.Close();
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            oraConnection.Open();
+            PrintAllLearners();
             oraConnection.Close();
         }
     }

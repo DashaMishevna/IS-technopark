@@ -11,10 +11,10 @@
     <br/>
 </div>
 
-<div style="float:left; margin-top:10px; margin-left:-100px">
+<div style="float:left; margin-top:10px; margin-left:-100px;">
 <asp:SqlDataSource ID="Technopark" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM &quot;LEARNER&quot;" UpdateCommand="UPDATE TECHNOPARK.LEARNER SET FIO = 'qwe' WHERE 1=0" DeleteCommand="DELETE FROM TECHNOPARK.LEARNER WHERE ID_LEARNER = :ID_LEARNER" >
     </asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" AllowSorting="True" HorizontalAlign="Center" BackColor="White" BorderColor="#999999" BorderWidth="0px" ForeColor="Black" GridLines="Vertical" CellSpacing="3">
+    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" AllowSorting="True" HorizontalAlign="Center" BackColor="White" BorderColor="#999999" BorderWidth="0px" ForeColor="Black" GridLines="Vertical" CellSpacing="3" Width="1285px">
         <AlternatingRowStyle BackColor="#d2ecf9" />
         <Columns>
             <asp:TemplateField>
@@ -69,7 +69,7 @@
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE (PARENT.ID_LEARNER_P = 0)"></asp:SqlDataSource>
 <br>
 <asp:Label ID="Label3" runat="server" Text="" ForeColor="Gray"></asp:Label>
-<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" Height="25px" CellPadding="4" Width="1240px" ForeColor="#333333" GridLines="None">
+<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" Height="25px" CellPadding="5" Width="1240px" ForeColor="#333333" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3">
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="ID_PARENT" HeaderText="ID_PARENT" ReadOnly="True" SortExpression="ID_PARENT"  Visible="false"/>

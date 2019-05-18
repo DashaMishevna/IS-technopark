@@ -4,19 +4,24 @@
     <br/>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.DIR_PROJECTS.ID_LABORATORY = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES WHERE (TECHNOPARK.DIR_PROJECTS.TITLE = 'DropDownList2.Text')"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;STATUS_L&quot; FROM &quot;DIR_STATUS_LEARNER&quot;"></asp:SqlDataSource>
     <h2 style="text-align:center">ОЧЕРЕДЬ</h2>
     
     <div style="float:left; margin-top:10px; margin-left:-100px">
     
-    <asp:Label ID="Label2" runat="server" Text="Вывод информации по названию проекта" style="width:200px; height:30px; font-size:15px; margin-bottom:15px" Font-Italic="False" Font-Bold="True"></asp:Label>
-    <asp:Label ID="Label6" runat="server" Text="Вывод информации по ФИО проектанта" style= "height:30px; font-size:15px; margin-bottom:15px; margin-left:70px;" Font-Italic="False" Font-Bold="True"></asp:Label>   
+    <asp:Label ID="Label2" runat="server" Text="Вывод информации по названию проекта" style="width:200px; height:30px; font-size:14px; margin-bottom:15px; margin-left:191px" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label6" runat="server" Text="Вывод информации по ФИО проектанта" style= "height:30px; font-size:14px; margin-bottom:15px; margin-left:70px;" Font-Italic="False" Font-Bold="True"></asp:Label>   
+    <asp:Label ID="Label14" runat="server" Text="Вывод информации по статусу проектанта" style= "height:30px; font-size:14px; margin-bottom:15px; margin-left:75px;" Font-Bold="True"></asp:Label>
     <br/>
     <%--<asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:17px"></asp:TextBox>--%> 
-    <asp:DropDownList ID="DropDownList1" runat="server"  CssClass="btn btn-default" Height="35px"></asp:DropDownList>
+    <asp:Button ID="Button5" runat="server" Text="Вывести всех" CssClass="btn btn-default" Font-Size="12pt"  style="text-align:center" BackColor="#CEE5F3" Height="32px" OnClick="Button5_Click"/>
+    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-default" Height="32px" style="margin-left:60px;"></asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
-    <asp:Button ID="Button1" runat="server" Text="Выбрать" Height="35px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button1_Click" />
-    <asp:TextBox ID="TextBox1" runat="server" Height="35px" CssClass="btn btn-default" Font-Size="11pt" style="margin-left:75px; text-align:left" ></asp:TextBox>
-    <asp:Button ID="Button3" runat="server" Text="Выбрать" Height="35px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button3_Click"  />
+    <asp:Button ID="Button1" runat="server" Text="Выбрать" Height="32px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button1_Click" />
+    <asp:TextBox ID="TextBox1" runat="server" Height="32px" CssClass="btn btn-default" Font-Size="11pt" style="margin-left:60px; text-align:left" ></asp:TextBox>
+    <asp:Button ID="Button3" runat="server" Text="Выбрать" Height="32px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button3_Click"  />
+    <asp:DropDownList ID="DropDownList4" runat="server" DataTextField="STATUS_L" DataValueField="STATUS_L" style="margin-left:60px" CssClass="btn btn-default"  Width="250" Height="32px"></asp:DropDownList>
+    <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Выбрать" Height="32px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3"  />
     <br/>
     <br/>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT LEARNER.ID_LEARNER, QUEUE.ID_QUEUE,  TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.DIR_PROJECTS.TITLE, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.D_T_RECORD, TECHNOPARK.LEARNER.INTERESTS FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER order by TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.FIO">
@@ -35,7 +40,7 @@
             <asp:BoundField DataField="ID_QUEUE" HeaderText="ID_QUEUE" SortExpression="ID_QUEUE" Visible="false" >
             </asp:BoundField>
             <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" > 
-            <HeaderStyle Width="150px" />
+            <HeaderStyle Width="170px" />
             </asp:BoundField>
             <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="Дата записи" SortExpression="DATE_REGISTRATION" DataFormatString="{0:dd/MM/yyyy}">
             <HeaderStyle Width="130px" />
@@ -52,7 +57,7 @@
             </asp:BoundField>
             <asp:BoundField DataField="LABORATORY" HeaderText="Направление" SortExpression="LABORATORY" HeaderStyle-Width="150px"><HeaderStyle Width="150px"></HeaderStyle></asp:BoundField>
             <asp:BoundField DataField="STATUS_L" HeaderText="Статус" SortExpression="STATUS_L" >
-            <HeaderStyle Width="150px" />
+            <HeaderStyle Width="170px" />
             </asp:BoundField>
             <asp:BoundField DataField="D_T_RECORD" HeaderText="D_T_RECORD" SortExpression="D_T_RECORD" />
             <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS" />
@@ -109,7 +114,7 @@
     <br/>
     <asp:Button ID="Button2" runat="server" Text="Добавить" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="35px" OnClick="Button2_Click"/>
     <br />
-    <asp:Label ID="Label13" runat="server" Text=""></asp:Label>
+    <asp:Label ID="Label13" runat="server" Text=""  ForeColor="Red"></asp:Label>
 
  </div>  
 
