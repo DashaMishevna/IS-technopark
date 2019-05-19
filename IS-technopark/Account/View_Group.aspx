@@ -9,8 +9,7 @@
     <br>
     <div style="float:left; margin-left:-100px">
     <h2 style="text-align:center"> РАБОТА С ГРУППАМИ </h2>
-    <br>
-    <h4 style="text-align:left; font-weight:600 ">Поиск группы по шифру</h4>
+    <h4 style="text-align:left; font-weight:600; margin-top:30px">Поиск группы по шифру</h4>
     <asp:Label ID="Label1" runat="server" Text="Введите шифр" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:10px;"></asp:TextBox>
     <asp:Button ID="Button1" runat="server" Text="Выбрать"  OnClick="Button1_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" />
@@ -18,13 +17,13 @@
     <br>
     <asp:Label ID="Label5" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
    
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT" DataSourceID="SqlDataSource1"  style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3" >
-        <AlternatingRowStyle BackColor="#C4E6FF" />
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT" DataSourceID="SqlDataSource1" style="font-size:13px" CellPadding="5" ForeColor="Black" GridLines="Vertical" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3" >
+        <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" />
             <asp:BoundField DataField="FIO" HeaderText="ФИО преподавателя" SortExpression="FIO" > <HeaderStyle Width="205px"></HeaderStyle> </asp:BoundField>
             <asp:BoundField DataField="EXPR1" HeaderText="Проект" SortExpression="EXPR1" />
-            <asp:BoundField DataField="D_START" HeaderText="Начало занятий" SortExpression="D_START" DataFormatString="{0:dd/MM/yyyy}">
+            <asp:BoundField DataField="D_START" HeaderText="Начало занятий ̥יִ" SortExpression="D_START" DataFormatString="{0:dd/MM/yyyy}">
             <ItemStyle HorizontalAlign="Center" Width="50px" />
             </asp:BoundField>
             <asp:BoundField DataField="D_END" HeaderText="Последнее занятие" SortExpression="D_END"  DataFormatString="{0:dd/MM/yyyy}"> <HeaderStyle Width="120px"></HeaderStyle> 
@@ -48,26 +47,25 @@
         </asp:TemplateField> 
         </Columns>
         <EditRowStyle BackColor="#FFD0D7" />
-        <FooterStyle BackColor="#CCCCCC" />
+        <FooterStyle BackColor="#3399FF" Font-Bold="True" ForeColor="White" />
         <HeaderStyle HorizontalAlign="Center" BackColor="#A5D1F3" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#B5E0FF" ForeColor="Black" HorizontalAlign="Center" />
-        <RowStyle Height="30px"/>
+        <PagerStyle BackColor="#A5D1F3" ForeColor="White" HorizontalAlign="Center" />
+        <RowStyle Height="30px" BackColor="#d2e9f9" />
         <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
         <SortedAscendingCellStyle BackColor="#F1F1F1" />
         <SortedAscendingHeaderStyle BackColor="#808080" />
         <SortedDescendingCellStyle BackColor="#CAC9C9" />
         <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
-      
     <br>
     <asp:Label ID="Label11" runat="server" Text="Статус группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
-    <asp:DropDownList ID="DropDownList2" runat="server" Height="30px" DataSourceID="SqlDataSource3" DataTextField="STATUS_G" DataValueField="STATUS_G" style="margin-right: 10px"> </asp:DropDownList>
+    <asp:DropDownList ID="DropDownList2" runat="server" Height="30px" DataSourceID="SqlDataSource3" DataTextField="STATUS_G" DataValueField="STATUS_G" style="margin-right: 10px" CssClass="btn btn-default" Width="250"> </asp:DropDownList>
     <asp:Button ID="Button2" runat="server" Text="Обновить" OnClick="Button2_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center"/>
     <br />
     <asp:Label ID="Label12" runat="server" Text=""></asp:Label>
     <br />
     <br />
-    <asp:Label ID="Label4" runat="server" Text="Данные проектантов" style="width:200px; height:30px; font-size:16px;  margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label4" runat="server" Text="Данные проектантов" style="width:200px; height:30px; font-size:16px; margin-right: 10px;" Font-Italic="False" Font-Bold="True" Visible="false"></asp:Label>
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False"  DataKeyNames="ID_QUEUE" DataSourceID="SqlDataSource2" CellPadding="5"  ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
@@ -82,15 +80,11 @@
             <asp:BoundField DataField="STATUS_L" HeaderText="Статус" SortExpression="STATUS_L" />
             <asp:BoundField DataField="ID_QUEUE" HeaderText="ID_QUEUE" SortExpression="ID_QUEUE" Visible="false"/>
         </Columns>
-        <FooterStyle BackColor="#CCCC99" />
-        <HeaderStyle HorizontalAlign="Center" BackColor="#A5D1F3" Font-Bold="True" ForeColor="White" />
-        <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-        <RowStyle Height="30px" BackColor="#C8E3F9" />
-        <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-        <SortedAscendingCellStyle BackColor="#F5F7FB" />
-        <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-        <SortedDescendingCellStyle BackColor="#E9EBEF" />
-        <SortedDescendingHeaderStyle BackColor="#4870BE" />
+        <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
+        <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+        <HeaderStyle BackColor="#8ED18E" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
+        <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+        <RowStyle BackColor="#DDF7DD" ForeColor="#333333" />  <%--ТУТ менять цвет с первой строки--%>
     </asp:GridView>
     <asp:Label ID="Label3" runat="server" Text="" ForeColor="Gray"></asp:Label>
     <%--<asp:Label ID="Label6" runat="server" Text="Дата начала занятий" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
@@ -109,10 +103,9 @@
     <br />--%>
     <br />
     <br />
-    <asp:Label ID="Label2" runat="server" Text="Изменить статус" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
-    <%--<asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:17px"></asp:TextBox>--%> 
-    <asp:DropDownList ID="DropDownList1" runat="server" Height="30px" DataSourceID="SqlDataSource4" DataTextField="STATUS_L" DataValueField="STATUS_L" ></asp:DropDownList>
-    <asp:Button ID="Button3" runat="server" Text="Обновить" OnClick="Button3_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center"/>
+    <asp:Label ID="Label2" runat="server" Text="Изменить статус" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Visible="false"></asp:Label>
+    <asp:DropDownList ID="DropDownList1" runat="server" Height="30px" DataSourceID="SqlDataSource4" DataTextField="STATUS_L" DataValueField="STATUS_L" CssClass="btn btn-default" Width="250" Visible="false"></asp:DropDownList>
+    <asp:Button ID="Button3" runat="server" Text="Обновить" OnClick="Button3_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" Visible="false"/>
     <br />
     <asp:Label ID="Label13" runat="server" Text=""></asp:Label>
     <br />

@@ -7,6 +7,7 @@ namespace IS_technopark.Account
 {
     public class Class_FIO
     {
-        public static string Teachr_fio;
+        public static string Employees_fio;
+        public static string Employees_position;
     }
 }

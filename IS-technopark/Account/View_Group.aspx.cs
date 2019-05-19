@@ -168,6 +168,10 @@ namespace IS_technopark.Account
             {
                 //string command = SqlDataSource1.SelectCommand;
                 SelectGroupt();
+                Label2.Visible = true;
+                Label4.Visible = true;
+                DropDownList1.Visible = true;
+                Button3.Visible = true;
             }
             else
             {

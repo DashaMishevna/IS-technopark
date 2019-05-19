@@ -17,9 +17,12 @@ namespace IS_technopark.Account
         DataSet ds = new DataSet();
         DataSet dss = new DataSet();
         List<string> id_learner = new List<string>();
+        List<string> id_queue = new List<string>();
         List<string> Select_id_learner = new List<string>();
+        List<string> id_learner_impossible = new List<string>();
         string id_lab = "";
         string id_project = "";
+        string id_s_l = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,14 +39,25 @@ namespace IS_technopark.Account
                 if (cb != null && cb.Checked)
                 {
                     oraAdap.SelectCommand = new OracleCommand();
-                    oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + GridView1.DataKeys[a].Values[0] + "'";
+                    oraAdap.SelectCommand.CommandText = "Select DISTINCT ID_LEARNER_Q FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + GridView1.DataKeys[a].Values[0] + "'";
                     oraAdap.SelectCommand.Connection = oraConnection;
                     OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
                     while (oraReader.Read())
                     {
                         object[] values = new object[oraReader.FieldCount];
                         oraReader.GetValues(values);
-                        id_learner.Add(values[1].ToString());
+                        id_learner.Add(values[0].ToString());
+                    }
+
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_QUEUE = '" + GridView1.DataKeys[a].Values[1] + "'";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader1.Read())
+                    {
+                        object[] values = new object[oraReader1.FieldCount];
+                        oraReader1.GetValues(values);
+                        id_queue.Add(values[0].ToString());
                     }
                 }
                 a += 1;
@@ -71,8 +85,6 @@ namespace IS_technopark.Account
         {
 
         }
-
-
 
         public void GetId()
         {
@@ -150,6 +162,11 @@ namespace IS_technopark.Account
                 DropDownList4.DataBind();
                 DropDownList4.Items.Insert(0, new ListItem("-Выберете статус-"));
                 DropDownList4.SelectedIndex = 0;
+
+                DropDownList5.DataSource = dss;
+                DropDownList5.DataBind();
+                DropDownList5.Items.Insert(0, new ListItem("-Выберете статус-"));
+                DropDownList5.SelectedIndex = 0;
             }
             oraConnection.Close();
         }
@@ -172,13 +189,13 @@ namespace IS_technopark.Account
         }
 
         protected void Button2_Click(object sender, EventArgs e)
-        {
+        {   //Проверка проектанта на то,Свободен ли он сейчас или проходит обучение.
             //Response.Write(id_learner[0] + "<b></b><br/>");
             if (id_learner.Count == 1)
             {
                 oraConnection.Open();
                 oraAdap.SelectCommand = new OracleCommand();
-                oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + id_learner[0] + "' AND (ID_STATUS_L=2 OR ID_STATUS_L=8 OR ID_STATUS_L=10)";
+                oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + id_learner[0] + "' AND (ID_STATUS_L=5 OR ID_STATUS_L=6 OR ID_STATUS_L=7 OR ID_STATUS_L=9) and TECHNOPARK.QUEUE.Date_Registration = (Select max(Date_Registration) from QUEUE Q where Q.ID_LEARNER_Q=TECHNOPARK.QUEUE.ID_LEARNER_Q)";
                 oraAdap.SelectCommand.Connection = oraConnection;
                 OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
                 while (oraReader.Read())
@@ -187,10 +204,20 @@ namespace IS_technopark.Account
                     oraReader.GetValues(values);
                     Select_id_learner.Add(values[1].ToString());
                 }
+                oraAdap.SelectCommand = new OracleCommand();
+                oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + id_learner[0] + "' AND (ID_STATUS_L=1 OR ID_STATUS_L=2 OR ID_STATUS_L=3 OR ID_STATUS_L=4 OR ID_STATUS_L=10) and TECHNOPARK.QUEUE.Date_Registration = (Select max(Date_Registration) from QUEUE Q where Q.ID_LEARNER_Q=TECHNOPARK.QUEUE.ID_LEARNER_Q)";
+                oraAdap.SelectCommand.Connection = oraConnection;
+                OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+                while (oraReader1.Read())
+                {
+                    object[] values = new object[oraReader1.FieldCount];
+                    oraReader1.GetValues(values);
+                    id_learner_impossible.Add(values[1].ToString());
+                }
                 oraConnection.Close();
             }
 
-            if (Select_id_learner.Count == 0)
+            if (Select_id_learner.Count == 1 && id_learner_impossible.Count==0)
             {
                 try
                 {
@@ -213,9 +240,12 @@ namespace IS_technopark.Account
                     Label13.Text = "Проверьте введенные данные!";
                     Label13.ForeColor = System.Drawing.Color.Red;
                 }
-
             }
-            
+            else
+            {
+                Label13.Text = "Проверьте данные проектанта!";
+                Label13.ForeColor = System.Drawing.Color.Red;
+            }
         }
 
         public void PrintAllLearners()
@@ -258,6 +288,49 @@ namespace IS_technopark.Account
         {
             oraConnection.Open();
             PrintAllLearners();
+            oraConnection.Close();
+        }
+        public void GetId_S_L()
+        {
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "Select ID_DIR_STATUS_LEARNER from DIR_STATUS_LEARNER where STATUS_L = '" + DropDownList5.SelectedValue.ToString() + "'";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader.Read())
+            {
+                object[] values = new object[oraReader.FieldCount];
+                oraReader.GetValues(values);
+                id_s_l = values[0].ToString();
+            }
+        }
+
+        protected void Button6_Click(object sender, EventArgs e)
+        {
+            oraConnection.Open();
+            GetId_S_L();
+            int s = 0;
+            foreach (string i in id_queue)
+            {
+                try
+                {
+                    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                    {
+                        string query_update_q = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = '" + id_s_l + "' WHERE ID_QUEUE = '" + id_queue[s] + "' ";
+                        oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
+                        oraAdap.UpdateCommand.ExecuteNonQuery();
+                        GridView1.DataBind();
+                    }
+                    Label9.Visible = true;
+                    Label9.ForeColor = System.Drawing.Color.Green;
+                    Label9.Text = "Данные проектана успешно обновлены!";
+                }
+                catch
+                {
+                    Label9.Visible = true;
+                    Label9.Text = "Проверьте введенные данные!";
+                }
+                s += 1;
+            }
             oraConnection.Close();
         }
     }

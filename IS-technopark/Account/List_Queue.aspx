@@ -75,9 +75,8 @@
             </asp:TemplateField>--%>
         </Columns>
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
-        <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
-        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <PagerStyle BackColor="#8FC6F0" ForeColor="White" HorizontalAlign="Center" />
         <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" />
         <SortedAscendingCellStyle BackColor="#F1F1F1" />
         <SortedAscendingHeaderStyle ForeColor="Black" BackColor="#808080" />
@@ -87,27 +86,32 @@
     <br/>
     <br/>
     <asp:Label ID="Label4" runat="server" Text="Новая запись на проект" style="width:200px; height:30px; font-size:16px;" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label7" runat="server" Text="Изменить статус проектанту" style="width:200px; height:30px; font-size:15px; margin-left:347px" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br/>
     <div class='form-label'>
     <asp:Label ID="Label1" runat="server" Text="Направление" style="width:200px; height:30px; font-size:16px; margin-right:10px; margin-left:100px"></asp:Label>
     </div>
-    <div class='form-row'>
+    <div class='form-row' style="width:260px">
     <asp:DropDownList ID="DropDownList2" runat="server" Width="250px" DataTextField="LABORATORY" DataValueField="LABORATORY" CssClass="btn btn-default" AutoPostBack="True"  Height="30px" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" ></asp:DropDownList>
     </div>
+    <asp:Label ID="Label8" runat="server" Text="Статус" style="width:200px; height:30px; font-size:16px; margin-right:10px; margin-left:130px"></asp:Label>
+    <asp:DropDownList ID="DropDownList5" runat="server" Width="250px"  CssClass="btn btn-default" DataTextField="STATUS_L" DataValueField="STATUS_L" Height="30px"></asp:DropDownList>
     <br/>
     <br/>
     <div class='form-label'>
     <asp:Label ID="Label3" runat="server" Text="Проект" style="width:200px; height:30px; font-size:16px; margin-right:10px; margin-left:100px"></asp:Label>
     </div>
-    <div class='form-row'>
-    <asp:DropDownList ID="DropDownList3" runat="server" Width="250px" DataTextField="TITLE" DataValueField="TITLE"  CssClass="btn btn-default" AutoPostBack="True"  Height="30px" ></asp:DropDownList>
+    <div class='form-row' style="width:260px">
+    <asp:DropDownList ID="DropDownList3" runat="server" Width="250px" DataTextField="TITLE" DataValueField="TITLE"  CssClass="btn btn-default"  Height="30px" ></asp:DropDownList>
     </div>
+    <asp:Button ID="Button6" runat="server" Text="Изменить" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="35px" style="margin-left:130px" OnClick="Button6_Click"/>
+    <asp:Label ID="Label9" runat="server" Text="" style="margin-left:20px" ></asp:Label>
     <br/>
     <br/>
     <div class='form-label'>
     <asp:Label ID="Label5" runat="server" Text="Дата записи" style="width:200px; height:30px; font-size:16px; margin-right:10px; margin-left:100px"></asp:Label>
     </div>
-     <div class='form-row'>
+     <div class='form-row' style="width:260px">
     <asp:TextBox ID="TextBox2" TextMode="Date" Width="250px" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right: 20px"></asp:TextBox>
     </div>
     <br/>
