@@ -43,7 +43,15 @@ namespace IS_technopark.Account
             {
                 Class_FIO.Employees_fio = Info_employees[2].ToString();
                 Class_FIO.Employees_position = Info_employees[1].ToString();
-                Response.Redirect("HomePage");
+                if (Info_employees[1] == 2.ToString())
+                {
+                    Response.Redirect("Info");
+                }
+                else
+                {
+                    Response.Redirect("Groups");
+                }
+
             }
             if (Info_employees.Count == 0)
             {

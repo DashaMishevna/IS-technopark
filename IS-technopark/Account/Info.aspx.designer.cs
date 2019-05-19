@@ -10,7 +10,7 @@
 namespace IS_technopark {
     
     
-    public partial class HomePage {
+    public partial class Info {
         
         /// <summary>
         /// Label2 элемент управления.

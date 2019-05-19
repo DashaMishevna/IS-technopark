@@ -118,7 +118,7 @@
                     <ul class="nav navbar-nav" >
                         <li><a runat="server" href="~/">Домашняя</a></li>
                         <li><a runat="server" href="~/Account/Learners">Проектанты</a></li>
-                        <li><a runat="server" href="~/Account/HomePage">Информация</a></li> 
+                        <li><a runat="server" href="~/Account/Info">Информация</a></li> 
                         <li><a runat="server" href="~/Account/List_Queue">Лист очередности</a></li>
                         <%--<li><a runat="server" href="~/Account/Groups">Создание Группы</a></li>
                         <li><a runat="server" href="~/Account/View_Group">Группы</a></li>--%>
@@ -145,7 +145,7 @@
                                 <div class="mynav_dropdown-content">
                                 <a runat="server" href="~/Account/Diagramm">Диаграммы</a>
                                 <a runat="server" href="~/Account/Reports">Отчет</a>
-                                <a runat="server" href="~/Account/Report_Writing">Отчет-ЗАпись</a>
+                                <a runat="server" href="~/Account/Report_Writing">Отчет-Запись</a>
                                 <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                                 </div>
                             </div>
@@ -154,7 +154,7 @@
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Регистрация</a></li>
+                                <li><a runat="server" href="~/Account/Register">Сотрудники</a></li>
                                 <li><a runat="server" href="~/Account/Edit">Вход</a></li>
                             </ul>
                         </AnonymousTemplate>

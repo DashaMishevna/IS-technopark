@@ -14,7 +14,7 @@ using System.Data.SqlClient;
 
 namespace IS_technopark
 {
-    public partial class HomePage : Page
+    public partial class Info : Page
     {
         OracleConnection ORACLE = new OracleConnection(constr);
         static string constr = "User Id=Technopark; Password=DIP1937;Data Source=127.0.0.1:1521/xe";
