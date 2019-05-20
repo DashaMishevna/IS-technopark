@@ -97,7 +97,7 @@
         <br/>
         <asp:Label ID="Label9" runat="server" Text="" ForeColor="Gray"></asp:Label>
         <br/>
-        <asp:Button ID="Button2" runat="server" Text="Рассылка сообщений" OnClick="Button2_Click" />
+        <asp:Button ID="Button2" runat="server" Text="Рассылка сообщений" OnClick="Button2_Click" Font-Size="11pt" BackColor="#CEE5F3" CssClass="btn btn-default"  />
         <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
     </div>
 

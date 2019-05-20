@@ -31,9 +31,11 @@ namespace IS_technopark.Account
 
             if (Class_FIO.email_learner.Count > 0)
             {
-                Label7.Text = "Количество почтовых ящиков: " + Class_FIO.email_learner.Count.ToString();
+                Label8.Visible = true;
+                Label1.Visible = true;
+                Label1.Text = "Количество почтовых ящиков: " + Class_FIO.email_learner.Count.ToString();
             }
-
+          
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
@@ -116,6 +118,7 @@ namespace IS_technopark.Account
                         s += 1;
                     }
                 }
+               
             }
             catch (SmtpException ex) { lblStatus.Text = "<b style='color:red'>" + ex.Message + "</b>"; }
             txtMessage.Text = "";

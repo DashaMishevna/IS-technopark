@@ -428,15 +428,16 @@ namespace IS_technopark.Account
             {
                 if (email_list[count]!="")
                 {
-                    Class_FIO.email_learner = email_list;
+                    Class_FIO.email_learner.Add(email_list[count]);
                 }
+                count += 1;
             }
-            count += 1;
+            
             if (Class_FIO.email_learner.Count!=0)
             {
                 Response.Redirect("SendEmail");
             }
-            else
+            if (Class_FIO.email_learner.Count == 0)
             {
                 Label10.Text = "У выбранных проектантов нет почтовых ящиков";
             }

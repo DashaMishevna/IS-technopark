@@ -87,8 +87,9 @@ namespace IS_technopark.Account
         {
             oraConnection.Open();
 
-            Chart1.Titles.Add("Диаграмма по направлениям");
+            Chart1.Titles.Add("Воронка по году");
             Chart1.Titles[0].Font = new Font("Utopia", 16);
+            Chart1.Titles[0].Alignment = ContentAlignment.MiddleLeft;
 
             oraAdap.SelectCommand = new OracleCommand();
             oraAdap.SelectCommand.CommandText = "select DIR_LABORATORIES.LABORATORY from QUEUE, DIR_LABORATORIES WHERE QUEUE.ID_LABORATORIES=DIR_LABORATORIES.ID_LABORATORIES group by DIR_LABORATORIES.LABORATORY";
