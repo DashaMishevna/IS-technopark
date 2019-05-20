@@ -28,18 +28,24 @@ namespace IS_technopark.Account
             {
                 GetDropList();
             }
-           
+
+            if (Class_FIO.email_learner.Count > 0)
+            {
+                Label7.Text = "Количество почтовых ящиков: " + Class_FIO.email_learner.Count.ToString();
+            }
+
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
         {
             if ((sender as Button) == null)
                 return;
-            if (txtTo.Text != "")
-            {
+            //if (txtTo.Text != "")
+            //{
                 sendonemail();
                 txtTo.Text = String.Empty;
-            }
+            //}
+
             Response.Redirect("SendEMail.aspx"); //Перенаправлять или чистить
 
         }
@@ -68,7 +74,48 @@ namespace IS_technopark.Account
                     }
                 }
                 EmailLaboratory();
-                LabekMessag = 1;
+                if (e_mail_to.Count != 0)
+                {
+
+                    int s = 0;
+                    foreach (string i in e_mail_to)
+                    {
+                        using (SmtpClient smtp = new SmtpClient())
+                        {
+                            smtp.Host = "smtp.gmail.com";
+                            smtp.EnableSsl = true;
+                            NetworkCredential NetCred = new NetworkCredential("schooltechn.yourname@gmail.com", "SchoolTechn1");
+                            smtp.UseDefaultCredentials = true;
+                            smtp.Credentials = NetCred;
+                            smtp.Port = 587;
+                            smtp.Send(from, e_mail_to[s], subject, message);
+                            lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
+                            //smtp.Dispose();
+                        }
+                        s += 1;
+                    }
+                }
+                    LabekMessag = 1;
+                if (Class_FIO.email_learner.Count>0)
+                {
+                    int s = 0;
+                    foreach (string i in Class_FIO.email_learner)
+                    {
+                        using (SmtpClient smtp = new SmtpClient())
+                        {
+                            smtp.Host = "smtp.gmail.com";
+                            smtp.EnableSsl = true;
+                            NetworkCredential NetCred = new NetworkCredential("schooltechn.yourname@gmail.com", "SchoolTechn1");
+                            smtp.UseDefaultCredentials = true;
+                            smtp.Credentials = NetCred;
+                            smtp.Port = 587;
+                            smtp.Send(from, Class_FIO.email_learner[s], subject, message);
+                            lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
+                            //smtp.Dispose();
+                        }
+                        s += 1;
+                    }
+                }
             }
             catch (SmtpException ex) { lblStatus.Text = "<b style='color:red'>" + ex.Message + "</b>"; }
             txtMessage.Text = "";
@@ -107,7 +154,10 @@ namespace IS_technopark.Account
                 {
                     object[] values = new object[oraReader.FieldCount];
                     oraReader.GetValues(values);
-                    e_mail_to.Add(values[0].ToString());
+                    if (values[0].ToString() != "")
+                    {
+                        e_mail_to.Add(values[0].ToString());
+                    }
                 }
 
                 int s = 0;
@@ -123,10 +173,26 @@ namespace IS_technopark.Account
                         {
                             object[] values = new object[oraReader1.FieldCount];
                             oraReader1.GetValues(values);
-                            if (e_mail_to[s] != values[1].ToString())
+                            if (e_mail_to[s] != values[1].ToString() && values[1].ToString()!="")
                             {
                                 e_mail_to.Add(values[1].ToString());
                             }
+                        }
+                    }
+                }
+                if (e_mail_to.Count == 0)
+                {
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "select Parent.e_mail, LEARNER.E_MAIL from parent, queue, DIR_LABORATORIES, LEARNER where parent.ID_LEARNER_P=LEARNER.ID_LEARNER and parent.ID_LEARNER_P=queue.ID_LEARNER_Q  AND DIR_LABORATORIES.ID_LABORATORIES = queue.ID_LABORATORIES and (parent.E_MAIL is not null or Learner.E_MAIL is not null) and DIR_LABORATORIES.LABORATORY = '" + DropDownList1.SelectedValue.ToString() + "'";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader1.Read())
+                    {
+                        object[] values = new object[oraReader1.FieldCount];
+                        oraReader1.GetValues(values);
+                        if (values[1].ToString() != "")
+                        {
+                            e_mail_to.Add(values[1].ToString());
                         }
                     }
                 }

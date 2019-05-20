@@ -21,6 +21,7 @@ namespace IS_technopark.Account
         string Title_Group;
         //string List_L_proj = "";
         List<string> textBox_f = new List<string>();
+        List<string> email_list = new List<string>();
         List<string> List_pr = new List<string>();
         List<string> List_npr = new List<string>();
         List<string> List_L_proj = new List<string>();
@@ -29,6 +30,7 @@ namespace IS_technopark.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Class_FIO.email_learner.Clear();
             int a = 0;
             foreach (GridViewRow row in GridView1.Rows)
             {
@@ -37,7 +39,6 @@ namespace IS_technopark.Account
                 if (cb != null && cb.Checked)
                 {
                     Label1.Visible = false;
-                    
                     //string query = " Select TECHNOPARK.LEARNER.ID_LEARNER  FROM   TECHNOPARK.LEARNER INNER JOIN  TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN  TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE(TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER <> 2) AND(TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER <> 6) AND(TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER <> 7) AND (TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER <> 8) ID_LEARNER=:ID_LEARNER and FIO = '" + row.Cells[2].Text +"' ";
                     //OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
                     //Response.Write(row.Cells[1].Text + "<b>qwqwq</b><br/>");  
@@ -50,6 +51,7 @@ namespace IS_technopark.Account
                         object[] values = new object[oraReader.FieldCount];
                         oraReader.GetValues(values);
                         textBox_f.Add(values[0].ToString());
+                        email_list.Add(values[7].ToString());
                     }
 
                     oraAdap.SelectCommand = new OracleCommand();
@@ -418,5 +420,26 @@ namespace IS_technopark.Account
 
         }
 
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            email_list.Count();
+            int count = 0;
+            foreach (string i in email_list)
+            {
+                if (email_list[count]!="")
+                {
+                    Class_FIO.email_learner = email_list;
+                }
+            }
+            count += 1;
+            if (Class_FIO.email_learner.Count!=0)
+            {
+                Response.Redirect("SendEmail");
+            }
+            else
+            {
+                Label10.Text = "У выбранных проектантов нет почтовых ящиков";
+            }
+        }
     }
 }

@@ -95,8 +95,10 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>--%>
         <br/>
-        <br/>
         <asp:Label ID="Label9" runat="server" Text="" ForeColor="Gray"></asp:Label>
+        <br/>
+        <asp:Button ID="Button2" runat="server" Text="Рассылка сообщений" OnClick="Button2_Click" />
+        <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
     </div>
 
     <div style="float:left; margin-left:-150px;"> 
