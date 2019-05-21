@@ -23,7 +23,8 @@
     </asp:Chart>
     <asp:GridView ID="GridView1" runat="server">
     </asp:GridView>
-    <a id="toggleLink" href="javascript:void(0);" onclick="viewdiv('mydiv');" data-text-show="Спрятать блок" data-text-hide="Показать блок">Показать блок</a>
+
+ <%--   <a id="toggleLink" href="javascript:void(0);" onclick="viewdiv('mydiv');" data-text-show="Спрятать блок" data-text-hide="Показать блок">Показать блок</a>
     <div id="mydiv" style="display:none;">text text text</div>
 
     <script>
@@ -38,7 +39,7 @@
             link.innerText = link.getAttribute('data-text-show');
         }
     }
-    </script>
+    </script>--%>
     <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Воронка по году" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" />
     <asp:Button ID="Button3" runat="server" Text="Диаграмма по интересам" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" OnClick="Button3_Click"/>
 </asp:Content>

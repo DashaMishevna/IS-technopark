@@ -1,14 +1,12 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="IS_technopark.SiteMaster" %>
 
 <!DOCTYPE html>
-
 <html lang="ru">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%--<title><%: Page.Title %> - Мое приложение ASP.NET</title>--%>
-
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
@@ -120,9 +118,6 @@
                         <li><a runat="server" href="~/Account/Learners">Проектанты</a></li>
                         <li><a runat="server" href="~/Account/Info">Информация</a></li> 
                         <li><a runat="server" href="~/Account/List_Queue">Лист очередности</a></li>
-                        <%--<li><a runat="server" href="~/Account/Groups">Создание Группы</a></li>
-                        <li><a runat="server" href="~/Account/View_Group">Группы</a></li>--%>
-                       <%-- <li><a runat="server" href="~/Account/Diagramm">Диаграммы</a></li>--%>
                         <li><a runat="server" href="~/Account/SendEMail">E-mail</a></li>
                        <%-- <li><a runat="server" href="~/Contact">Связаться</a></li>--%>
 
@@ -143,9 +138,19 @@
                                 <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="mynav_dropdown-content">
-                                <a runat="server" href="~/Account/Diagramm">Диаграммы</a>
+                                <a runat="server" href="~/Account/Diagramm_Interests">Диаграммы</a>
                                 <a runat="server" href="~/Account/Reports">Отчет</a>
                                 <a runat="server" href="~/Account/Report_Writing">Отчет-Запись</a>
+                                </div>
+                            </div>
+                            <div class="mynav_dropdown">
+                                <button class="mynav_dropbtn">
+                                        Отчеты ▼
+                                <i class="fa fa-caret-down"></i>
+                                </button>
+                                <div class="mynav_dropdown-content">
+                                <a runat="server" href="~/Account/Reports">Справка освобождения</a>
+                                <a runat="server" href="~/Account/Report_Writing">Запись на проект</a>
                                 </div>
                             </div>
                         </div>
@@ -153,6 +158,7 @@
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
+                                <%--<li><a runat="server" href="~/Account/Edit" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName() %> !</a></li>--%>
                                 <li><a runat="server" href="~/Account/Register">Сотрудники</a></li>
                                 <li><a runat="server" href="~/Account/Edit">Вход</a></li>
                                 <li><a runat="server" href="~/Account/Exit">Выход</a></li>
