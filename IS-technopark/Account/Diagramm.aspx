@@ -7,7 +7,7 @@
     <h2 style="text-align:center"> СТАТИСТИКА</h2>
     <br />
     <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Диаграмма по направлениям" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" />
-    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Воронка по году" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" />
+    
     <br />
     <asp:Chart ID="Chart1" runat="server" Height="550px" Width="550px">
         <Series>
@@ -21,8 +21,24 @@
             </asp:Legend>
         </Legends>
     </asp:Chart>
-
     <asp:GridView ID="GridView1" runat="server">
     </asp:GridView>
-    
+    <a id="toggleLink" href="javascript:void(0);" onclick="viewdiv('mydiv');" data-text-show="Спрятать блок" data-text-hide="Показать блок">Показать блок</a>
+    <div id="mydiv" style="display:none;">text text text</div>
+
+    <script>
+    function viewdiv(id) {
+        var el = document.getElementById(id);
+        var link = document.getElementById('toggleLink');
+        if (el.style.display == "block") {
+            el.style.display = "none";
+            link.innerText = link.getAttribute('data-text-hide');
+        } else {
+            el.style.display = "block";
+            link.innerText = link.getAttribute('data-text-show');
+        }
+    }
+    </script>
+    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Воронка по году" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" />
+    <asp:Button ID="Button3" runat="server" Text="Диаграмма по интересам" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" OnClick="Button3_Click"/>
 </asp:Content>

@@ -86,7 +86,6 @@ namespace IS_technopark.Account
         protected void Button2_Click(object sender, EventArgs e)
         {
             oraConnection.Open();
-
             Chart1.Titles.Add("Воронка по году");
             Chart1.Titles[0].Font = new Font("Utopia", 16);
             Chart1.Titles[0].Alignment = ContentAlignment.MiddleLeft;
@@ -128,6 +127,32 @@ namespace IS_technopark.Account
 
             Chart1.Series[0].Points.DataBindXY(x, y);
             Chart1.Series[0].ChartType = SeriesChartType.Funnel;
+            Chart1.Legends[0].Enabled = true;
+            GridView1.DataSource = count1;
+            GridView1.DataBind();
+            oraConnection.Close();
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            oraConnection.Open();
+            Chart1.Titles.Add("Зависимость интересов от класса");
+            Chart1.Titles[0].Font = new Font("Utopia", 16);
+            Chart1.Titles[0].Alignment = ContentAlignment.MiddleLeft;
+
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "select DIR_LABORATORIES.LABORATORY from QUEUE, DIR_LABORATORIES WHERE QUEUE.ID_LABORATORIES=DIR_LABORATORIES.ID_LABORATORIES group by DIR_LABORATORIES.LABORATORY";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader.Read())
+            {
+                object[] values = new object[oraReader.FieldCount];
+                oraReader.GetValues(values);
+                count.Add(values[0].ToString());
+            }
+
+            //Chart1.Series[0].Points.DataBindXY(x, y);
+            Chart1.Series[0].ChartType = SeriesChartType.StackedArea;
             Chart1.Legends[0].Enabled = true;
             //GridView1.DataSource = count1;
             //GridView1.DataBind();

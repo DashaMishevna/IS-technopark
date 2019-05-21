@@ -59,7 +59,7 @@
             <asp:BoundField DataField="STATUS_L" HeaderText="Статус" SortExpression="STATUS_L" >
             <HeaderStyle Width="170px" />
             </asp:BoundField>
-            <asp:BoundField DataField="D_T_RECORD" HeaderText="D_T_RECORD" SortExpression="D_T_RECORD" />
+            <asp:BoundField DataField="D_T_RECORD" HeaderText="D_T_RECORD" SortExpression="D_T_RECORD" Visible="false" />
             <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS" />
 
             <%--<asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"> 

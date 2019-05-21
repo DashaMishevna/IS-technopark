@@ -213,5 +213,15 @@ namespace IS_technopark
         {
             GetId_l();
         }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            oraConnection.Open();
+            string command = Technopark.SelectCommand;
+            Technopark.SelectCommand = "SELECT * FROM TECHNOPARK.LEARNER";
+            Technopark.DataBind();
+            GridView1.DataBind();
+            oraConnection.Close();
+        }
     }
 }

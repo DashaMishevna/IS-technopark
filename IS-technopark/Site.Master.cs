@@ -7,6 +7,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
+using IS_technopark.Account;
 
 namespace IS_technopark
 {
@@ -69,7 +70,7 @@ namespace IS_technopark
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

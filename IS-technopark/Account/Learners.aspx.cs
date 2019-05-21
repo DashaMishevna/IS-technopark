@@ -93,17 +93,8 @@ namespace IS_technopark.Account
                     //Label1.ForeColor = System.Drawing.Color.Green;
                     //Label1.Text = "Данные успешно добавлены!";
                 }
-            }
-            catch
-            {
-                error += 1;
-                Label1.Visible = true;
-                Label1.Text = "Проверьте введенные данные!";
-            }
-            if (error == 0)
-            {
                 ID();
-                using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                using (OracleConnection oraclelcon1 = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
                 {
                     oraConnection.Open();
                     //string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, BIRTHDAY, CLASS, SCHOOL, SHIFT, PHONE, E_MAIL, INTERESTS, COMMENTS) VALUES('" + TextBoxFirst.Text + "', '" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "' , '" + DropDownList4.Text + "','" + TextBox3.Text + "', '" + DropDownList5.Text + "', '" + TextBox5.Text + "', '" + TextBox6.Text + "', '" + interests_v + "', '" + TextBox16.Text + "')";
@@ -113,12 +104,12 @@ namespace IS_technopark.Account
                     oraAdap.InsertCommand = new OracleCommand(query_parent, oraConnection);
                     oraAdap.InsertCommand.ExecuteNonQuery();
                     oraConnection.Close();
-                    Label1.Visible = true;
-                    Label1.ForeColor = System.Drawing.Color.Green;
-                    Label1.Text = "Данные успешно добавлены!";
+                    //Label1.Visible = true;
+                    //Label1.ForeColor = System.Drawing.Color.Green;
+                    //Label1.Text = "Данные успешно добавлены!";
                 }
 
-                using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                using (OracleConnection oraclelcon2 = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
                 {
                     oraConnection.Open();
                     //string query = "INSERT INTO TECHNOPARK.LEARNER (FIO, BIRTHDAY, CLASS, SCHOOL, SHIFT, PHONE, E_MAIL, INTERESTS, COMMENTS) VALUES('" + TextBoxFirst.Text + "', '" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "' , '" + DropDownList4.Text + "','" + TextBox3.Text + "', '" + DropDownList5.Text + "', '" + TextBox5.Text + "', '" + TextBox6.Text + "', '" + interests_v + "', '" + TextBox16.Text + "')";
@@ -128,12 +119,12 @@ namespace IS_technopark.Account
                     oraAdap.InsertCommand = new OracleCommand(query_queue, oraConnection);
                     oraAdap.InsertCommand.ExecuteNonQuery();
                     oraConnection.Close();
-                    Label1.Visible = true;
-                    Label1.ForeColor = System.Drawing.Color.Green;
-                    Label1.Text = "Данные успешно добавлены!";
                 }
+                Label1.Visible = true;
+                Label1.ForeColor = System.Drawing.Color.Green;
+                Label1.Text = "Данные успешно добавлены!";
             }
-            else
+            catch
             {
 
                 Label1.Visible = true;

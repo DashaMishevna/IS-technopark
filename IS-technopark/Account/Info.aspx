@@ -2,19 +2,18 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br/>
-    <h2 style="text-align:center">ИНФОРМАЦИЯ О ПРОЕКТАНТАХ</h2>
-<div style="float:left; margin-bottom:20px; text-align:left; margin-left:-100px">
-    <asp:Label ID="Label2" runat="server" Text="Поиск проектанта по ФИО"></asp:Label>
-    <br/>
-    <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:17px"></asp:TextBox> 
-    <asp:Button ID="Button1" runat="server" Text="Выбрать" OnClick="Button1_Click"  CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" />
-    <br/>
-</div>
-
-<div style="float:left; margin-top:10px; margin-left:-100px;">
-<asp:SqlDataSource ID="Technopark" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM &quot;LEARNER&quot;" UpdateCommand="UPDATE TECHNOPARK.LEARNER SET FIO = 'qwe' WHERE 1=0" DeleteCommand="DELETE FROM TECHNOPARK.LEARNER WHERE ID_LEARNER = :ID_LEARNER" >
+    <asp:SqlDataSource ID="Technopark" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT * FROM &quot;LEARNER&quot;" UpdateCommand="UPDATE TECHNOPARK.LEARNER SET FIO = 'qwe' WHERE 1=0" DeleteCommand="DELETE FROM TECHNOPARK.LEARNER WHERE ID_LEARNER = :ID_LEARNER" >
     </asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" AllowSorting="True" HorizontalAlign="Center" BackColor="White" BorderColor="#999999" BorderWidth="0px" ForeColor="Black" GridLines="Vertical" CellSpacing="3" Width="1285px">
+    <h2 style="text-align:center">ИНФОРМАЦИЯ О ПРОЕКТАНТАХ</h2>
+    <div style="float:left; margin-top:10px; margin-left:-100px">
+    <asp:Label ID="Label2" runat="server" Text="Поиск проектанта по ФИО" style="margin-left:156px"></asp:Label>
+    <br/>
+    <asp:Button ID="Button3" runat="server" Text="Вывести всех" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button3_Click" Height="32" style="text-align:center" />
+    <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:15px; margin-left:25px"></asp:TextBox> 
+    <asp:Button ID="Button1" runat="server" Text="Выбрать" OnClick="Button1_Click"  CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" Height="32" />
+    <br/>
+    <br/>
+    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" CellPadding="5" HorizontalAlign="Center" BackColor="White" BorderColor="#999999" BorderWidth="0px" ForeColor="Black" GridLines="Vertical" CellSpacing="3" Width="1285px">
         <AlternatingRowStyle BackColor="#d2ecf9" />
         <Columns>
             <asp:TemplateField>
@@ -35,7 +34,7 @@
             <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
              <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />
-            <asp:BoundField DataField="E_MAIL" HeaderText="E_MAIL" SortExpression="E_MAIL" />
+            <asp:BoundField DataField="E_MAIL" HeaderText="E_mail" SortExpression="E_MAIL" />
             <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS" />
             <asp:BoundField DataField="COMMENTS" HeaderText="Комментарии" SortExpression="COMMENTS"/>
             <asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center">
@@ -54,7 +53,7 @@
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
         <FooterStyle BackColor="#CCCCCC" />
         <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
-        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+        <PagerStyle BackColor="#8fc6f0" ForeColor="Black" HorizontalAlign="Center" />
         <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" />
         <SortedAscendingCellStyle BackColor="#F1F1F1" />
         <SortedAscendingHeaderStyle ForeColor="Black" BackColor="#808080" />
@@ -80,6 +79,18 @@
         <asp:BoundField DataField="E_MAIL" HeaderText="E_mail" SortExpression="E_MAIL" />
         <asp:BoundField DataField="PLACE_WORK" HeaderText="Место работы" SortExpression="PLACE_WORK" />
         <asp:BoundField DataField="POSITION" HeaderText="Должность" SortExpression="POSITION" />
+        <asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center">
+                <ItemTemplate>
+                    <asp:ImageButton ImageUrl="~/img/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px"/>
+                    <asp:ImageButton ImageUrl="~/img/delet.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" OnClientClick="return confirm('Are you certain you want to delete this product?');"/>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <div style="width:50px"><asp:ImageButton ImageUrl="~/img/floppy-disk.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px"/>
+                    <asp:ImageButton ImageUrl="~/img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px"/></div>
+                </EditItemTemplate>
+
+        <ItemStyle Width="60px"></ItemStyle>
+            </asp:TemplateField>
     </Columns>
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -87,10 +98,7 @@
         <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
         <RowStyle BackColor="#DDF7DD" ForeColor="#333333" />  <%--ТУТ менять цвет с первой строки--%>
         <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle ForeColor="Black" BackColor="#808080" />
-        <SortedDescendingCellStyle ForeColor="Black" BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#383838" />
+
     </asp:GridView>
 </div>
 </asp:Content>

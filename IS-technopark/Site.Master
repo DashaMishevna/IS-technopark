@@ -155,6 +155,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a runat="server" href="~/Account/Register">Сотрудники</a></li>
                                 <li><a runat="server" href="~/Account/Edit">Вход</a></li>
+                                <li><a runat="server" href="~/Account/Exit">Выход</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>

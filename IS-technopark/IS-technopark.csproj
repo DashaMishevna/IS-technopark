@@ -197,6 +197,7 @@
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Diagramm.aspx" />
     <Content Include="Account\Edit.aspx" />
+    <Content Include="Account\Exit.aspx" />
     <Content Include="Account\Forgot.aspx" />
     <Content Include="Account\Groups.aspx" />
     <Content Include="Account\Learner.aspx" />
@@ -318,6 +319,13 @@
     </Compile>
     <Compile Include="Account\Edit.aspx.designer.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Exit.aspx.cs">
+      <DependentUpon>Exit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Exit.aspx.designer.cs">
+      <DependentUpon>Exit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Forgot.aspx.cs">
       <DependentUpon>Forgot.aspx</DependentUpon>

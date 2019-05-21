@@ -12,8 +12,7 @@
     <div style="float:right; text-align:left; margin-right:-130px; font-size:13px">
         <br>
         <h4 style="text-align:left; font-weight:600 ">Выберите обучающихся</h4>
-        <br>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_LEARNER,ID_QUEUE" DataSourceID="SqlDataSource2" style="font-size:13px; max-width:950px; height:30px;" AllowPaging="True" CellPadding="4" ForeColor="#333333" GridLines="None" >
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_LEARNER,ID_QUEUE" DataSourceID="SqlDataSource2" style="font-size:12px; max-width:950px; height:30px;" AllowPaging="True" CellPadding="4" ForeColor="#333333" GridLines="None" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:TemplateField> 
@@ -24,9 +23,9 @@
                 </asp:TemplateField> 
                 <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible='false' HeaderStyle-Width="205px"> <HeaderStyle Width="205px"></HeaderStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO"><HeaderStyle Width="170px"></HeaderStyle> 
+                <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO"><HeaderStyle Width="130px"></HeaderStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="Дата записи" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:dd/MM/yyyy}"> <ItemStyle HorizontalAlign="Center"></ItemStyle><HeaderStyle Width="120px"></HeaderStyle>  
+                <asp:BoundField DataField="DATE_REGISTRATION" HeaderText="Дата записи" SortExpression="DATE_REGISTRATION" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:dd/MM/yyyy}"> <ItemStyle HorizontalAlign="Center"></ItemStyle><HeaderStyle Width="100px"></HeaderStyle>  
                 </asp:BoundField> 
                 <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" ItemStyle-HorizontalAlign="Center"> <ItemStyle HorizontalAlign="Center"></ItemStyle> 
                 </asp:BoundField> 

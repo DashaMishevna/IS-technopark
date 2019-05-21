@@ -6,7 +6,7 @@
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
    <br>
     <h2 style="text-align:center;">ЗАПИСЬ НА ПРОЕКТ</h2>
-    <div style="margin-left:100px">
+    <div style="margin-left:100px; width: 1200px;">
         <h4 style="text-align:left; font-weight:600; margin-left:-100px">Данные о ребенке</h4>
         <div class='form-label'>
             <asp:Label ID="Label2" runat="server" Text="ФИО *"></asp:Label>
@@ -148,13 +148,9 @@
         <br>
     </div>
     <br>
-    <div class="form-group" style="text-align:center">
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Добавить" Width="225px" Height="40px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3"  />
-        <br/>
-        <br/>
+    <div class="form-group" style="text-align:center;">
         <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
+        <br />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Добавить" Width="225px" Height="40px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3"  />
     </div>
-
-
-
 </asp:Content>
