@@ -74,7 +74,7 @@ namespace IS_technopark.Account
             if (!IsPostBack)
             {
                 GetDropList();
-                DropDownList3.Items.Insert(0, new ListItem("-Выберете проект-"));
+                DropDownList3.Items.Insert(0, new ListItem("-Выберите проект-"));
             }
 
             if (CheckBox1.Checked)
@@ -87,7 +87,7 @@ namespace IS_technopark.Account
                 LearnerLab();
             }
 
-            if (CheckBox1.Checked == false && DropDownList2.SelectedValue.ToString() == "-Выберете направление-")
+            if (CheckBox1.Checked == false && DropDownList2.SelectedValue.ToString() == "-Выберите направление-")
             {
                 AllLearner();
             }
@@ -121,7 +121,7 @@ namespace IS_technopark.Account
                 DropDownList2.DataSource = ds;
                 DropDownList2.DataTextField = "Laboratory";
                 DropDownList2.DataBind();
-                DropDownList2.Items.Insert(0, new ListItem("-Выберете направление-"));
+                DropDownList2.Items.Insert(0, new ListItem("-Выберите направление-"));
                 DropDownList2.SelectedIndex = 0;
             }
             oraConnection.Close();
@@ -177,7 +177,7 @@ namespace IS_technopark.Account
                 DropDownList3.DataSource = ds;
                 DropDownList3.DataTextField = "Title";
                 DropDownList3.DataBind();
-                DropDownList3.Items.Insert(0, new ListItem("-Выберете проект-"));
+                DropDownList3.Items.Insert(0, new ListItem("-Выберите проект-"));
                 DropDownList3.SelectedIndex = 0;
                 LearnerLab();
                 oraConnection.Close();
@@ -192,13 +192,13 @@ namespace IS_technopark.Account
                 DropDownList3.DataSource = ds;
                 DropDownList3.DataTextField = "Title";
                 DropDownList3.DataBind();
-                DropDownList3.Items.Insert(0, new ListItem("-Выберете проект-"));
+                DropDownList3.Items.Insert(0, new ListItem("-Выберите проект-"));
                 DropDownList3.SelectedIndex = 0;
                 LearnerLabInteres();
                 oraConnection.Close();
             }
 
-            if (CheckBox1.Checked == false && DropDownList2.SelectedValue.ToString() == "-Выберете направление-")
+            if (CheckBox1.Checked == false && DropDownList2.SelectedValue.ToString() == "-Выберите направление-")
             {
                 AllLearner();
             }
@@ -265,7 +265,7 @@ namespace IS_technopark.Account
             int c_np = 0;
             int error = 0;
 
-            if (DropDownList2.Text != "-Выберете направление-" && DropDownList3.Text != "-Выберете проект-")
+            if (DropDownList2.Text != "-Выберите направление-" && DropDownList3.Text != "-Выберите проект-")
             {
                 foreach (string i in textBox_f)
                 {

@@ -23,7 +23,7 @@ namespace IS_technopark.Account
             if(!IsPostBack)
             {
                 GetDropList();
-                DropDownList2.Items.Insert(0, new ListItem("-Выберете проект-"));
+                DropDownList2.Items.Insert(0, new ListItem("-Выберите проект-"));
             }
             ID();
         }
@@ -105,7 +105,7 @@ namespace IS_technopark.Account
                     oraAdap.InsertCommand.ExecuteNonQuery();
                     oraConnection.Close();
                     //Label1.Visible = true;
-                    //Label1.ForeColor = System.Drawing.Color.Green;
+                    //Label1.ForeColor = System.Drawing.Color.Green;                DropDownList1.Items.Insert(0, new ListItem("-
                     //Label1.Text = "Данные успешно добавлены!";
                 }
 
@@ -145,7 +145,7 @@ namespace IS_technopark.Account
                 DropDownList2.DataSource = ds;
                 DropDownList2.DataTextField = "Title";
                 DropDownList2.DataBind();
-                DropDownList2.Items.Insert(0, new ListItem("-Выберете проект-"));
+                DropDownList2.Items.Insert(0, new ListItem("-Выберите проект-"));
                 DropDownList2.SelectedIndex = 0;
                 oraConnection.Close();
             }
@@ -162,7 +162,7 @@ namespace IS_technopark.Account
                 DropDownList1.DataSource = ds;
                 DropDownList1.DataTextField = "Laboratory";
                 DropDownList1.DataBind();
-                DropDownList1.Items.Insert(0, new ListItem("-Выберете направление-"));
+                DropDownList1.Items.Insert(0, new ListItem("-Выберите направление-"));
                 DropDownList1.SelectedIndex = 0;
             }
             oraConnection.Close();

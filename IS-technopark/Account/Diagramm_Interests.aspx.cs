@@ -1,6 +1,7 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -16,15 +17,26 @@ namespace IS_technopark.Account
         OracleConnection oraConnection = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;");
         List<string> List_x = new List<string>();
         List<string> List_y = new List<string>();
+        DataSet ds = new DataSet();
 
         protected void Page_Load(object sender, EventArgs e)
         {
             oraConnection.Open();
-            Chart1.Titles.Add("Диаграмма по интересам");
-            Chart1.Titles[0].Font = new Font("Utopia", 16);
+            if (!IsPostBack)
+            {
+                GetDropList();
+            }
+        }
+
+        private void Diagramm_GridView()
+        {
+            //oraConnection.Open();
+           // GetDropList();
+            //Chart1.Titles.Add("Диаграмма по интересам");
+            //Chart1.Titles[0].Font = new Font("Utopia", 16);
 
             oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "select Count(ID_Learner), class from Learner WHERE INTERESTS Like '%Робототехника%' group by Class";
+            oraAdap.SelectCommand.CommandText = "select Count(ID_Learner), class from Learner WHERE INTERESTS Like '%" + DropDownList1.Text + "%' group by Class";
             oraAdap.SelectCommand.Connection = oraConnection;
             OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
             while (oraReader.Read())
@@ -35,25 +47,35 @@ namespace IS_technopark.Account
                 List_y.Add(values[1].ToString());
             }
 
-            string[] x = new string[List_x.Count];
-            int[] y = new int[List_y.Count];
-
-            for (int i = 0; i < List_x.Count; i++)
-            {
-                x[i] = List_x[i].ToString();
-            }
-
-            for (int i = 0; i < List_y.Count; i++)
-            {
-                y[i] = Convert.ToInt32(List_y[i]);
-            }
+            string command = SqlDataSource1.SelectCommand;
+            SqlDataSource1.SelectCommand = "select Count(ID_Learner) as Количество, class as Класс from Learner WHERE INTERESTS Like '%" + DropDownList1.Text + "%' group by Class";
+            SqlDataSource1.DataBind();
+            GridView1.DataBind();
 
             Chart1.Series[0].Points.DataBindXY(List_y, List_x);
             Chart1.Series[0].ChartType = SeriesChartType.Column;
             Chart1.Legends[0].Enabled = true;
-            //GridView1.DataSource = count1;
-            //GridView1.DataBind();
             oraConnection.Close();
+        }
+
+        private void GetDropList()
+        {
+            string s1 = "Select Laboratory from DIR_LABORATORIES";
+            OracleDataAdapter oraAdap = new OracleDataAdapter(s1, oraConnection);
+            oraAdap.Fill(ds);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                DropDownList1.DataSource = ds;
+                DropDownList1.DataTextField = "Laboratory";
+                DropDownList1.DataBind();
+                DropDownList1.Items.Insert(0, new ListItem("-Выберите направление-"));
+                DropDownList1.SelectedIndex = 0;
+            }
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Diagramm_GridView();
         }
     }
 }

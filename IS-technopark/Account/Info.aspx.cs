@@ -199,7 +199,7 @@ namespace IS_technopark
                 }
                 catch
                 {
-                    Response.Write("<script>alert('Eeegc')</script>");
+                    Response.Write("<script>alert('Ошибка')</script>");
                 }
             }
             else
@@ -224,7 +224,7 @@ namespace IS_technopark
             }
             else
             {
-                Response.Write("<script>alter('EDIT');</script>");
+                Response.Write("<script>alter('Ошибка');</script>");
             }
         }
 

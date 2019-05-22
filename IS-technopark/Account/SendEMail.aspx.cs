@@ -60,7 +60,7 @@ namespace IS_technopark.Account
             string message = txtMessage.Text.Trim();
             try
             {
-                if (DropDownList1.SelectedValue.ToString() == "-Выберете направление-" && to != "")
+                if (DropDownList1.SelectedValue.ToString() == "-Выберите направление-" && to != "")
                 {
                     using (SmtpClient smtp = new SmtpClient())
                     {
@@ -138,7 +138,7 @@ namespace IS_technopark.Account
                 DropDownList1.DataSource = ds;
                 DropDownList1.DataTextField = "Laboratory";
                 DropDownList1.DataBind();
-                DropDownList1.Items.Insert(0, new ListItem("-Выберете направление-"));
+                DropDownList1.Items.Insert(0, new ListItem("-Выберите направление-"));
                 DropDownList1.SelectedIndex = 0;
             }
             oraConnection.Close();

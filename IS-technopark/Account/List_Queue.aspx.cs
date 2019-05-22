@@ -29,7 +29,7 @@ namespace IS_technopark.Account
             if (!IsPostBack)
             {
                 GetDropList();
-                DropDownList3.Items.Insert(0, new ListItem("-Выберете проект-"));
+                DropDownList3.Items.Insert(0, new ListItem("-Выберите проект-"));
             }
             int a = 0;
             foreach (GridViewRow row in GridView1.Rows)
@@ -126,7 +126,7 @@ namespace IS_technopark.Account
                 GridView1.DataBind();
             }
 
-            if (DropDownList1.SelectedValue.ToString() == "-Выберете направление-")
+            if (DropDownList1.SelectedValue.ToString() == "-Выберите направление-")
             {
                 PrintAllLearners();
             } 
@@ -144,13 +144,13 @@ namespace IS_technopark.Account
                 DropDownList1.DataSource = ds;
                 DropDownList1.DataTextField = "Laboratory";
                 DropDownList1.DataBind();
-                DropDownList1.Items.Insert(0, new ListItem("-Выберете направление-"));
+                DropDownList1.Items.Insert(0, new ListItem("-Выберите направление-"));
                 DropDownList1.SelectedIndex = 0;
 
                 DropDownList2.DataSource = ds;
                 DropDownList2.DataTextField = "Laboratory";
                 DropDownList2.DataBind();
-                DropDownList2.Items.Insert(0, new ListItem("-Выберете направление-"));
+                DropDownList2.Items.Insert(0, new ListItem("-Выберите направление-"));
                 DropDownList2.SelectedIndex = 0;
             }
             string s2 = "Select STATUS_L from DIR_STATUS_LEARNER";
@@ -160,12 +160,12 @@ namespace IS_technopark.Account
             {
                 DropDownList4.DataSource = dss;
                 DropDownList4.DataBind();
-                DropDownList4.Items.Insert(0, new ListItem("-Выберете статус-"));
+                DropDownList4.Items.Insert(0, new ListItem("-Выберите статус-"));
                 DropDownList4.SelectedIndex = 0;
 
                 DropDownList5.DataSource = dss;
                 DropDownList5.DataBind();
-                DropDownList5.Items.Insert(0, new ListItem("-Выберете статус-"));
+                DropDownList5.Items.Insert(0, new ListItem("-Выберите статус-"));
                 DropDownList5.SelectedIndex = 0;
             }
             oraConnection.Close();
@@ -182,7 +182,7 @@ namespace IS_technopark.Account
                 DropDownList3.DataSource = ds;
                 DropDownList3.DataTextField = "Title";
                 DropDownList3.DataBind();
-                DropDownList3.Items.Insert(0, new ListItem("-Выберете проект-"));
+                DropDownList3.Items.Insert(0, new ListItem("-Выберите проект-"));
                 DropDownList3.SelectedIndex = 0;
                 oraConnection.Close();
             }
@@ -277,7 +277,7 @@ namespace IS_technopark.Account
             SqlDataSource1.DataBind();
             GridView1.DataBind();
 
-            if (DropDownList4.SelectedValue.ToString() == "-Выберете статус-")
+            if (DropDownList4.SelectedValue.ToString() == "-Выберите статус-")
             {
                 PrintAllLearners();
             }
