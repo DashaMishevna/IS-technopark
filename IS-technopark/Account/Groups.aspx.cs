@@ -267,12 +267,9 @@ namespace IS_technopark.Account
 
             if (DropDownList2.Text != "-Выберете направление-" && DropDownList3.Text != "-Выберете проект-")
             {
-              
                 foreach (string i in textBox_f)
                 {
-                   
                     oraAdap.SelectCommand = new OracleCommand();
-                    //Response.Write(textBox_f[s] + "<b></b><br/>");
                     oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.LEARNER.ID_LEARNER, TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE (TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER = 1) AND TECHNOPARK.DIR_LABORATORIES.LABORATORY = '" + DropDownList2.Text + "' and TECHNOPARK.Learner.ID_LEARNER = '" + textBox_f[s] + "'";
                     oraAdap.SelectCommand.Connection = oraConnection;
                     OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
@@ -281,7 +278,6 @@ namespace IS_technopark.Account
                         object[] values = new object[oraReader.FieldCount];
                         oraReader.GetValues(values);
                         List_pr.Add(values[0].ToString());
-                       // Response.Write("1 -" + values[0] + "<b></b><br/>");
                     }
 
                     oraAdap.SelectCommand = new OracleCommand();
@@ -293,7 +289,6 @@ namespace IS_technopark.Account
                         object[] values = new object[oraReader_1.FieldCount];
                         oraReader_1.GetValues(values);
                         List_npr.Add(values[0].ToString());
-                        //Response.Write("2 -" + values[0] + "<b></b><br/>");
                     }
                     s += 1;
                 }

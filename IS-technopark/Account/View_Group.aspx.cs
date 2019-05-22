@@ -20,13 +20,21 @@ namespace IS_technopark.Account
         List<string> id_status = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (this.IsPostBack)
-            //{
-            //    string command = SqlDataSource1.SelectCommand;
-            //    SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE and ID_GROUPT!=0";
-            //    SqlDataSource1.DataBind();
-            //    GridView1.DataBind();
-            //}
+            if (Class_FIO.Employees_position=="2")
+            {
+                string command = SqlDataSource1.SelectCommand;
+                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0 and TECHNOPARK.EMPLOYEES.FIO= '"+ Class_FIO.Employees_fio +"' ";
+                SqlDataSource1.DataBind();
+                GridView1.DataBind();
+            }
+            if (Class_FIO.Employees_position=="1")
+            {
+                string command = SqlDataSource1.SelectCommand;
+                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0";
+                SqlDataSource1.DataBind();
+                GridView1.DataBind();
+            }
+
             int a = 0;
             foreach (GridViewRow row in GridView2.Rows)
             {
@@ -191,24 +199,27 @@ namespace IS_technopark.Account
             GetId_G();
             int i;
             try
+            {
+                if (id_G != "")
                 {
                     using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
                     {
                         //string query_update_g = "Update GROUPS SET D_START='"+ DateTime.Parse(TextBox2.Text).ToShortDateString() + "', D_END='" + DateTime.Parse(TextBox3.Text).ToShortDateString() + "', D_CONFERENCE='" + DateTime.Parse(TextBox4.Text).ToShortDateString() + "', TIME_CLASS='" + TextBox5.Text + "', PROJECT_THEME='" + TextBox6.Text + "' WHERE ID_GROUPT = '" + id_G + "' ";
-                        string query_update_g = "Update GROUPS SET STATUS = '"+ id_s_g +"'  WHERE ID_GROUPT = '" + id_G + "'";
+                        string query_update_g = "Update GROUPS SET STATUS = '" + id_s_g + "'  WHERE ID_GROUPT = '" + id_G + "'";
                         oraAdap.UpdateCommand = new OracleCommand(query_update_g, oraConnection);
                         oraAdap.UpdateCommand.ExecuteNonQuery();
+                        Label12.Visible = true;
+                        Label12.ForeColor = System.Drawing.Color.Green;
+                        Label12.Text = "Данные группы успешно обновлены!";
                         SelectGroupt();
                     }
-                    Label12.Visible = true;
-                    Label12.ForeColor = System.Drawing.Color.Green;
-                    Label12.Text = "Данные группы успешно обновлены!";
                 }
-                catch
-                {
-                    Label12.Visible = true;
-                    Label12.Text = "Проверьте введенные данные!";
-                }
+            }
+            catch
+            {
+                Label12.Visible = true;
+                Label12.Text = "Проверьте введенные данные!";
+            }
             oraConnection.Close();
         }
 

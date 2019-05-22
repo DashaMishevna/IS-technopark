@@ -9,9 +9,9 @@
     </asp:SqlDataSource>
     <br>
     <h2 style="text-align:center"> СОЗДАНИЕ ГРУППЫ </h2>
-    <div style="float:right; text-align:left; margin-right:-130px; font-size:13px">
+    <div style="float:right; text-align:left; margin-right:-110px; margin-top:-7px; font-size:13px">
         <br>
-        <h4 style="text-align:left; font-weight:600 ">Выберите обучающихся</h4>
+        <h4 style="text-align:left; font-weight:600 ">Выберите обучающихся</h4> <asp:Label ID="Label9" runat="server" Text="" ForeColor="Gray"></asp:Label>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_LEARNER,ID_QUEUE" DataSourceID="SqlDataSource2" style="font-size:12px; max-width:950px; height:30px;" AllowPaging="True" CellPadding="4" ForeColor="#333333" GridLines="None" >
             <AlternatingRowStyle BackColor="White" />
             <Columns>
@@ -35,11 +35,11 @@
                 </asp:BoundField> 
                 <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE"> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS">  
+                <asp:BoundField DataField="INTERESTS" HeaderText="Интересы" SortExpression="INTERESTS"><HeaderStyle Width="115px"></HeaderStyle>   
                 </asp:BoundField> 
-                <asp:BoundField DataField="LABORATORY" HeaderText="Направление" SortExpression="LABORATORY" HeaderStyle-Width="105" ><HeaderStyle Width="105px"></HeaderStyle> 
+                <asp:BoundField DataField="LABORATORY" HeaderText="Направление" SortExpression="LABORATORY"><HeaderStyle Width="105px"></HeaderStyle> 
                 </asp:BoundField> 
-                <asp:BoundField DataField="TITLE" HeaderText="Проект" SortExpression="TITLE" HeaderStyle-Width="220"> <HeaderStyle Width="220px"></HeaderStyle> 
+                <asp:BoundField DataField="TITLE" HeaderText="Проект" SortExpression="TITLE"> <HeaderStyle Width="250px"></HeaderStyle> 
                 </asp:BoundField> 
                 <asp:BoundField DataField="ID_QUEUE" HeaderText="ID_QUEUE" SortExpression="ID_QUEUE" Visible='false'/>
             </Columns>
@@ -94,17 +94,15 @@
             <SortedDescendingHeaderStyle BackColor="#4870BE" />
         </asp:GridView>--%>
         <br/>
-        <asp:Label ID="Label9" runat="server" Text="" ForeColor="Gray"></asp:Label>
-        <br/>
         <asp:Button ID="Button2" runat="server" Text="Рассылка сообщений" OnClick="Button2_Click" Font-Size="11pt" BackColor="#CEE5F3" CssClass="btn btn-default"  />
         <asp:Label ID="Label10" runat="server" Text=""></asp:Label>
     </div>
 
-    <div style="float:left; margin-left:-150px;"> 
+    <div style="float:left; margin-left:-140px;"> 
         <br>
         <h4 style="text-align:left; font-weight:600 ">Данные о группе</h4>
         <br>
-        <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
+        <div style="margin-top: 4px; float:left; width:170px; height:30px; font-size:14px;">
             <asp:Label ID="Label2" runat="server" Text="ФИО Преподавателя *"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
@@ -112,7 +110,7 @@
         </div>
         <br>
         <br>
-        <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
+        <div style="margin-top: 4px; float:left; width:170px; height:30px; font-size:14px;">
             <asp:Label ID="Label3" runat="server" Text="Направление *"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
@@ -120,7 +118,7 @@
         </div>
         <br>
         <br>
-        <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
+        <div style="margin-top: 4px; float:left; width:170px; height:30px; font-size:14px;">
             <asp:Label ID="Label4" runat="server" Text="Проект *"></asp:Label>
         </div>
         <div class='form-row'style="width:300px;" >
@@ -136,7 +134,7 @@
         </div>--%>
         <br>
         <br>
-        <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
+        <div style="margin-top: 4px; float:left; width:170px; height:30px; font-size:14px;">
             <asp:Label ID="Label6" runat="server" Text="Тема проекта"></asp:Label>
         </div>
         <div class='form-row' style="width:300px;">
@@ -144,7 +142,7 @@
         </div>
         <br>
         <br>
-        <div style="margin-top: 4px; float:left; width:200px; height:30px; font-size:16px;">
+        <div style="margin-top: 4px; float:left; width:170px; height:30px; font-size:14px;">
             <asp:Label ID="Label7" runat="server" Text="Время занятий"></asp:Label>
         </div>
         <div class='form-row' style="width:300px;">
@@ -152,7 +150,7 @@
         </div>
         <br>
         <br>
-        <div style="margin-top: 4px; float:left; width:190px; height:30px; font-size:16px; margin-right:10px">
+        <div style="margin-top: 4px; float:left; width:160px; height:30px; font-size:14px; margin-right:10px">
             <asp:Label ID="Label8" runat="server" Text="Дополнительный поиск по интересам"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
@@ -160,12 +158,13 @@
             <%--<asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource3" CssClass="btn btn-default" DataTextField="LABORATORY" DataValueField="LABORATORY" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged"> </asp:DropDownList>--%>
         </div>
         <br>
-        <br>
-     </div>
-    <div class="form-group" style=" text-align:center; margin-top:500px">
-        <asp:Button ID="Button1" runat="server" Text="Добавить" Width="225px" Height="40px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button1_Click" OnClientClick="i=2"  />
         <br/>
+        <br/>
+        <asp:Button ID="Button1" runat="server" Text="Добавить" Width="220px" Height="35px" CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" OnClick="Button1_Click" OnClientClick="i=2"  />
         <br/>
         <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
+     </div>
+    <div class="form-group" style=" text-align:center; margin-top:500px">
+        
     </div>
  </asp:Content>

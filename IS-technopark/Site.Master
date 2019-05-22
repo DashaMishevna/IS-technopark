@@ -139,8 +139,6 @@
                                 </button>
                                 <div class="mynav_dropdown-content">
                                 <a runat="server" href="~/Account/Diagramm_Interests">Диаграммы</a>
-                                <a runat="server" href="~/Account/Reports">Отчет</a>
-                                <a runat="server" href="~/Account/Report_Writing">Отчет-Запись</a>
                                 </div>
                             </div>
                             <div class="mynav_dropdown">
@@ -149,7 +147,7 @@
                                 <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="mynav_dropdown-content">
-                                <a runat="server" href="~/Account/Reports">Справка освобождения</a>
+                                <a runat="server" href="~/Account/Reports">Справка освобождение</a>
                                 <a runat="server" href="~/Account/Report_Writing">Запись на проект</a>
                                 </div>
                             </div>
