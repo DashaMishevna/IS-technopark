@@ -4,11 +4,10 @@
 
 <asp:Content  ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br>
-    <h2 style="text-align:center"> СТАТИСТИКА</h2>
+    <h2 style="text-align:center">Статистика по направлениям</h2>
     <br />
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Диаграмма по направлениям" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" />
-    
-    <br />
+    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Диаграмма по направлениям" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" Visible="false" />
+    <div style="margin-top:4px; float:left; margin-left:150px">
     <asp:Chart ID="Chart1" runat="server" Height="550px" Width="550px">
         <Series>
         <asp:Series Name="" Legend="Legend1"></asp:Series>
@@ -21,8 +20,9 @@
             </asp:Legend>
         </Legends>
     </asp:Chart>
-    <asp:GridView ID="GridView1" runat="server">
-    </asp:GridView>
+         </div>
+    <%--<asp:GridView ID="GridView1" runat="server">
+    </asp:GridView>--%>
 
  <%--   <a id="toggleLink" href="javascript:void(0);" onclick="viewdiv('mydiv');" data-text-show="Спрятать блок" data-text-hide="Показать блок">Показать блок</a>
     <div id="mydiv" style="display:none;">text text text</div>
@@ -40,6 +40,6 @@
         }
     }
     </script>--%>
-    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Воронка по году" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" />
-    <asp:Button ID="Button3" runat="server" Text="Диаграмма по интересам" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" OnClick="Button3_Click"/>
+    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Воронка по году" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b"  Visible="false"/>
+    <asp:Button ID="Button3" runat="server" Text="Диаграмма по интересам" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" OnClick="Button3_Click" Visible="false"/>
 </asp:Content>

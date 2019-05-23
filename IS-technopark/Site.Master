@@ -138,7 +138,8 @@
                                 <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="mynav_dropdown-content">
-                                <a runat="server" href="~/Account/Diagramm_Interests">Диаграммы</a>
+                                <a runat="server" href="~/Account/Diagramm">Статистика по направлениям</a>
+                                <a runat="server" href="~/Account/Diagramm_Interests">Статистика по интересам</a>
                                 </div>
                             </div>
                             <div class="mynav_dropdown">

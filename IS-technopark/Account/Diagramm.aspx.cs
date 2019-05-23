@@ -22,24 +22,7 @@ namespace IS_technopark.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
             oraConnection.Open();
-            //Chart1.BorderlineDashStyle = ChartDashStyle.Solid;
-            //Chart1.BorderlineColor = Color.Gray;
-            //Chart1.BorderSkin.SkinStyle = BorderSkinStyle.Emboss;
-
-            Chart1.Titles.Add("Диаграмма по направлениям");
-            Chart1.Titles[0].Font = new Font("Utopia", 16);
-
-            //Chart1.Series.Add(new Series("ColumnSeries")
-            //{
-            //    ChartType = SeriesChartType.Pie
-            //});
-
             oraAdap.SelectCommand = new OracleCommand();
             oraAdap.SelectCommand.CommandText = "select DIR_LABORATORIES.LABORATORY from QUEUE, DIR_LABORATORIES WHERE QUEUE.ID_LABORATORIES=DIR_LABORATORIES.ID_LABORATORIES group by DIR_LABORATORIES.LABORATORY";
             oraAdap.SelectCommand.Connection = oraConnection;
@@ -81,6 +64,21 @@ namespace IS_technopark.Account
             //GridView1.DataSource = count1;
             //GridView1.DataBind();
             oraConnection.Close();
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            
+            //Chart1.BorderlineDashStyle = ChartDashStyle.Solid;
+            //Chart1.BorderlineColor = Color.Gray;
+            //Chart1.BorderSkin.SkinStyle = BorderSkinStyle.Emboss;
+
+            //Chart1.Titles.Add("Диаграмма по направлениям");
+            //Chart1.Titles[0].Font = new Font("Utopia", 16);
+
+
+
+           
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -128,8 +126,8 @@ namespace IS_technopark.Account
             Chart1.Series[0].Points.DataBindXY(x, y);
             Chart1.Series[0].ChartType = SeriesChartType.Funnel;
             Chart1.Legends[0].Enabled = true;
-            GridView1.DataSource = count1;
-            GridView1.DataBind();
+            //GridView1.DataSource = count1;
+            //GridView1.DataBind();
             oraConnection.Close();
         }
 
