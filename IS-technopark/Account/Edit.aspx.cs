@@ -27,7 +27,7 @@ namespace IS_technopark.Account
         {
             ORACLE.Open();
             oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "Select * From EMPLOYEES where FIO Like '%" + TextBox1.Text + "%' and KEY='" + TextBox2.Text+ "'";
+            oraAdap.SelectCommand.CommandText = "Select * From EMPLOYEES where FIO Like '%" + TextBox_FIO.Text + "%' and KEY='" + TextBox_Passw.Text+ "'";
             oraAdap.SelectCommand.Connection = ORACLE;
             OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
             while (oraReader.Read())
@@ -55,8 +55,8 @@ namespace IS_technopark.Account
             }
             if (Info_employees.Count == 0)
             {
-                Label3.Visible = true;
-                Label3.Text = "Нет совпадений!";
+                Label_Mess.Visible = true;
+                Label_Mess.Text = "Нет совпадений!";
             }
 
             //oraAdap.SelectCommand = new OracleCommand();

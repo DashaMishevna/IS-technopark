@@ -162,7 +162,7 @@ button,
 input,
 select,
 textarea {
-  margin: 0;
+  margin: 0 0 0 38px;
   font-family: inherit;
   font-size: 100%;
 }
@@ -6818,7 +6818,6 @@ td.visible-print {
 }
 
 .form-row {
-    width: 811px;
     font-size:17px;
     float:left;
 }
@@ -6826,7 +6825,7 @@ td.visible-print {
 .form-label {
     margin-top: 4px;
 	float:left;
-    width:250px;
+    width:237px;
     height:30px;
     font-size:17px;
     margin-left:-100px;

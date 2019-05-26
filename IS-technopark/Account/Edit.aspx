@@ -3,33 +3,32 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br>
     <h2 style="text-align:center;">ВХОД</h2>
-    <div class="login" style="text-align:center">
         <br />
-        <div class='form-label' style="margin-left:400px">
-        <asp:Label ID="Label1" runat="server" Text="Имя сотрудника" Font-Size="12pt"></asp:Label>
+        <div style="margin-left:54px; width: 1431px;">
+        <div class='form-label' style="margin-left:210px; text-align:right">
+        <asp:Label ID="Label_FIO" runat="server" Text="Имя сотрудника" Font-Size="12pt"></asp:Label>
         </div>
-        <div class='form-row'>
-        <asp:TextBox ID="TextBox1" runat="server" Width="225px" Height="30px"  CssClass="btn btn-default"></asp:TextBox>
+        <div class='form-row' style="text-align:left; margin-left:20px;">
+        <asp:TextBox ID="TextBox_FIO" runat="server" Width="225px" Height="30px" CssClass="form-control"></asp:TextBox>
+        </div> 
+             <br />
+             <br />
+        <br/>
+        <div class='form-label' style="margin-left:210px; text-align:right">
+        <asp:Label ID="Label_Passw" runat="server" Text="Пароль" Font-Size="12pt"></asp:Label>
         </div>
-        
-          
-        <div class="form-group">
-        <br/> 
-        <div class='form-label'>
-        <asp:Label ID="Label2" runat="server" Text="Пароль" Font-Size="10pt"></asp:Label>
+        <div class='form-row' style="text-align:left; margin-left:20px;">
+        <asp:TextBox ID="TextBox_Passw" runat="server" TextMode="Password" Width="225px" Height="31px" CssClass="form-control"></asp:TextBox>
         </div>
-        <asp:TextBox ID="TextBox2" runat="server" Width="225px" Height="31px" CssClass="btn btn-default"></asp:TextBox>
         <br />
-        <br/>
         </div>
-        <div class="form-group">
-        <asp:Button ID="Button1" runat="server" Text="Вход" Width="225px" OnClick="Button1_Click" Height="40px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" />
+        <br />
+        <div class="form-group" style="text-align:center">
+        <br/>
+        <asp:Button ID="Button_Edit" runat="server" Text="Вход" Width="100px" OnClick="Button1_Click" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" />
         <br/>
         <br/>
-        <asp:Label ID="Label3" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
+        <asp:Label ID="Label_Mess" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
         </div>
-    </div>
-   
-
 </asp:Content>
 
