@@ -109,6 +109,8 @@ namespace IS_technopark
             else
             {
                 Response.Write("<script>alert('Только методист может редактировать данные!')</script>");
+                //Response.Write(@"<script language='javascript'>alert('This is my Message')</script>");
+                //Page.ClientScript.RegisterClientScriptBlock(typeof(Page), "SCRIPT", string.Format("alert('Hello World')"), true);
             }
 
         }

@@ -48,7 +48,9 @@ namespace IS_technopark.Account
                 txtTo.Text = String.Empty;
             //}
 
-            Response.Redirect("SendEMail.aspx"); //Перенаправлять или чистить
+            Response.Write("<script>alert('Сообщение успешно отправлено!')</script>");
+
+           // Response.Redirect("SendEMail.aspx"); //Перенаправлять или чистить
 
         }
 

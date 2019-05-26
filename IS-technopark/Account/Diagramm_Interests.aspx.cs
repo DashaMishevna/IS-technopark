@@ -31,7 +31,7 @@ namespace IS_technopark.Account
         private void Diagramm_GridView()
         {
             //oraConnection.Open();
-           // GetDropList();
+            //GetDropList();
             //Chart1.Titles.Add("Диаграмма по интересам");
             //Chart1.Titles[0].Font = new Font("Utopia", 16);
 
@@ -52,6 +52,7 @@ namespace IS_technopark.Account
             SqlDataSource1.DataBind();
             GridView1.DataBind();
 
+            Chart1.Series[0].Name = DropDownList1.Text;
             Chart1.Series[0].Points.DataBindXY(List_y, List_x);
             Chart1.Series[0].ChartType = SeriesChartType.Column;
             Chart1.Legends[0].Enabled = true;

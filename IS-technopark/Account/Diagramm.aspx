@@ -5,18 +5,20 @@
 <asp:Content  ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br>
     <h2 style="text-align:center">Статистика по направлениям</h2>
+    <h5 style="text-align:center"> Количество проектантов, которые успешно завершили проекты </h5>
     <br />
-    <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Диаграмма по направлениям" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" Visible="false" />
+    <asp:Label ID="Label1" runat="server" Text="Выберите год"></asp:Label>
+    <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
     <div style="margin-top:4px; float:left; margin-left:150px">
-    <asp:Chart ID="Chart1" runat="server" Height="550px" Width="550px">
+    <asp:Chart ID="Chart1" runat="server" Height="450px" Width="450px">
         <Series>
-        <asp:Series Name="" Legend="Legend1"></asp:Series>
+        <asp:Series Name="Series1" IsValueShownAsLabel="True" Legend="Legend1"> </asp:Series>
         </Series>
         <ChartAreas>
             <asp:ChartArea Name="ChartArea1" ShadowColor="LightSkyBlue"></asp:ChartArea>
         </ChartAreas>
         <Legends>
-            <asp:Legend Name="">
+            <asp:Legend Name="Legend1">
             </asp:Legend>
         </Legends>
     </asp:Chart>
@@ -40,6 +42,4 @@
         }
     }
     </script>--%>
-    <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Воронка по году" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b"  Visible="false"/>
-    <asp:Button ID="Button3" runat="server" Text="Диаграмма по интересам" CssClass="btn btn-default" Font-Size="10pt" BackColor="#d6e9f5" ForeColor="#1e577b" OnClick="Button3_Click" Visible="false"/>
 </asp:Content>

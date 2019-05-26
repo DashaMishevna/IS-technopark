@@ -197,6 +197,7 @@
     <Content Include="Account\Confirm.aspx" />
     <Content Include="Account\Diagramm.aspx" />
     <Content Include="Account\Diagramm_Interests.aspx" />
+    <Content Include="Account\Diagramm_repeat.aspx" />
     <Content Include="Account\Edit.aspx" />
     <Content Include="Account\Exit.aspx" />
     <Content Include="Account\Forgot.aspx" />
@@ -320,6 +321,13 @@
     </Compile>
     <Compile Include="Account\Diagramm_Interests.aspx.designer.cs">
       <DependentUpon>Diagramm_Interests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Diagramm_repeat.aspx.cs">
+      <DependentUpon>Diagramm_repeat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Diagramm_repeat.aspx.designer.cs">
+      <DependentUpon>Diagramm_repeat.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
