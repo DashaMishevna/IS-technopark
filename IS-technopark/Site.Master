@@ -149,8 +149,9 @@
                                 <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="mynav_dropdown-content">
-                                <a runat="server" href="~/Account/Reports">Справка освобождение</a>
+                                <a runat="server" href="~/Account/Report_Writing">Сертификат</a>
                                 <a runat="server" href="~/Account/Report_Writing">Запись на проект</a>
+                                <a runat="server" href="~/Account/Reports">Справка освобождение</a>
                                 </div>
                             </div>
                         </div>

@@ -4,7 +4,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="select Count(ID_Learner) as Количество, class as Класс from Learner WHERE INTERESTS Like '%Робототехника%' and 1=0 group by Class"></asp:SqlDataSource>
     <br />
     <h3 style="text-align:center"> Статистика по интересам</h3>
-    <h5 style="text-align:center"> Количество проектантов, которые выбрали определенное направление в разделе "Интересы" в соответсвии со школьным классом </h5>
+    <h5 style="text-align:center"> Количество проектантов, которые выбрали определенное направление в разделе "Интересы" в соответствии со школьным классом </h5>
     <div style="float:left; margin-left:0px; width: 500px;"> 
     <br />
     <br />

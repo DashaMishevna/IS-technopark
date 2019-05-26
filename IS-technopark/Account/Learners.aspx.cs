@@ -126,11 +126,12 @@ namespace IS_technopark.Account
             }
             catch
             {
-
                 Label1.Visible = true;
                 Label1.Text = "Проверьте введенные данные!";
             }
-            
+
+            Response.Write("<script>alert('Данные успешно добавлены!')</script>");
+
         }
 
 
