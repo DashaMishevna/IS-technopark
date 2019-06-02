@@ -216,6 +216,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
     <Content Include="Account\Reports.aspx" />
+    <Content Include="Account\Report_Certificate.aspx" />
     <Content Include="Account\Report_Writing.aspx" />
     <Content Include="Account\ResetPassword.aspx" />
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
@@ -245,6 +246,7 @@
     <Content Include="img\Delet.png" />
     <Content Include="img\edit.png" />
     <Content Include="img\email.png" />
+    <Content Include="img\exit_w.png" />
     <Content Include="img\floppy-disk.png" />
     <Content Include="img\Home.png" />
     <Content Include="img\paper.png" />
@@ -459,6 +461,13 @@
     <Compile Include="Account\Reports.aspx.designer.cs">
       <DependentUpon>Reports.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Account\Report_Certificate.aspx.cs">
+      <DependentUpon>Report_Certificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Report_Certificate.aspx.designer.cs">
+      <DependentUpon>Report_Certificate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Account\Report_Writing.aspx.cs">
       <DependentUpon>Report_Writing.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -572,6 +581,7 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Account\Certificate.rdlc" />
     <EmbeddedResource Include="Account\Exemption.rdlc" />
     <EmbeddedResource Include="Account\Writing.rdlc" />
   </ItemGroup>

@@ -22,7 +22,6 @@ namespace IS_technopark.Account
         DataTable fio_l = new DataTable();
         TextBox textBox = new TextBox();
 
-
         protected void Button1_Click(object sender, EventArgs e)
         {
             ORACLE.Open();
@@ -121,8 +120,12 @@ namespace IS_technopark.Account
             //}
 
 
-        }           
+        }
 
+        protected void Page_Load(object sender, EventArgs e)
+        {
+           
+        }
     }
 
 }

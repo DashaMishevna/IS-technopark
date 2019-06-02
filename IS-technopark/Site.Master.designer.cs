@@ -13,6 +13,15 @@ namespace IS_technopark {
     public partial class SiteMaster {
         
         /// <summary>
+        /// SiteMasterDiv элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SiteMasterDiv;
+        
+        /// <summary>
         /// MainContent элемент управления.
         /// </summary>
         /// <remarks>

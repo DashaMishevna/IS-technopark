@@ -73,9 +73,6 @@ namespace IS_technopark.Account
                 
                 oraConnection.Close();
             }
-
-           
-
         }
 
         public DataTable labssss(DataTable dt)
@@ -121,9 +118,6 @@ namespace IS_technopark.Account
     //////oraAdap.Fill(lab);
 
     ////reportForming("2015", lab);
-
-
-
 
 
     public struct labs

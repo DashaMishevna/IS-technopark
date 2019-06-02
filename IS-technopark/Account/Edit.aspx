@@ -4,8 +4,8 @@
     <br>
     <h2 style="text-align:center;">ВХОД</h2>
         <br />
-        <div style="margin-left:54px; width: 1431px;">
-        <div class='form-label' style="margin-left:210px; text-align:right">
+        <div style="margin-left:-50px; width: 1385px; margin-top: 0px;">
+        <div class='form-label' style="margin-left:210px; text-align:right" runat="server">
         <asp:Label ID="Label_FIO" runat="server" Text="Имя сотрудника" Font-Size="12pt"></asp:Label>
         </div>
         <div class='form-row' style="text-align:left; margin-left:20px;">

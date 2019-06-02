@@ -9,13 +9,13 @@
     
     <div style="float:left; margin-top:10px; margin-left:-100px">
     
-    <asp:Label ID="Label2" runat="server" Text="Вывод информации по названию проекта" style="width:200px; height:30px; font-size:14px; margin-bottom:15px; margin-left:191px" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text="Вывод информации по названию проекта" style="width:200px; height:30px; font-size:14px; margin-bottom:15px; margin-left:171px" Font-Italic="False" Font-Bold="True"></asp:Label>
     <asp:Label ID="Label6" runat="server" Text="Вывод информации по ФИО проектанта" style= "height:30px; font-size:14px; margin-bottom:15px; margin-left:70px;" Font-Italic="False" Font-Bold="True"></asp:Label>   
     <asp:Label ID="Label14" runat="server" Text="Вывод информации по статусу проектанта" style= "height:30px; font-size:14px; margin-bottom:15px; margin-left:75px;" Font-Bold="True"></asp:Label>
     <br/>
     <%--<asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:17px"></asp:TextBox>--%> 
     <asp:Button ID="Button5" runat="server" Text="Вывести всех" CssClass="btn btn-default" Font-Size="12pt"  style="text-align:center" BackColor="#CEE5F3" Height="32px" OnClick="Button5_Click"/>
-    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-default" Height="32px" style="margin-left:60px;"></asp:DropDownList>
+    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-default" Height="32px" style="margin-left:40px;"></asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
     <asp:Button ID="Button1" runat="server" Text="Выбрать" Height="32px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button1_Click" />
     <asp:TextBox ID="TextBox1" runat="server" Height="32px" CssClass="btn btn-default" Font-Size="11pt" style="margin-left:60px; text-align:left" ></asp:TextBox>

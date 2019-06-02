@@ -102,7 +102,7 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar navbar-inverse navbar-fixed-top" runat="server" id="SiteMasterDiv">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -149,7 +149,7 @@
                                 <i class="fa fa-caret-down"></i>
                                 </button>
                                 <div class="mynav_dropdown-content">
-                                <a runat="server" href="~/Account/Report_Writing">Сертификат</a>
+                                <a runat="server" href="~/Account/Report_Certificate">Сертификат</a>
                                 <a runat="server" href="~/Account/Report_Writing">Запись на проект</a>
                                 <a runat="server" href="~/Account/Reports">Справка освобождение</a>
                                 </div>
@@ -161,12 +161,13 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <%--<li><a runat="server" href="~/Account/Edit" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName() %> !</a></li>--%>
                                 <li><a runat="server" href="~/Account/New_Data">Сотрудники</a></li>
-                                <li><a runat="server" href="~/Account/Edit">Вход</a></li>
-                                <li><a runat="server" href="~/Account/Exit">Выход</a></li>
+                                <li><a runat="server" href="~/Account/Edit">Вход</a></li> 
+                                <li><a runat="server" href="~/Account/Exit"><img src="/img/exit_w.png" width="18" height="18"/></a></li> 
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
+                                <%--<li><a runat="server" href="~/Account/Edit" title="Manage your account">Hello, <%:  Class_FIO.Employees_fio %> !</a></li>--%>
                                 <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Выход" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
