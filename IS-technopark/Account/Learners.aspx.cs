@@ -27,7 +27,7 @@ namespace IS_technopark.Account
             }
             ID();
         }
-        public void ID()
+        public new void ID()
         {
             oraConnection.Open();
             oraAdap.SelectCommand = new OracleCommand();

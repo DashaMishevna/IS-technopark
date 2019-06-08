@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="IS_technopark.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site_Edit.Master.cs" Inherits="IS_technopark.SiteMaster" %>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -110,16 +110,44 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <%--<a class="navbar-brand" runat="server" href="~/">Школьный технопарк</a>--%>
+                    <%--Дополнительные сведения об объединении сценариев в ScriptManager см. по адресу: http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav" >
-                        <%--<li><a runat="server" href="~/">Домашняя</a></li>--%>
+                    <%--Сценарии .NET Framework--%>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <%--<li><a runat="server" href="~/Account/Edit" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName() %> !</a></li>--%>
+                               <%-- <li><a runat="server" href="~/Account/New_Data">Сотрудники</a></li>--%>
+                                <li><a runat="server" href="~/Account/Edit">Авторизация</a></li> 
+                                <%--<li><a runat="server" href="~/Account/Exit"><img src="/img/exit_w.png" width="18" height="18"/></a></li>--%> 
+                            </ul>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <%--<li><a runat="server" href="~/Account/Edit" title="Manage your account">Hello, <%:  Class_FIO.Employees_fio %> !</a></li>--%>
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li>
+                                    <%--<asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Выход" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />--%>
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+        <div class="container body-content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <hr />
+            <footer>
+                <%--<ul class="nav navbar-nav" >
+                        <%--<li><a runat="server" href="~/">Домашняя</a></li>-
                         <li><a runat="server" href="~/Account/Learners">Проектанты</a></li>
                         <li><a runat="server" href="~/Account/Info">Информация</a></li> 
                         <li><a runat="server" href="~/Account/List_Queue">Лист очередности</a></li>
                         <li><a runat="server" href="~/Account/SendEMail">E-mail</a></li>
-                       <%-- <li><a runat="server" href="~/Contact">Связаться</a></li>--%>
+                       <%-- <li><a runat="server" href="~/Contact">Связаться</a></li>-
 
                         <div class="mynav_navbar">
                             <div class="mynav_dropdown">
@@ -155,35 +183,7 @@
                                 </div>
                             </div>
                         </div>
-                    </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <%--<li><a runat="server" href="~/Account/Edit" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName() %> !</a></li>--%>
-                                <li><a runat="server" href="~/Account/New_Data">Сотрудники</a></li>
-                               <%-- <li><a runat="server" href="~/Account/Edit">Вход</a></li> --%>
-                                <li><a runat="server" href="~/Account/Exit"><img src="/img/exit_w.png" width="18" height="18"/></a></li> 
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <%--<li><a runat="server" href="~/Account/Edit" title="Manage your account">Hello, <%:  Class_FIO.Employees_fio %> !</a></li>--%>
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Выход" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-                </div>
-            </div>
-        </div>
-        <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            </asp:ContentPlaceHolder>
-            <hr />
-            <footer>
-                <%--<p>&copy; <%: DateTime.Now.Year %> - мое приложение ASP.NET</p>--%>
+                    </ul>--%>
             </footer>
         </div>
     </form>

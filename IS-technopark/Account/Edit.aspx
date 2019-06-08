@@ -1,4 +1,5 @@
-﻿<%@ Page Title="Выполнить вход" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="IS_technopark.Account.Edit" Async="true" %>
+﻿<%@ Page Title="Выполнить вход" Language="C#" MasterPageFile="~/Site_Edit.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="IS_technopark.Account.Edit" Async="true" %>
+
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br>
