@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SendEMail.aspx.cs" Inherits="IS_technopark.Account.SendEMail" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" Title="Рассылка сообщений" AutoEventWireup="true" CodeBehind="SendEMail.aspx.cs" Inherits="IS_technopark.Account.SendEMail" MasterPageFile="~/Site.Master" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
         <br>

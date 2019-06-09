@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Diagramm_Interests.aspx.cs" Inherits="IS_technopark.Account.Diagramm_Interests" MasterPageFile="~/Site.Master"  %>
+﻿<%@ Page Language="C#" Title="Статистика" AutoEventWireup="true" CodeBehind="Diagramm_Interests.aspx.cs" Inherits="IS_technopark.Account.Diagramm_Interests" MasterPageFile="~/Site.Master"  %>
 
 <asp:Content  ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="select Count(ID_Learner) as Количество, class as Класс from Learner WHERE INTERESTS Like '%Робототехника%' and 1=0 group by Class"></asp:SqlDataSource>

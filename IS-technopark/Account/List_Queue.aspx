@@ -1,4 +1,4 @@
-﻿<%@ Page  Title="List_Queue" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="List_Queue.aspx.cs" Inherits="IS_technopark.Account.List_Queue" %>
+﻿<%@ Page  Title="Очередь" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="List_Queue.aspx.cs" Inherits="IS_technopark.Account.List_Queue" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br/>

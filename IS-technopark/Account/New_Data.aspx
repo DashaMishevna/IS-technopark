@@ -10,8 +10,7 @@
     <asp:Label ID="Label_Position" runat="server" Text="Должность"></asp:Label>
     </div>
     <div class='form-row' style="text-align:left; margin-left:0px;">
-    <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;DIR_POSITION&quot; FROM &quot;DIR_POSITION&quot;"></asp:SqlDataSource>
-    <asp:DropDownList ID="DropDownList_Position" runat="server" CssClass="btn btn-default" AutoPostBack="True" Width="280px" Height="30px"></asp:DropDownList>
+    <asp:DropDownList ID="DropDownList_Position" runat="server" CssClass="btn btn-default" Width="280px" Height="30px"></asp:DropDownList>
     </div>
     <br />
     <br />
@@ -19,8 +18,8 @@
     <asp:Label ID="Label_FIO" runat="server" Text="ФИО сотрудника"></asp:Label>
     </div>
     <div class='form-row'>
-    <asp:TextBox ID="TextBox2" runat="server" CssClass="btn btn-default" style="margin-right:20px; text-align:left; height:30px; Width:280px"></asp:TextBox>
-    <asp:Button ID="Button1" runat="server" Text="Добавить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" />
+    <asp:TextBox ID="TextBox2" runat="server" CssClass="btn btn-default" style="margin-right:20px; text-align:left; height:30px; Width:280px" V"></asp:TextBox>
+    <asp:Button ID="Button1" runat="server" Text="Добавить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button1_Click1" />
     </div>
     <br />
     <br />
@@ -33,7 +32,7 @@
     </div>
     <div class='form-row' style="text-align:left; margin-left:0px;">
     <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="margin-right:20px; text-align:left; height:30px; Width:280px"></asp:TextBox> 
-    <asp:Button ID="Button2" runat="server" Text="Изменить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3"/>
+    <asp:Button ID="Button2" runat="server" Text="Изменить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button2_Click"/>
     </div>
     <br />
     <br />
@@ -79,8 +78,7 @@
     <asp:Label ID="Label5" runat="server" Text="Выберите направление"></asp:Label>
     </div>
     <div class='form-row' style="text-align:left; margin-left:0px;">
-     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;LABORATORY&quot; FROM &quot;DIR_LABORATORIES&quot;"></asp:SqlDataSource>
-    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-default" AutoPostBack="True" Width="280px" Height="30px"></asp:DropDownList>
+    <asp:DropDownList ID="DropDownList1" runat="server" CssClass="btn btn-default" Width="280px" Height="30px"></asp:DropDownList>
     </div>
     <br />
     <br />

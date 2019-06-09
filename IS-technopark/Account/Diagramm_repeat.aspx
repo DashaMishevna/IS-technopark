@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Diagramm_repeat.aspx.cs" Inherits="IS_technopark.Account.Diagramm_repeat" MasterPageFile="~/Site.Master" %>
+﻿<%@ Page Language="C#" Title="Статистика" AutoEventWireup="true" CodeBehind="Diagramm_repeat.aspx.cs" Inherits="IS_technopark.Account.Diagramm_repeat" MasterPageFile="~/Site.Master" %>
 
 <asp:Content  ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br />

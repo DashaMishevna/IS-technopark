@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Learners.aspx.cs" Inherits="IS_technopark.Account.Learners" %>
+﻿<%@ Page Language="C#" Title="Запись на проект" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Learners.aspx.cs" Inherits="IS_technopark.Account.Learners" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
    
