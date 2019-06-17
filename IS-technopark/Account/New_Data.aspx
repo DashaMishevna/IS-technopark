@@ -18,7 +18,7 @@
     <asp:Label ID="Label_FIO" runat="server" Text="ФИО сотрудника"></asp:Label>
     </div>
     <div class='form-row'>
-    <asp:TextBox ID="TextBox2" runat="server" CssClass="btn btn-default" style="margin-right:20px; text-align:left; height:30px; Width:280px" V"></asp:TextBox>
+    <asp:TextBox ID="TextBox2" runat="server" CssClass="btn btn-default" style="margin-right:20px; text-align:left; height:30px; Width:280px" ></asp:TextBox>
     <asp:Button ID="Button1" runat="server" Text="Добавить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button1_Click1" />
     </div>
     <br />

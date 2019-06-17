@@ -3,7 +3,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0 order by TECHNOPARK.GROUPS.TITLE" UpdateCommand="UPDATE TECHNOPARK.GROUPS SET TIME_CLASS = 'qwe' WHERE 1=0"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.ID_QUEUE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.QUEUE.TITLE_G = TECHNOPARK.GROUPS.TITLE INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE (TECHNOPARK.GROUPS.TITLE = '0')" ></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.ID_QUEUE, TECHNOPARK.LEARNER.PHONE, TECHNOPARK.LEARNER.E_MAIL FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.QUEUE.TITLE_G = TECHNOPARK.GROUPS.TITLE INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE (TECHNOPARK.GROUPS.TITLE = '0')" ></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;STATUS_G&quot; FROM &quot;DIR_STATUS_GROUP&quot;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;STATUS_L&quot; FROM &quot;DIR_STATUS_LEARNER&quot;"></asp:SqlDataSource>
     <br>
@@ -64,7 +64,7 @@
     <br />
     <br />
     <asp:Label ID="Label4" runat="server" Text="Данные проектантов" style="width:200px; height:30px; font-size:16px; margin-right: 10px;" Font-Italic="False" Font-Bold="True" Visible="false"></asp:Label>
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False"  DataKeyNames="ID_QUEUE" DataSourceID="SqlDataSource2" CellPadding="5"  ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" >
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CellPadding="5"  ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:TemplateField>
@@ -77,6 +77,8 @@
             <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" />
             <asp:BoundField DataField="STATUS_L" HeaderText="Статус" SortExpression="STATUS_L" />
             <asp:BoundField DataField="ID_QUEUE" HeaderText="ID_QUEUE" SortExpression="ID_QUEUE" Visible="false"/>
+            <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />
+            <asp:BoundField DataField="E_MAIL" HeaderText="E_mail" SortExpression="E_MAIL" />
         </Columns>
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
@@ -85,6 +87,7 @@
         <RowStyle BackColor="#DDF7DD" ForeColor="#333333" />  <%--ТУТ менять цвет с первой строки--%>
     </asp:GridView>
     <asp:Label ID="Label3" runat="server" Text="" ForeColor="Gray"></asp:Label>
+
     <%--<asp:Label ID="Label6" runat="server" Text="Дата начала занятий" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
     <asp:TextBox ID="TextBox2" TextMode="Date" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right: 20px"></asp:TextBox>
     <asp:Label ID="Label7"  runat="server" Text="Дата окончания занятий" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>

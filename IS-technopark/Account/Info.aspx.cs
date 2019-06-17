@@ -95,7 +95,6 @@ namespace IS_technopark
                         oraclecmd.Parameters.Add("INTERESTS", e.NewValues["INTERESTS"]);
                         oraclecmd.Parameters.Add("COMMENTS", e.NewValues["COMMENTS"]);
                         oraclecmd.Parameters.Add("ID_LEARNER", GridView1.DataKeys[e.RowIndex].Value);
-
                         oraclecmd.ExecuteNonQuery();
                         GridView1.EditIndex = -1;
                     }
@@ -243,6 +242,54 @@ namespace IS_technopark
             Technopark.DataBind();
             GridView1.DataBind();
             oraConnection.Close();
+        }
+
+        protected void GridView2_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+           try
+            {
+                //GridView2.EditIndex = -1;
+                GridViewRow row = GridView2.Rows[e.RowIndex];
+                //string query = "UPDATE TECHNOPARK.PARENT SET  PHONE=:PHONE WHERE ID_PARENT=:ID_PARENT";
+                string query = "UPDATE TECHNOPARK.PARENT SET FIO=:FIO, PHONE=:PHONE, PHONE_WORK=:PHONE_WORK, E_MAIL=:E_MAIL, PLACE_WORK=:PLACE_WORK, POSITION=:POSITION WHERE ID_PARENT=:ID_PARENT";
+                //oraConnection.Open();
+                OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
+                oraclecmd.Connection.Open();
+                oraclecmd.Parameters.Add("FIO", e.NewValues["FIO"]);
+                oraclecmd.Parameters.Add("PHONE", e.NewValues["PHONE"]);
+                oraclecmd.Parameters.Add("PHONE_WORK", e.NewValues["PHONE_WORK"]);
+                oraclecmd.Parameters.Add("E_MAIL", e.NewValues["E_MAIL"]);
+                oraclecmd.Parameters.Add("PLACE_WORK", e.NewValues["PLACE_WORK"]);
+                oraclecmd.Parameters.Add("POSITION", e.NewValues["POSITION"]);
+                oraclecmd.Parameters.Add("ID_PARENT", GridView2.DataKeys[e.RowIndex].Value);
+                oraclecmd.ExecuteNonQuery();
+                GridView2.EditIndex = -1;
+                oraConnection.Close();
+            }
+            catch
+            {
+                Label1.Visible = true;
+                Label1.Text = "Проверьте введенные данные!";
+            }
+        }
+
+        protected void GridView2_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+           // GridView2.EditIndex = e.NewEditIndex;
+            
+        }
+
+        protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridView2.EditIndex = -1;
+            GridView2.DataBind();
+            if (this.IsPostBack)
+            {
+                string command2 = SqlDataSource1.SelectCommand;
+                SqlDataSource1.SelectCommand = "SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE PARENT.ID_LEARNER_P = '" + id_l_list[0] + "' and ID_PARENT!=0 and ID_LEARNER_P!=0";
+                SqlDataSource1.DataBind();
+                GridView2.DataBind();
+            }
         }
     }
 }

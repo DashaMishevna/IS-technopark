@@ -71,13 +71,13 @@
 <asp:Button ID="Button2" runat="server" Text="Вывести информацию о родителях" CssClass="btn btn-default" Font-Size="11pt" Height="30" BackColor="#CEE5F3" OnClick="Button2_Click"  style="align-items:center"/>
 <br>
 <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
-<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE (PARENT.ID_LEARNER_P = 0)"></asp:SqlDataSource>
+<asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE (PARENT.ID_LEARNER_P = 0)" UpdateCommand="UPDATE TECHNOPARK.PARENT SET FIO = 'qwe' WHERE 1=0" ></asp:SqlDataSource>
 <br>
 <asp:Label ID="Label3" runat="server" Text="" ForeColor="Gray"></asp:Label>
-<asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" Height="25px" CellPadding="5" Width="1240px" ForeColor="#333333" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3">
+<asp:GridView ID="GridView2" runat="server" AllowPaging="True"  AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" Height="25px" CellPadding="5" Width="1240px" ForeColor="#333333" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" OnRowUpdating="GridView2_RowUpdating" OnRowEditing="GridView2_RowEditing" OnRowCommand="GridView2_RowCommand">
     <AlternatingRowStyle BackColor="White" />
     <Columns>
-        <asp:BoundField DataField="ID_PARENT" HeaderText="ID_PARENT" ReadOnly="True" SortExpression="ID_PARENT"  Visible="false"/>
+        <asp:BoundField DataField="ID_PARENT" HeaderText="ID_PARENT" ReadOnly="True" SortExpression="ID_PARENT" Visible="false"/>
         <asp:BoundField DataField="ID_LEARNER_P" HeaderText="ID_LEARNER_P" SortExpression="ID_LEARNER_P" Visible="false" />
         <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" />
         <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />
@@ -92,11 +92,11 @@
                 </ItemTemplate>
                 <EditItemTemplate>
                     <div style="width:50px"><asp:ImageButton ImageUrl="~/img/floppy-disk.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px"/>
-                    <asp:ImageButton ImageUrl="~/img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px"/></div>
+                    <asp:ImageButton ImageUrl="~/img/cancel.png" runat="server" CommandName="Cancel2" ToolTip="Cancel" Width="20px" Height="20px"/></div>
                 </EditItemTemplate>
 
         <ItemStyle Width="60px"></ItemStyle>
-            </asp:TemplateField>
+       </asp:TemplateField>
     </Columns>
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
         <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
