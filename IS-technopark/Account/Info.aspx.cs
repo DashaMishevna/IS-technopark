@@ -268,8 +268,7 @@ namespace IS_technopark
             }
             catch
             {
-                Label1.Visible = true;
-                Label1.Text = "Проверьте введенные данные!";
+                Response.Write("<script>alert('Проверьте введенные данные!')</script>");
             }
         }
 
@@ -281,14 +280,21 @@ namespace IS_technopark
 
         protected void GridView2_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            GridView2.EditIndex = -1;
-            GridView2.DataBind();
+            try
+            {
+                GridView2.EditIndex = -1;
+                GridView2.DataBind();
             if (this.IsPostBack)
             {
                 string command2 = SqlDataSource1.SelectCommand;
                 SqlDataSource1.SelectCommand = "SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE PARENT.ID_LEARNER_P = '" + id_l_list[0] + "' and ID_PARENT!=0 and ID_LEARNER_P!=0";
                 SqlDataSource1.DataBind();
                 GridView2.DataBind();
+            }
+            }
+            catch
+            {
+                Response.Write("<script>alert('Выберите клиента!')</script>");
             }
         }
     }

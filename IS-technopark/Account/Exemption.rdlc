@@ -90,7 +90,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>г. Город, ул. Улицы, 000000, тел/факс 111-111</Value>
+                <Value>г. Астрахань, ул.Анри Барбюса, д.7, 414000, тел/факс 622-711</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Times New Roman</FontFamily>
@@ -294,7 +294,7 @@
                 </Style>
               </TextRun>
               <TextRun>
-                <Value> Адрес: г. Город, ул. Улица, Школьный технопарк.</Value>
+                <Value> Адрес: г. Астрахань, ул.Анри Барбюса, д.7, Школьный технопарк.</Value>
                 <Style>
                   <FontStyle>Normal</FontStyle>
                   <FontFamily>Times New Roman</FontFamily>
@@ -584,7 +584,7 @@
         <Top>10.41855cm</Top>
         <Left>0.27851cm</Left>
         <Height>2.29378cm</Height>
-        <Width>16.26269cm</Width>
+        <Width>16.2627cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>

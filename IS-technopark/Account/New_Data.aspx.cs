@@ -104,7 +104,7 @@ namespace IS_technopark.Account
             }
             else
             {
-                Response.Write("<script>alert('Проверьте введеые данные!')</script>");
+                Response.Write("<script>alert('Проверьте введенные данные!')</script>");
 
             }
         }

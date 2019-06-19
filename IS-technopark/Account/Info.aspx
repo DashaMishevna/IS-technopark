@@ -13,7 +13,7 @@
     <asp:Button ID="Button1" runat="server" Text="Выбрать" OnClick="Button1_Click"  CssClass="btn btn-default" Font-Size="13pt" BackColor="#CEE5F3" Height="32" />
     <br/>
     <br/>
-    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting"  CellPadding="5" HorizontalAlign="Center" BackColor="White" BorderColor="#999999" BorderWidth="0px" ForeColor="Black" GridLines="Vertical" CellSpacing="3" Width="1285px">
+    <asp:GridView ID="GridView1" runat="server" AllowPaging="True" DataSourceID="Technopark" AutoGenerateColumns="False" OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowUpdating="GridView1_RowUpdating" OnRowEditing="GridView1_RowEditing" DataKeyNames="ID_LEARNER" OnRowCommand="GridView1_RowCommand" OnRowDeleting="GridView1_RowDeleting"  CellPadding="5" HorizontalAlign="Center" BackColor="White" BorderColor="#999999" BorderWidth="0px" ForeColor="Black" GridLines="Vertical" CellSpacing="3" Width="1300px">
         <AlternatingRowStyle BackColor="#d2ecf9" />
         <Columns>
             <asp:TemplateField>
@@ -31,7 +31,8 @@
             </asp:BoundField>
             <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" ControlStyle-Width="60px" ><ControlStyle Width="60px"></ControlStyle>
             <ItemStyle HorizontalAlign="Center" /> </asp:BoundField>
-            <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL"/>
+            <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL"><ItemStyle Width="200px" />
+            </asp:BoundField>
             <asp:BoundField DataField="SHIFT" HeaderText="Смена" SortExpression="SHIFT" ControlStyle-Width="60px"> <ControlStyle Width="60px"></ControlStyle>
             <ItemStyle HorizontalAlign="Center" />
             </asp:BoundField>
@@ -67,14 +68,13 @@
         <SortedDescendingHeaderStyle BackColor="#383838" />
 </asp:GridView>
 <br>
-<br>
 <asp:Button ID="Button2" runat="server" Text="Вывести информацию о родителях" CssClass="btn btn-default" Font-Size="11pt" Height="30" BackColor="#CEE5F3" OnClick="Button2_Click"  style="align-items:center"/>
 <br>
 <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
 <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT ID_PARENT, ID_LEARNER_P, FIO, PHONE, PHONE_WORK, E_MAIL, PLACE_WORK, POSITION FROM TECHNOPARK.PARENT WHERE (PARENT.ID_LEARNER_P = 0)" UpdateCommand="UPDATE TECHNOPARK.PARENT SET FIO = 'qwe' WHERE 1=0" ></asp:SqlDataSource>
 <br>
 <asp:Label ID="Label3" runat="server" Text="" ForeColor="Gray"></asp:Label>
-<asp:GridView ID="GridView2" runat="server" AllowPaging="True"  AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" Height="25px" CellPadding="5" Width="1240px" ForeColor="#333333" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" OnRowUpdating="GridView2_RowUpdating" OnRowEditing="GridView2_RowEditing" OnRowCommand="GridView2_RowCommand">
+<asp:GridView ID="GridView2" runat="server" AllowPaging="True"  AutoGenerateColumns="False" DataKeyNames="ID_PARENT" DataSourceID="SqlDataSource1" Height="25px" CellPadding="5" Width="1300px" ForeColor="#333333" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" OnRowUpdating="GridView2_RowUpdating" OnRowEditing="GridView2_RowEditing" OnRowCommand="GridView2_RowCommand">
     <AlternatingRowStyle BackColor="White" />
     <Columns>
         <asp:BoundField DataField="ID_PARENT" HeaderText="ID_PARENT" ReadOnly="True" SortExpression="ID_PARENT" Visible="false"/>

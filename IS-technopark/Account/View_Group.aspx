@@ -9,7 +9,8 @@
     <br>
     <div style="float:left; margin-left:-100px">
     <h2 style="text-align:center"> РАБОТА С ГРУППАМИ </h2>
-    <h5 style="text-align:left; font-weight:600; margin-top:30px">Поиск группы по шифру</h5>
+    <asp:Label ID="Label6" runat="server" Text="Шифр группы - Номер лаборатории_Дата создания группы_Номер проекта.Номер группы" style="width:200px; height:30px; font-size:12px; margin-right: 10px;" ForeColor="#336699"></asp:Label>
+    <h5 style="text-align:left; font-weight:600; margin-top:4px">Поиск группы по шифру</h5>
     <asp:Label ID="Label1" runat="server" Text="Введите шифр" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:10px;"></asp:TextBox>
     <asp:Button ID="Button1" runat="server" Text="Выбрать"  OnClick="Button1_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" />
@@ -20,6 +21,13 @@
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT" DataSourceID="SqlDataSource1" style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3" >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckBox1" runat="server" />
+                </ItemTemplate>
+                <HeaderStyle HorizontalAlign="Center" Width="34px" />
+                <ItemStyle HorizontalAlign="Center" />
+            </asp:TemplateField>
             <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" />
             <asp:BoundField DataField="FIO" HeaderText="ФИО преподавателя" SortExpression="FIO" > <HeaderStyle Width="205px"></HeaderStyle> </asp:BoundField>
             <asp:BoundField DataField="EXPR1" HeaderText="Проект" SortExpression="EXPR1" />
@@ -74,7 +82,9 @@
                     <ItemStyle HorizontalAlign="Center" />
                 </asp:TemplateField>
             <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" />
-            <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" />
+            <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" > 
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
             <asp:BoundField DataField="STATUS_L" HeaderText="Статус" SortExpression="STATUS_L" />
             <asp:BoundField DataField="ID_QUEUE" HeaderText="ID_QUEUE" SortExpression="ID_QUEUE" Visible="false"/>
             <asp:BoundField DataField="PHONE" HeaderText="Телефон" SortExpression="PHONE" />

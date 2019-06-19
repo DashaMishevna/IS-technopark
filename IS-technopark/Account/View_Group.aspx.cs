@@ -18,6 +18,7 @@ namespace IS_technopark.Account
         string id_s_l = "";
         string id_G = "";
         List<string> id_status = new List<string>();
+        List<string> list_gr = new List<string>();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Class_FIO.Employees_position=="2")
@@ -55,6 +56,31 @@ namespace IS_technopark.Account
 
                 }
                 a += 1;
+                // Response.Write(cb + "<b>tut</b><br/>");
+                oraConnection.Close();
+            }
+
+
+
+            int b = 0;
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                oraConnection.Open();
+                CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
+                if (cb != null && cb.Checked)
+                {
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader.Read())
+                    {
+                        object[] values = new object[oraReader.FieldCount];
+                        oraReader.GetValues(values);
+                        list_gr.Add(values[0].ToString());
+                    }
+                }
+                b += 1;
                 // Response.Write(cb + "<b>tut</b><br/>");
                 oraConnection.Close();
             }
@@ -156,7 +182,7 @@ namespace IS_technopark.Account
 
         public void SelectQLearner()
         {
-            SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.ID_QUEUE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.QUEUE.TITLE_G = TECHNOPARK.GROUPS.TITLE INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0 and ID_QUEUE!=0";
+            SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.ID_QUEUE, TECHNOPARK.LEARNER.PHONE, TECHNOPARK.LEARNER.E_MAIL FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.QUEUE.TITLE_G = TECHNOPARK.GROUPS.TITLE INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0 and ID_QUEUE!=0";
             SqlDataSource2.DataBind();
             GridView2.DataBind();
             Label3.Text = "Проектанты по выбранной группе";

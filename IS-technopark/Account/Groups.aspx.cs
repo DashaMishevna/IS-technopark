@@ -257,164 +257,169 @@ namespace IS_technopark.Account
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            oraConnection.Open();
-            //Response.Write(i + "<b>tut</b><br/>");
-            //Label1.Visible = true;
-            int s = 0;
-            int c_p = 0;
-            int c_np = 0;
-            int error = 0;
-
-            if (DropDownList2.Text != "-Выберите направление-" && DropDownList3.Text != "-Выберите проект-")
+            if (Class_FIO.Employees_position == "2" && DropDownList1.Text == Class_FIO.Employees_fio)
             {
-                foreach (string i in textBox_f)
+                oraConnection.Open();
+                //Response.Write(i + "<b>tut</b><br/>");
+                //Label1.Visible = true;
+                int s = 0;
+                int c_p = 0;
+                int c_np = 0;
+                int error = 0;
+
+                if (DropDownList2.Text != "-Выберите направление-" && DropDownList3.Text != "-Выберите проект-")
                 {
-                    oraAdap.SelectCommand = new OracleCommand();
-                    oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.LEARNER.ID_LEARNER, TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE (TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER = 1) AND TECHNOPARK.DIR_LABORATORIES.LABORATORY = '" + DropDownList2.Text + "' and TECHNOPARK.Learner.ID_LEARNER = '" + textBox_f[s] + "'";
-                    oraAdap.SelectCommand.Connection = oraConnection;
-                    OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
-                    while (oraReader.Read())
+                    foreach (string i in textBox_f)
                     {
-                        object[] values = new object[oraReader.FieldCount];
-                        oraReader.GetValues(values);
-                        List_pr.Add(values[0].ToString());
-                    }
+                        oraAdap.SelectCommand = new OracleCommand();
+                        oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.LEARNER.ID_LEARNER, TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE (TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER = 1) AND TECHNOPARK.DIR_LABORATORIES.LABORATORY = '" + DropDownList2.Text + "' and TECHNOPARK.Learner.ID_LEARNER = '" + textBox_f[s] + "'";
+                        oraAdap.SelectCommand.Connection = oraConnection;
+                        OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+                        while (oraReader.Read())
+                        {
+                            object[] values = new object[oraReader.FieldCount];
+                            oraReader.GetValues(values);
+                            List_pr.Add(values[0].ToString());
+                        }
 
-                    oraAdap.SelectCommand = new OracleCommand();
-                    oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.LEARNER.ID_LEARNER, TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE (TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER = 1) AND TECHNOPARK.DIR_LABORATORIES.LABORATORY <> '" + DropDownList2.Text + "' AND TECHNOPARK.Learner.ID_LEARNER = '" + textBox_f[s] + "'";
-                    oraAdap.SelectCommand.Connection = oraConnection;
-                    OracleDataReader oraReader_1 = oraAdap.SelectCommand.ExecuteReader();
-                    while (oraReader_1.Read())
-                    {
-                        object[] values = new object[oraReader_1.FieldCount];
-                        oraReader_1.GetValues(values);
-                        List_npr.Add(values[0].ToString());
+                        oraAdap.SelectCommand = new OracleCommand();
+                        oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.LEARNER.ID_LEARNER, TECHNOPARK.LEARNER.FIO, TECHNOPARK.QUEUE.DATE_REGISTRATION, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SHIFT, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.DIR_LABORATORIES.LABORATORY, TECHNOPARK.DIR_PROJECTS.TITLE FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.QUEUE.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS INNER JOIN TECHNOPARK.DIR_LABORATORIES ON TECHNOPARK.QUEUE.ID_LABORATORIES = TECHNOPARK.DIR_LABORATORIES.ID_LABORATORIES INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE (TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER = 1) AND TECHNOPARK.DIR_LABORATORIES.LABORATORY <> '" + DropDownList2.Text + "' AND TECHNOPARK.Learner.ID_LEARNER = '" + textBox_f[s] + "'";
+                        oraAdap.SelectCommand.Connection = oraConnection;
+                        OracleDataReader oraReader_1 = oraAdap.SelectCommand.ExecuteReader();
+                        while (oraReader_1.Read())
+                        {
+                            object[] values = new object[oraReader_1.FieldCount];
+                            oraReader_1.GetValues(values);
+                            List_npr.Add(values[0].ToString());
+                        }
+                        s += 1;
                     }
-                    s += 1;
                 }
-            }
 
-            else
-            {
-                error += 1;
-            }
+                else
+                {
+                    error += 1;
+                }
 
-            if (List_pr.Count == 0 && List_npr.Count == 0)
-            {
-                error += 1;
-            }
+                if (List_pr.Count == 0 && List_npr.Count == 0)
+                {
+                    error += 1;
+                }
 
                 if (List_pr.Count != 0 || List_npr.Count != 0)
-            {
-                oraAdap.SelectCommand = new OracleCommand();
-                oraAdap.SelectCommand.CommandText = "Select SEQ_GR.NEXTVAL from dual";
-                oraAdap.SelectCommand.Connection = oraConnection;
-                OracleDataReader oraReader_3 = oraAdap.SelectCommand.ExecuteReader();
-                while (oraReader_3.Read())
                 {
-                    object[] values = new object[oraReader_3.FieldCount];
-                    oraReader_3.GetValues(values);
-                    id_gr_title = values[0].ToString();
-                }
-                if (id_lab != "")
-                {
-                    //Response.Write(id_lab + "<b> проект</b><br/>" + id_project);
-                    Title_Group = id_lab + "_" + DateTime.Today.ToString("dd.MM") + "_" + id_project + "." + id_gr_title;
-                }
-            }
-
-            foreach (string i in List_pr)
-            {
-                if (List_pr.Count != 0)
-                {
-                    //Response.Write(List_pr[c_p] + "<b>butЗаписан на тот же прокет</b><br/>");
-                    try
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "Select SEQ_GR.NEXTVAL from dual";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader_3 = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader_3.Read())
                     {
-                        using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                        object[] values = new object[oraReader_3.FieldCount];
+                        oraReader_3.GetValues(values);
+                        id_gr_title = values[0].ToString();
+                    }
+                    if (id_lab != "")
+                    {
+                        //Response.Write(id_lab + "<b> проект</b><br/>" + id_project);
+                        Title_Group = id_lab + "_" + DateTime.Today.ToString("dd.MM") + "_" + id_project + "." + id_gr_title;
+                    }
+                }
+
+                foreach (string i in List_pr)
+                {
+                    if (List_pr.Count != 0)
+                    {
+                        //Response.Write(List_pr[c_p] + "<b>butЗаписан на тот же прокет</b><br/>");
+                        try
                         {
-                            //oraConnection.Open();
-                            string query_update = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = 2, TITLE_G= '" + Title_Group + "' WHERE ID_LEARNER_Q = '" + List_pr[c_p] + " and ID_QUEUE = '" + List_id_q + "'";
-                            oraAdap.UpdateCommand = new OracleCommand(query_update, oraConnection);
-                            oraAdap.UpdateCommand.ExecuteNonQuery();
-                            //oraConnection.Close();
-                           // Response.Write( "<b>Обновили</b><br/>");
+                            using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                            {
+                                //oraConnection.Open();
+                                string query_update = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = 2, TITLE_G= '" + Title_Group + "' WHERE ID_LEARNER_Q = '" + List_pr[c_p] + " and ID_QUEUE = '" + List_id_q + "'";
+                                oraAdap.UpdateCommand = new OracleCommand(query_update, oraConnection);
+                                oraAdap.UpdateCommand.ExecuteNonQuery();
+                                //oraConnection.Close();
+                                // Response.Write( "<b>Обновили</b><br/>");
+                            }
                         }
-                    }
-                    catch
-                    {
-                        error += 1;
-                    }
-
-                }
-                c_p += 1;
-            }
-
-            foreach (string i in List_npr)
-            {
-                if (List_npr.Count != 0)
-                {
-                    Response.Write(List_npr[c_np] + "<b>Записан на другой проект</b><br/>");
-                    try
-                    {
-                        using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                        catch
                         {
-                            
-                           // oraConnection.Open();
-                            string query_insert = "INSERT INTO TECHNOPARK.QUEUE (ID_LEARNER_Q, DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, ID_STATUS_L, TITLE_G) VALUES('" + List_npr[c_np] + "' , '" + DateTime.Today.ToShortDateString() + "', '" + id_lab + "', '" + id_project + "', 2 , '" + Title_Group + "' )";
-                            oraAdap.InsertCommand = new OracleCommand(query_insert, oraConnection);
-                            oraAdap.InsertCommand.ExecuteNonQuery();
-                            string query_update_q = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = 10 WHERE ID_LEARNER_Q = '" + List_npr[c_np] + "' and  ID_STATUS_L=1";
-                            oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
-                            oraAdap.UpdateCommand.ExecuteNonQuery();
-                           // Response.Write("<b>Добавили</b><br/>");
-                            // oraConnection.Close();
+                            error += 1;
                         }
-                    }
-                    catch
-                    {
-                        error += 1;
-                    }
 
+                    }
+                    c_p += 1;
                 }
-                c_np += 1; 
-            }
 
-            if (error>0)
-            {
-                Label1.Visible = true;
-                Label1.Text = "Проверьте введенные данные!";
-            }
-            if (error == 0)
-            {
-                try
+                foreach (string i in List_npr)
                 {
-                    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                    if (List_npr.Count != 0)
                     {
+                        Response.Write(List_npr[c_np] + "<b>Записан на другой проект</b><br/>");
+                        try
+                        {
+                            using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                            {
 
-                        // oraConnection.Open();
-                        string query_insert = "INSERT INTO TECHNOPARK.GROUPS (ID_EMPLOYEES, ID_PROJECT, TITLE, PROJECT_THEME, TIME_CLASS, STATUS) VALUES('" + id_teacher + "', + '" + id_project + "' , '" + Title_Group + "', '" + TextBox2.Text + "', '" + TextBox3.Text + "', 1 )";
-                        oraAdap.InsertCommand = new OracleCommand(query_insert, oraConnection);
-                        oraAdap.InsertCommand.ExecuteNonQuery();
-                        // oraConnection.Close();
+                                // oraConnection.Open();
+                                string query_insert = "INSERT INTO TECHNOPARK.QUEUE (ID_LEARNER_Q, DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, ID_STATUS_L, TITLE_G) VALUES('" + List_npr[c_np] + "' , '" + DateTime.Today.ToShortDateString() + "', '" + id_lab + "', '" + id_project + "', 2 , '" + Title_Group + "' )";
+                                oraAdap.InsertCommand = new OracleCommand(query_insert, oraConnection);
+                                oraAdap.InsertCommand.ExecuteNonQuery();
+                                string query_update_q = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = 10 WHERE ID_LEARNER_Q = '" + List_npr[c_np] + "' and  ID_STATUS_L=1";
+                                oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
+                                oraAdap.UpdateCommand.ExecuteNonQuery();
+                                // Response.Write("<b>Добавили</b><br/>");
+                                // oraConnection.Close();
+                            }
+                        }
+                        catch
+                        {
+                            error += 1;
+                        }
+
                     }
-                    Label1.Visible = true;
-                    Label1.ForeColor = System.Drawing.Color.Green;
-                    Label1.Text = "Данные успешно добавлены! Шифр группы-" + Title_Group;
-                    GridView1.DataBind();
+                    c_np += 1;
                 }
-                catch
+
+                if (error > 0)
                 {
                     Label1.Visible = true;
                     Label1.Text = "Проверьте введенные данные!";
                 }
-               
+                if (error == 0)
+                {
+                    try
+                    {
+                        using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                        {
+
+                            // oraConnection.Open();
+                            string query_insert = "INSERT INTO TECHNOPARK.GROUPS (ID_EMPLOYEES, ID_PROJECT, TITLE, PROJECT_THEME, TIME_CLASS, STATUS) VALUES('" + id_teacher + "', + '" + id_project + "' , '" + Title_Group + "', '" + TextBox2.Text + "', '" + TextBox3.Text + "', 1 )";
+                            oraAdap.InsertCommand = new OracleCommand(query_insert, oraConnection);
+                            oraAdap.InsertCommand.ExecuteNonQuery();
+                            // oraConnection.Close();
+                        }
+                        Label1.Visible = true;
+                        Label1.ForeColor = System.Drawing.Color.Green;
+                        Label1.Text = "Данные успешно добавлены! Шифр группы-" + Title_Group;
+                        GridView1.DataBind();
+                    }
+                    catch
+                    {
+                        Label1.Visible = true;
+                        Label1.Text = "Проверьте введенные данные!";
+                    }
+
+                }
+
+                //Response.Write(Title_Group + "<b>- Шифр</b><br/>");
+                oraConnection.Close();
             }
-
-            //Response.Write(Title_Group + "<b>- Шифр</b><br/>");
-            oraConnection.Close();
-
+            else
+            {
+                Response.Write("<script>alert('Преподаватель не может формировать группу для другого преподавателя')</script>");
+            }
         }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
             email_list.Count();

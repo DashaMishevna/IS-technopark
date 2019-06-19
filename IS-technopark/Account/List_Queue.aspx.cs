@@ -191,60 +191,67 @@ namespace IS_technopark.Account
         protected void Button2_Click(object sender, EventArgs e)
         {   //Проверка проектанта на то,Свободен ли он сейчас или проходит обучение.
             //Response.Write(id_learner[0] + "<b></b><br/>");
-            if (id_learner.Count == 1)
+            if (Class_FIO.Employees_position == "1")
             {
-                oraConnection.Open();
-                oraAdap.SelectCommand = new OracleCommand();
-                oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + id_learner[0] + "' AND (ID_STATUS_L=5 OR ID_STATUS_L=6 OR ID_STATUS_L=7 OR ID_STATUS_L=9) and TECHNOPARK.QUEUE.Date_Registration = (Select max(Date_Registration) from QUEUE Q where Q.ID_LEARNER_Q=TECHNOPARK.QUEUE.ID_LEARNER_Q)";
-                oraAdap.SelectCommand.Connection = oraConnection;
-                OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
-                while (oraReader.Read())
+                if (id_learner.Count == 1)
                 {
-                    object[] values = new object[oraReader.FieldCount];
-                    oraReader.GetValues(values);
-                    Select_id_learner.Add(values[1].ToString());
-                }
-                oraAdap.SelectCommand = new OracleCommand();
-                oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + id_learner[0] + "' AND (ID_STATUS_L=1 OR ID_STATUS_L=2 OR ID_STATUS_L=3 OR ID_STATUS_L=4 OR ID_STATUS_L=10) and TECHNOPARK.QUEUE.Date_Registration = (Select max(Date_Registration) from QUEUE Q where Q.ID_LEARNER_Q=TECHNOPARK.QUEUE.ID_LEARNER_Q)";
-                oraAdap.SelectCommand.Connection = oraConnection;
-                OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
-                while (oraReader1.Read())
-                {
-                    object[] values = new object[oraReader1.FieldCount];
-                    oraReader1.GetValues(values);
-                    id_learner_impossible.Add(values[1].ToString());
-                }
-                oraConnection.Close();
-            }
-
-            if (Select_id_learner.Count == 1 && id_learner_impossible.Count==0)
-            {
-                try
-                {
-                    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                    oraConnection.Open();
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + id_learner[0] + "' AND (ID_STATUS_L=5 OR ID_STATUS_L=6 OR ID_STATUS_L=7 OR ID_STATUS_L=9) and TECHNOPARK.QUEUE.Date_Registration = (Select max(Date_Registration) from QUEUE Q where Q.ID_LEARNER_Q=TECHNOPARK.QUEUE.ID_LEARNER_Q)";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader.Read())
                     {
-                        oraConnection.Open();
-                        string query_queue = "INSERT INTO TECHNOPARK.QUEUE (ID_Learner_Q, DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, ID_STATUS_L) VALUES('" + id_learner[0] + "','" + DateTime.Parse(TextBox2.Text).ToShortDateString() + "', '" + id_lab + "' , '" + id_project + "', 1)";
-                        oraAdap.InsertCommand = new OracleCommand(query_queue, oraConnection);
-                        oraAdap.InsertCommand.ExecuteNonQuery();
-                        GridView1.DataBind();
-                        oraConnection.Close();
-                        Label13.Visible = true;
-                        Label13.ForeColor = System.Drawing.Color.Green;
-                        Label13.Text = "Данные успешно добавлены!";
+                        object[] values = new object[oraReader.FieldCount];
+                        oraReader.GetValues(values);
+                        Select_id_learner.Add(values[1].ToString());
                     }
-
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.QUEUE where TECHNOPARK.QUEUE.ID_LEARNER_Q = '" + id_learner[0] + "' AND (ID_STATUS_L=1 OR ID_STATUS_L=2 OR ID_STATUS_L=3 OR ID_STATUS_L=4 OR ID_STATUS_L=10) and TECHNOPARK.QUEUE.Date_Registration = (Select max(Date_Registration) from QUEUE Q where Q.ID_LEARNER_Q=TECHNOPARK.QUEUE.ID_LEARNER_Q)";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader1.Read())
+                    {
+                        object[] values = new object[oraReader1.FieldCount];
+                        oraReader1.GetValues(values);
+                        id_learner_impossible.Add(values[1].ToString());
+                    }
+                    oraConnection.Close();
                 }
-                catch
+
+                if (Select_id_learner.Count == 1 && id_learner_impossible.Count == 0)
                 {
-                    Label13.Text = "Проверьте введенные данные!";
+                    try
+                    {
+                        using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                        {
+                            oraConnection.Open();
+                            string query_queue = "INSERT INTO TECHNOPARK.QUEUE (ID_Learner_Q, DATE_REGISTRATION, ID_LABORATORIES, ID_PROJECT, ID_STATUS_L) VALUES('" + id_learner[0] + "','" + DateTime.Parse(TextBox2.Text).ToShortDateString() + "', '" + id_lab + "' , '" + id_project + "', 1)";
+                            oraAdap.InsertCommand = new OracleCommand(query_queue, oraConnection);
+                            oraAdap.InsertCommand.ExecuteNonQuery();
+                            GridView1.DataBind();
+                            oraConnection.Close();
+                            Label13.Visible = true;
+                            Label13.ForeColor = System.Drawing.Color.Green;
+                            Label13.Text = "Данные успешно добавлены!";
+                        }
+
+                    }
+                    catch
+                    {
+                        Label13.Text = "Проверьте введенные данные!";
+                        Label13.ForeColor = System.Drawing.Color.Red;
+                    }
+                }
+                else
+                {
+                    Label13.Text = "Проверьте данные проектанта!";
                     Label13.ForeColor = System.Drawing.Color.Red;
                 }
             }
             else
             {
-                Label13.Text = "Проверьте данные проектанта!";
-                Label13.ForeColor = System.Drawing.Color.Red;
+                Response.Write("<script>alert('Только методист может записывать на проект!')</script>");
             }
         }
 
@@ -306,32 +313,38 @@ namespace IS_technopark.Account
 
         protected void Button6_Click(object sender, EventArgs e)
         {
-            oraConnection.Open();
-            GetId_S_L();
-            int s = 0;
-            foreach (string i in id_queue)
-            {
-                try
+            if (Class_FIO.Employees_position == "1") {
+                oraConnection.Open();
+                GetId_S_L();
+                int s = 0;
+                foreach (string i in id_queue)
                 {
-                    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                    try
                     {
-                        string query_update_q = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = '" + id_s_l + "' WHERE ID_QUEUE = '" + id_queue[s] + "' ";
-                        oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
-                        oraAdap.UpdateCommand.ExecuteNonQuery();
-                        GridView1.DataBind();
+                        using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                        {
+                            string query_update_q = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = '" + id_s_l + "' WHERE ID_QUEUE = '" + id_queue[s] + "' ";
+                            oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
+                            oraAdap.UpdateCommand.ExecuteNonQuery();
+                            GridView1.DataBind();
+                        }
+                        Label9.Visible = true;
+                        Label9.ForeColor = System.Drawing.Color.Green;
+                        Label9.Text = "Данные проектана успешно обновлены!";
                     }
-                    Label9.Visible = true;
-                    Label9.ForeColor = System.Drawing.Color.Green;
-                    Label9.Text = "Данные проектана успешно обновлены!";
+                    catch
+                    {
+                        Label9.Visible = true;
+                        Label9.Text = "Проверьте введенные данные!";
+                    }
+                    s += 1;
                 }
-                catch
-                {
-                    Label9.Visible = true;
-                    Label9.Text = "Проверьте введенные данные!";
-                }
-                s += 1;
+                oraConnection.Close();
             }
-            oraConnection.Close();
+            else
+            {
+                Response.Write("<script>alert('Только методист может удалять данные!')</script>");
+            }
         }
     }
 }

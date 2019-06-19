@@ -86,7 +86,7 @@
     <br/>
     <br/>
     <asp:Label ID="Label4" runat="server" Text="Новая запись на проект" style="width:200px; height:30px; font-size:16px;" Font-Italic="False" Font-Bold="True"></asp:Label>
-    <asp:Label ID="Label7" runat="server" Text="Изменить статус проектанту" style="width:200px; height:30px; font-size:15px; margin-left:347px" Font-Italic="False" Font-Bold="True"></asp:Label>
+    <asp:Label ID="Label7" runat="server" Text="Изменить статус проектанту" style="width:200px; height:30px; font-size:15px; margin-left:331px" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br/>
     <div class='form-label'>
     <asp:Label ID="Label1" runat="server" Text="Направление" style="width:200px; height:30px; font-size:16px; margin-right:10px; margin-left:100px"></asp:Label>

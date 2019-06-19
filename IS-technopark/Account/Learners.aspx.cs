@@ -120,9 +120,10 @@ namespace IS_technopark.Account
                     oraAdap.InsertCommand.ExecuteNonQuery();
                     oraConnection.Close();
                 }
-                Label1.Visible = true;
-                Label1.ForeColor = System.Drawing.Color.Green;
-                Label1.Text = "Данные успешно добавлены!";
+                //Label1.Visible = true;
+                //Label1.ForeColor = System.Drawing.Color.Green;
+                //Label1.Text = "Данные успешно добавлены!";
+                Response.Write("<script>alert('Данные успешно добавлены!')</script>");
             }
             catch
             {
