@@ -106,7 +106,7 @@
             <asp:Label ID="Label2" runat="server" Text="ФИО Преподавателя *"></asp:Label>
         </div>
         <div class="form-row" style="width:250px;">
-            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="btn btn-default" DataTextField="FIO" DataValueField="FIO" AutoPostBack="True" Width="200px"> </asp:DropDownList>
+            <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" CssClass="btn btn-default" DataTextField="FIO" DataValueField="FIO" Width="200px"> </asp:DropDownList>
         </div>
         <br>
         <br>
@@ -122,7 +122,7 @@
             <asp:Label ID="Label4" runat="server" Text="Проект *"></asp:Label>
         </div>
         <div class='form-row'style="width:300px;" >
-            <asp:DropDownList ID="DropDownList3" runat="server" style="max-width:200px" CssClass="btn btn-default" AutoPostBack="True"  Width="200px"  Height="30px"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownList3" runat="server" style="max-width:200px" CssClass="btn btn-default"  Width="200px"  Height="30px"></asp:DropDownList>
         </div>
        <%-- <br>
         <br>
@@ -164,6 +164,11 @@
         <br/>
         <asp:Label ID="Label1" runat="server" Text="" ForeColor="#CC3300"></asp:Label>
      </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     <div class="form-group" style=" text-align:center; margin-top:500px">
         
     </div>

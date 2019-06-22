@@ -3,6 +3,32 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <h2 style="text-align:center; width: 1287px;">НОВЫЕ ДАННЫЕ</h2>
+    <div style="float:right; text-align:left; margin-right:0px; margin-top:5px; font-size:13px">
+    <br />
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_POSITION.DIR_POSITION FROM TECHNOPARK.DIR_POSITION INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.DIR_POSITION.ID_DIR_POSITION = TECHNOPARK.EMPLOYEES.POSITION WHERE (TECHNOPARK.EMPLOYEES.POSITION &lt;&gt; 3)"></asp:SqlDataSource>
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True" CellPadding="5" CellSpacing="3" PageSize="5" GridLines="Vertical" BackColor="White" BorderWidth="0px">
+        <Columns> 
+        <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" /> 
+        <asp:BoundField DataField="DIR_POSITION" HeaderText="Должность" SortExpression="DIR_POSITION" /> 
+        <asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center"> 
+        <ItemTemplate> 
+        <asp:ImageButton ImageUrl="~/img/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px"/> 
+        <asp:ImageButton ImageUrl="~/img/delet.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" OnClientClick="return confirm('Вы уверены, что хотите удалить данного проектанта?');"/> 
+        </ItemTemplate> 
+        <EditItemTemplate> 
+        <div style="width:50px"><asp:ImageButton ImageUrl="~/img/floppy-disk.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px"/> 
+        <asp:ImageButton ImageUrl="~/img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px"/></div> 
+        </EditItemTemplate> 
+        <ItemStyle Width="60px"></ItemStyle> 
+        </asp:TemplateField> 
+        </Columns> 
+        <AlternatingRowStyle BackColor="#d2ecf9" /> 
+        <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/> 
+        <FooterStyle BackColor="#CCCCCC" /> 
+        <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" /> 
+        <PagerStyle BackColor="#8fc6f0" ForeColor="White" HorizontalAlign="Center" /> 
+        </asp:GridView>
+    </div>
     <br />
     <h4 style="text-align:left; font-weight:600; margin-left:0px">Добавить нового сотрудника</h4>
     <div style="margin-left:0px; width: 1284px;">
@@ -37,30 +63,7 @@
     <br />
     <br />
     <br />
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_POSITION.DIR_POSITION FROM TECHNOPARK.DIR_POSITION INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.DIR_POSITION.ID_DIR_POSITION = TECHNOPARK.EMPLOYEES.POSITION"></asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True" CellPadding="5" CellSpacing="3" PageSize="5" GridLines="Vertical" BackColor="White" BorderWidth="0px">
-        <Columns>
-            <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" />
-            <asp:BoundField DataField="DIR_POSITION" HeaderText="Должность" SortExpression="DIR_POSITION" />
-             <asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center">
-                <ItemTemplate>
-                    <asp:ImageButton ImageUrl="~/img/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px"/>
-                    <asp:ImageButton ImageUrl="~/img/delet.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" OnClientClick="return confirm('Вы уверены, что хотите удалить данного проектанта?');"/>
-                </ItemTemplate>
-                <EditItemTemplate>
-                    <div style="width:50px"><asp:ImageButton ImageUrl="~/img/floppy-disk.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px"/>
-                    <asp:ImageButton ImageUrl="~/img/cancel.png" runat="server" CommandName="Cancel" ToolTip="Cancel" Width="20px" Height="20px"/></div>
-                </EditItemTemplate>
-        <ItemStyle Width="60px"></ItemStyle>
-            </asp:TemplateField>
-        </Columns>
-        <AlternatingRowStyle BackColor="#d2ecf9" />
-        <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/>
-        <FooterStyle BackColor="#CCCCCC" />
-        <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" />
-        <PagerStyle BackColor="#8fc6f0" ForeColor="White" HorizontalAlign="Center" />
-        </asp:GridView>
-    </div>
+   </div>
     <br />
     <h4 style="text-align:left; font-weight:600; margin-left:0px">Добавить новое направление</h4>
     <div style="margin-left:0px; width: 1284px;">

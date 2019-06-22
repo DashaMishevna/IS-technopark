@@ -23,7 +23,7 @@
             <asp:Label ID="Label2" runat="server" Text="Кому:"></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:TextBox ID="txtTo" runat="server" Width="280" Height="37px" TextMode="MultiLine" CssClass="btn btn-default" style="resize:none; text-align:left; margin-bottom:10px"></asp:TextBox>
+            <asp:TextBox ID="txtTo" runat="server" Width="280" Height="37px" TextMode="MultiLine" CssClass="btn btn-default" style="resize:none; text-align:left; margin-bottom:10px" AutoCompleteType="Email" AutoPostBack="True"></asp:TextBox>
         </div>
         <br>
         <br>
@@ -33,8 +33,8 @@
         </div>
         <div class='form-row'>
             <asp:TextBox ID="txtSubject" runat="server" Width="300" CssClass="btn btn-default" Style="text-align:left; margin-right:20px"></asp:TextBox>
-            <asp:Label ID="Label8" runat="server" Text="Рассылка сообщений выбранным проектантам." Visible="false" Font-Size="13px" ForeColor="#125487"></asp:Label>
-            <asp:Label ID="Label1" runat="server" Text="" Visible="false" Font-Size="13px">></asp:Label>
+            <asp:Label ID="Label8" runat="server" Text="Рассылка сообщений выбранным проектантам" Visible="false" Font-Size="13px" ForeColor="#125487"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="" Visible="false" Font-Size="13px"></asp:Label>
         </div>
         <br>
         <br>

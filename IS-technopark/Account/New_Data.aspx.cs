@@ -19,8 +19,8 @@ namespace IS_technopark.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Class_FIO.Director = "Петров Петр Петрович";
-            Label3.Text = Class_FIO.Director;
+            //Class_FIO.Director = "Петров Петр Петрович";
+            Label3.Text = Class_FIO.Director + " " + Class_FIO.DirectorDD;
             if (!IsPostBack)
             {
                 GetDropList();
@@ -31,16 +31,49 @@ namespace IS_technopark.Account
             }
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Button2_Click(object sender, EventArgs e)
         {
-            Class_FIO.Director = TextBox1.Text;
-            Label3.Text = Class_FIO.Director;
+            oraConnection.Open();
+
+            try
+            {
+                string query_update_q = "Update TECHNOPARK.EMPLOYEES SET FIO = '" + TextBox1.Text + "' WHERE POSITION = 3";
+                oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
+                oraAdap.UpdateCommand.ExecuteNonQuery();
+                Label3.DataBind();
+            }
+            catch
+            {
+               
+            }
+
+            //Class_FIO.Director = TextBox1.Text;
+            //Label3.Text = Class_FIO.Director;
             TextBox1.Text = String.Empty;
+            oraAdap.SelectCommand = new OracleCommand();
+
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "Select FIO From EMPLOYEES where POSITION=3";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader1.Read())
+            {
+                object[] values = new object[oraReader1.FieldCount];
+                oraReader1.GetValues(values);
+                Class_FIO.Director = values[0].ToString();
+            }
+
+            oraAdap.SelectCommand.CommandText = "with t as (select FIO as name from EMPLOYEES where POSITION=3) select regexp_replace(t.name, ' (.*)') LASTNAME, regexp_replace(regexp_replace(t.name, ' (.*)|^[^ ]* '),'.*','.',2,1)||regexp_replace(regexp_replace(t.name, '(.*) '),'.*','.',2,1) INITIALS from t";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader2 = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader2.Read())
+            {
+                object[] values = new object[oraReader2.FieldCount];
+                oraReader2.GetValues(values);
+                Class_FIO.DirectorDD = values[0].ToString();
+                Class_FIO.DirectorDD = Class_FIO.DirectorDD + " " + values[1].ToString();
+            }
+            Label3.Text = Class_FIO.Director + " " + Class_FIO.DirectorDD;
         }
 
         private void GetDropList()

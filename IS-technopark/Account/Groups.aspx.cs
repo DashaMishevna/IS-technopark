@@ -257,7 +257,7 @@ namespace IS_technopark.Account
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            if (Class_FIO.Employees_position == "2" && DropDownList1.Text == Class_FIO.Employees_fio)
+            if ((Class_FIO.Employees_position == "2" && DropDownList1.Text == Class_FIO.Employees_fio) || Class_FIO.Employees_position == "1")
             {
                 oraConnection.Open();
                 //Response.Write(i + "<b>tut</b><br/>");
@@ -335,7 +335,7 @@ namespace IS_technopark.Account
                             using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
                             {
                                 //oraConnection.Open();
-                                string query_update = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = 2, TITLE_G= '" + Title_Group + "' WHERE ID_LEARNER_Q = '" + List_pr[c_p] + " and ID_QUEUE = '" + List_id_q + "'";
+                                string query_update = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = 2, TITLE_G= '" + Title_Group + "' WHERE ID_LEARNER_Q = '" + List_pr[c_p] + "' and ID_QUEUE = '" + List_id_q[c_p] + "'";
                                 oraAdap.UpdateCommand = new OracleCommand(query_update, oraConnection);
                                 oraAdap.UpdateCommand.ExecuteNonQuery();
                                 //oraConnection.Close();
@@ -355,7 +355,7 @@ namespace IS_technopark.Account
                 {
                     if (List_npr.Count != 0)
                     {
-                        Response.Write(List_npr[c_np] + "<b>Записан на другой проект</b><br/>");
+                        //Response.Write(List_npr[c_np] + "<b>Записан на другой проект</b><br/>");
                         try
                         {
                             using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
@@ -383,8 +383,9 @@ namespace IS_technopark.Account
 
                 if (error > 0)
                 {
-                    Label1.Visible = true;
-                    Label1.Text = "Проверьте введенные данные!";
+                    //Label1.Visible = true;
+                    //Label1.Text = "Проверьте введенные данные!";
+                    Response.Write("<script>alert('Проверьте введенные данные!')</script>");
                 }
                 if (error == 0)
                 {
@@ -406,8 +407,9 @@ namespace IS_technopark.Account
                     }
                     catch
                     {
-                        Label1.Visible = true;
-                        Label1.Text = "Проверьте введенные данные!";
+                        //Label1.Visible = true;
+                        //Label1.Text = "Проверьте введенные данные!";
+                        Response.Write("<script>alert('Проверьте введенные данные!')</script>");
                     }
 
                 }

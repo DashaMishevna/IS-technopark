@@ -10,6 +10,7 @@ namespace IS_technopark.Account
         public static string Employees_fio;
         public static string Employees_position;
         public static string Director;
+        public static string DirectorDD;
         public static List<string> email_learner = new List<string>();
 
     }

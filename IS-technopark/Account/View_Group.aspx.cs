@@ -53,37 +53,40 @@ namespace IS_technopark.Account
                         oraReader.GetValues(values);
                         id_status.Add(values[0].ToString());
                     }
-
                 }
                 a += 1;
                 // Response.Write(cb + "<b>tut</b><br/>");
                 oraConnection.Close();
             }
 
+            //int b = 0;
+            //foreach (GridViewRow row in GridView1.Rows)
+            //{
+            //    oraConnection.Open();
+            //    CheckBox cb = (CheckBox)row.FindControl("CheckBox_GR");
+            //    if (cb != null && cb.Checked)
+            //    {
+            //        oraAdap.SelectCommand = new OracleCommand();
+            //        oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.GROUPS.TITLE FROM TECHNOPARK.GROUPS WHERE TECHNOPARK.GROUPS.TITLE = '" + GridView1.DataKeys[b].Values[1] + "'";
+            //        oraAdap.SelectCommand.Connection = oraConnection;
+            //        OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+            //        while (oraReader.Read())
+            //        {
+            //            object[] values = new object[oraReader.FieldCount];
+            //            oraReader.GetValues(values);
+            //            list_gr.Add(values[0].ToString());
+            //        }
+            //    }
+            //    b += 1;
+            //    // Response.Write(cb + "<b>tut</b><br/>");
+            //    oraConnection.Close();
+            //}
 
+        }
 
-            int b = 0;
-            foreach (GridViewRow row in GridView1.Rows)
-            {
-                oraConnection.Open();
-                CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
-                if (cb != null && cb.Checked)
-                {
-                    oraAdap.SelectCommand = new OracleCommand();
-                    oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0";
-                    oraAdap.SelectCommand.Connection = oraConnection;
-                    OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
-                    while (oraReader.Read())
-                    {
-                        object[] values = new object[oraReader.FieldCount];
-                        oraReader.GetValues(values);
-                        list_gr.Add(values[0].ToString());
-                    }
-                }
-                b += 1;
-                // Response.Write(cb + "<b>tut</b><br/>");
-                oraConnection.Close();
-            }
+        public void GetId_l()
+        {
+            
         }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
@@ -188,6 +191,7 @@ namespace IS_technopark.Account
             Label3.Text = "Проектанты по выбранной группе";
         }
 
+
         public void SelectGroupt()
         {
             SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and ID_GROUPT!=0";
@@ -263,20 +267,51 @@ namespace IS_technopark.Account
                         string query_update_q = "Update TECHNOPARK.QUEUE SET ID_STATUS_L = '" + id_s_l + "' WHERE ID_QUEUE = '" + id_status[s] + "' ";
                         oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
                         oraAdap.UpdateCommand.ExecuteNonQuery();
+                        //GridView2.DataBind();
                         SelectQLearner();
+                        //SelectQLearnerCHEC();
                     }
-                    Label13.Visible = true;
-                    Label13.ForeColor = System.Drawing.Color.Green;
-                    Label13.Text = "Данные проектанов успешно обновлены!";
+                    //Label13.Visible = true;
+                    //Label13.ForeColor = System.Drawing.Color.Green;
+                    //Label13.Text = "Данные проектанов успешно обновлены!";
+                    Response.Write("<script>alert('Данные проектанов успешно обновлены!')</script>");
                 }
                 catch
                 {
-                    Label13.Visible = true;
-                    Label13.Text = "Проверьте введенные данные!";
+                    //Label13.Visible = true;
+                    //Label13.Text = "Проверьте введенные данные!";
+                    Response.Write("<script>alert('Проверьте введенные данные!')</script>");
                 }
                 s += 1;
             }
             oraConnection.Close();
         }
+
+        //protected void Button4_Click(object sender, EventArgs e)
+        //{
+        //    oraConnection.Open();
+        //    if (list_gr.Count == 1)
+        //    {
+        //        SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE TECHNOPARK.GROUPS.TITLE = '" + list_gr[0] + "' and ID_GROUPT!=0";
+        //        SqlDataSource1.DataBind();
+        //        GridView1.DataBind();
+
+        //        SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.ID_QUEUE, TECHNOPARK.LEARNER.PHONE, TECHNOPARK.LEARNER.E_MAIL FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.QUEUE.TITLE_G = TECHNOPARK.GROUPS.TITLE INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE TECHNOPARK.GROUPS.TITLE = '" + list_gr[0] + "' and ID_GROUPT!=0 and ID_QUEUE!=0";
+        //        SqlDataSource2.DataBind();
+        //        GridView2.DataBind();
+        //        Label3.Text = "Проектанты по выбранной группе";
+
+        //        Label2.Visible = true;
+        //        Label4.Visible = true;
+        //        DropDownList1.Visible = true;
+        //        Button3.Visible = true;
+        //    }
+
+        //    else
+        //    {
+
+        //    }
+        //    oraConnection.Close();
+        //}
     }
 }

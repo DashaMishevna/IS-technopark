@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -135,6 +136,25 @@ namespace IS_technopark.Account
 
         }
 
+        public void Zp11()
+        {
+            string pattern = @"^(([0-9A-Za-z]{1}[-0-9A-z\.]{1,}[0-9A-Za-z]{1})@([-A-Za-z]{1,}\.){1,2}[-A-Za-z]{2,})$";
+            string a = TextBox6.Text;
+            string[] test = a.Split();
+            while (true)
+            {
+                string email = TextBox6.Text;
+
+                if (Regex.IsMatch(email, pattern, RegexOptions.IgnoreCase))
+                {
+                    //подтвержден
+                }
+                else
+                {
+                    Response.Write("<script>alert('Некорректный email')</script>"); 
+                }
+            }
+        }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {

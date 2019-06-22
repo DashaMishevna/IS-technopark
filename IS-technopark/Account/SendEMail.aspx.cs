@@ -29,13 +29,20 @@ namespace IS_technopark.Account
                 GetDropList();
             }
 
+            if (txtTo.Text.Trim() != "" || DropDownList1.SelectedValue.ToString() != "-Выберите направление-")
+            {
+                Class_FIO.email_learner.Clear();
+                Label8.Visible = false;
+                Label1.Visible = false;
+            }
+
             if (Class_FIO.email_learner.Count > 0)
             {
                 Label8.Visible = true;
                 Label1.Visible = true;
-                Label1.Text = "Количество почтовых ящиков: " + Class_FIO.email_learner.Count.ToString();
+               // Label1.Text = "Количество почтовых ящиков: " + Class_FIO.email_learner.Count.ToString();
             }
-          
+ 
         }
 
         protected void btnSend_Click(object sender, EventArgs e)
@@ -73,7 +80,7 @@ namespace IS_technopark.Account
                         smtp.Credentials = NetCred;
                         smtp.Port = 587;
                         smtp.Send(from, to, subject, message);
-                        lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
+                        //lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
                         smtp.Dispose();
                     }
                 }
@@ -93,7 +100,7 @@ namespace IS_technopark.Account
                             smtp.Credentials = NetCred;
                             smtp.Port = 587;
                             smtp.Send(from, e_mail_to[s], subject, message);
-                            lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
+                            //lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
                             //smtp.Dispose();
                         }
                         s += 1;
@@ -114,7 +121,7 @@ namespace IS_technopark.Account
                             smtp.Credentials = NetCred;
                             smtp.Port = 587;
                             smtp.Send(from, Class_FIO.email_learner[s], subject, message);
-                            lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
+                           // lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
                             //smtp.Dispose();
                         }
                         s += 1;
@@ -148,7 +155,7 @@ namespace IS_technopark.Account
 
         private void EmailLaboratory()
         {
-            if (DropDownList1.SelectedValue.ToString() != "0")
+            if (DropDownList1.SelectedValue.ToString() != "-Выберите направление-")
             {
                 oraConnection.Open();
                 oraAdap.SelectCommand = new OracleCommand();

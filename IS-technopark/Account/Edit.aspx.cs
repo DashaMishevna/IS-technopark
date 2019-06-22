@@ -38,6 +38,33 @@ namespace IS_technopark.Account
                 Info_employees.Add(values[2].ToString());
             }
 
+
+
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "Select FIO From EMPLOYEES where POSITION=3";
+            oraAdap.SelectCommand.Connection = ORACLE;
+            OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader1.Read())
+            {
+                object[] values = new object[oraReader1.FieldCount];
+                oraReader1.GetValues(values);
+                Class_FIO.Director = values[0].ToString();
+            }
+
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "with t as (select FIO as name from EMPLOYEES where POSITION=3) select regexp_replace(t.name, ' (.*)') LASTNAME, regexp_replace(regexp_replace(t.name, ' (.*)|^[^ ]* '),'.*','.',2,1)||regexp_replace(regexp_replace(t.name, '(.*) '),'.*','.',2,1) INITIALS from t";
+            oraAdap.SelectCommand.Connection = ORACLE;
+            OracleDataReader oraReader2 = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader2.Read())
+            {
+                object[] values = new object[oraReader2.FieldCount];
+                oraReader2.GetValues(values);
+                Class_FIO.DirectorDD = values[0].ToString();
+                Class_FIO.DirectorDD=Class_FIO.DirectorDD + " " + values[1].ToString();
+            }
+
+
+
             if (Info_employees.Count==3)
             {
                 Class_FIO.Employees_fio = Info_employees[2].ToString();

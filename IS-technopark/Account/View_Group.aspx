@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="View_Group.aspx.cs" Inherits="IS_technopark.Account.View_Group" %>
+﻿<%@ Page Language="C#" title="Просмотр групп" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="View_Group.aspx.cs" Inherits="IS_technopark.Account.View_Group" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -14,20 +14,14 @@
     <asp:Label ID="Label1" runat="server" Text="Введите шифр" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:10px;"></asp:TextBox>
     <asp:Button ID="Button1" runat="server" Text="Выбрать"  OnClick="Button1_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" />
+   <%-- <asp:Button ID="Button4" runat="server" Text="Вывести группу"  CssClass="btn btn-default" Font-Size="12pt" BackColor="#A5D1F3" Height="33px" style="text-align:center; margin-left:10px" OnClick="Button4_Click" />--%>
     <br>
     <br>
     <asp:Label ID="Label5" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:15px; margin-right:12px; margin-bottom:20px" Font-Italic="False" Font-Bold="True"></asp:Label>
    
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT" DataSourceID="SqlDataSource1" style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3" >
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT, TITLE" DataSourceID="SqlDataSource1" style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3" >
         <AlternatingRowStyle BackColor="White" />
-        <Columns>
-            <asp:TemplateField>
-                <ItemTemplate>
-                    <asp:CheckBox ID="CheckBox1" runat="server" />
-                </ItemTemplate>
-                <HeaderStyle HorizontalAlign="Center" Width="34px" />
-                <ItemStyle HorizontalAlign="Center" />
-            </asp:TemplateField>
+        <Columns> 
             <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" />
             <asp:BoundField DataField="FIO" HeaderText="ФИО преподавателя" SortExpression="FIO" > <HeaderStyle Width="205px"></HeaderStyle> </asp:BoundField>
             <asp:BoundField DataField="EXPR1" HeaderText="Проект" SortExpression="EXPR1" />
@@ -72,7 +66,7 @@
     <br />
     <br />
     <asp:Label ID="Label4" runat="server" Text="Данные проектантов" style="width:200px; height:30px; font-size:16px; margin-right: 10px;" Font-Italic="False" Font-Bold="True" Visible="false"></asp:Label>
-    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" CellPadding="5"  ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" >
+    <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_QUEUE" DataSourceID="SqlDataSource2" CellPadding="5"  ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" >
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:TemplateField>

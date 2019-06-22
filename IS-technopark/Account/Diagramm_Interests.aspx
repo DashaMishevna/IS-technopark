@@ -36,7 +36,7 @@
     <br />
     <asp:Chart ID="Chart1" runat="server" Height="370px" Width="500px">
         <Series>
-            <asp:Series Name="" Legend="Legend1" XValueType="Int32" YValueType="Int32"></asp:Series>
+            <asp:Series Name="Направление" Legend="Legend1" XValueType="Int32" YValueType="Int32"></asp:Series>
         </Series>
         <ChartAreas>
             <asp:ChartArea Name="ChartArea1">
