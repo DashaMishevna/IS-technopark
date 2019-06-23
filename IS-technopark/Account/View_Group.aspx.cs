@@ -19,6 +19,7 @@ namespace IS_technopark.Account
         string id_G = "";
         List<string> id_status = new List<string>();
         List<string> list_gr = new List<string>();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Class_FIO.Employees_position=="2")
@@ -82,6 +83,11 @@ namespace IS_technopark.Account
             //    oraConnection.Close();
             //}
 
+            if (this.IsPostBack)
+            {
+                //
+            }
+
         }
 
         public void GetId_l()
@@ -98,7 +104,7 @@ namespace IS_technopark.Account
                 string command = SqlDataSource1.SelectCommand;
                 SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0 order by TECHNOPARK.GROUPS.TITLE";
                 SqlDataSource1.DataBind();
-                GridView1.DataBind();                
+                GridView1.DataBind();
             }
         }
 
@@ -126,8 +132,9 @@ namespace IS_technopark.Account
             }
             catch
             {
-                Label1.Visible = true;
-                Label1.Text = "Проверьте введенные данные!";
+                Response.Write("<script>alert('Проверьте введенные данные!')</script>");
+                //Label1.Visible = true;
+                //Label1.Text = "Проверьте введенные данные!";
             }
         }
 
@@ -238,17 +245,18 @@ namespace IS_technopark.Account
                         string query_update_g = "Update GROUPS SET STATUS = '" + id_s_g + "'  WHERE ID_GROUPT = '" + id_G + "'";
                         oraAdap.UpdateCommand = new OracleCommand(query_update_g, oraConnection);
                         oraAdap.UpdateCommand.ExecuteNonQuery();
-                        Label12.Visible = true;
-                        Label12.ForeColor = System.Drawing.Color.Green;
-                        Label12.Text = "Данные группы успешно обновлены!";
+                        //Label12.Visible = true;
+                        //Label12.ForeColor = System.Drawing.Color.Green;
+                        //Label12.Text = "Данные группы успешно обновлены!";
+                        Response.Write("<script>alert('Данные группы успешно обновлены!')</script>");
                         SelectGroupt();
+                        
                     }
                 }
             }
             catch
             {
-                Label12.Visible = true;
-                Label12.Text = "Проверьте введенные данные!";
+                Response.Write("<script>alert('Проверьте введенные данные!')</script>");    
             }
             oraConnection.Close();
         }

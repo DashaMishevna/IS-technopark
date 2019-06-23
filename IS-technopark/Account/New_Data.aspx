@@ -8,6 +8,13 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_POSITION.DIR_POSITION, TECHNOPARK.EMPLOYEES.ID_EMPLOYEES FROM TECHNOPARK.DIR_POSITION INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.DIR_POSITION.ID_DIR_POSITION = TECHNOPARK.EMPLOYEES.POSITION WHERE (TECHNOPARK.EMPLOYEES.POSITION &lt;&gt; 3) ORDER BY TECHNOPARK.EMPLOYEES.FIO" UpdateCommand="UPDATE TECHNOPARK.EMPLOYEES SET FIO = 'qwe' WHERE 1=0"></asp:SqlDataSource>
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True" CellPadding="5" CellSpacing="3" PageSize="5" GridLines="Vertical" BackColor="White" BorderWidth="0px" DataKeyNames="ID_EMPLOYEES" OnRowUpdating="GridView1_RowUpdating">
         <Columns> 
+            <asp:TemplateField>
+                <ItemTemplate>
+                    <asp:CheckBox ID="CheckBox1" runat="server" />
+                </ItemTemplate>
+                <HeaderStyle HorizontalAlign="Center" Width="34px" />
+                <ItemStyle HorizontalAlign="Center" />
+            </asp:TemplateField>
         <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" /> 
         <asp:BoundField DataField="DIR_POSITION" HeaderText="Должность" SortExpression="DIR_POSITION" /> 
         <asp:BoundField DataField="ID_EMPLOYEES" HeaderText="ID_EMPLOYEES" SortExpression="ID_EMPLOYEES" Visible="false"/>
@@ -29,6 +36,8 @@
         <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" /> 
         <PagerStyle BackColor="#8fc6f0" ForeColor="White" HorizontalAlign="Center" /> 
     </asp:GridView>
+    <br />
+    <asp:Button ID="Button5" runat="server" Text="Сменить пароль" CssClass="active" Font-Size="10pt" BackColor="#CEE5F3" Height="27px" BorderStyle="Solid" BorderWidth="1px" />
     </div>
     <br />
     <h4 style="text-align:left; font-weight:600; margin-left:0px">Добавить нового сотрудника</h4>

@@ -21,6 +21,12 @@ namespace IS_technopark.Account
         List<string> inf_learner = new List<string>();
         List<string> school_list = new List<string>();
         DataTable dt_button = new DataTable();
+        string FIO_L;
+        string SCHOOL;
+        string CLASS;
+        string DATE; 
+        string THEME;
+        string YEARS;
         int cont_repeat = 0;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -63,13 +69,37 @@ namespace IS_technopark.Account
                         object[] values = new object[oraReader1.FieldCount];
                         oraReader1.GetValues(values);
                         d_conf.Add(values[0].ToString());
-
                     }
                 }
                 a += 1;
                 // Response.Write(cb + "<b>tut</b><br
+                oraConnection.Close();
+            }
+        }
+
+        public void SelectParams()
+        {
+            if (id_learner.Count == 1)
+            {
+                oraConnection.Open();
+                oraAdap.SelectCommand = new OracleCommand();
+                oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.LEARNER.ID_LEARNER FROM TECHNOPARK.EMPLOYEES INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.EMPLOYEES.ID_EMPLOYEES = TECHNOPARK.GROUPS.ID_EMPLOYEES INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.GROUPS.TITLE = TECHNOPARK.QUEUE.TITLE_G INNER JOIN TECHNOPARK.LEARNER ON TECHNOPARK.QUEUE.ID_LEARNER_Q = TECHNOPARK.LEARNER.ID_LEARNER where TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and  ID_LEARNER= '" + id_learner[0] + "'";
+                oraAdap.SelectCommand.Connection = oraConnection;
+                OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+                while (oraReader1.Read())
+                {
+                    object[] values = new object[oraReader1.FieldCount];
+                    oraReader1.GetValues(values);
+                    FIO_L= values[0].ToString();
+                    CLASS = values[1].ToString();
+                    SCHOOL = values[2].ToString();
+                }
 
                 oraConnection.Close();
+            }
+            else
+            { 
+
             }
         }
 
@@ -105,6 +135,11 @@ namespace IS_technopark.Account
             reportParam_FIO.Values.Add(Class_FIO.DirectorDD);
             //reportParam.Add(new ReportParameter("DCONF", d_conf[0].ToString()));
             localReport.SetParameters(new ReportParameter[] { reportParam_FIO });
+
+            //ReportParameter reportParam1= new ReportParameter();
+            //reportParam1.Name = "FIO_L";
+            //reportParam1.Values.Add(FIO_L);
+            //localReport.SetParameters(new ReportParameter[] { reportParam1});
         }
     }
 }

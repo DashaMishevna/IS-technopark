@@ -8,7 +8,14 @@
     <h5 style="text-align:center"> Количество проектантов, которые успешно завершили проекты </h5>
     <br />
     <asp:Label ID="Label1" runat="server" Text="Выберите год"></asp:Label>
-    <asp:DropDownList ID="DropDownList1" runat="server"></asp:DropDownList>
+    <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:ListItem>2015</asp:ListItem>
+        <asp:ListItem>2016</asp:ListItem>
+        <asp:ListItem>2017</asp:ListItem>
+        <asp:ListItem>2018</asp:ListItem>
+        <asp:ListItem>2019</asp:ListItem>
+        <asp:ListItem>2020</asp:ListItem>
+    </asp:DropDownList>
     <div style="margin-top:4px; float:left; margin-left:150px">
     <asp:Chart ID="Chart1" runat="server" Height="450px" Width="450px">
         <Series>

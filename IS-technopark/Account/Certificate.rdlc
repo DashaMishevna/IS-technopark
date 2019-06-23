@@ -447,6 +447,15 @@
     <Style />
   </Page>
   <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSet">
+      <ConnectionProperties>
+        <DataProvider>System.Data.DataSet</DataProvider>
+        <ConnectString>/* Local Connection */</ConnectString>
+      </ConnectionProperties>
+      <rd:DataSourceID>11b832bc-1993-4ede-9343-a79cb9e36917</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
   <ReportParameters>
     <ReportParameter Name="DIRDD">
       <DataType>String</DataType>
