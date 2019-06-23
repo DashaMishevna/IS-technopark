@@ -16,12 +16,13 @@ namespace IS_technopark.Account
         List<string> List_x = new List<string>();
         List<string> List_y = new List<string>();
         List<string> List_percent = new List<string>();
+        string All;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             oraConnection.Open();
             oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "select c, b from (select count(a)b from (Select count (ID_LEARNER_Q) a from queue GROUP by ID_LEARNER_Q) where a>1), (Select count (ID_LEARNER)c from LEARNER)";
+            oraAdap.SelectCommand.CommandText = "select c-b as a, b, c from (select count(a)b from (Select count (ID_LEARNER_Q) a from queue GROUP by ID_LEARNER_Q) where a>1), (Select count (ID_LEARNER)c from LEARNER)";
             oraAdap.SelectCommand.Connection = oraConnection;
             OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
             while (oraReader.Read())
@@ -32,6 +33,7 @@ namespace IS_technopark.Account
                 List_x.Add(values[1].ToString());
                 List_y.Add(values[0].ToString());
                 List_y.Add(values[1].ToString());
+                All = values[2].ToString();
             }
 
             oraAdap.SelectCommand = new OracleCommand();
@@ -49,7 +51,10 @@ namespace IS_technopark.Account
             Chart1.Series[0].ChartType = SeriesChartType.Pie;
             //Chart1.Legends[0].Enabled = true;
             Label1.Text = List_percent[0].ToString() + "% из 100% повторно прошли обучение на разных или одинаковых направлениях";
+            Label2.Text = "Всего проектантов: " + All;
+            Label3.Text = "Повторно прошли обучение: " + List_x[1];
             oraConnection.Close();
         }
+
     }
 }

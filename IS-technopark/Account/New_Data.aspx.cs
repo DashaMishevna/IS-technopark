@@ -20,7 +20,7 @@ namespace IS_technopark.Account
         protected void Page_Load(object sender, EventArgs e)
         {
             //Class_FIO.Director = "Петров Петр Петрович";
-            Label3.Text = Class_FIO.Director + " " + Class_FIO.DirectorDD;
+            Label3.Text = Class_FIO.Director;
             if (!IsPostBack)
             {
                 GetDropList();
@@ -73,7 +73,7 @@ namespace IS_technopark.Account
                 Class_FIO.DirectorDD = values[0].ToString();
                 Class_FIO.DirectorDD = Class_FIO.DirectorDD + " " + values[1].ToString();
             }
-            Label3.Text = Class_FIO.Director + " " + Class_FIO.DirectorDD;
+            Label3.Text = Class_FIO.Director;
         }
 
         private void GetDropList()
@@ -142,5 +142,25 @@ namespace IS_technopark.Account
             }
         }
 
+        protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+            //try
+            //{
+                GridViewRow row = GridView1.Rows[e.RowIndex];
+                string query = "UPDATE TECHNOPARK.EMPLOYEES SET FIO=:FIO WHERE ID_EMPLOYEES=:ID_EMPLOYEES";
+                OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
+                oraConnection.Open();
+                oraclecmd.Parameters.Add("FIO", e.NewValues["FIO"]);
+                //oraclecmd.Parameters.Add("DIR_POSITION", e.NewValues["DIR_POSITION"]);
+                oraclecmd.Parameters.Add("ID_EMPLOYEES", GridView1.DataKeys[e.RowIndex].Value);
+                oraclecmd.ExecuteNonQuery();
+                GridView1.EditIndex = -1;
+                oraConnection.Close();
+            //}
+            //catch
+            //{
+            //    Response.Write("<script>alert('Проверьте введенные данные!')</script>");
+            //}
+        }
     }
 }

@@ -7,7 +7,7 @@
 <br />
 <%--<div style="float:left; margin-left:350px;"> --%>
 <div class='form-label' style="margin-left:50px">
-<asp:Chart ID="Chart1" runat="server" Palette="None" PaletteCustomColors="#1870b4; #66cc00" >
+<asp:Chart ID="Chart1" runat="server" Palette="None" PaletteCustomColors="#1870b4; #66cc00">
     <Series>
         <asp:Series Name="" ChartType="Pie"></asp:Series>
     </Series>
@@ -19,8 +19,12 @@
     </ChartAreas>
 </asp:Chart>
 </div>
-<div class='form-row' style="margin-bottom:400px; margin-left:50px; margin-top:20px">
+<div class='form-row' style="margin-bottom:400px; margin-left:80px; margin-top:20px">
 <asp:Label ID="Label1" runat="server" Text=""></asp:Label>
+    <br />
+<asp:Label ID="Label2" runat="server" Text="Label" Font-Size="14px"></asp:Label>
+    <br />
+<asp:Label ID="Label3" runat="server" Text="Label" Font-Size="14px" ForeColor="#4d9900"></asp:Label>
 </div>
 <br />
 <br />

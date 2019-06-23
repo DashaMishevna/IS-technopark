@@ -3,17 +3,18 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <h2 style="text-align:center; width: 1287px;">НОВЫЕ ДАННЫЕ</h2>
-    <div style="float:right; text-align:left; margin-right:0px; margin-top:5px; font-size:13px">
+    <div style="float:right; text-align:left; margin-right:50px; margin-top:5px; font-size:13px">
     <br />
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_POSITION.DIR_POSITION FROM TECHNOPARK.DIR_POSITION INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.DIR_POSITION.ID_DIR_POSITION = TECHNOPARK.EMPLOYEES.POSITION WHERE (TECHNOPARK.EMPLOYEES.POSITION &lt;&gt; 3)"></asp:SqlDataSource>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True" CellPadding="5" CellSpacing="3" PageSize="5" GridLines="Vertical" BackColor="White" BorderWidth="0px">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_POSITION.DIR_POSITION, TECHNOPARK.EMPLOYEES.ID_EMPLOYEES FROM TECHNOPARK.DIR_POSITION INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.DIR_POSITION.ID_DIR_POSITION = TECHNOPARK.EMPLOYEES.POSITION WHERE (TECHNOPARK.EMPLOYEES.POSITION &lt;&gt; 3) ORDER BY TECHNOPARK.EMPLOYEES.FIO" UpdateCommand="UPDATE TECHNOPARK.EMPLOYEES SET FIO = 'qwe' WHERE 1=0"></asp:SqlDataSource>
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" AllowPaging="True" CellPadding="5" CellSpacing="3" PageSize="5" GridLines="Vertical" BackColor="White" BorderWidth="0px" DataKeyNames="ID_EMPLOYEES" OnRowUpdating="GridView1_RowUpdating">
         <Columns> 
         <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" /> 
         <asp:BoundField DataField="DIR_POSITION" HeaderText="Должность" SortExpression="DIR_POSITION" /> 
+        <asp:BoundField DataField="ID_EMPLOYEES" HeaderText="ID_EMPLOYEES" SortExpression="ID_EMPLOYEES" Visible="false"/>
         <asp:TemplateField ItemStyle-Width="50px" ItemStyle-HorizontalAlign="Center"> 
         <ItemTemplate> 
         <asp:ImageButton ImageUrl="~/img/edit.png" runat="server" CommandName="Edit" ToolTip="Edit" Width="20px" Height="20px"/> 
-        <asp:ImageButton ImageUrl="~/img/delet.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" OnClientClick="return confirm('Вы уверены, что хотите удалить данного проектанта?');"/> 
+        <asp:ImageButton ImageUrl="~/img/delet.png" runat="server" CommandName="Delete" ToolTip="Delete" Width="20px" Height="20px" OnClientClick="return confirm('Вы уверены, что хотите удалить данного сотрудника?');"/> 
         </ItemTemplate> 
         <EditItemTemplate> 
         <div style="width:50px"><asp:ImageButton ImageUrl="~/img/floppy-disk.png" runat="server" CommandName="Update" ToolTip="Update" Width="20px" Height="20px"/> 
@@ -27,7 +28,7 @@
         <FooterStyle BackColor="#CCCCCC" /> 
         <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" /> 
         <PagerStyle BackColor="#8fc6f0" ForeColor="White" HorizontalAlign="Center" /> 
-        </asp:GridView>
+    </asp:GridView>
     </div>
     <br />
     <h4 style="text-align:left; font-weight:600; margin-left:0px">Добавить нового сотрудника</h4>
@@ -74,7 +75,7 @@
     <div class='form-row' style="text-align:left; margin-left:0px;">
     </div>
     <asp:TextBox ID="TextBox3" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:20px; height:30px; Width:280px"></asp:TextBox>
-    <asp:Button ID="Button3" runat="server" Text="Изменить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3"/>
+    <asp:Button ID="Button3" runat="server" Text="Добавить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3"/>
     </div>
     <br />
     <div class='form-label' style="margin-left:0px; width:200px">
