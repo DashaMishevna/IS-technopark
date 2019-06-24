@@ -33,47 +33,53 @@ namespace IS_technopark.Account
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            oraConnection.Open();
-
-            try
+            if (Class_FIO.Employees_position == "1")
             {
-                string query_update_q = "Update TECHNOPARK.EMPLOYEES SET FIO = '" + TextBox1.Text + "' WHERE POSITION = 3";
-                oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
-                oraAdap.UpdateCommand.ExecuteNonQuery();
-                Label3.DataBind();
-            }
-            catch
-            {
-               
-            }
+                oraConnection.Open();
+                try
+                {
+                    string query_update_q = "Update TECHNOPARK.EMPLOYEES SET FIO = '" + TextBox1.Text + "' WHERE POSITION = 3";
+                    oraAdap.UpdateCommand = new OracleCommand(query_update_q, oraConnection);
+                    oraAdap.UpdateCommand.ExecuteNonQuery();
+                    Label3.DataBind();
+                }
+                catch
+                {
 
-            //Class_FIO.Director = TextBox1.Text;
-            //Label3.Text = Class_FIO.Director;
-            TextBox1.Text = String.Empty;
-            oraAdap.SelectCommand = new OracleCommand();
+                }
 
-            oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "Select FIO From EMPLOYEES where POSITION=3";
-            oraAdap.SelectCommand.Connection = oraConnection;
-            OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
-            while (oraReader1.Read())
-            {
-                object[] values = new object[oraReader1.FieldCount];
-                oraReader1.GetValues(values);
-                Class_FIO.Director = values[0].ToString();
-            }
+                //Class_FIO.Director = TextBox1.Text;
+                //Label3.Text = Class_FIO.Director;
+                TextBox1.Text = String.Empty;
+                oraAdap.SelectCommand = new OracleCommand();
 
-            oraAdap.SelectCommand.CommandText = "with t as (select FIO as name from EMPLOYEES where POSITION=3) select regexp_replace(t.name, ' (.*)') LASTNAME, regexp_replace(regexp_replace(t.name, ' (.*)|^[^ ]* '),'.*','.',2,1)||regexp_replace(regexp_replace(t.name, '(.*) '),'.*','.',2,1) INITIALS from t";
-            oraAdap.SelectCommand.Connection = oraConnection;
-            OracleDataReader oraReader2 = oraAdap.SelectCommand.ExecuteReader();
-            while (oraReader2.Read())
-            {
-                object[] values = new object[oraReader2.FieldCount];
-                oraReader2.GetValues(values);
-                Class_FIO.DirectorDD = values[0].ToString();
-                Class_FIO.DirectorDD = Class_FIO.DirectorDD + " " + values[1].ToString();
+                oraAdap.SelectCommand = new OracleCommand();
+                oraAdap.SelectCommand.CommandText = "Select FIO From EMPLOYEES where POSITION=3";
+                oraAdap.SelectCommand.Connection = oraConnection;
+                OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+                while (oraReader1.Read())
+                {
+                    object[] values = new object[oraReader1.FieldCount];
+                    oraReader1.GetValues(values);
+                    Class_FIO.Director = values[0].ToString();
+                }
+
+                oraAdap.SelectCommand.CommandText = "with t as (select FIO as name from EMPLOYEES where POSITION=3) select regexp_replace(t.name, ' (.*)') LASTNAME, regexp_replace(regexp_replace(t.name, ' (.*)|^[^ ]* '),'.*','.',2,1)||regexp_replace(regexp_replace(t.name, '(.*) '),'.*','.',2,1) INITIALS from t";
+                oraAdap.SelectCommand.Connection = oraConnection;
+                OracleDataReader oraReader2 = oraAdap.SelectCommand.ExecuteReader();
+                while (oraReader2.Read())
+                {
+                    object[] values = new object[oraReader2.FieldCount];
+                    oraReader2.GetValues(values);
+                    Class_FIO.DirectorDD = values[0].ToString();
+                    Class_FIO.DirectorDD = Class_FIO.DirectorDD + " " + values[1].ToString();
+                }
+                Label3.Text = Class_FIO.Director;
             }
-            Label3.Text = Class_FIO.Director;
+            else
+            {
+                Response.Write("<script>alert('Только методист может менять ФИО директора!')</script>");
+            }
         }
 
         private void GetDropList()
@@ -93,7 +99,7 @@ namespace IS_technopark.Account
 
         private void GetPosition()
         {
-            string s1 = "Select DIR_POSITION from DIR_POSITION";
+            string s1 = "Select DIR_POSITION from DIR_POSITION Where ID_DIR_POSITION <>3";
             OracleDataAdapter oraAdap = new OracleDataAdapter(s1, oraConnection);
             oraAdap.Fill(ds_position);
             if (ds_position.Tables[0].Rows.Count > 0)
@@ -122,23 +128,30 @@ namespace IS_technopark.Account
 
         protected void Button1_Click1(object sender, EventArgs e)
         {
-            oraConnection.Open();
-            Get_ID_Position();
-
-            if (TextBox2.Text != "" && DropDownList_Position.SelectedValue.ToString() != "-Выберите должность-")
+            if (Class_FIO.Employees_position == "1")
             {
-                //
-                //string query = "INSERT INTO TECHNOPARK.EMPLOYEES (POSITION, FIO) VALUES(id_position, '" + TextBox2.Text + "')";
-                //oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
-                //oraAdap.InsertCommand.ExecuteNonQuery();
-                //oraConnection.Close();
-                //Response.Write("<script>alert('Данные успешно добавлены!')</script>");
-                Response.Write("<script>alert('Ваш пароль: " + id_position + "')</script>");
+                oraConnection.Open();
+                Get_ID_Position();
+
+                if (TextBox2.Text != "" && DropDownList_Position.SelectedValue.ToString() != "-Выберите должность-")
+                {
+                    //
+                    //string query = "INSERT INTO TECHNOPARK.EMPLOYEES (POSITION, FIO) VALUES(id_position, '" + TextBox2.Text + "')";
+                    //oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
+                    //oraAdap.InsertCommand.ExecuteNonQuery();
+                    //oraConnection.Close();
+                    //Response.Write("<script>alert('Данные успешно добавлены!')</script>");
+                    Response.Write("<script>alert('Ваш пароль: " + id_position + "')</script>");
+                }
+                else
+                {
+                    Response.Write("<script>alert('Проверьте введенные данные!')</script>");
+
+                }
             }
             else
             {
-                Response.Write("<script>alert('Проверьте введенные данные!')</script>");
-
+                Response.Write("<script>alert('Только методист может добавлять нового сотрудника!')</script>");
             }
         }
 
@@ -161,6 +174,44 @@ namespace IS_technopark.Account
             //{
             //    Response.Write("<script>alert('Проверьте введенные данные!')</script>");
             //}
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            if (Class_FIO.Employees_position == "1")
+            {
+
+
+            }
+            else
+            {
+                Response.Write("<script>alert('Только методист может добавлять направление!')</script>");
+            }
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (Class_FIO.Employees_position == "1")
+            {
+
+            }
+            else
+            {
+                Response.Write("<script>alert('Только методист может добавлять проект!')</script>");
+            }
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            if (Class_FIO.Employees_position == "1")
+            {
+
+            }
+
+            else
+            {
+                Response.Write("<script>alert('Только методист может изменять пароль!')</script>");
+            }
         }
     }
 }

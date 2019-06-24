@@ -19,7 +19,7 @@
         <asp:Label ID="Label_Passw" runat="server" Text="Пароль" Font-Size="12pt"></asp:Label>
         </div>
         <div class='form-row' style="text-align:left; margin-left:20px;">
-        <asp:TextBox ID="TextBox_Passw" runat="server" TextMode="Password" Width="225px" Height="31px" CssClass="form-control"></asp:TextBox>
+        <asp:TextBox ID="TextBox_Passw" runat="server" TextMode="Password" Width="225px" Height="30px" CssClass="form-control"></asp:TextBox>
         </div>
         <br />
         </div>

@@ -37,7 +37,7 @@
         <PagerStyle BackColor="#8fc6f0" ForeColor="White" HorizontalAlign="Center" /> 
     </asp:GridView>
     <br />
-    <asp:Button ID="Button5" runat="server" Text="Сменить пароль" CssClass="active" Font-Size="10pt" BackColor="#CEE5F3" Height="27px" BorderStyle="Solid" BorderWidth="1px" />
+    <asp:Button ID="Button5" runat="server" Text="Сменить пароль" CssClass="active" Font-Size="10pt" BackColor="#CEE5F3" Height="27px" BorderStyle="Solid" BorderWidth="1px" OnClick="Button5_Click" />
     </div>
     <br />
     <h4 style="text-align:left; font-weight:600; margin-left:0px">Добавить нового сотрудника</h4>
@@ -84,7 +84,7 @@
     <div class='form-row' style="text-align:left; margin-left:0px;">
     </div>
     <asp:TextBox ID="TextBox3" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:20px; height:30px; Width:280px"></asp:TextBox>
-    <asp:Button ID="Button3" runat="server" Text="Добавить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3"/>
+    <asp:Button ID="Button3" runat="server" Text="Добавить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button3_Click"/>
     </div>
     <br />
     <div class='form-label' style="margin-left:0px; width:200px">
@@ -99,7 +99,7 @@
     <asp:Label ID="Label6" runat="server" Text="Проект"></asp:Label>
     </div>
     <div class='form-row' style="text-align:left; margin-left:0px;">
-    <asp:TextBox ID="TextBox4" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:20px; height:30px; Width:280px"></asp:TextBox><asp:Button ID="Button4" runat="server" Text="Добавить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3"/>
+    <asp:TextBox ID="TextBox4" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:20px; height:30px; Width:280px"></asp:TextBox><asp:Button ID="Button4" runat="server" Text="Добавить" Height="35px" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" OnClick="Button4_Click"/>
     </div>
 
     <div class='form-label' style="margin-left:0px; width:200px">
