@@ -19,7 +19,7 @@
     <br>
     <asp:Label ID="Label5" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:15px; margin-right:12px; margin-bottom:20px" Font-Italic="False" Font-Bold="True"></asp:Label>
    
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT,TITLE" DataSourceID="SqlDataSource1" style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating" OnRowCancelingEdit="GridView1_RowCancelingEdit" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT,TITLE" DataSourceID="SqlDataSource1" style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical"  OnRowUpdating="GridView1_RowUpdating" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3">
         <AlternatingRowStyle BackColor="White" />
         <Columns> 
             <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" />
@@ -58,9 +58,9 @@
         <SortedDescendingHeaderStyle BackColor="#383838" />
     </asp:GridView>
     <br>
-    <asp:Label ID="Label11" runat="server" Text="Статус группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
-    <asp:DropDownList ID="DropDownList2" runat="server" Height="30px" DataSourceID="SqlDataSource3" DataTextField="STATUS_G" DataValueField="STATUS_G" style="margin-right: 10px" CssClass="btn btn-default" Width="250"> </asp:DropDownList>
-    <asp:Button ID="Button2" runat="server" Text="Обновить" OnClick="Button2_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center"/>
+    <asp:Label ID="Label11" runat="server" Text="Статус группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Visible="false"></asp:Label>
+    <asp:DropDownList ID="DropDownList2" runat="server" Height="30px" DataSourceID="SqlDataSource3" DataTextField="STATUS_G" DataValueField="STATUS_G" style="margin-right: 10px" CssClass="btn btn-default" Width="250"  Visible="false"/> </asp:DropDownList>
+    <asp:Button ID="Button2" runat="server" Text="Обновить" OnClick="Button2_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center"  Visible="false"/>
     <br />
     <asp:Label ID="Label12" runat="server" Text=""></asp:Label>
     <br />

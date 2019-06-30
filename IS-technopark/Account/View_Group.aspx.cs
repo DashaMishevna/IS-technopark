@@ -82,12 +82,6 @@ namespace IS_technopark.Account
             //    // Response.Write(cb + "<b>tut</b><br/>");
             //    oraConnection.Close();
             //}
-
-            if (this.IsPostBack)
-            {
-                //
-            }
-
         }
 
         public void GetId_l()
@@ -95,18 +89,18 @@ namespace IS_technopark.Account
             
         }
 
-        protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            GridView1.EditIndex = -1;
-            GridView1.DataBind();
-            if (this.IsPostBack)
-            {
-                string command = SqlDataSource1.SelectCommand;
-                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0 order by TECHNOPARK.GROUPS.TITLE";
-                SqlDataSource1.DataBind();
-                GridView1.DataBind();
-            }
-        }
+        //protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
+        //{
+        //    GridView1.EditIndex = -1;
+        //    GridView1.DataBind();
+        //    if (this.IsPostBack)
+        //    {
+        //        string command = SqlDataSource1.SelectCommand;
+        //        SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0 order by TECHNOPARK.GROUPS.TITLE";
+        //        SqlDataSource1.DataBind();
+        //        GridView1.DataBind();
+        //    }
+        //}
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
@@ -217,6 +211,9 @@ namespace IS_technopark.Account
                 Label4.Visible = true;
                 DropDownList1.Visible = true;
                 Button3.Visible = true;
+                Label11.Visible = true;
+                Button2.Visible = true;
+                DropDownList2.Visible = true;
             }
             else
             {
@@ -249,8 +246,7 @@ namespace IS_technopark.Account
                         //Label12.ForeColor = System.Drawing.Color.Green;
                         //Label12.Text = "Данные группы успешно обновлены!";
                         Response.Write("<script>alert('Данные группы успешно обновлены!')</script>");
-                        SelectGroupt();
-                        
+                        SelectGroupt();  
                     }
                 }
             }
@@ -266,6 +262,7 @@ namespace IS_technopark.Account
             oraConnection.Open();
             GetId_S_L();
             int s = 0;
+            int mess = 0;
             foreach (string i in id_status)
             {
                 try
@@ -282,7 +279,8 @@ namespace IS_technopark.Account
                     //Label13.Visible = true;
                     //Label13.ForeColor = System.Drawing.Color.Green;
                     //Label13.Text = "Данные проектанов успешно обновлены!";
-                    Response.Write("<script>alert('Данные проектанов успешно обновлены!')</script>");
+                    mess = +1;
+                    
                 }
                 catch
                 {
@@ -292,6 +290,11 @@ namespace IS_technopark.Account
                 }
                 s += 1;
             }
+            if (mess>0)
+            {
+                Response.Write("<script>alert('Данные проектанов успешно обновлены!')</script>");
+            }
+
             oraConnection.Close();
         }
 
