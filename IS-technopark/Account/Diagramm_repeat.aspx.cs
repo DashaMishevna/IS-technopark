@@ -37,7 +37,7 @@ namespace IS_technopark.Account
             }
 
             oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "select (b*100)/c from (select count(a)b from (Select count (ID_LEARNER_Q) a from queue GROUP by ID_LEARNER_Q) where a>1), (Select count (ID_LEARNER)c from LEARNER)";
+            oraAdap.SelectCommand.CommandText = "select round((b*100)/c,2) from (select count(a)b from (Select count (ID_LEARNER_Q) a from queue GROUP by ID_LEARNER_Q) where a>1), (Select count (ID_LEARNER)c from LEARNER)";
             oraAdap.SelectCommand.Connection = oraConnection;
             OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
             while (oraReader1.Read())

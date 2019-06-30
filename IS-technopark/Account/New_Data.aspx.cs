@@ -16,6 +16,8 @@ namespace IS_technopark.Account
         DataSet ds = new DataSet();
         DataSet ds_position = new DataSet();
         string id_position = "";
+        string s_key = "";
+        string id_lab = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -126,6 +128,20 @@ namespace IS_technopark.Account
             }
         }
 
+        public void Select_Key()
+        {
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "select key from(select  max(ID_EMPLOYEES) as m from EMPLOYEES)b, EMPLOYEES where EMPLOYEES.ID_EMPLOYEES=b.m";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader.Read())
+            {
+                object[] values = new object[oraReader.FieldCount];
+                oraReader.GetValues(values);
+                s_key = values[0].ToString();
+            }
+        }
+
         protected void Button1_Click1(object sender, EventArgs e)
         {
             if (Class_FIO.Employees_position == "1")
@@ -135,22 +151,26 @@ namespace IS_technopark.Account
 
                 if (TextBox2.Text != "" && DropDownList_Position.SelectedValue.ToString() != "-Выберите должность-")
                 {
-                    //
-                    //string query = "INSERT INTO TECHNOPARK.EMPLOYEES (POSITION, FIO) VALUES(id_position, '" + TextBox2.Text + "')";
-                    //oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
-                    //oraAdap.InsertCommand.ExecuteNonQuery();
-                    //oraConnection.Close();
-                    //Response.Write("<script>alert('Данные успешно добавлены!')</script>");
-                    Response.Write("<script>alert('Ваш пароль: " + id_position + "')</script>");
+                    string query = "INSERT INTO TECHNOPARK.EMPLOYEES (POSITION, FIO) VALUES('" + id_position + "', '" + TextBox2.Text + "')";
+                    oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
+                    oraAdap.InsertCommand.ExecuteNonQuery();
+                    Select_Key();
+                    Response.Write("<script>alert('Данные успешно добавлены! Ваш пароль: " + s_key + "')</script>");
+                    GridView1.DataBind();
+                    TextBox2.Text = string.Empty;
+                    DropDownList_Position.ClearSelection();
+                    //DropDownList1.SelectedIndex = -1;
+                    DropDownList_Position.DataBind();
                 }
                 else
                 {
                     Response.Write("<script>alert('Проверьте введенные данные!')</script>");
-
                 }
             }
             else
             {
+                TextBox2.Text = string.Empty;
+                DropDownList_Position.ClearSelection();
                 Response.Write("<script>alert('Только методист может добавлять нового сотрудника!')</script>");
             }
         }
@@ -180,12 +200,41 @@ namespace IS_technopark.Account
         {
             if (Class_FIO.Employees_position == "1")
             {
-
-
+                if (TextBox3.Text != "")
+                {
+                    oraConnection.Open();
+                    string query = "INSERT INTO TECHNOPARK.DIR_LABORATORIES (LABORATORY) VALUES('" + TextBox3.Text + "')";
+                    oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
+                    oraAdap.InsertCommand.ExecuteNonQuery();
+                   // GetDropList();
+                    Response.Write("<script>alert('Данные успешно добавлены!')</script>");
+                    TextBox3.Text = string.Empty;
+                    GetDropList();
+                    oraConnection.Close();
+                }
+                else
+                {
+                    Response.Write("<script>alert('Проверьте введенные данные!')</script>");
+                }
             }
             else
             {
+                TextBox3.Text = string.Empty;
                 Response.Write("<script>alert('Только методист может добавлять направление!')</script>");
+            }
+        }
+
+        public void Get_ID_Lab()
+        {
+            oraAdap.SelectCommand = new OracleCommand();
+            oraAdap.SelectCommand.CommandText = "Select ID_LABORATORIES from DIR_LABORATORIES where LABORATORY = '" + DropDownList1.SelectedValue + "'";
+            oraAdap.SelectCommand.Connection = oraConnection;
+            OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+            while (oraReader.Read())
+            {
+                object[] values = new object[oraReader.FieldCount];
+                oraReader.GetValues(values);
+                id_lab = values[0].ToString();
             }
         }
 
@@ -193,10 +242,27 @@ namespace IS_technopark.Account
         {
             if (Class_FIO.Employees_position == "1")
             {
-
+                if (TextBox4.Text != "" && DropDownList1.SelectedValue.ToString() != "-Выберите направление-")
+                {
+                    oraConnection.Open();
+                    Get_ID_Lab();
+                    string query = "INSERT INTO TECHNOPARK.DIR_PROJECTS (ID_LABORATORY, TITLE) VALUES('" + id_lab + "', '" + TextBox4.Text + "')";
+                    oraAdap.InsertCommand = new OracleCommand(query, oraConnection);
+                    oraAdap.InsertCommand.ExecuteNonQuery();
+                    Response.Write("<script>alert('Данные успешно добавлены!')</script>");
+                    TextBox4.Text = string.Empty;
+                    DropDownList1.ClearSelection();
+                    oraConnection.Close();
+                }
+                else
+                {
+                    Response.Write("<script>alert('Проверьте введенные данные!')</script>");
+                }
             }
             else
             {
+                TextBox4.Text = string.Empty;
+                DropDownList1.ClearSelection();
                 Response.Write("<script>alert('Только методист может добавлять проект!')</script>");
             }
         }
@@ -211,6 +277,35 @@ namespace IS_technopark.Account
             else
             {
                 Response.Write("<script>alert('Только методист может изменять пароль!')</script>");
+            }
+        }
+
+        protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            if (Class_FIO.Employees_position == "1")
+            {
+                try
+                {
+                    using (OracleConnection oraclelcon = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;"))
+                    {
+                        oraclelcon.Open();
+                        GridViewRow row = GridView1.Rows[e.RowIndex];
+                        string query = "DELETE FROM TECHNOPARK.EMPLOYEES WHERE ID_EMPLOYEES = :ID_EMPLOYEES";
+                        OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
+                        oraclecmd.Connection.Open();
+                        oraclecmd.Parameters.Add("ID_EMPLOYEES", GridView1.DataKeys[e.RowIndex].Value);
+
+                        oraclecmd.ExecuteNonQuery();
+                    }
+                }
+                catch
+                {
+                    Response.Write("<script>alert('Ошибка')</script>");
+                }
+            }
+            else
+            {
+                Response.Write("<script>alert('Только методист может удалять данные!')</script>");
             }
         }
     }

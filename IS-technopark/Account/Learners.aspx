@@ -63,7 +63,7 @@
             <asp:Label ID="Label9" runat="server" Text="Телефон"></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:TextBox ID="TextBox5" runat="server" Width="500px" Height="30px" CssClass="btn btn-default" Style="text-align:left" ></asp:TextBox>
+            <asp:TextBox ID="TextBox5" runat="server" Width="500px" Height="30px" CssClass="btn btn-default" Style="text-align:left" TextMode="Phone"></asp:TextBox>
         </div>
         <br>
         <br>
@@ -71,7 +71,7 @@
             <asp:Label ID="Label10" runat="server" Text="E-mail" ></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:TextBox ID="TextBox6" runat="server" Width="500px" Height="30px"  CssClass="btn btn-default" Style="text-align:left" ></asp:TextBox>
+            <asp:TextBox ID="TextBox6" runat="server" Width="500px" Height="30px"  CssClass="btn btn-default" Style="text-align:left" TextMode="Email" ></asp:TextBox>
         </div>
         <br>
         <br>
@@ -110,7 +110,7 @@
             <asp:Label ID="Label14" runat="server" Text="Телефон *"></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:TextBox ID="TextBox11" runat="server" Width="500px" Height="30px" CssClass="btn btn-default" style="margin-right:20px; text-align:left"  ToolTip="Телефон начинается с 8"></asp:TextBox>
+            <asp:TextBox ID="TextBox11" runat="server" Width="500px" Height="30px" CssClass="btn btn-default" style="margin-right:20px; text-align:left"  ToolTip="Телефон начинается с 8" TextMode="Phone"></asp:TextBox>
             <asp:Label ID="Label15" runat="server" Text="Телефон рабочий" style="margin-right:5px"></asp:Label>
             <asp:TextBox ID="TextBox12" runat="server" Width="500px" Height="30px" CssClass="btn btn-default" Style="text-align:left" ></asp:TextBox>
         </div>
@@ -120,7 +120,7 @@
             <asp:Label ID="Label16" runat="server" Text="E-mail" ></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:TextBox ID="TextBox13" runat="server" Width="500px" Height="30px"  CssClass="btn btn-default" Style="text-align:left" ></asp:TextBox>
+            <asp:TextBox ID="TextBox13" runat="server" Width="500px" Height="30px"  CssClass="btn btn-default" Style="text-align:left" TextMode="Email" ></asp:TextBox>
         </div>
         <br>
         <br>
