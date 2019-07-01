@@ -24,7 +24,7 @@ namespace IS_technopark.Account
         {
             oraConnection.Open();
             oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "select Count(ID_queue), DIR_LABORATORIES.LABORATORY from QUEUE, DIR_LABORATORIES,groups WHERE groups.TITLE=queue.TITLE_G and QUEUE.ID_LABORATORIES = DIR_LABORATORIES.ID_LABORATORIES and EXTRACT(MONTH FROM DATE_REGISTRATION)=4 and Queue.id_status_l=5 group by DIR_LABORATORIES.LABORATORY";
+            oraAdap.SelectCommand.CommandText = "select Count(ID_queue), DIR_LABORATORIES.LABORATORY from QUEUE, DIR_LABORATORIES,groups WHERE groups.TITLE=queue.TITLE_G and EXTRACT(YEAR FROM groups.D_CONFERENCE)='"+ DropDownList1.SelectedValue+"' and QUEUE.ID_LABORATORIES = DIR_LABORATORIES.ID_LABORATORIES and Queue.id_status_l=5 group by DIR_LABORATORIES.LABORATORY";
             oraAdap.SelectCommand.Connection = oraConnection;
             OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
             while (oraReader.Read())
@@ -32,18 +32,19 @@ namespace IS_technopark.Account
                 object[] values = new object[oraReader.FieldCount];
                 oraReader.GetValues(values);
                 count.Add(values[1].ToString());
-            }
-
-            oraAdap.SelectCommand = new OracleCommand();
-            oraAdap.SelectCommand.CommandText = "select Count(ID_queue), DIR_LABORATORIES.LABORATORY from QUEUE, DIR_LABORATORIES,groups WHERE groups.TITLE=queue.TITLE_G and QUEUE.ID_LABORATORIES = DIR_LABORATORIES.ID_LABORATORIES and EXTRACT(MONTH FROM DATE_REGISTRATION)=4 and Queue.id_status_l=5 group by DIR_LABORATORIES.LABORATORY";
-            oraAdap.SelectCommand.Connection = oraConnection;
-            OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
-            while (oraReader1.Read())
-            {
-                object[] values = new object[oraReader1.FieldCount];
-                oraReader1.GetValues(values);
                 count1.Add(values[0].ToString());
             }
+
+            //oraAdap.SelectCommand = new OracleCommand();
+            //oraAdap.SelectCommand.CommandText = "select Count(ID_queue), DIR_LABORATORIES.LABORATORY from QUEUE, DIR_LABORATORIES,groups WHERE groups.TITLE=queue.TITLE_G and QUEUE.ID_LABORATORIES = DIR_LABORATORIES.ID_LABORATORIES and EXTRACT(MONTH FROM DATE_REGISTRATION)=4 and Queue.id_status_l=5 group by DIR_LABORATORIES.LABORATORY";
+            //oraAdap.SelectCommand.Connection = oraConnection;
+            //OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
+            //while (oraReader1.Read())
+            //{
+            //    object[] values = new object[oraReader1.FieldCount];
+            //    oraReader1.GetValues(values);
+            //    count1.Add(values[0].ToString());
+            //}
 
             string[] x = new string[count.Count];
             int[] y = new int[count1.Count];

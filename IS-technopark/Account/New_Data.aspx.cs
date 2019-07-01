@@ -18,6 +18,8 @@ namespace IS_technopark.Account
         string id_position = "";
         string s_key = "";
         string id_lab = "";
+        string new_key;
+        List<string> id_emp = new List<string>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +32,27 @@ namespace IS_technopark.Account
             if (!IsPostBack)
             {
                 GetPosition();
+            }
+            int a = 0;
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                oraConnection.Open();
+                CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
+                if (cb != null && cb.Checked)
+                {
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "Select * FROM TECHNOPARK.EMPLOYEES where TECHNOPARK.EMPLOYEES.ID_EMPLOYEES = '" + GridView1.DataKeys[a].Values[0] + "'";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader.Read())
+                    {
+                        object[] values = new object[oraReader.FieldCount];
+                        oraReader.GetValues(values);
+                        id_emp.Add(values[0].ToString());
+                    }
+                }
+                a += 1;
+                oraConnection.Close();
             }
         }
 
@@ -177,8 +200,8 @@ namespace IS_technopark.Account
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 GridViewRow row = GridView1.Rows[e.RowIndex];
                 string query = "UPDATE TECHNOPARK.EMPLOYEES SET FIO=:FIO WHERE ID_EMPLOYEES=:ID_EMPLOYEES";
                 OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
@@ -189,11 +212,11 @@ namespace IS_technopark.Account
                 oraclecmd.ExecuteNonQuery();
                 GridView1.EditIndex = -1;
                 oraConnection.Close();
-            //}
-            //catch
-            //{
-            //    Response.Write("<script>alert('Проверьте введенные данные!')</script>");
-            //}
+            }
+            catch
+            {
+                Response.Write("<script>alert('Проверьте введенные данные!')</script>");
+            }
         }
 
         protected void Button3_Click(object sender, EventArgs e)
@@ -271,7 +294,30 @@ namespace IS_technopark.Account
         {
             if (Class_FIO.Employees_position == "1")
             {
+                if (id_emp.Count == 1)
+                {
+                    oraConnection.Open();
+                    string query = "update EMPLOYEES set key=SEQ_KEY_EMPLOYEES.NEXTVAL where EMPLOYEES.ID_EMPLOYEES='" + id_emp[0] + "'";
+                    OracleCommand oraclecmd = new OracleCommand(query, oraConnection);
+                    oraclecmd.ExecuteNonQuery();
 
+                    oraAdap.SelectCommand = new OracleCommand();
+                    oraAdap.SelectCommand.CommandText = "select key from EMPLOYEES where EMPLOYEES.ID_EMPLOYEES = '" + id_emp[0] + "'";
+                    oraAdap.SelectCommand.Connection = oraConnection;
+                    OracleDataReader oraReader = oraAdap.SelectCommand.ExecuteReader();
+                    while (oraReader.Read())
+                    {
+                        object[] values = new object[oraReader.FieldCount];
+                        oraReader.GetValues(values);
+                        new_key = values[0].ToString();
+                    }
+                    Response.Write("<script>alert('Данные успешно изменены! Новый пароль: " + new_key + "')</script>");
+                    oraclecmd.Connection.Close();
+                }
+                else
+                {
+                    Response.Write("<script>alert('Выберите одного сотрудника!')</script>");
+                }
             }
 
             else
