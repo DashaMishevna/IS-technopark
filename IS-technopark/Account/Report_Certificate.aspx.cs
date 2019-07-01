@@ -21,7 +21,7 @@ namespace IS_technopark.Account
         List<string> inf_learner = new List<string>();
         List<string> school_list = new List<string>();
         DataTable dt_button = new DataTable();
-        string FIO_L;
+        string F;
         string SCHOOL;
         string CLASS;
         string DATE; 
@@ -79,27 +79,31 @@ namespace IS_technopark.Account
 
         public void SelectParams()
         {
-            if (id_learner.Count == 1)
+          if (id_learner.Count == 1)
             {
+            if (id_learner.Count == 1)
+            { 
                 oraConnection.Open();
                 oraAdap.SelectCommand = new OracleCommand();
-                oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.LEARNER.ID_LEARNER FROM TECHNOPARK.EMPLOYEES INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.EMPLOYEES.ID_EMPLOYEES = TECHNOPARK.GROUPS.ID_EMPLOYEES INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.GROUPS.TITLE = TECHNOPARK.QUEUE.TITLE_G INNER JOIN TECHNOPARK.LEARNER ON TECHNOPARK.QUEUE.ID_LEARNER_Q = TECHNOPARK.LEARNER.ID_LEARNER where TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and  ID_LEARNER= '" + id_learner[0] + "'";
+                oraAdap.SelectCommand.CommandText = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.LEARNER.SCHOOL, TECHNOPARK.GROUPS.PROJECT_THEME, TO_CHAR(TECHNOPARK.GROUPS.D_CONFERENCE, 'DD.MM.YYYY'), EXTRACT(YEAR FROM TECHNOPARK.GROUPS.D_CONFERENCE), TECHNOPARK.LEARNER.ID_LEARNER FROM TECHNOPARK.EMPLOYEES INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.EMPLOYEES.ID_EMPLOYEES = TECHNOPARK.GROUPS.ID_EMPLOYEES INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.GROUPS.TITLE = TECHNOPARK.QUEUE.TITLE_G INNER JOIN TECHNOPARK.LEARNER ON TECHNOPARK.QUEUE.ID_LEARNER_Q = TECHNOPARK.LEARNER.ID_LEARNER where TECHNOPARK.GROUPS.TITLE = '" + TextBox1.Text + "' and  ID_LEARNER= '" + id_learner[0] + "'";
                 oraAdap.SelectCommand.Connection = oraConnection;
                 OracleDataReader oraReader1 = oraAdap.SelectCommand.ExecuteReader();
                 while (oraReader1.Read())
                 {
                     object[] values = new object[oraReader1.FieldCount];
                     oraReader1.GetValues(values);
-                    FIO_L= values[0].ToString();
+                    F = values[0].ToString();
                     CLASS = values[1].ToString();
                     SCHOOL = values[2].ToString();
+                    THEME = values[3].ToString();
+                    DATE = values[4].ToString();
+                    YEARS = values[5].ToString();
                 }
-
-                oraConnection.Close();
+            }
             }
             else
-            { 
-
+            {
+                Response.Write("<script>alert('Только методист может печатать отчет!')</script>");
             }
         }
 
@@ -128,6 +132,7 @@ namespace IS_technopark.Account
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            SelectParams();
             LocalReport localReport = ReportViewer1.LocalReport;
             localReport.ReportPath = "Account/Certificate.rdlc";
             ReportParameter reportParam_FIO = new ReportParameter();
@@ -136,10 +141,36 @@ namespace IS_technopark.Account
             //reportParam.Add(new ReportParameter("DCONF", d_conf[0].ToString()));
             localReport.SetParameters(new ReportParameter[] { reportParam_FIO });
 
-            //ReportParameter reportParam1= new ReportParameter();
-            //reportParam1.Name = "FIO_L";
-            //reportParam1.Values.Add(FIO_L);
-            //localReport.SetParameters(new ReportParameter[] { reportParam1});
+            ReportParameter reportParam1= new ReportParameter();
+            reportParam1.Name = "F";
+            reportParam1.Values.Add(F);
+            localReport.SetParameters(new ReportParameter[] { reportParam1});
+
+            ReportParameter reportParam2 = new ReportParameter();
+            reportParam2.Name = "SCHOOL";
+            reportParam2.Values.Add(SCHOOL);
+            localReport.SetParameters(new ReportParameter[] { reportParam2 });
+
+            ReportParameter reportParam3 = new ReportParameter();
+            reportParam3.Name = "CLASS";
+            reportParam3.Values.Add(CLASS);
+            localReport.SetParameters(new ReportParameter[] { reportParam3 });
+
+            ReportParameter reportParam4 = new ReportParameter();
+            reportParam4.Name = "THEME";
+            reportParam4.Values.Add(THEME);
+            localReport.SetParameters(new ReportParameter[] { reportParam4 });
+
+            ReportParameter reportParam5 = new ReportParameter();
+            reportParam5.Name = "DATE";
+            reportParam5.Values.Add(DATE);
+            localReport.SetParameters(new ReportParameter[] { reportParam5 });
+
+            ReportParameter reportParam6 = new ReportParameter();
+            reportParam6.Name = "YEARS";
+            reportParam6.Values.Add(YEARS);
+            localReport.SetParameters(new ReportParameter[] { reportParam6 });
+
         }
     }
 }

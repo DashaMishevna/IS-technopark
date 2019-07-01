@@ -16,7 +16,7 @@
     <br>
     <asp:Label ID="Label2" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER,TITLE" CellPadding="5" CellSpacing="3" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px"> 
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER,TITLE" CellPadding="5" CellSpacing="3" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" AllowPaging="True"> 
         <AlternatingRowStyle BackColor="#d2ecf9" /> 
         <Columns> 
         <asp:TemplateField> 
@@ -27,17 +27,21 @@
         </asp:TemplateField> 
         <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" /> 
         <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" /> 
-        <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" /> 
+        <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" > 
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
         <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL" /> 
         <asp:BoundField DataField="PROJECT_THEME" HeaderText="Тема проека" SortExpression="PROJECT_THEME" /> 
         <asp:BoundField DataField="EXPR1" HeaderText="Преподаватель" SortExpression="EXPR1" /> 
-        <asp:BoundField DataField="D_CONFERENCE" HeaderText="Дата конференции" SortExpression="D_CONFERENCE" DataFormatString="{0:dd/MM/yyyy}" /> 
+        <asp:BoundField DataField="D_CONFERENCE" HeaderText="Дата конференции" SortExpression="D_CONFERENCE" DataFormatString="{0:dd/MM/yyyy}" > 
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
         <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" /> 
         </Columns> 
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/> 
         <FooterStyle BackColor="#CCCCCC" /> 
         <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" /> 
-        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" /> 
+        <PagerStyle BackColor="#8fc6f0" ForeColor="White" HorizontalAlign="Center" /> 
         <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" /> 
     </asp:GridView>
     <asp:Label ID="Label3" runat="server" Text="" ForeColor="Red"></asp:Label>
@@ -45,7 +49,7 @@
     <asp:Button ID="Button2" runat="server"  Text="Вывести" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" OnClick="Button2_Click"  />
     <br />
     <br>
-    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="700px"  BorderStyle="None" Width="1000px">
+    <rsweb:ReportViewer ID="ReportViewer1" runat="server" Height="730px"  BorderStyle="None" Width="1070px">
         <LocalReport ReportPath="Account\Certificate.rdlc">
             <DataSources>
                 <rsweb:ReportDataSource DataSourceId="ObjectDataSource1" Name="DataSet2" />

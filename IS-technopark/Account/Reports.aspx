@@ -16,7 +16,7 @@
     <br>
     <asp:Label ID="Label2" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:16px; margin-right: 10px" Font-Italic="False" Font-Bold="True"></asp:Label>
     <br>
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER,TITLE" CellPadding="5" CellSpacing="3" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px"> 
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource2" DataKeyNames="ID_LEARNER,TITLE" CellPadding="5" CellSpacing="3" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" AllowPaging="True"> 
         <AlternatingRowStyle BackColor="#d2ecf9" /> 
         <Columns> 
         <asp:TemplateField> 
@@ -37,7 +37,7 @@
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/> 
         <FooterStyle BackColor="#CCCCCC" /> 
         <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" /> 
-        <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" /> 
+        <PagerStyle BackColor="#8fc6f0" ForeColor="Black" HorizontalAlign="Center" /> 
         <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" /> 
     </asp:GridView>
     <asp:Label ID="Label3" runat="server" Text="" ForeColor="Red"></asp:Label>
