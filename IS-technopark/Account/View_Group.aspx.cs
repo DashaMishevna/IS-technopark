@@ -14,14 +14,20 @@ namespace IS_technopark.Account
         OracleDataAdapter oraAdap = new OracleDataAdapter();
         OracleConnection oraConnection = new OracleConnection("Data Source =127.0.0.1:1521/xe; User ID =Technopark;  password = DIP1937;");
         DataTable table = new DataTable();
+        DataSet ds = new DataSet();
         string id_s_g = "";
         string id_s_l = "";
         string id_G = "";
+        
         List<string> id_status = new List<string>();
         List<string> list_gr = new List<string>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                GetDropList();
+            }
             if (Class_FIO.Employees_position=="2")
             {
                 string command = SqlDataSource1.SelectCommand;
@@ -223,6 +229,18 @@ namespace IS_technopark.Account
                 GridView1.DataBind();
                 SqlDataSource2.DataBind();
                 GridView2.DataBind();
+
+
+                Label2.Visible = false;
+                Label4.Visible = false;
+                DropDownList1.Visible = false;
+                Button3.Visible = false;
+                Label11.Visible = false;
+                Label12.Visible = false;
+                Button2.Visible = false;
+                Label3.Visible = false;
+                GridView2.Visible = false;
+                DropDownList2.Visible = false;
             }
         }
 
@@ -298,6 +316,120 @@ namespace IS_technopark.Account
             oraConnection.Close();
         }
 
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            if (Class_FIO.Employees_position == "2")
+            {
+                string command = SqlDataSource1.SelectCommand;
+                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0 and TECHNOPARK.EMPLOYEES.FIO= '" + Class_FIO.Employees_fio + "' ";
+                SqlDataSource1.DataBind();
+                GridView1.DataBind();
+            }
+            if (Class_FIO.Employees_position == "1")
+            {
+                string command = SqlDataSource1.SelectCommand;
+                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0";
+                SqlDataSource1.DataBind();
+                GridView1.DataBind();
+            }
+
+            Label2.Visible = false;
+            Label4.Visible = false;
+            DropDownList1.Visible = false;
+            Button3.Visible = false;
+            Label11.Visible = false;
+            Label12.Visible = false;
+            Button2.Visible = false;
+            Label3.Visible = false;
+            GridView2.Visible = false;
+            DropDownList2.Visible = false;
+        }
+
+        private void GetDropList()
+        {
+            if (Class_FIO.Employees_position == "2")
+            {
+                oraConnection.Open();
+                string s1 = "select Title from groups where ID_EMPLOYEES=(select ID_EMPLOYEES from EMPLOYEES where fio = '" + Class_FIO.Employees_fio + "')";
+                ds.Clear();
+                OracleDataAdapter oraAdap = new OracleDataAdapter(s1, oraConnection);
+                oraAdap.Fill(ds);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DropDownList3.DataSource = ds;
+                    DropDownList3.DataTextField = "Title";
+                    DropDownList3.DataBind();
+                    DropDownList3.Items.Insert(0, new ListItem("-Выберите группу-"));
+                    DropDownList3.SelectedIndex = 0;
+                }
+                oraConnection.Close();
+            }
+
+            if (Class_FIO.Employees_position == "1")
+            {
+                oraConnection.Open();
+                string s1 = "select Title from groups";
+                ds.Clear();
+                OracleDataAdapter oraAdap = new OracleDataAdapter(s1, oraConnection);
+                oraAdap.Fill(ds);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    DropDownList3.DataSource = ds;
+                    DropDownList3.DataTextField = "Title";
+                    DropDownList3.DataBind();
+                    DropDownList3.Items.Insert(0, new ListItem("-Выберите группу-"));
+                    DropDownList3.SelectedIndex = 0;
+                }
+                oraConnection.Close();
+            }
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            if (DropDownList3.SelectedValue.ToString() == "-Выберите группу-")
+            {
+                string command = SqlDataSource1.SelectCommand;
+                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE ID_GROUPT!=0";
+                SqlDataSource1.DataBind();
+                GridView1.DataBind();
+                //SqlDataSource2.DataBind();
+                // GridView2.DataBind();
+                Label2.Visible = false;
+                Label4.Visible = false;
+                DropDownList1.Visible = false;
+                Button3.Visible = false;
+                Label11.Visible = false;
+                Label12.Visible = false;
+                Button2.Visible = false;
+                Label3.Visible = false;
+                GridView2.Visible = false;
+                DropDownList2.Visible = false;
+            }
+
+            if (DropDownList3.SelectedValue.ToString() != "-Выберите группу-")
+            {
+                SqlDataSource2.SelectCommand = "SELECT TECHNOPARK.LEARNER.FIO, TECHNOPARK.LEARNER.CLASS, TECHNOPARK.DIR_STATUS_LEARNER.STATUS_L, TECHNOPARK.QUEUE.ID_QUEUE, TECHNOPARK.LEARNER.PHONE, TECHNOPARK.LEARNER.E_MAIL FROM TECHNOPARK.LEARNER INNER JOIN TECHNOPARK.QUEUE ON TECHNOPARK.LEARNER.ID_LEARNER = TECHNOPARK.QUEUE.ID_LEARNER_Q INNER JOIN TECHNOPARK.GROUPS ON TECHNOPARK.QUEUE.TITLE_G = TECHNOPARK.GROUPS.TITLE INNER JOIN TECHNOPARK.DIR_STATUS_LEARNER ON TECHNOPARK.QUEUE.ID_STATUS_L = TECHNOPARK.DIR_STATUS_LEARNER.ID_DIR_STATUS_LEARNER WHERE TECHNOPARK.GROUPS.TITLE = '" + DropDownList3.Text + "' and ID_GROUPT!=0 and ID_QUEUE!=0";
+                SqlDataSource2.DataBind();
+                GridView2.DataBind();
+                Label3.Text = "Проектанты по выбранной группе";
+                SqlDataSource1.SelectCommand = "SELECT TECHNOPARK.GROUPS.TITLE, TECHNOPARK.EMPLOYEES.FIO, TECHNOPARK.DIR_PROJECTS.TITLE AS EXPR1, TECHNOPARK.GROUPS.D_START, TECHNOPARK.GROUPS.D_END, TECHNOPARK.GROUPS.D_CONFERENCE, TECHNOPARK.GROUPS.TIME_CLASS, TECHNOPARK.GROUPS.PROJECT_THEME, TECHNOPARK.DIR_STATUS_GROUP.STATUS_G, TECHNOPARK.GROUPS.ID_GROUPT FROM TECHNOPARK.GROUPS INNER JOIN TECHNOPARK.EMPLOYEES ON TECHNOPARK.GROUPS.ID_EMPLOYEES = TECHNOPARK.EMPLOYEES.ID_EMPLOYEES INNER JOIN TECHNOPARK.DIR_STATUS_GROUP ON TECHNOPARK.GROUPS.STATUS = TECHNOPARK.DIR_STATUS_GROUP.ID_DIR_STATUS_GROUP INNER JOIN TECHNOPARK.DIR_PROJECTS ON TECHNOPARK.GROUPS.ID_PROJECT = TECHNOPARK.DIR_PROJECTS.ID_DIR_PROJECTS WHERE TECHNOPARK.GROUPS.TITLE = '" + DropDownList3.SelectedValue.ToString() + "' and ID_GROUPT!=0";
+                SqlDataSource1.DataBind();
+                GridView1.DataBind();
+
+                Label2.Visible = true;
+                Label4.Visible = true;
+                DropDownList1.Visible = true;
+                Button3.Visible = true;
+                Label11.Visible = true;
+                Label12.Visible = true;
+                Button2.Visible = true;
+                Label3.Visible = true;
+                GridView2.Visible = true;
+                DropDownList2.Visible = true;
+            }
+           
+
+        }
         //protected void Button4_Click(object sender, EventArgs e)
         //{
         //    oraConnection.Open();

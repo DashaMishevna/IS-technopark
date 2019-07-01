@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" title="Просмотр групп" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="View_Group.aspx.cs" Inherits="IS_technopark.Account.View_Group" %>
+﻿<%@ Page EnableEventValidation="true" Language="C#" title="Просмотр групп" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="View_Group.aspx.cs" Inherits="IS_technopark.Account.View_Group" %>
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -11,10 +11,17 @@
     <h2 style="text-align:center"> РАБОТА С ГРУППАМИ </h2>
     <asp:Label ID="Label6" runat="server" Text="Шифр группы - Номер лаборатории_Дата создания группы_Номер проекта.Номер группы" style="width:200px; height:30px; font-size:12px; margin-right: 10px;" ForeColor="#336699"></asp:Label>
     <h5 style="text-align:left; font-weight:600; margin-top:4px">Поиск группы по шифру</h5>
+    <asp:Label ID="Label7" runat="server" Text="Выберите группу" style="text-align:center; margin-right:10px"></asp:Label>
+    <asp:DropDownList ID="DropDownList3" runat="server" CssClass="btn btn-default" style="text-align:center; margin-right:10px"></asp:DropDownList>
+    <asp:Button ID="Button5" runat="server" Text="Выбрать" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center; margin-right:12px" OnClick="Button5_Click" />
+    
+    <asp:Button ID="Button4" runat="server" Text="Вывести все группы" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center; margin-right:12px" OnClick="Button4_Click" />
+    
     <asp:Label ID="Label1" runat="server" Text="Введите шифр" style="width:200px; height:30px; font-size:16px; margin-right: 10px"></asp:Label>
     <asp:TextBox ID="TextBox1" runat="server" CssClass="btn btn-default" style="text-align:left; margin-right:10px;"></asp:TextBox>
-    <asp:Button ID="Button1" runat="server" Text="Выбрать"  OnClick="Button1_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" />
+    <asp:Button ID="Button1" runat="server" Text="Выбрать" OnClick="Button1_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center" />
    <%-- <asp:Button ID="Button4" runat="server" Text="Вывести группу"  CssClass="btn btn-default" Font-Size="12pt" BackColor="#A5D1F3" Height="33px" style="text-align:center; margin-left:10px" OnClick="Button4_Click" />--%>
+        
     <br>
     <br>
     <asp:Label ID="Label5" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:15px; margin-right:12px; margin-bottom:20px" Font-Italic="False" Font-Bold="True"></asp:Label>

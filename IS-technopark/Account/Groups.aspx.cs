@@ -404,6 +404,7 @@ namespace IS_technopark.Account
                         Label1.ForeColor = System.Drawing.Color.Green;
                         Label1.Text = "Данные успешно добавлены! Шифр группы-" + Title_Group;
                         GridView1.DataBind();
+                        AllLearner();
                     }
                     catch
                     {
