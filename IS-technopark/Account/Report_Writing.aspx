@@ -4,7 +4,7 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <br>
-    <h2 style="text-align:center">ОТЧЕТ - ЗАПИСЬ НА ПРОЕКТ</h2>
+    <h2 style="text-align:center">ЗАЯВЛЕНИЕ НА ОБУЧЕНИЕ</h2>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString2 %>" ProviderName="<%$ ConnectionStrings:ConnectionString2.ProviderName %>" SelectCommand="SELECT &quot;TITLE&quot; FROM &quot;DIR_PROJECTS&quot;"></asp:SqlDataSource>
     <br>
     <br>

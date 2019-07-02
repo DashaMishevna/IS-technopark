@@ -164,6 +164,7 @@ namespace IS_technopark.Account
             TextBox7.Text = string.Empty;
             TextBox8.Text = string.Empty;
             TextBoxFirst.Text = string.Empty;
+            ListBox1.ClearSelection();
             DropDownList1.ClearSelection();
             DropDownList2.ClearSelection();
             DropDownList4.ClearSelection();

@@ -9,6 +9,7 @@ using System.Net;
 using System.IO;
 using Oracle.ManagedDataAccess.Client;
 using System.Data;
+using System.Threading.Tasks;
 
 namespace IS_technopark.Account
 {
@@ -20,7 +21,7 @@ namespace IS_technopark.Account
         DataSet ds = new DataSet();
         List<string> e_mail_to = new List<string>();
         int LabekMessag = 0;
-
+        int email = 0;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -49,22 +50,31 @@ namespace IS_technopark.Account
         {
             if ((sender as Button) == null)
                 return;
-            //if (txtTo.Text != "")
-            //{
+            
                 sendonemail();
                 txtTo.Text = String.Empty;
+            //if (email == 1)
+            //{
+            //    var t = Task.Run(async delegate
+            //    {
+            //        Response.Write("<script>alert('Сообщение успешно отправлено!')</script>");
+            //        await Task.Delay(5000);
+            //        return 42;
+            //    });
+            //    t.Wait();
+            //    Response.Redirect("SendEMail");
             //}
 
-            Response.Write("<script>alert('Сообщение успешно отправлено!')</script>");
-
-           // Response.Redirect("SendEMail.aspx"); //Перенаправлять или чистить
+            // Response.Redirect("SendEMail.aspx"); //Перенаправлять или чистить
 
         }
 
         private void sendonemail()
         {
+            
+            string to = "";
             string from = "schooltechn.yourname@gmail.com";
-            string to = txtTo.Text.Trim();
+            to = txtTo.Text.Trim();
             string subject = txtSubject.Text.Trim();
             string message = txtMessage.Text.Trim();
             try
@@ -80,9 +90,12 @@ namespace IS_technopark.Account
                         smtp.Credentials = NetCred;
                         smtp.Port = 587;
                         smtp.Send(from, to, subject, message);
+                        Response.Write("<script>alert('Сообщение успешно отправлено!')</script>");
                         //lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
+                        to = "";
                         smtp.Dispose();
                     }
+                    email = 1;
                 }
                 EmailLaboratory();
                 if (e_mail_to.Count != 0)
@@ -100,11 +113,13 @@ namespace IS_technopark.Account
                             smtp.Credentials = NetCred;
                             smtp.Port = 587;
                             smtp.Send(from, e_mail_to[s], subject, message);
+                            Response.Write("<script>alert('Сообщение успешно отправлено!')</script>");
                             //lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
                             //smtp.Dispose();
                         }
                         s += 1;
                     }
+                    email = 1;
                 }
                     LabekMessag = 1;
                 if (Class_FIO.email_learner.Count>0)
@@ -121,11 +136,13 @@ namespace IS_technopark.Account
                             smtp.Credentials = NetCred;
                             smtp.Port = 587;
                             smtp.Send(from, Class_FIO.email_learner[s], subject, message);
-                           // lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
+                            Response.Write("<script>alert('Сообщение успешно отправлено!')</script>");
+                            // lblStatus.Text = "<b style='color:green'>Сообщение успешно отправлено!</b>";
                             //smtp.Dispose();
                         }
                         s += 1;
                     }
+                    email = 1;
                 }
                
             }

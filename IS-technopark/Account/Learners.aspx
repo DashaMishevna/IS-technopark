@@ -133,7 +133,6 @@
             <asp:TextBox ID="TextBox15" runat="server" Width="500px" Height="30px"  CssClass="btn btn-default" Style="text-align:left"></asp:TextBox>
         </div>
         <br>
-        <br>
     </div>
     <br>
     <div class="form-group" style="text-align:center;">

@@ -23,7 +23,7 @@
             <asp:Label ID="Label2" runat="server" Text="Кому:"></asp:Label>
         </div>
         <div class='form-row'>
-            <asp:TextBox ID="txtTo" runat="server" Width="280" Height="37px" TextMode="MultiLine" CssClass="btn btn-default" style="resize:none; text-align:left; margin-bottom:10px" AutoCompleteType="Email" AutoPostBack="True"></asp:TextBox>
+            <asp:TextBox ID="txtTo" runat="server" Width="280" Height="37px" TextMode="Email" CssClass="btn btn-default" style="resize:none; text-align:left; margin-bottom:10px" AutoCompleteType="Email" AutoPostBack="True"></asp:TextBox>
         </div>
         <br>
         <br>

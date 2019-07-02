@@ -27,17 +27,21 @@
         </asp:TemplateField> 
         <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" /> 
         <asp:BoundField DataField="FIO" HeaderText="ФИО" SortExpression="FIO" /> 
-        <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" /> 
+        <asp:BoundField DataField="CLASS" HeaderText="Класс" SortExpression="CLASS" > 
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
         <asp:BoundField DataField="SCHOOL" HeaderText="Школа" SortExpression="SCHOOL" /> 
         <asp:BoundField DataField="PROJECT_THEME" HeaderText="Тема проека" SortExpression="PROJECT_THEME" /> 
         <asp:BoundField DataField="EXPR1" HeaderText="Преподаватель" SortExpression="EXPR1" /> 
-        <asp:BoundField DataField="D_CONFERENCE" HeaderText="Дата конференции" SortExpression="D_CONFERENCE" DataFormatString="{0:dd/MM/yyyy}" /> 
+        <asp:BoundField DataField="D_CONFERENCE" HeaderText="Дата конференции" SortExpression="D_CONFERENCE" DataFormatString="{0:dd/MM/yyyy}" > 
+            <ItemStyle HorizontalAlign="Center" />
+            </asp:BoundField>
         <asp:BoundField DataField="ID_LEARNER" HeaderText="ID_LEARNER" SortExpression="ID_LEARNER" Visible="false" /> 
         </Columns> 
         <EditRowStyle HorizontalAlign="Left" BackColor="#ffe8e6"/> 
         <FooterStyle BackColor="#CCCCCC" /> 
         <HeaderStyle BackColor="#8fc6f0" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" Height="35px" Font-Size="17px" VerticalAlign="Middle" /> 
-        <PagerStyle BackColor="#8fc6f0" ForeColor="Black" HorizontalAlign="Center" /> 
+        <PagerStyle BackColor="#8fc6f0" ForeColor="White" HorizontalAlign="Center" /> 
         <SelectedRowStyle Wrap="True" BackColor="#ff9f97" Font-Bold="True" ForeColor="White" /> 
     </asp:GridView>
     <asp:Label ID="Label3" runat="server" Text="" ForeColor="Red"></asp:Label>

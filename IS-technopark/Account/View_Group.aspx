@@ -26,7 +26,7 @@
     <br>
     <asp:Label ID="Label5" runat="server" Text="Данные группы" style="width:200px; height:30px; font-size:15px; margin-right:12px; margin-bottom:20px" Font-Italic="False" Font-Bold="True"></asp:Label>
    
-    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT,TITLE" DataSourceID="SqlDataSource1" style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical"  OnRowUpdating="GridView1_RowUpdating" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3">
+    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_GROUPT,TITLE" DataSourceID="SqlDataSource1" style="font-size:12px" CellPadding="5" ForeColor="Black" GridLines="Vertical" OnRowUpdating="GridView1_RowUpdating" BorderColor="#999999" BorderWidth="0px" AllowPaging="True" BackColor="White" CellSpacing="3">
         <AlternatingRowStyle BackColor="White" />
         <Columns> 
             <asp:BoundField DataField="TITLE" HeaderText="Шифр" SortExpression="TITLE" />
@@ -70,7 +70,6 @@
     <asp:Button ID="Button2" runat="server" Text="Обновить" OnClick="Button2_Click" CssClass="btn btn-default" Font-Size="12pt" BackColor="#CEE5F3" Height="33px" style="text-align:center"  Visible="false"/>
     <br />
     <asp:Label ID="Label12" runat="server" Text=""></asp:Label>
-    <br />
     <br />
     <asp:Label ID="Label4" runat="server" Text="Данные проектантов" style="width:200px; height:30px; font-size:16px; margin-right: 10px;" Font-Italic="False" Font-Bold="True" Visible="false"></asp:Label>
     <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="ID_QUEUE" DataSourceID="SqlDataSource2" CellPadding="5"  ForeColor="Black" GridLines="Vertical" BackColor="White" BorderColor="#999999" BorderWidth="0px" CellSpacing="3" >

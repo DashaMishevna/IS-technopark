@@ -400,11 +400,13 @@ namespace IS_technopark.Account
                             oraAdap.InsertCommand.ExecuteNonQuery();
                             // oraConnection.Close();
                         }
-                        Label1.Visible = true;
-                        Label1.ForeColor = System.Drawing.Color.Green;
-                        Label1.Text = "Данные успешно добавлены! Шифр группы-" + Title_Group;
+                        //Label1.Visible = true;
+                        //Label1.ForeColor = System.Drawing.Color.Green;
+                        //Label1.Text = "Данные успешно добавлены! Шифр группы-" + Title_Group;
+                        Response.Write("<script>alert('Данные успешно добавлены! Шифр группы: " + Title_Group + "')</script>");
                         GridView1.DataBind();
                         AllLearner();
+                        ClearAll();
                     }
                     catch
                     {
@@ -423,6 +425,17 @@ namespace IS_technopark.Account
                 Response.Write("<script>alert('Преподаватель не может формировать группу для другого преподавателя')</script>");
             }
         }
+
+
+        public void ClearAll()
+        {
+            DropDownList1.ClearSelection();
+            DropDownList2.ClearSelection();
+            DropDownList3.ClearSelection();
+            TextBox2.Text = string.Empty;
+            TextBox3.Text = string.Empty;
+        }
+
         protected void Button2_Click(object sender, EventArgs e)
         {
             email_list.Count();
